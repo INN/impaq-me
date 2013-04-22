@@ -1,3 +1,4 @@
+//FIXME: currently depends on jQuery being loaded in host page
 (function($){
   window.impaq_me = $.extend({}, window.impaq_me, {
 
@@ -38,3 +39,13 @@
 
 
 })(jQuery);
+
+
+// ImpaqMe.registerShareService({
+//   name: added to .services
+//   sdk: 
+//     string of script to load with getScript, (promise() returned as .services.<name>.sdk)
+//     or
+//     function to be executed, context set as ImpaqMe
+//   step1
+//     function to be executed when the 
