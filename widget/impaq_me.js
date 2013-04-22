@@ -21,10 +21,10 @@
       this.iframe.src = this.script().src + "/../../index.html";
       this.script().parentNode.insertBefore(this.iframe, this.script());
     }
-  };
+  }
 
 
-  impaq_me.init();
-  impaq_me.createIframe();
+  impaq_me.init()
+  impaq_me.createIframe()
 
 })();

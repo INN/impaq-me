@@ -23,4 +23,16 @@ module.exports = require('lineman').config.extend('application', {
   //   }
   // }
 
+
+  jshint: {
+    files: ["<%= files.js.app %>", "<%= files.js.widget %>"]
+  }
+
+  // concat: {
+  //   widget: {
+  //     src: "<%= files.js.widget %>",
+  //     dest: "<%= files.kkk
+  //   }
+  // }
+
 });

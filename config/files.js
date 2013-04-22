@@ -12,5 +12,12 @@
  */
 
 module.exports = require('lineman').config.extend('files', {
-  //Override file patterns here
+  // coffee: {
+  //   widget: "widget/js/**/*.coffee"
+  // },
+
+  js: {
+    widget: "widget/js/**/*.js"
+  }
+
 });
