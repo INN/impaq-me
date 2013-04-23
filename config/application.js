@@ -62,6 +62,25 @@ module.exports = require('lineman').config.extend('application', {
       files: "<%= files.glob.js.widget %>",
       tasks: ["configure","jshint:widget"]
     }
+  },
+
+  homepage: {
+    template: "app/templates/index.us",
+    dev: {
+      dest: "generated/index.html",
+      context: {
+        js: "js/app.js",
+        css: "css/app.css"
+      }
+    },
+    dist: {
+      dest: "dist/index.html",
+      context: {
+        js: "js/app.min.js",
+        css: "css/app.min.css"
+      }
+    }
   }
+
 
 });
