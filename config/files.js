@@ -20,7 +20,8 @@ module.exports = require('lineman').config.extend('files', {
 
   js: {
     widget: "widget/js/**/*.js",
-    widget_concatenated: "generated/js/widget.js"
+    widget_concatenated: "generated/js/widget.js",
+    widget_minified: "dist/js/widget.min.js"
   }
 
 });

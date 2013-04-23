@@ -9,6 +9,7 @@ module.exports = require('lineman').config.extend('application', {
 
   appTasks: {
     common: ["coffee", "less", "jshint", "handlebars", "jst", "configure", "concat", "images:dev", "webfonts:dev", "homepage:dev"],
+    dist: ["uglify", "cssmin", "images:dist", "webfonts:dist", "homepage:dist"]
   },
 
   coffee: {
@@ -27,6 +28,14 @@ module.exports = require('lineman').config.extend('application', {
     widget_js: {
       src: ["<%= files.coffee.widget_generated %>", "<%= files.js.widget %>"],
       dest: "<%= files.glob.js.widget_concatenated %>"
+    }
+  },
+
+  uglify: {
+    widget_js: {
+      files: {
+        "<%= files.glob.js.widget_minified %>": "<%= files.glob.js.widget_concatenated %>"
+      }
     }
   }
 
