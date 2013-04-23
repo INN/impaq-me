@@ -13,7 +13,7 @@ module.exports = require('lineman').config.extend('application', {
   },
 
   coffee: {
-    compile: {
+    widget: {
       files: {
         "<%= files.glob.coffee.widget_generated %>": "<%= files.coffee.widget %>"
       }
@@ -21,18 +21,20 @@ module.exports = require('lineman').config.extend('application', {
   },
 
   jshint: {
-    files: ["<%= files.js.app %>", "<%= files.js.widget %>"]
+    widget: {
+      files: ["<%= files.js.widget %>"]
+    }
   },
 
   concat: {
-    widget_js: {
+    widget: {
       src: ["<%= files.coffee.widget_generated %>", "<%= files.js.widget %>"],
       dest: "<%= files.glob.js.widget_concatenated %>"
     }
   },
 
   uglify: {
-    widget_js: {
+    widget: {
       files: {
         "<%= files.glob.js.widget_minified %>": "<%= files.glob.js.widget_concatenated %>"
       }
