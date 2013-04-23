@@ -7,6 +7,14 @@
 
 module.exports = require('lineman').config.extend('application', {
 
+  coffee: {
+    compile: {
+      files: {
+        "<%= files.glob.coffee.widget_generated %>": "<%= files.coffee.widget %>"
+      }
+    }
+  },
+
   jshint: {
     files: ["<%= files.js.app %>", "<%= files.js.widget %>"]
   }
