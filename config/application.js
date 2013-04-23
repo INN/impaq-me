@@ -45,6 +45,23 @@ module.exports = require('lineman').config.extend('application', {
     widget: {
       src: "<%= files.js.widget_concatenated %>"
     }
+  },
+
+  watch: {
+    widget_js: {
+      files: "<%= files.glob.js.widget %>",
+      tasks: ["configure", "concat:widget"]
+    },
+
+    widget_coffee: {
+      files: "<%= files.glob.coffee.widget %>",
+      tasks: ["configure","coffee:widget","configure","concat:widget"]
+    },
+
+    widget_lint: {
+      files: "<%= files.glob.js.widget %>",
+      tasks: ["configure","jshint:widget"]
+    }
   }
 
 });
