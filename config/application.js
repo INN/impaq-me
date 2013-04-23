@@ -37,6 +37,12 @@ module.exports = require('lineman').config.extend('application', {
         "<%= files.glob.js.widget_minified %>": "<%= files.glob.js.widget_concatenated %>"
       }
     }
+  },
+
+  clean: {
+    widget: {
+      src: "<%= files.js.widget_concatenated %>"
+    }
   }
 
 });
