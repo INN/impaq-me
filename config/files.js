@@ -12,9 +12,6 @@
  */
 
 module.exports = require('lineman').config.extend('files', {
-  // coffee: {
-  //   widget: "widget/js/**/*.coffee"
-  // },
 
   js: {
     widget: "widget/js/**/*.js"
