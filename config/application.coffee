@@ -56,4 +56,7 @@ module.exports = require('lineman').config.extend('application',
         js: "js/app.min.js"
         css: "css/app.min.css"
 
+  server:
+    web:
+      port: 8003
 )
