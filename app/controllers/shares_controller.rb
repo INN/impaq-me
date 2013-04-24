@@ -4,15 +4,18 @@ class SharesController < ApplicationController
   # GET /shares
   def index
     @shares = Share.all
+    render :json => @shares
   end
 
   # GET /shares/1
   def show
+    render :json => @share
   end
 
   # GET /shares/new
   def new
     @share = Share.new
+    render :json => @share
   end
 
   # GET /shares/1/edit
