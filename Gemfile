@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails',     github: 'rails/rails'
 gem 'arel',      github: 'rails/arel'
 gem "active_model_serializers", "~> 0.7.0"
-gem 'mongoid'
+gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 
 
