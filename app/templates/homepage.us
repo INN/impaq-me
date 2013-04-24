@@ -8,10 +8,9 @@
   <body>
     <h1>INN Publisher</h1>
 
+    <a href="#" class="impaq-me-button">impaq me, man!</a>
     <article>
       <h2>Article Title</h2>
-
-      <script src="<%= js %>"></script>
 
       <p>Freegan direct trade post-ironic four loko, pour-over tattooed pickled ethnic narwhal bespoke stumptown church-key try-hard selvage. Craft beer thundercats artisan you probably haven't heard of them, gastropub american apparel brooklyn hashtag four loko typewriter single-origin coffee. Typewriter kale chips stumptown seitan pitchfork vinyl freegan, literally iphone sartorial. Cardigan ugh twee Austin bicycle rights. Trust fund pinterest chambray carles wayfarers portland tousled, sriracha wes anderson. Tattooed direct trade pour-over shoreditch skateboard. Cardigan trust fund synth, letterpress PBR truffaut master cleanse umami vinyl.</p>
       <p>Plaid selvage tattooed, locavore single-origin coffee occupy dreamcatcher sustainable terry richardson next level hoodie cosby sweater irony hella. Seitan portland craft beer photo booth, fap flannel blue bottle. Actually whatever 8-bit cosby sweater pork belly blog YOLO blue bottle, stumptown artisan. Selfies brunch stumptown echo park, retro squid pour-over synth fanny pack small batch sartorial cliche irony shoreditch. Typewriter cardigan wayfarers chambray helvetica, sustainable sartorial before they sold out pork belly plaid put a bird on it literally fanny pack. Authentic photo booth fixie, salvia put a bird on it bushwick jean shorts vinyl lomo. Pitchfork pour-over polaroid, you probably haven't heard of them bushwick locavore fap authentic pug photo booth scenester organic chillwave hashtag raw denim.</p>
@@ -19,5 +18,6 @@
       <p>Fixie keffiyeh thundercats, wolf messenger bag ethnic meggings fashion axe mumblecore fingerstache next level. Lo-fi flexitarian vinyl put a bird on it pug +1 fanny pack small batch, shoreditch single-origin coffee sustainable neutra tonx. Tofu try-hard vinyl, selvage lomo tattooed beard keffiyeh. Scenester plaid raw denim ethical narwhal. Lo-fi art party occupy wolf. Irony gastropub try-hard, fingerstache pickled truffaut messenger bag deep v. Pop-up ugh pickled pitchfork iphone flexitarian Austin.</p>
     </article>
 
+    <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="<%= js %>";fjs.parentNode.insertBefore(js,fjs);}})(document,"script","impaq-me-wjs");</script>
   </body>
 </html>
