@@ -1,15 +1,17 @@
 window.twttr = (t = { _e: [], ready: function(f){ t._e.push(f); } });
 
 twttr.ready(function(){
-    console.log("twitter loaded");
+  console.log("twitter loaded");
   twttr.events.bind('tweet', function(event){
     console.log("tweeted");
     $.post(
       "/shares",
       {
-        campaign_id: 1,
-        share_method: 'twitter',
-        message: "hardcoded message"
+        share: {
+          campaign_id: 1,
+          share_method: 'twitter',
+          message: "hardcoded message"
+        }
       },
       function(data, textStatus, jqXHR){
         console.log(textStatus);

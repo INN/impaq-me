@@ -24,7 +24,7 @@ describe SharesController do
   # Share. As you add validations to Share, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "ip" => "MyString" }
+    { campaign_id: 1 }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -90,14 +90,14 @@ describe SharesController do
       it "assigns a newly created but unsaved share as @share" do
         # Trigger the behavior that occurs when invalid params are submitted
         Share.any_instance.stub(:save).and_return(false)
-        post :create, {:share => { "ip" => "invalid value" }}, valid_session
+        post :create, {:share => { "campaign_id" => "invalid value" }}, valid_session
         assigns(:share).should be_a_new(Share)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Share.any_instance.stub(:save).and_return(false)
-        post :create, {:share => { "ip" => "invalid value" }}, valid_session
+        post :create, {:share => { "campaign_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -111,8 +111,8 @@ describe SharesController do
         # specifies that the Share created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Share.any_instance.should_receive(:update).with({ "ip" => "MyString" })
-        put :update, {:id => share.to_param, :share => { "ip" => "MyString" }}, valid_session
+        Share.any_instance.should_receive(:update).with({ "campaign_id" => "MyString" })
+        put :update, {:id => share.to_param, :share => { "campaign_id" => "MyString" }}, valid_session
       end
 
       it "assigns the requested share as @share" do
@@ -133,7 +133,7 @@ describe SharesController do
         share = Share.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Share.any_instance.stub(:save).and_return(false)
-        put :update, {:id => share.to_param, :share => { "ip" => "invalid value" }}, valid_session
+        put :update, {:id => share.to_param, :share => { "campaign_id" => "invalid value" }}, valid_session
         assigns(:share).should eq(share)
       end
 
@@ -142,7 +142,7 @@ describe SharesController do
         share = Share.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Share.any_instance.stub(:save).and_return(false)
-        put :update, {:id => share.to_param, :share => { "ip" => "invalid value" }}, valid_session
+        put :update, {:id => share.to_param, :share => { "campaign_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
