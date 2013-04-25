@@ -1,3 +1,3 @@
 class ShareSerializer < ActiveModel::Serializer
-  attributes :id, :ip, :facebook, :twitter, :message, :url
+  attributes :campaign_id, :share_method, :message, :ip
 end

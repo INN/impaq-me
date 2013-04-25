@@ -1,9 +1,8 @@
 class Share
   include Mongoid::Document
 
-  field :ip
-  field :facebook
-  field :twitter
+  field :campaign_id
+  field :share_method
   field :message
-  field :url
+  field :ip
 end

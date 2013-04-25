@@ -56,6 +56,6 @@ class SharesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def share_params
-      params.require(:share).permit(:ip, :facebook, :twitter, :message, :url)
+      params.require(:share).permit(:campaign_id, :share_method, :message, :ip)
     end
 end
