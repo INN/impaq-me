@@ -11,6 +11,10 @@ gem 'bson_ext'
 group :development, :test do
   gem 'rspec-rails'
 end
+
+group :test do
+  gem 'database_cleaner'
+end
 # Use edge version of sprockets-rails
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 

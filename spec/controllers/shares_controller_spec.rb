@@ -38,7 +38,7 @@ describe SharesController do
     it "assigns all shares as @shares" do
       share = Share.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:shares).should eq([share])
+      assigns(:shares).to_a.should eq([share])
     end
   end
 
@@ -59,6 +59,7 @@ describe SharesController do
 
   describe "GET edit" do
     it "assigns the requested share as @share" do
+      pending "not implemented"
       share = Share.create! valid_attributes
       get :edit, {:id => share.to_param}, valid_session
       assigns(:share).should eq(share)
@@ -137,6 +138,7 @@ describe SharesController do
       end
 
       it "re-renders the 'edit' template" do
+        pending "not implemented"
         share = Share.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Share.any_instance.stub(:save).and_return(false)

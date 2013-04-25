@@ -96,6 +96,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    database_cleaner (0.9.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -156,6 +157,7 @@ DEPENDENCIES
   arel!
   bson_ext
   coffee-rails!
+  database_cleaner
   jquery-rails
   mongoid!
   rails!
