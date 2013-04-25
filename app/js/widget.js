@@ -14,7 +14,7 @@
       },
 
       createIframe: function(event){
-        var iframe = $('<iframe src="http://localhost:8003/index.html"></iframe>')
+        var iframe = $('<iframe src="//impaq-me.herokuapp.com/index.html"></iframe>')
           .css({
             position: 'absolute',
             top:0,

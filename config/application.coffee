@@ -8,6 +8,13 @@
 
 module.exports = require('lineman').config.extend('application',
 
+  homepage:
+    dev:
+      context:
+        impaq_me_iframe: "http://localhost:8003/index.html"
+    dist:
+      context:
+        impaq_me_iframe: "//impaq-me.herokuapp.com/index.html"
   server:
     web:
       port: 8002
