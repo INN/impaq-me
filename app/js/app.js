@@ -10,7 +10,9 @@ twttr.ready(function(){
         message: "hardcoded message"
       },
       function(data, textStatus, jqXHR){
-        debugger;
+        console.log(textStatus);
+        console.log(data);
+        console.log(jqXHR);
       }
     );
   });
