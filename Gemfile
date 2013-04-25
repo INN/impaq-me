@@ -10,6 +10,7 @@ gem 'bson_ext'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :test do

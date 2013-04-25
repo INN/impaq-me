@@ -24,8 +24,6 @@ class SharesController < ApplicationController
   # POST /shares
   def create
     @share = Share.new(share_params)
-    puts request.headers.inspect
-    binding.pry
 
     if @share.save
       redirect_to @share, notice: 'Share was successfully created.'
