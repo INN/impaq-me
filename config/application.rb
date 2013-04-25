@@ -28,5 +28,10 @@ module ImpaqBackend
         g.stylesheets false
         g.javascripts false
     end
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+      end
+    end
   end
 end

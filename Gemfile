@@ -6,6 +6,7 @@ gem 'arel',      github: 'rails/arel'
 gem "active_model_serializers", "~> 0.7.0"
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :development, :test do
