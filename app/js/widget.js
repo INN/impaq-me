@@ -1,6 +1,7 @@
-(function($){
+(function($, _){
   window.Impaq = {
     $: $,
+    _: _,
     me: {
 
       init: function(){
@@ -33,6 +34,5 @@
 
 
   Impaq.me.init();
-  // Impaq.me.createIframe();
 
-})(jQuery.noConflict(true));
+})(jQuery.noConflict(true), _);//.noConflict());
