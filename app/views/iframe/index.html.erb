@@ -10,14 +10,14 @@
         <main>
           <div>
             <div id="share">
-              <input type="text">
-              <a href="https://twitter.com/share?url=http://inn-publisher.herokuapp.com&amp;text=Hello,%20World!&amp;via=testdoubletest" class="twitter-share-button" data-lang="en">Tweet</a>
+              <input type="text" placeholder="Why was this story important to you?">
               <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
+              <a href="https://twitter.com/share?url=http://inn-publisher.herokuapp.com&amp;text=Hello,%20World!&amp;via=testdoubletest" class="twitter-share-button" data-lang="en">Tweet</a>
             </div>
             <p id="campaign_meter"><span id="progress"></span><span>$<span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
-            <p id="details"><%= @bootstrap[:publisher_name] %> is a non-profit, if you share this article, the <%= @bootstrap[:foundation_name] %> will Donate $<%= @bootstrap[:value_per_share] %> to them.</p>
+            <p id="details"><%= @bootstrap[:publisher_name] %> is a non-profit, if you share this article, the <%= @bootstrap[:foundation_name] %> will donate <em class="donation-callout">$<%= @bootstrap[:value_per_share] %></em> to them.</p>
           </div>
-          <p id="donate">If this is important to you, you can donate an additional $2 to Investigative News Network</p>
+          <p id="donate">If this is important to you, you can donate an additional <em class="donation-callout">$2</em> to <%= @bootstrap[:publisher_name] %></p>
         </main>
         <aside>
           <p>This was important because...</p>

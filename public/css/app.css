@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 html,
 body {
   margin: 0;
@@ -5,14 +7,16 @@ body {
   background-color: #efefef;
   color: #666666;
   font-size: 14px;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 section #wrapper {
-  margin: .7em 0;
+margin: .7em 0;
 }
 main,
 aside {
   display: inline-block;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 main {
   width: 80%;
@@ -33,13 +37,37 @@ main > div #share {
 }
 main > div #share > * {
   vertical-align: middle;
+  line-height:1.5;
+  margin: 0 10px;
+}
+main > div #share :first-child {
+  margin-left: 0;
+}
+main > div #share input {
+  border: 1px solid #6D6E71;
+  background-color: #FFFFFF;
+  color: #6D6E71;
+  padding: .2em .75em;
+  width:300px;
+}
+main > div #share input::-webkit-input-placeholder,
+main > div #share input:-moz-placeholder,
+main > div #share input::-moz-placeholder,
+main > div #share input:-ms-input-placeholder {
+  /* Gotham book italic */
+  font-size: 13px;
+  color:#BCBEC0;
+  font-style: italic;
+}
+main > div #share .fb-like {
+  height:20px;
 }
 main > div #campaign_meter {
   position: relative;
   background: #BCBEC0;
   color: #FFFFFF;
   font-size: 10px;
-  padding: .3em .5em;
+  padding-left: 1em;
 }
 main > div #campaign_meter #progress {
   position: absolute;
@@ -53,22 +81,37 @@ main > div #campaign_meter #progress ~ span {
   position:relative;
   z-index:10;
 }
-
 main #donate {
   padding-left: 17px;
   margin-right: 17px;
   background: #FAFAFA;
   font-size: 12px;
 }
+main .donation-callout {
+  color:#ED1C24;
+  font-style: normal;
+}
+p {
+  padding-top: .3em;
+  padding-bottom: .3em;
+}
 aside {
+  padding: 0 17px;
   width: 19%;
   text-align: center;
 }
+aside q,
 aside time {
+  font-style: italic;
+}
+aside time {
+  display:block;
+  text-align:right;
   font-size: 8px;
+  line-height: 3;
 }
 footer {
-  background-color: #ed1c24;
+  background-color: #ED1C24;
   color: #FFFFFF;
   /*font-family: visitor regular*/
 
