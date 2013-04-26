@@ -6,9 +6,6 @@ body {
   color: #666666;
   font-size: 14px;
 }
-section {
-  position: relative;
-}
 section #wrapper {
   margin: .7em 0;
 }
@@ -27,7 +24,7 @@ main > div {
   margin: 0 17px;
 }
 main > div #share,
-main > div #progress,
+main > div #campaign_meter,
 main > div #details {
   margin: 1em 0;
 }
@@ -37,15 +34,26 @@ main > div #share {
 main > div #share > * {
   vertical-align: middle;
 }
-main > div #progress {
+main > div #campaign_meter {
+  position: relative;
   background: #BCBEC0;
   color: #FFFFFF;
   font-size: 10px;
   padding: .3em .5em;
 }
-main > div #progress .completed {
+main > div #campaign_meter #progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   background: #6D6E71;
+  z-index:5;
 }
+main > div #campaign_meter #progress ~ span {
+  position:relative;
+  z-index:10;
+}
+
 main #donate {
   padding-left: 17px;
   margin-right: 17px;
