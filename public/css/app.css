@@ -1,0 +1,69 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #efefef;
+  color: #666666;
+  font-size: 14px;
+}
+section {
+  position: relative;
+}
+section #wrapper {
+  margin: .7em 0;
+}
+main,
+aside {
+  display: inline-block;
+  vertical-align: middle;
+}
+main {
+  width: 80%;
+  border-width: 0 2px 0 0;
+  border-style: solid;
+  border-color: #666666;
+}
+main > div {
+  margin: 0 17px;
+}
+main > div #share,
+main > div #progress,
+main > div #details {
+  margin: 1em 0;
+}
+main > div #share {
+  font-size: 13px;
+}
+main > div #share > * {
+  vertical-align: middle;
+}
+main > div #progress {
+  background: #BCBEC0;
+  color: #FFFFFF;
+  font-size: 10px;
+  padding: .3em .5em;
+}
+main > div #progress .completed {
+  background: #6D6E71;
+}
+main #donate {
+  padding-left: 17px;
+  margin-right: 17px;
+  background: #FAFAFA;
+  font-size: 12px;
+}
+aside {
+  width: 19%;
+  text-align: center;
+}
+aside time {
+  font-size: 8px;
+}
+footer {
+  background-color: #ed1c24;
+  color: #FFFFFF;
+  /*font-family: visitor regular*/
+
+  font-family: "Courier New", Monaco, monospace;
+  font-size: 10px;
+}

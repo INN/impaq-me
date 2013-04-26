@@ -1,9 +1,9 @@
 window.twttr = (t = { _e: [], ready: function(f){ t._e.push(f); } });
 
 twttr.ready(function(){
-  console.log("twitter loaded");
+  console.log("twitter sdk loaded");
   twttr.events.bind('tweet', function(event){
-    console.log("tweeted");
+    console.log("tweet event", event);
     $.post(
       "/shares",
       {
@@ -14,10 +14,14 @@ twttr.ready(function(){
         }
       },
       function(data, textStatus, jqXHR){
-        console.log(textStatus);
-        console.log(data);
-        console.log(jqXHR);
+        console.log("tweet recorded", textStatus, data, jqXHR);
       }
     );
+  });
+});
+
+jQuery(function($){
+  $.getJSON("/campaign_meter?campaign_id=1", function(data, status, jqXHR){
+    debugger;
   });
 });

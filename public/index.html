@@ -2,31 +2,36 @@
 <html>
   <head>
     <title>impaq-me</title>
-    <link rel="stylesheet" type="text/css" href="css/app.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
   </head>
   <body>
-    <div id="impaqFrame">
-      <div id="contentWrapper">
-        <div id="mainContent">
-          <input type="text">
-          <a href="https://twitter.com/share?url=http://inn-publisher.herokuapp.com&amp;text=Hello,%20World!&amp;via=testdoubletest" class="twitter-share-button" data-lang="en">Tweet</a>
-          <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
-          <p>Investigative News Network is a non-profit, if you share this article, the Knight Foundation will Donate $1 to them.</p>
-          <p>If this is important to you, you can donate an additional $2 to Investigative News Network</p>
-        </div>
-        <div id="sidebar">
-          <div class="divider"></div>
-          <span id="sidebarByline">
-              This was important because...
-          </span>
-        </div>
+    <section>
+      <div id="wrapper">
+        <main>
+          <div>
+            <div id="share">
+              <input type="text">
+              <a href="https://twitter.com/share?url=http://inn-publisher.herokuapp.com&amp;text=Hello,%20World!&amp;via=testdoubletest" class="twitter-share-button" data-lang="en">Tweet</a>
+              <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
+            </div>
+            <p id="progress">$865 Donated by sharing this article so far</p>
+            <p id="details">Investigative News Network is a non-profit, if you share this article, the Knight Foundation will Donate $1 to them.</p>
+          </div>
+          <p id="donate">If this is important to you, you can donate an additional $2 to Investigative News Network</p>
+        </main>
+        <aside>
+          <p>This was important because...</p>
+          <q>This is my community and I love it.</q>
+          <time>5 minutes ago</time>
+        </aside>
       </div>
-      <div id="footer">
-        <span class="pullLeft">about this funding </span><span class="pullRight">powered by impaq.me</span>
-      </div>
-    </div>
+      <footer>
+        <small>about this funding</small><small>powered by impaq.me</small>
+      </footer>
+    </section>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/app.js"></script>
+
     <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs"));</script>
     <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/en_US/all.js#xfbml=1";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","facebook-jssdk"));</script>
   </body>
