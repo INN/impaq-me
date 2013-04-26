@@ -10,7 +10,7 @@ twttr.ready(function(){
         share: {
           campaign_id: 1,
           share_method: 'twitter',
-          message: "hardcoded message"
+          message: $("#share input").val()
         }
       },
       function(data, textStatus, jqXHR){
