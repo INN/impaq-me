@@ -1,62 +1,97 @@
-@darkGray: #dedede;
-@lightGray: #efefef;
+@red: #ED1C24;
+@textGray: #666666;
+@backgroundGray: #efefef;
+@mainGutter: 17px;
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background-color: @backgroundGray;
+  color: @textGray;
+  // font-family: Gotham medium
+  font-size: 14px;
 }
 
 body {
-    background-color: @lightGray;
 }
 
-#sidebar {
-    float: right;
-    width: 40%;
+section {
+  position:relative;
+
+  #wrapper {
+    margin: .7em 0;
+  }
 }
 
-#sidebarByline {
-    text-align: center;
+main, aside {
+  display:inline-block;
+  vertical-align:middle;
 }
 
-#mainContent {
-    float: left;
-    width: 60%;
+main {
+  width: 80%;
+  border-width: 0 2px 0 0;
+  border-style: solid;
+  border-color: @textGray;
+
+  >div {
+    margin: 0 @mainGutter;
+
+    #share, #progress, #details {
+      margin: 1em 0;
+    }
+
+    #share {
+      // prefill: Gotham book italic
+      font-size: 13px;
+
+      & > * {
+        vertical-align: middle;
+      }
+    }
+
+    #progress {
+      background: #BCBEC0;
+      color: #FFFFFF;
+      // font-family: Gotham medium;
+      font-size: 10px;
+      padding: .3em .5em;
+
+      .completed {
+        background: #6D6E71;
+      }
+    }
+  }
+
+  #donate {
+    padding-left: @mainGutter;
+    margin-right: @mainGutter;
+    background: #FAFAFA;
+    //font-family: Gotham book
+    font-size:12px;
+  }
 }
 
-.divider{
-    position:fixed;
-    top:10%;
-    bottom:10%;
-    border-left:1px solid black;
+
+aside {
+  width:19%;
+  text-align: center;
+
+  p {
+  }
+  q {
+    //font-family: Gotham book italic
+  }
+  time {
+    //font-family: Gotham book italic
+    font-size:8px;
+  }
 }
 
-#footer {
-    position: fixed;
-    height: 17px;
-    width: 100%;
-    bottom: 0px;
-    top-margin: 10px;
-    background-color: red;
-    color: white;
-    font-family: "Courier New", Monaco, monospace;
-    font-size: small;
-}
-
-#impaqFrame {
-    position: relative;
-}
-
-#contentWrapper {
-    margin: 0 auto;
-    height: 200px;
-    font-family: Helvetica, Arial, sans-serif
-}
-
-.pullRight {
-    float: right;
-}
-
-.pullLeft {
-    float: left;
+footer {
+  background-color: @red;
+  color: #FFFFFF;
+  /*font-family: visitor regular*/
+  font-family: "Courier New", Monaco, monospace;
+  font-size: 10px;
 }
