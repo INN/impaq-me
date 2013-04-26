@@ -1,4 +1,6 @@
 ImpaqBackend::Application.routes.draw do
+  resources :campaigns
+
   resources :shares
   resources :campaign_meter
 
