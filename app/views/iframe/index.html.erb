@@ -15,13 +15,13 @@
               <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
             </div>
             <p id="campaign_meter"><span id="progress"></span><span>$<span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
-            <p id="details">Investigative News Network is a non-profit, if you share this article, the Knight Foundation will Donate $1 to them.</p>
+            <p id="details"><%= @bootstrap[:publisher_name] %> is a non-profit, if you share this article, the <%= @bootstrap[:foundation_name] %> will Donate $<%= @bootstrap[:value_per_share] %> to them.</p>
           </div>
           <p id="donate">If this is important to you, you can donate an additional $2 to Investigative News Network</p>
         </main>
         <aside>
           <p>This was important because...</p>
-          <q>This is my community and I love it.</q>
+          <q><%= @bootstrap[:testimonial] %></q>
           <time>5 minutes ago</time>
         </aside>
       </div>
