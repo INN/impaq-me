@@ -136,13 +136,6 @@ describe CampaignsController do
         assigns(:campaign).should eq(campaign)
       end
 
-      it "re-renders the 'edit' template" do
-        campaign = Campaign.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Campaign.any_instance.stub(:save).and_return(false)
-        put :update, {:id => campaign.to_param, :campaign => { "name" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
     end
   end
 
