@@ -1,22 +1,13 @@
 class IframeController < ApplicationController
-  before_action :set_bootstrap, only: [:index]
+  before_action :set_campaign, only: [:index]
   def index
   end
 
-  def set_bootstrap
-    if params[:domain]
-      @bootstrap = Iframe.bootstrap(params[:domain])
-    else
-      hi_jason = '<<<<<HI JASON>>>>>>go to /?domain=domain.com after creating some dummy data'
-      @bootstrap = {
-        publisher_name: hi_jason,
-        foundation_name: "foundation name",
-        testimonial: hi_jason
-      }
-    end
+  def set_campaign
+    @campaign = Iframe.bootstrap(params[:url])
   end
 
   def bootstrap_params
-    params.permit(:domain)
+    params.permit(:url)
   end
 end
