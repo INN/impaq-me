@@ -14,4 +14,11 @@
 
 module.exports = require('lineman').config.extend('files',
 
+  js:
+    vendor: [
+      'vendor/js/jquery-1.9.1.js',
+      'vendor/js/underscore.js',
+      'vendor/js/backbone.js',
+      'vendor/js/**/*.js'
+    ]
 )

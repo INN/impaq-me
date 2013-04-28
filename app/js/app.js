@@ -1,7 +1,9 @@
 window.twttr = (t = { _e: [], ready: function(f){ t._e.push(f); } });
 
 twttr.ready(function(){
+  console.log("twitter sdk loaded");
   twttr.events.bind('tweet', function(event){
+    console.log("twitter tweet event", event);
     $.post(
       "http://impaq-backend.herokuapp.com/shares",
       {
@@ -10,10 +12,9 @@ twttr.ready(function(){
         message: "hardcoded message"
       },
       function(data, textStatus, jqXHR){
-        console.log(textStatus);
-        console.log(data);
-        console.log(jqXHR);
+        console.log("tweet recorded:", textStatus, data, jqXHR);
       }
     );
   });
 });
+
