@@ -117,4 +117,13 @@ footer {
 
   font-family: "Courier New", Monaco, monospace;
   font-size: 10px;
+
+  padding: .2em 1em;
+}
+footer small {
+  display:inline-block;
+  width:50%;
+}
+footer small:last-child {
+  text-align:right;
 }
