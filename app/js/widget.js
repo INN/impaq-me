@@ -5,7 +5,7 @@
     me: {
 
       init: function(){
-        var button = $('<button style="background:red; color: white; width:100%">ImpaqMe</button>')
+        var button = $('<button style="background:#ED1C24; color: white; width:100%; border:0; cursor:pointer;">ImpaqMe</button>')
           .on('click', $.proxy(this.createIframe, this));
 
         $('<div class="impaq-me-widget"></div>')
@@ -20,9 +20,8 @@
             top:0,
             left:0,
             border:0,
-            outline: '1px solid red',
             width: '100%',
-            height: '200px'
+            height: '190px'
           });
 
         $('<div style="position:relative">')
