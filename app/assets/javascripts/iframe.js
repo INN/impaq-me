@@ -21,9 +21,4 @@ twttr.ready(function(){
 });
 
 jQuery(function($){
-  $.getJSON("/campaign_meter?campaign_id=1", function(data, status, jqXHR){
-    var progress = Math.min(data.total / data.goal, 1) * 100;
-    $("#dollars_raised").text(data.total);
-    $("#progress").css('width', progress+"%");
-  });
 });
