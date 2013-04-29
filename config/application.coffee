@@ -11,10 +11,10 @@ module.exports = require('lineman').config.extend('application',
   homepage:
     dev:
       context:
-        impaq_me_iframe: "http://localhost:8003/index.html"
+        impaq_me_iframe: "http://localhost:3000"
     dist:
       context:
-        impaq_me_iframe: "//impaq-me.herokuapp.com/index.html"
+        impaq_me_iframe: "//impaq-backend.herokuapp.com"
   server:
     web:
       port: 8002
