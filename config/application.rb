@@ -28,6 +28,7 @@ module ImpaqBackend
         g.stylesheets false
         g.javascripts false
     end
+    config.action_dispatch.default_headers.clear
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
