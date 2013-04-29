@@ -22,12 +22,15 @@ twttr.ready(function(){
 
 jQuery(function($){
   $("#tweet-button").uri().query(function(data){
-    data.url = URI().query(true).uri;
+    console.log(URI(location).query(true).uri);
+    data.url = URI(location).query(true).uri;
   });
 
   $("#share input").on('blur', function(){
-    var tweet = $(this).val();
+    var url = $("#tweet-button").uri().query(true).url;
+    var tweet = $(this).val() + " " + url;
     $("#tweet-button").uri().query(function(data){
+      console.log(tweet);
       data.text = tweet;
     });
   });
