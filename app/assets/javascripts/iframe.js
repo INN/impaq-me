@@ -21,4 +21,14 @@ twttr.ready(function(){
 });
 
 jQuery(function($){
+  $("#tweet-button").uri().query(function(data){
+    data.url = URI().query(true).uri;
+  });
+
+  $("#share input").on('blur', function(){
+    var tweet = $(this).val();
+    $("#tweet-button").uri().query(function(data){
+      data.text = tweet;
+    });
+  });
 });
