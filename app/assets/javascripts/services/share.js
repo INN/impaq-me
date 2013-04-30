@@ -1,12 +1,12 @@
 window.app.services.Share = {
-  record_tweet : function(campaign_id, testimonial) {
+  record_tweet : function(share) {
     return $.post(
       "/shares",
       {
         share: {
-          campaign_id: campaign_id,
+          campaign_id: share.campaign_id,
           share_method: 'twitter',
-          testimonial: testimonial
+          testimonial: share.testimonial
         }
       },
       function(data, textStatus, jqXHR){
