@@ -7,7 +7,7 @@
         <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
         <a class="twitter" href="https://twitter.com/intent/tweet" target="_blank">Tweet</a>
       </div>
-      <p id="campaign_meter"><span id="progress" style="width:<%= @campaign[:total]/@campaign[:goal] * 100 %>%;"></span><span>$<%= @campaign[:total] %><span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
+      <p id="campaign_meter"><span id="progress" style="width:<%= @campaign[:percent] %>%;"></span><span>$<%= @campaign[:total] %><span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
       <p id="details"><%= @campaign[:publisher_name] %> is a non-profit, if you share this article, the <%= @campaign[:foundation_name] %> will donate <em class="donation-callout">$<%= @campaign[:value_per_share] %></em> to them.</p>
     </div>
     <p id="donate">If this is important to you, you can donate an additional <em class="donation-callout">$2</em> to <%= @campaign[:publisher_name] %></p>
