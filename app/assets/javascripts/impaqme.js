@@ -20,5 +20,6 @@ twttr.ready(function(){ console.info("twitter sdk loaded"); });
 fb.ready(function(){ console.info("facebook sdk loaded"); });
 
 fb.ready(function(){ FB.init({
+  appId: '598072260211923',
   xfbml: true
 }); });
