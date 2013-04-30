@@ -1,5 +1,4 @@
 twttr.ready(function(){
-  console.info("twitter sdk loaded");
   twttr.events.bind('tweet', function(event){
     console.info("tweet event", event);
     app.services.Share.record_tweet(1, impaqme.share.testimonial);
