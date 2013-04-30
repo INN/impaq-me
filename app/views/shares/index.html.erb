@@ -1,0 +1,35 @@
+<h1>Listing shares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip</th>
+      <th>Facebook</th>
+      <th>Twitter</th>
+      <th>Message</th>
+      <th>Url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shares.each do |share| %>
+      <tr>
+        <td><%= share.ip %></td>
+        <td><%= share.facebook %></td>
+        <td><%= share.twitter %></td>
+        <td><%= share.message %></td>
+        <td><%= share.url %></td>
+        <td><%= link_to 'Show', share %></td>
+        <td><%= link_to 'Edit', edit_share_path(share) %></td>
+        <td><%= link_to 'Destroy', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Share', new_share_path %>

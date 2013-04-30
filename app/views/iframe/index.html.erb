@@ -1,0 +1,27 @@
+<section>
+  <div id="wrapper">
+    <main>
+    <div>
+      <div id="share">
+        <input type="text" placeholder="Why was this story important to you?" maxlength="118" autofocus="autofocus" />
+        <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
+        <a class="twitter" href="https://twitter.com/intent/tweet" target="_blank">Tweet</a>
+      </div>
+      <p id="campaign_meter"><span id="progress" style="width:<%= @campaign[:percent] %>%;"></span><span>$<%= @campaign[:total] %><span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
+      <p id="details"><%= @campaign[:publisher_name] %> is a non-profit, if you share this article, the <%= @campaign[:foundation_name] %> will donate <em class="donation-callout">$<%= @campaign[:value_per_share] %></em> to them.</p>
+    </div>
+    <p id="donate">If this is important to you, you can donate an additional <em class="donation-callout">$2</em> to <%= @campaign[:publisher_name] %></p>
+    </main>
+    <aside>
+      <p>This was important because...</p>
+      <q><%= @campaign[:testimonial] %></q>
+      <time>5 minutes ago</time>
+    </aside>
+  </div>
+  <footer>
+    <small>about this funding</small><small>powered by impaq.me</small>
+  </footer>
+</section>
+
+<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs"));</script>
+<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/en_US/all.js#xfbml=1";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","facebook-jssdk"));</script>
