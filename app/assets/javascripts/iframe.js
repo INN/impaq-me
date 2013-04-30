@@ -10,7 +10,7 @@ twttr.ready(function(){
         share: {
           campaign_id: 1,
           share_method: 'twitter',
-          message: $("#share input").val()
+          testimonial: $("#share input").val()
         }
       },
       function(data, textStatus, jqXHR){
@@ -20,18 +20,24 @@ twttr.ready(function(){
   });
 });
 
+window.impaqme = {
+  share: {
+    testimonial: "",
+    article_url: URI(location).query(true).uri || location
+  }
+};
+
 jQuery(function($){
-  $("#tweet-button").uri().query(function(data){
-    console.log(URI(location).query(true).uri);
-    data.url = URI(location).query(true).uri;
+
+  $('#share input').on('blur', function(e) {
+    impaqme.share.testimonial = $(this).val();
   });
 
-  $("#share input").on('blur', function(){
-    var url = $("#tweet-button").uri().query(true).url;
-    var tweet = $(this).val() + " " + url;
-    $("#tweet-button").uri().query(function(data){
-      console.log(tweet);
-      data.text = tweet;
+  $('#share .twitter').on('click', function(e) {
+    $(this).uri().query(function(data){
+      data.text = impaqme.share.testimonial;
+      data.url = impaqme.share.article_url;
     });
   });
+
 });
