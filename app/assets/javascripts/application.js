@@ -11,4 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require vendor
+//= require app
 //= require_tree .
