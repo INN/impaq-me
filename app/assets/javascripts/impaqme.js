@@ -18,3 +18,7 @@ window.fbAsyncInit = function() {
 // verify ready handlers with simple 'sdk loaded' message
 twttr.ready(function(){ console.info("twitter sdk loaded"); });
 fb.ready(function(){ console.info("facebook sdk loaded"); });
+
+fb.ready(function(){ FB.init({
+  xfbml: true
+}); });
