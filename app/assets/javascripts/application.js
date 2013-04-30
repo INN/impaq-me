@@ -11,5 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require vendor
-//= require app
+//= require impaqme
 //= require_tree .
