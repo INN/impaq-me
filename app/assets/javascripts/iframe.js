@@ -11,13 +11,6 @@ fb.ready(function(){
   });
 });
 
-window.impaqme = {
-  share: {
-    testimonial: "",
-    article_url: URI(location).query(true).uri || location
-  }
-};
-
 jQuery(function($){
 
   $('#share input').on('blur', function(e) {

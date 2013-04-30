@@ -97,7 +97,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    columnize (0.3.6)
     database_cleaner (0.9.1)
+    debugger (1.5.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -157,6 +164,7 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    url (0.3.2)
 
 PLATFORMS
   ruby
@@ -167,6 +175,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails!
   database_cleaner
+  debugger
   jquery-rails
   mongoid!
   pry
@@ -176,3 +185,4 @@ DEPENDENCIES
   sass-rails!
   sprockets-rails!
   uglifier (>= 1.3.0)
+  url

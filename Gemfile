@@ -7,11 +7,13 @@ gem "active_model_serializers", "~> 0.7.0"
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'url'
 
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
+  gem 'debugger'
 end
 
 group :test do
@@ -43,6 +45,3 @@ gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
