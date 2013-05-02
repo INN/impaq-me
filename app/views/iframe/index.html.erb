@@ -5,7 +5,7 @@
     <div>
       <div id="share">
         <input type="text" placeholder="Why was this story important to you?" maxlength="118" autofocus="autofocus" />
-        <a class="facebook" href="https://www.facebook.com/dialog/feed" target="_blank">FB Share</a>
+        <div class="fb-like" data-href="http://inn-publisher.herokuapp.com" data-width="90" data-layout="button_count"></div>
         <a class="twitter" href="https://twitter.com/intent/tweet" target="_blank">Tweet</a>
       </div>
       <p id="campaign_meter"><span id="progress" style="width:<%= @campaign[:percent] %>%;"></span><span>$<%= @campaign[:total] %><span id="dollars_raised"></span> Donated by sharing this article so far</span></p>
