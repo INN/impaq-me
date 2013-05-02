@@ -1,24 +1,19 @@
-window.app.services.Share = {
-  record_share: function(share) {
-    return $.post(
-      "/shares",
-      {
+window.app.services.Share = (function() {
+  var record_share = function(channel, campaign_id) {
+    return $.post("/shares", {
         share: {
-          campaign_id: share.campaign_id,
-          share_method: share.channel
+          campaign_id: campaign_id,
+          share_method: channel
         }
       },
       function(data, textStatus, jqXHR){
-        console.info(share.channel + " share recorded", textStatus, data, jqXHR);
+        console.info(channel + " share recorded", textStatus, data, jqXHR);
       }
     );
-  },
+  };
 
-  record_tweet: function(share) {
-    this.record_share(_.extend(share, {channel: 'twitter'}));
-  },
-
-  record_like: function(share) {
-    this.record_share(_.extend(share, {channel: 'facebook'}));
-  },
-};
+  return {
+    record_tweet: _.partial(record_share, 'twitter'),
+    record_like:  _.partial(record_share, 'facebook')
+  };
+})();
