@@ -13,5 +13,6 @@ fb.ready(function(){
 });
 
 jQuery(function($){
-
+  window.router = new window.app.Router();
+  Backbone.history.start();
 });
