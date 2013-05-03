@@ -1,8 +1,6 @@
 window.app.views.Share = Backbone.View.extend({
+  id: 'share',
   template: JST['share'],
-
-  initialize: function(options){
-  },
 
   render: function(){
     this.$el.html(this.template(impaqme));

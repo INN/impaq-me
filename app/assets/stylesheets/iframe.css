@@ -9,67 +9,59 @@ body {
   font-size: 14px;
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
-section #wrapper {
-margin: .7em 0;
+
+main {
+  margin: .7em 0;
 }
-main,
-aside {
-  display: inline-block;
-  vertical-align: middle;
+main > * {
+  margin: 1em 17px;
+}
+
+#share, #meter {
+  display:inline-block;
   box-sizing: border-box;
 }
-main {
-  width: 80%;
-  border-width: 0 2px 0 0;
-  border-style: solid;
-  border-color: #666666;
-}
-main > div {
-  margin: 0 17px;
-}
-main > div #share,
-main > div #campaign_meter,
-main > div #details {
-  margin: 1em 0;
-}
-main > div #share {
+
+#share {
   font-size: 13px;
+  width: 250px;;
 }
-main > div #share > * {
+#share > * {
   vertical-align: middle;
   line-height:1.5;
-  margin: 0 10px;
+  margin: 0 7px;
 }
-main > div #share :first-child {
+#share :first-child {
   margin-left: 0;
 }
-main > div #share input {
-  border: 1px solid #6D6E71;
-  background-color: #FFFFFF;
-  color: #6D6E71;
-  padding: .2em .75em;
-  width:300px;
-}
-main > div #share input::-webkit-input-placeholder,
-main > div #share input:-moz-placeholder,
-main > div #share input::-moz-placeholder,
-main > div #share input:-ms-input-placeholder {
-  /* Gotham book italic */
-  font-size: 13px;
-  color:#BCBEC0;
-  font-style: italic;
-}
-main > div #share .fb-like {
+/* #share input { */
+/*   border: 1px solid #6D6E71; */
+/*   background-color: #FFFFFF; */
+/*   color: #6D6E71; */
+/*   padding: .2em .75em; */
+/*   width:300px; */
+/* } */
+/* #share input::-webkit-input-placeholder, */
+/* #share input:-moz-placeholder, */
+/* #share input::-moz-placeholder, */
+/* #share input:-ms-input-placeholder { */
+/*   /1* Gotham book italic *1/ */
+/*   font-size: 13px; */
+/*   color:#BCBEC0; */
+/*   font-style: italic; */
+/* } */
+#share .fb-like {
   height:20px;
 }
-main > div #campaign_meter {
+
+#meter {
   position: relative;
   background: #BCBEC0;
   color: #FFFFFF;
   font-size: 10px;
   padding-left: 1em;
 }
-main > div #campaign_meter #progress {
+#meter #progress {
   position: absolute;
   top: 0;
   left: 0;
@@ -77,39 +69,30 @@ main > div #campaign_meter #progress {
   background: #6D6E71;
   z-index:5;
 }
-main > div #campaign_meter #progress ~ span {
+#meter #progress ~ span {
   position:relative;
   z-index:10;
 }
-main #donate {
+
+#donate {
+  margin-left: 0;
   padding-left: 17px;
-  margin-right: 17px;
   background: #FAFAFA;
   font-size: 12px;
 }
-main .donation-callout {
+
+.share-value,
+.donation-value {
   color:#ED1C24;
   font-style: normal;
 }
+
 p {
   padding-top: .3em;
   padding-bottom: .3em;
 }
-aside {
-  padding: 0 17px;
-  width: 19%;
-  text-align: center;
-}
-aside q,
-aside time {
-  font-style: italic;
-}
-aside time {
-  display:block;
-  text-align:right;
-  font-size: 8px;
-  line-height: 3;
-}
+
+
 footer {
   background-color: #ED1C24;
   color: #FFFFFF;
