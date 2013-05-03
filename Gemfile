@@ -8,6 +8,8 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'url'
+gem 'backbone-rails'
+gem 'ejs'
 
 
 group :development, :test do

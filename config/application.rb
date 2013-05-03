@@ -25,10 +25,14 @@ module ImpaqBackend
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.generators do |g|
-        g.stylesheets false
-        g.javascripts false
+      g.stylesheets false
+      g.javascripts false
     end
+
     config.action_dispatch.default_headers.clear
+
+    config.assets.paths << "#{ Rails.root }/app/assets/templates"
+
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
