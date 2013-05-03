@@ -8,6 +8,14 @@
 
 module.exports = require('lineman').config.extend('application',
 
+  handlebars:
+    compile:
+      options:
+        namespace: "Impaq.JST"
+  jst:
+    compile:
+      options:
+        namespace: "Impaq.JST"
   homepage:
     dev:
       context:
