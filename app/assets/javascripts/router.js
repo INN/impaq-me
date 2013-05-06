@@ -18,7 +18,6 @@ window.app.Router = Backbone.Router.extend({
     var thanks = app.views.thanks.$el;
     var feedback = app.views.feedback.$el;
     var donate = app.views.donate.$el;
-    
 
     thanks.css({opacity:0}).hide().insertAfter(solicit);
     feedback.css({opacity:0}).hide().insertBefore(donate);
