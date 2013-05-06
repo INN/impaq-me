@@ -11,8 +11,3 @@ fb.ready(function(){
     app.services.Share.record_like(impaqme.share.campaign_id);
   });
 });
-
-jQuery(function($){
-  window.router = new window.app.Router();
-  Backbone.history.start();
-});
