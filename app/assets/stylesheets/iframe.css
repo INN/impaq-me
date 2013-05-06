@@ -4,14 +4,17 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #EFEFEF;
   color: #666666;
   font-size: 14px;
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
-main {
-  margin: .7em 0;
+section {
+  background-color: #EFEFEF;
+}
+
+main > :first-child {
+  margin-top: 0;
 }
 main > * {
   margin: 1em 17px;
@@ -21,10 +24,10 @@ main > div > div {
   display:table;
   width:100%;
 }
+
 #share, #meter {
   display:table-cell;
 }
-
 #share {
   font-size: 13px;
   width: 250px;;
