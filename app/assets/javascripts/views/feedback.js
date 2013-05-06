@@ -1,5 +1,6 @@
 window.app.views.Feedback = Backbone.View.extend({
   id: 'feedback',
+  tagName: 'p',
   template: JST['feedback'],
 
   render: function(){

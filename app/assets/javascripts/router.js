@@ -5,11 +5,12 @@ window.app.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    $("main").empty()
+    $("main > div > div").empty()
       .append(app.views.share.el)
-      .append(app.views.meter.el)
+      .append(app.views.meter.el);
+    $("main")
       .append(app.views.solicit.el)
-      .append(app.views.donate.el)
+      .append(app.views.donate.el);
   },
 
   shared: function() {
@@ -26,7 +27,7 @@ window.app.Router = Backbone.Router.extend({
       solicit.animate({opacity:0}, 'slow'),
       feedback.slideDown('slow')
     ).done(function(){
-      solicit.remove();
+      solicit.remove(); //TODO fix the potential remove/show jitter
       thanks.show().animate({opacity:1}, 'slow');
       feedback.show().animate({opacity:1}, 'slow');
     });
@@ -45,7 +46,7 @@ jQuery(function($){
     donate:   new app.views.Donate().render()
   });
 
-  window.router = new window.app.Router();
+  window.app.router = new window.app.Router();
   Backbone.history.start();
 
 });

@@ -17,9 +17,12 @@ main > * {
   margin: 1em 17px;
 }
 
+main > div > div {
+  display:table;
+  width:100%;
+}
 #share, #meter {
-  display:inline-block;
-  box-sizing: border-box;
+  display:table-cell;
 }
 
 #share {
@@ -54,7 +57,7 @@ main > * {
   height:20px;
 }
 
-#meter {
+#meter p {
   position: relative;
   background: #BCBEC0;
   color: #FFFFFF;
