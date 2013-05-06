@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :follow]
+  before_action :set_link, only: [:show]
 
   # GET /links
   def index
@@ -13,8 +13,7 @@ class LinksController < ApplicationController
   end
 
   def follow
-    #TODO use the correct HTTP status code
-    #TODO increment clicks
+    @link = Link.find(params[:slug])
     redirect_to Shortlink.follow(@link).to_s
   end
 

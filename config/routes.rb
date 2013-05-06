@@ -3,8 +3,7 @@ ImpaqBackend::Application.routes.draw do
   resources :links
   resources :shares
 
-  # get ':slug' => 'links#follow'
-  get ':id' => 'links#follow'
+  get ':slug' => 'links#follow'
 
   root 'iframe#index'
 
