@@ -1,12 +1,11 @@
 ImpaqBackend::Application.routes.draw do
-  resources :campaigns
-
-  resources :shares
-  resources :campaign_meter
+  # resources :campaigns
   resources :links
+  resources :shares
 
   # get ':slug' => 'links#follow'
   get ':id' => 'links#follow'
+
   root 'iframe#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
