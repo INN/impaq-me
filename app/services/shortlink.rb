@@ -19,8 +19,10 @@ class Shortlink
     }
   end
 
-  def self.follow(long_url)
-    URL.new(long_url).tap do |destination_url|
+  def self.follow(link)
+    link.clicks += 1
+    link.save
+    URL.new(link.long_url).tap do |destination_url|
       destination_url.params[:shared_via_impaq_me] = true
     end
   end
