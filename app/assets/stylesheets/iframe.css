@@ -85,7 +85,8 @@ main > div > div {
 }
 
 .share-value,
-.donation-value {
+.donation-value,
+#thanks em {
   color:#ED1C24;
   font-style: normal;
 }
@@ -95,6 +96,36 @@ p {
   padding-bottom: .3em;
 }
 
+#feedback div {
+  display:table;
+  width:100%;
+}
+
+#feedback span {
+  display:table-cell;
+}
+
+#feedback > * > :last-child {
+  width:75px;
+  text-align:right;
+}
+
+#feedback input {
+  width: 100%;
+  padding: .1em .5em;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#feedback button {
+  text-transform: uppercase;
+  background: #6D6E71;
+  color: #FFFFFF;
+  border-radius: 2px;
+  border-style: none;
+  padding: .3em 1em;
+  letter-spacing: .1em;
+}
 
 footer {
   background-color: #ED1C24;
