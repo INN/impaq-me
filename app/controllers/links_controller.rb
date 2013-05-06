@@ -14,7 +14,8 @@ class LinksController < ApplicationController
 
   def follow
     #TODO use the correct HTTP status code
-    redirect_to @link.long_url
+    #TODO increment clicks
+    redirect_to Shortlink.follow(@link.long_url).to_s
   end
 
   # GET /links/new
