@@ -31,5 +31,8 @@
 
 
   Impaq.me.init();
+  $("button").on('click', function() {
+    $('.impaq-me-widget iframe').toggle();
+  });
 
 })(jQuery.noConflict(true), _);//.noConflict());
