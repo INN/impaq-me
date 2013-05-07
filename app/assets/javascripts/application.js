@@ -45,21 +45,24 @@ fb.ready(function(){
   });
 });
 
-jQuery(document).ready(function($){
-  $(window).on('resize', _.debounce(function(e){
-    console.log('resize event', e, $('body').height());
+var resizeParent = function(e) {
+  var bodyHeight = $('body').height();
+  console.log('resize event', e, bodyHeight);
+  app.publisher.window.postMessage(bodyHeight, app.publisher.hostname);
+};
 
-    app.publisher.window.postMessage($('body').height(), app.publisher.hostname);
-  }, 300));
-});
-
-$(window).on('load', function(e){ console.log("window loaded"); });
-$(window).on('message', function(e){
+var wireUpIframeCommunication = function(e) {
   if(e.originalEvent.origin.match(/localhost/)){
     console.log("message from parent", e);
     window.app.publisher = {
       window: e.originalEvent.source,
       hostname: e.originalEvent.origin
     };
+    $(window).resize();
   }
+};
+
+jQuery(window).on({
+  resize: _.debounce(resizeParent, 300),
+  message: wireUpIframeCommunication
 });
