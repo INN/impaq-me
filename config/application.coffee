@@ -11,11 +11,11 @@ module.exports = require('lineman').config.extend('application',
   handlebars:
     compile:
       options:
-        namespace: "Impaq.JST"
+        namespace: "impaq.JST"
   jst:
     compile:
       options:
-        namespace: "Impaq.JST"
+        namespace: "impaq.JST"
   homepage:
     dev:
       context:
