@@ -5,29 +5,23 @@
     me: {
 
       config: {
-        button_text: 'Donate by Sharing',
         iframe_src: '//localhost:3000'
       },
 
       init: function(){
-        var marker = $(".impaq-me-button");
+        var placeholders = $(".impaq-me-button");
 
-        var data = $.extend({}, this.config, { article_url: this.articleURL(marker) });
+        var data = $.extend({}, this.config, { article_url: this.articleURL(placeholders) });
 
-        this.iframe = $(this.compileWidget(data)).replaceAll(marker).find('iframe')[0];
+        this.iframe = $(this.compileWidget(data)).replaceAll(placeholders).find('iframe')[0];
       },
 
       compileWidget: function(data){
         return Impaq.JST['app/templates/widget.us'](data);
       },
 
-      articleURL: function(marker){
-        return marker.data('url') || $('link[rel=canonical]').attr('href') || location;
-      },
-
-      toggleWidget: function(){
-        console.log(this);
-        $(this.iframe).toggle();
+      articleURL: function(placeholder){
+        return placeholder.data('url') || $('link[rel=canonical]').attr('href') || location;
       },
 
       resizeIframe: function(e){
@@ -46,7 +40,6 @@
 
   Impaq.me.init();
 
-  $(".impaq-me-widget button").on('click', Impaq.me.toggleWidget);
   $(window).on('message', Impaq.me.resizeIframe);
   $(Impaq.me.iframe).on('load', Impaq.me.wireUpIframeCommunication);
 
