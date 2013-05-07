@@ -13,7 +13,6 @@
 //= require vendor
 //= require_self
 //= require_tree ../templates
-//= require_tree ./models
 //= require_tree ./views
 //= require_tree ./services
 //= require_tree .
@@ -39,7 +38,28 @@ window.fbAsyncInit = function() {
 twttr.ready(function(){ console.info("twitter sdk loaded"); });
 fb.ready(function(){ console.info("facebook sdk loaded"); });
 
-fb.ready(function(){ FB.init({
-  appId: '598072260211923',
-  xfbml: true
-}); });
+fb.ready(function(){
+  FB.init({
+    appId: '598072260211923',
+    xfbml: true
+  });
+});
+
+jQuery(document).ready(function($){
+  $(window).on('resize', _.debounce(function(e){
+    console.log('resize event', e, $('body').height());
+
+    app.publisher.window.postMessage($('body').height(), app.publisher.hostname);
+  }, 300));
+});
+
+$(window).on('load', function(e){ console.log("window loaded"); });
+$(window).on('message', function(e){
+  if(e.originalEvent.origin.match(/localhost/)){
+    console.log("message from parent", e);
+    window.app.publisher = {
+      window: e.originalEvent.source,
+      hostname: e.originalEvent.origin
+    };
+  }
+});
