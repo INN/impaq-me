@@ -46,15 +46,19 @@ fb.ready(function(){
 });
 
 var resizeParent = function(e) {
-  var bodyHeight = $('body').height();
-  console.log('resize event', e, bodyHeight);
-  app.publisher.window.postMessage(bodyHeight, app.publisher.hostname);
+  var data = {
+    widget_id: app.publisher.widget_id,
+    height: $('body').height()
+  };
+  console.log('resize event', e, data);
+  app.publisher.window.postMessage(JSON.stringify(data), app.publisher.hostname);
 };
 
 var wireUpIframeCommunication = function(e) {
   if(e.originalEvent.origin.match(/localhost/)){
     console.log("message from parent", e);
     window.app.publisher = {
+      widget_id: JSON.parse(e.originalEvent.data).widget_id,
       window: e.originalEvent.source,
       hostname: e.originalEvent.origin
     };
@@ -63,6 +67,6 @@ var wireUpIframeCommunication = function(e) {
 };
 
 jQuery(window).on({
-  resize: _.debounce(resizeParent, 300),
+  resize: _.debounce(resizeParent, 100),
   message: wireUpIframeCommunication
 });
