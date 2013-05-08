@@ -1,4 +1,8 @@
 window.app.Router = Backbone.Router.extend({
+  initialize: function(options){
+    window.app.views.window = new app.views.Window();
+  },
+
   routes: {
     "" : "home",
     "shared" : "shared"
