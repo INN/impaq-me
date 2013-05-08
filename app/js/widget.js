@@ -4,6 +4,7 @@
     _: _,
     me: {
       config: {
+        route: '',
         iframe_src: '//localhost:3000'
       },
       widgets: []
@@ -11,28 +12,25 @@
   });
 
 
-  var Widget = function(id, placeholder){
-    // if(! this instanceof Widget) return new Widget(placeholder);
+  var Widget = function(options){
+    $.extend(this, options);
 
-    this.placeholder = placeholder;
-    this.id = id;
-
-    var data = $.extend({}, impaq.me.config, { article_url: this.articleURL() });
-    var html = this.compile(data);
-
+    var html = this.compile();
     this.iframe = $(html).replaceAll(this.placeholder).find('iframe')[0];
-
     $(this.iframe).on('load', _.bind(this.wireUpCommunication, this));
   };
 
   Widget.prototype = {
     template: impaq.JST['app/templates/widget.us'],
 
+    templateData: function(){
+      return $.extend({}, impaq.me.config, this.config, { article_url: this.articleURL() });
+    },
     articleURL: function(){
       return this.placeholder.data('url') || $('link[rel=canonical]').attr('href') || window.location;
     },
-    compile: function(data){
-      return this.template(data);
+    compile: function(){
+      return this.template(this.templateData());
     },
     resize: function(height){
       $(this.iframe).height(height);
@@ -51,7 +49,10 @@
   });
 
   $('.impaq-me-placeholder').each(function(id, placeholder){
-    impaq.me.widgets[id] = new Widget(id, $(placeholder));
+    impaq.me.widgets[id] = new Widget({
+      id: id,
+      placeholder: $(placeholder)
+    });
   });
 
 })(jQuery.noConflict(true), _);//.noConflict());
