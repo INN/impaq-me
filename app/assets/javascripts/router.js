@@ -3,9 +3,21 @@ window.app.Router = Backbone.Router.extend({
     window.app.views.window = new app.views.Window();
   },
 
+  /*
+   * Widget minimized
+   * Widget open
+   * Widget open -> after-share
+   *
+   * Banner minimized
+   * Banner open
+   * Banner open with widget
+   * Banner open with widget after-share
+   */
+
   routes: {
     "" : "home",
-    "shared" : "shared"
+    "home" : "home",
+    "banner" : "banner"
   },
 
   home: function() {
@@ -17,36 +29,44 @@ window.app.Router = Backbone.Router.extend({
       .append(app.views.donate.el);
   },
 
-  shared: function() {
-    var solicit = app.views.solicit.$el;
-    var thanks = app.views.thanks.$el;
-    var feedback = app.views.feedback.$el;
-    var donate = app.views.donate.$el;
-
-    thanks.css({opacity:0}).hide().insertAfter(solicit);
-    feedback.css({opacity:0}).hide().insertBefore(donate);
-
-    $.when(
-      solicit.animate({opacity:0}, 'slow'),
-      feedback.slideDown('slow')
-    ).done(function(){
-      solicit.remove(); //TODO fix the potential remove/show jitter
-      thanks.show().animate({opacity:1}, 'slow');
-      feedback.show().animate({opacity:1}, 'slow');
-    });
+  banner: function(){
+    $("main").empty()
+      .append(app.views.banner_info.el)
+      .append(app.views.banner_header.el);
   }
+
+  // shared: function() {
+  //   var solicit = app.views.solicit.$el;
+  //   var thanks = app.views.thanks.$el;
+  //   var feedback = app.views.feedback.$el;
+  //   var donate = app.views.donate.$el;
+
+  //   thanks.css({opacity:0}).hide().insertAfter(solicit);
+  //   feedback.css({opacity:0}).hide().insertBefore(donate);
+
+  //   $.when(
+  //     solicit.animate({opacity:0}, 'slow'),
+  //     feedback.slideDown('slow')
+  //   ).done(function(){
+  //     solicit.remove(); //TODO fix the potential remove/show jitter
+  //     thanks.show().animate({opacity:1}, 'slow');
+  //     feedback.show().animate({opacity:1}, 'slow');
+  //   });
+  // }
 
 });
 
 
 jQuery(function($){
   _.extend(window.app.views, {
-    share:    new app.views.Share().render(),
-    meter:    new app.views.Meter().render(),
-    solicit:  new app.views.Solicit().render(),
-    thanks:   new app.views.Thanks().render(),
-    feedback: new app.views.Feedback().render(),
-    donate:   new app.views.Donate().render()
+    share:          new app.views.Share().render(),
+    meter:          new app.views.Meter().render(),
+    solicit:        new app.views.Solicit().render(),
+    thanks:         new app.views.Thanks().render(),
+    feedback:       new app.views.Feedback().render(),
+    donate:         new app.views.Donate().render(),
+    banner_header:  new app.views.BannerHeader().render(),
+    banner_info:    new app.views.BannerInfo().render()
   });
 
   window.app.router = new window.app.Router();
