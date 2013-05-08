@@ -59,7 +59,7 @@
     impaq.me.widgets.push(new Widget({
       id: impaq.me.widgets.length,
       placeholder: $('<div>').prependTo('body'),
-      config: { route: "clickthrough" }
+      config: { route: "banner" }
     }));
   }
 
