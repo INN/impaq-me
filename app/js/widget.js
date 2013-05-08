@@ -55,4 +55,12 @@
     });
   });
 
+  if(window.location.search.match(/shared_via_impaq_me=/)) {
+    impaq.me.widgets.push(new Widget({
+      id: impaq.me.widgets.length,
+      placeholder: $('<div>').prependTo('body'),
+      config: { route: "clickthrough" }
+    }));
+  }
+
 })(jQuery.noConflict(true), _);//.noConflict());
