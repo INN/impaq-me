@@ -25,36 +25,23 @@
     $(this.iframe).on('load', _.bind(this.wireUpCommunication, this));
   };
 
+  Widget.prototype = {
+    template: impaq.JST['app/templates/widget.us'],
 
-
-
-
-  Widget.prototype.articleURL = function(){
-    return this.placeholder.data('url') || $('link[rel=canonical]').attr('href') || window.location;
+    articleURL: function(){
+      return this.placeholder.data('url') || $('link[rel=canonical]').attr('href') || window.location;
+    },
+    compile: function(data){
+      return this.template(data);
+    },
+    resize: function(height){
+      $(this.iframe).height(height);
+    },
+    wireUpCommunication: function(e){
+      console.log("iframe loaded", e);
+      this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id}), this.iframe.src);
+    }
   };
-
-  Widget.prototype.compile = function(data){
-    return impaq.JST['app/templates/widget.us'](data);
-  };
-
-  Widget.prototype.resize = function(height){
-    $(this.iframe).height(height);
-  };
-
-  Widget.prototype.wireUpCommunication = function(e){
-    console.log("iframe loaded", e);
-    this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id}), this.iframe.src);
-  };
-
-
-
-
-
-
-
-
-
-
 
   $(window).on('message', function(e){
     console.log("message received", e);
@@ -63,15 +50,8 @@
     impaq.me.widgets[data.widget_id].resize(data.height);
   });
 
-
-
-
-
   $('.impaq-me-placeholder').each(function(id, placeholder){
     impaq.me.widgets[id] = new Widget(id, $(placeholder));
   });
-
-
-
 
 })(jQuery.noConflict(true), _);//.noConflict());
