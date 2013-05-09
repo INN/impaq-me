@@ -1,5 +1,4 @@
 window.app.views.BannerHeader = Backbone.View.extend({
-  id: 'banner_header',
   template: JST['banner_header'],
 
   events: {

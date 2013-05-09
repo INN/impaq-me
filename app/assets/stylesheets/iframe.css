@@ -4,23 +4,38 @@ html,
 body {
   margin: 0;
   padding: 0;
-  color: #666666;
   font-size: 14px;
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
-section {
+p {
+  margin:0;
+}
+
+
+#banner {
+  color: #FFFFFF;
+  background-color: #ED1C24;
+}
+
+#widget {
+  color: #666666;
   background-color: #EFEFEF;
 }
 
-main > :first-child {
-  margin-top: 0;
-}
-main > * {
-  margin: 1em 17px;
+#widget p {
+  padding-top: .3em;
+  padding-bottom: .3em;
 }
 
-main > div > div {
+/* main > :first-child { */
+/*   margin-top: 0; */
+/* } */
+/* main > * { */
+/*   margin: 1em 17px; */
+/* } */
+
+#widget > div > div {
   display:table;
   width:100%;
 }
@@ -40,22 +55,6 @@ main > div > div {
 #share :first-child {
   margin-left: 0;
 }
-/* #share input { */
-/*   border: 1px solid #6D6E71; */
-/*   background-color: #FFFFFF; */
-/*   color: #6D6E71; */
-/*   padding: .2em .75em; */
-/*   width:300px; */
-/* } */
-/* #share input::-webkit-input-placeholder, */
-/* #share input:-moz-placeholder, */
-/* #share input::-moz-placeholder, */
-/* #share input:-ms-input-placeholder { */
-/*   /1* Gotham book italic *1/ */
-/*   font-size: 13px; */
-/*   color:#BCBEC0; */
-/*   font-style: italic; */
-/* } */
 #share .fb-like {
   height:20px;
 }
@@ -94,45 +93,10 @@ main > div > div {
   font-style: normal;
 }
 
-p {
-  padding-top: .3em;
-  padding-bottom: .3em;
-}
-
-#feedback div {
-  display:table;
-  width:100%;
-}
-
-#feedback span {
-  display:table-cell;
-}
-
-#feedback > * > :last-child {
-  width:75px;
-  text-align:right;
-}
-
-#feedback input {
-  width: 100%;
-  padding: .1em .5em;
-  font-size: 12px;
-  font-style: italic;
-}
-
-#feedback button {
-  text-transform: uppercase;
-  background: #6D6E71;
-  color: #FFFFFF;
-  border-radius: 2px;
-  border-style: none;
-  padding: .3em 1em;
-  letter-spacing: .1em;
-}
 
 footer {
-  background-color: #ED1C24;
   color: #FFFFFF;
+  background-color: #ED1C24;
   /*font-family: visitor regular*/
 
   font-family: "Courier New", Monaco, monospace;
