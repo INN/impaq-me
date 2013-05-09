@@ -29,15 +29,13 @@ window.app.Router = Backbone.Router.extend({
   },
 
   banner: function(){
-    $("main").empty()
-      .append(app.views.banner_info.el)
-      .append(app.views.banner_header.el);
+    $("#banner").empty()
+      .append(app.views.banner.el);
   },
 
   all: function(){
     $("#banner").empty()
-      .append(app.views.banner_info.el)
-      .append(app.views.banner_header.el);
+      .append(app.views.banner.el);
     $("#widget").empty()
       .append(app.views.widget_header.el)
       .append(app.views.share.el)
@@ -71,8 +69,7 @@ window.app.Router = Backbone.Router.extend({
 
 jQuery(function($){
   _.extend(window.app.views, {
-    banner_info:    new app.views.BannerInfo().render(),
-    banner_header:  new app.views.BannerHeader().render(),
+    banner:    new app.views.Banner().render(),
 
     widget_header:  new app.views.WidgetHeader().render(),
     share:          new app.views.Share().render(),

@@ -1,5 +1,5 @@
-window.app.views.BannerHeader = Backbone.View.extend({
-  template: JST['banner_header'],
+window.app.views.Banner = Backbone.View.extend({
+  template: JST['banner'],
 
   events: {
     "click button": "close"
@@ -10,7 +10,12 @@ window.app.views.BannerHeader = Backbone.View.extend({
   },
 
   close: function(){
-    this.$el.slideUp().promise().then(this.remove);
+    console.log("nuclear");
+  },
+
+  minimize: function(){
+    console.log("minimize");
+    this.$('.thanks').slideUp();
   },
 
   render: function(){
