@@ -2,7 +2,15 @@ window.app.views.BannerInfo = Backbone.View.extend({
   id: 'banner_info',
   template: JST['banner_info'],
 
+  events: {
+  },
+
   initialize: function(options){
+    _.bindAll(this);
+  },
+
+  close: function(){
+    this.$el.slideUp().promise().then(this.remove).then(app.views.banner_header.makeCloseable);
   },
 
   render: function(){
