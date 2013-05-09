@@ -60,11 +60,13 @@ jQuery(function($){
     banner_info:    new app.views.BannerInfo().render(),
     banner_header:  new app.views.BannerHeader().render(),
 
+    // call_to_action: new app.views.CallToAction().render(),
     share:          new app.views.Share().render(),
     solicit:        new app.views.Solicit().render(),
     thanks:         new app.views.Thanks().render(),
-    feedback:       new app.views.Feedback().render(),
     donate:         new app.views.Donate().render(),
+
+    footer:         new app.views.Footer().render()
   });
 
   window.app.router = new window.app.Router();
