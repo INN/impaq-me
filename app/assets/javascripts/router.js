@@ -17,7 +17,8 @@ window.app.Router = Backbone.Router.extend({
   routes: {
     "" : "home",
     "home" : "home",
-    "banner" : "banner"
+    "banner" : "banner",
+    "all" : "all"
   },
 
   home: function() {
@@ -31,6 +32,19 @@ window.app.Router = Backbone.Router.extend({
     $("main").empty()
       .append(app.views.banner_info.el)
       .append(app.views.banner_header.el);
+  },
+
+  all: function(){
+    $("#banner").empty()
+      .append(app.views.banner_info.el)
+      .append(app.views.banner_header.el);
+    $("#widget").empty()
+      .append(app.views.widget_header.el)
+      .append(app.views.share.el)
+      .append(app.views.solicit.el)
+      .append(app.views.thanks.el)
+      .append(app.views.donate.el)
+      .append(app.views.footer.el);
   }
 
   // shared: function() {
@@ -60,7 +74,7 @@ jQuery(function($){
     banner_info:    new app.views.BannerInfo().render(),
     banner_header:  new app.views.BannerHeader().render(),
 
-    // call_to_action: new app.views.CallToAction().render(),
+    widget_header:  new app.views.WidgetHeader().render(),
     share:          new app.views.Share().render(),
     solicit:        new app.views.Solicit().render(),
     thanks:         new app.views.Thanks().render(),
