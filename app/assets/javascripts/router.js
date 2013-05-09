@@ -21,10 +21,8 @@ window.app.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    $("main > div > div").empty()
+    $("main").empty()
       .append(app.views.share.el)
-      .append(app.views.meter.el);
-    $("main")
       .append(app.views.solicit.el)
       .append(app.views.donate.el);
   },
@@ -59,14 +57,14 @@ window.app.Router = Backbone.Router.extend({
 
 jQuery(function($){
   _.extend(window.app.views, {
+    banner_info:    new app.views.BannerInfo().render(),
+    banner_header:  new app.views.BannerHeader().render(),
+
     share:          new app.views.Share().render(),
-    meter:          new app.views.Meter().render(),
     solicit:        new app.views.Solicit().render(),
     thanks:         new app.views.Thanks().render(),
     feedback:       new app.views.Feedback().render(),
     donate:         new app.views.Donate().render(),
-    banner_header:  new app.views.BannerHeader().render(),
-    banner_info:    new app.views.BannerInfo().render()
   });
 
   window.app.router = new window.app.Router();
