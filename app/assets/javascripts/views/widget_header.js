@@ -2,15 +2,15 @@ window.app.views.WidgetHeader = Backbone.View.extend({
   template: JST['widget_header'],
 
   events: {
-    click: "expandWidget"
+    click: "click"
   },
 
   initialize: function(options){
     _.bindAll(this);
   },
 
-  expandWidget: function(){
-    app.views.widget.open();
+  click: function(){
+    this.model.set('open', !this.model.get('open'));
   },
 
   render: function(){

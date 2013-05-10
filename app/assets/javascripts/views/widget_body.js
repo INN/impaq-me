@@ -6,8 +6,13 @@ window.app.views.WidgetBody = Backbone.View.extend({
 
     this.listenTo(this.model, {
       'change:tweeted': this.thanks,
-      'change:liked':   this.thanks
+      'change:liked':   this.thanks,
+      'change:open':    this.openClose
     });
+  },
+
+  openClose: function(model, open, options){
+    this.$el.slideToggle(open);
   },
 
   thanks: function(){

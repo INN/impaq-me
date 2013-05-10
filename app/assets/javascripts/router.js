@@ -18,12 +18,19 @@ window.app.Router = Backbone.Router.extend({
   },
 
   widget_open: function(){
-    app.views.widget.render().open();
+    app.views.widget.render();
+    app.models.widget.set({
+      mode: 'widget',
+      open: true
+    });
   },
 
   widget_closed: function(){
-    app.models.widget.set('mode', 'widget');
-    app.views.widget.render().close();
+    app.views.widget.render();
+    app.models.widget.set({
+      mode: 'widget',
+      open: false
+    });
   },
 
   banner_maximized: function(){

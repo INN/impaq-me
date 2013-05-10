@@ -21,13 +21,7 @@ window.app.views.Widget = Backbone.View.extend({
   },
 
   open: function(){
-    this.views.body.$el.slideDown();
-    return this;
-  },
-
-  close: function(){
-    this.views.body.$el.slideUp();
-    return this;
+    this.model.set('open', true);
   },
 
   render: function(){
