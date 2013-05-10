@@ -21,25 +21,26 @@ window.app.Router = Backbone.Router.extend({
   },
 
   widget_closed: function(){
-    app.views.widget.render();
+    app.views.widget.render().close();
   },
 
   banner_maximized: function(){
-    app.views.banner.render();
+    app.views.banner.render().maximize();
   },
 
   banner_minimized: function(){
     app.views.banner.render().minimize();
   },
 
-  all: function(){
-    $("#banner").empty()
-      .append(app.views.banner.el);
-    $("#widget").empty()
-      .append(app.views.widget_header.el)
-      .append(app.views.share.el)
-      .append(app.views.widget_body.el);
-  }
+  // all: function(){
+  //   $("#banner").empty()
+  //     .append(app.views.banner_info.el)
+  //     .append(app.views.banner_header.el);
+  //   $("#widget").empty()
+  //     .append(app.views.widget_header.el)
+  //     .append(app.views.share.el)
+  //     .append(app.views.widget_body.el);
+  // }
 
 });
 
