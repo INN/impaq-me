@@ -2,7 +2,7 @@ window.app.views.Share = Backbone.View.extend({
   template: JST['share'],
 
   events: {
-    click: "toggle"
+    click: "expandWidget"
   },
 
   initialize: function(options){
@@ -13,11 +13,11 @@ window.app.views.Share = Backbone.View.extend({
 
   share: function(channel, campaign_id){
     app.services.Share.record(channel, campaign_id);
-    app.views.widget_body.open();
+    app.views.widget.open();
   },
 
-  toggle: function(){
-    app.views.widget_body.toggle();
+  expandWidget: function(){
+    app.views.widget.open();
   },
 
   render: function(){

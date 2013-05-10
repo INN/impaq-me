@@ -6,6 +6,7 @@ window.app.Router = Backbone.Router.extend({
   routes: {
     "" : "widget_closed",
 
+    "widget" : "widget_closed",
     "widget/closed" : "widget_closed",
     "widget/open" : "widget_open",
 
