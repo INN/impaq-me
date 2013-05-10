@@ -5,8 +5,14 @@ window.app.views.WidgetBody = Backbone.View.extend({
     _.bindAll(this);
   },
 
+  thanks: function(){
+    this.$("#solicit").fadeOut();
+    this.$("#thanks").fadeIn();
+  },
+
   render: function(){
     this.$el.html(this.template(impaqme));
+    this.$("#thanks").hide();
     return this;
   }
 });

@@ -7,13 +7,6 @@ window.app.views.Share = Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this);
-    this.on('like', _.partial(this.share, 'facebook', impaqme.campaign_id));
-    this.on('tweet', _.partial(this.share, 'twitter', impaqme.campaign_id));
-  },
-
-  share: function(channel, campaign_id){
-    app.services.Share.record(channel, campaign_id);
-    app.views.widget.open();
   },
 
   expandWidget: function(){
@@ -29,12 +22,12 @@ window.app.views.Share = Backbone.View.extend({
 
 twttr.ready(function(){
   twttr.events.bind('tweet', function(event){
-    app.views.share.trigger('tweet');
+    app.views.widget.trigger('tweet');
   });
 });
 
 fb.ready(function(){
   FB.Event.subscribe('edge.create', function(response) {
-    app.views.share.trigger('like');
+    app.views.widget.trigger('like');
   });
 });

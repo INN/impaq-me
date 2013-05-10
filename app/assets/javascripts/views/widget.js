@@ -8,6 +8,15 @@ window.app.views.Widget = Backbone.View.extend({
       share:  new app.views.Share().render(),
       body:   new app.views.WidgetBody().render()
     });
+
+    this.on('like', _.partial(this.share, 'facebook', impaqme.campaign_id));
+    this.on('tweet', _.partial(this.share, 'twitter', impaqme.campaign_id));
+  },
+
+  share: function(channel, campaign_id){
+    app.services.Share.record(channel, campaign_id);
+    this.open();
+    this.views.body.thanks();
   },
 
   open: function(){
