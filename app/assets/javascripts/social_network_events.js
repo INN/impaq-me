@@ -21,7 +21,8 @@ twttr.ready(function(){
   console.info("twitter sdk loaded");
 
   twttr.events.bind('tweet', function(event){
-    app.views.widget.trigger('tweet');
+    // will have to wire up rails with our model (channel and campaign_id)
+    app.models.widget.set('tweeted', true).recordTweet();
   });
 });
 
@@ -29,6 +30,6 @@ fb.ready(function(){
   console.info("facebook sdk loaded");
 
   FB.Event.subscribe('edge.create', function(response) {
-    app.views.widget.trigger('like');
+    app.models.widget.set('liked', true).recordLike();
   });
 });

@@ -22,6 +22,7 @@ window.app.Router = Backbone.Router.extend({
   },
 
   widget_closed: function(){
+    app.models.widget.set('mode', 'widget');
     app.views.widget.render().close();
   },
 
@@ -49,9 +50,13 @@ window.app.Router = Backbone.Router.extend({
 jQuery(function($){
   window.app.router = new window.app.Router();
 
+    app.models.widget = new app.models.Widget();
   _.extend(window.app.views, {
     banner: new app.views.Banner({el: $("#banner")}),
-    widget: new app.views.Widget({el: $("#widget")})
+    widget: new app.views.Widget({
+      el: $("#widget"),
+      model: app.models.widget
+    })
   });
 
   Backbone.history.start();
