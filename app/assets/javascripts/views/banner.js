@@ -1,6 +1,10 @@
 window.app.views.Banner = Backbone.View.extend({
   template: JST['banner'],
 
+  events: {
+    // click: "openWidget" //TODO handle repeat clicks
+  },
+
   initialize: function(options){
     _.bindAll(this);
 
@@ -9,22 +13,16 @@ window.app.views.Banner = Backbone.View.extend({
       info: new app.views.BannerInfo().render()
     });
 
-    // window.setTimeout(this.minimize, 10000);
-  },
-
-  events: {
-    // click: "openWidget" //TODO handle repeat clicks
+    window.setTimeout(this.minimize, 10000);
   },
 
   maximize: function(){
     this.views.info.$el.slideDown();
-    // this.is_maximized = true;
     return this;
   },
 
   minimize: function(){
     this.views.info.$el.slideUp();
-  //   this.is_maximized = false;
     return this;
   },
 
@@ -34,8 +32,8 @@ window.app.views.Banner = Backbone.View.extend({
 
   render: function(){
     this.$el.empty()
-      .append(this.views.header.el)
-      .append(this.views.info.el);
+      .append(this.views.info.el)
+      .append(this.views.header.el);
     return this;
   }
 
