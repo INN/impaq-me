@@ -2,7 +2,7 @@ window.app.views.BannerHeader = Backbone.View.extend({
   template: JST['banner_header'],
 
   events: {
-    // "click button": "close",
+    "click button": "close",
     // click: "openWidget" //TODO handle repeat clicks
   },
 
@@ -11,9 +11,10 @@ window.app.views.BannerHeader = Backbone.View.extend({
     // window.setTimeout(this.minimize, 10000);
   },
 
-  // close: function(){
-  //   this.$el.slideUp().promise().then(this.remove);
-  // },
+  close: function(){
+    console.log("nuclear");
+    //TODO tell parent window to remove iframe
+  },
 
   render: function(){
     this.$el.html(this.template(impaqme));

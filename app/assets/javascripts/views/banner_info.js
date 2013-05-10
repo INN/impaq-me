@@ -8,10 +8,6 @@ window.app.views.BannerInfo = Backbone.View.extend({
     _.bindAll(this);
   },
 
-  // close: function(){
-  //   this.$el.slideUp().promise().then(this.remove).then(app.views.banner_header.makeCloseable);
-  // },
-
   render: function(){
     this.$el.html(this.template(impaqme));
     return this;

@@ -13,14 +13,8 @@ window.app.views.Banner = Backbone.View.extend({
   },
 
   events: {
-    // "click button": "close",
     // click: "openWidget" //TODO handle repeat clicks
   },
-
-  // close: function(){
-  //   console.log("nuclear");
-  //   //TODO tell parent window to remove iframe
-  // },
 
   maximize: function(){
     this.views.info.$el.slideDown();
