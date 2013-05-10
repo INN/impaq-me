@@ -19,15 +19,3 @@ window.app.views.Share = Backbone.View.extend({
   }
 
 });
-
-twttr.ready(function(){
-  twttr.events.bind('tweet', function(event){
-    app.views.widget.trigger('tweet');
-  });
-});
-
-fb.ready(function(){
-  FB.Event.subscribe('edge.create', function(response) {
-    app.views.widget.trigger('like');
-  });
-});

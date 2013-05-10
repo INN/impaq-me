@@ -3,20 +3,17 @@ window.app.views.Widget = Backbone.View.extend({
   initialize: function(options){
     _.bindAll(this);
 
-    this.views = $.extend({}, {
-      header: new app.views.WidgetHeader().render(),
-      share:  new app.views.Share().render(),
-      body:   new app.views.WidgetBody().render()
-    });
+    this.on('like', function(){ this.trigger('share'); }, this);
+    this.on('tweet', function(){ this.trigger('share'); }, this);
 
-    this.on('like', _.partial(this.share, 'facebook', impaqme.campaign_id));
-    this.on('tweet', _.partial(this.share, 'twitter', impaqme.campaign_id));
+    this.on('like', _.partial(this.recordShare, 'facebook', impaqme.campaign_id));
+    this.on('tweet', _.partial(this.recordShare, 'twitter', impaqme.campaign_id));
+
+    this.on('share', this.open);
   },
 
-  share: function(channel, campaign_id){
+  recordShare: function(channel, campaign_id){
     app.services.Share.record(channel, campaign_id);
-    this.open();
-    this.views.body.thanks();
   },
 
   open: function(){
@@ -30,6 +27,12 @@ window.app.views.Widget = Backbone.View.extend({
   },
 
   render: function(){
+    this.views = $.extend({}, {
+      header: new app.views.WidgetHeader().render(),
+      share:  new app.views.Share().render(),
+      body:   new app.views.WidgetBody({parent: this}).render()
+    });
+
     this.$el.empty()
       .append(this.views.header.el)
       .append(this.views.share.el)
