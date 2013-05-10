@@ -1,14 +1,23 @@
 window.app.views.Share = Backbone.View.extend({
   template: JST['share'],
 
+  events: {
+    click: "toggle"
+  },
+
   initialize: function(options){
+    _.bindAll(this);
     this.on('like', _.partial(this.share, 'facebook', impaqme.campaign_id));
     this.on('tweet', _.partial(this.share, 'twitter', impaqme.campaign_id));
   },
 
   share: function(channel, campaign_id){
     app.services.Share.record(channel, campaign_id);
-    app.router.navigate('shared', {trigger:true});
+    app.views.widget_body.open();
+  },
+
+  toggle: function(){
+    app.views.widget_body.toggle();
   },
 
   render: function(){

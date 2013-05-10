@@ -3,11 +3,12 @@ window.app.views.Banner = Backbone.View.extend({
 
   events: {
     "click button": "close",
-    click: "expandWidget" //TODO handle repeat clicks
+    click: "openWidget" //TODO handle repeat clicks
   },
 
   initialize: function(options){
     _.bindAll(this);
+    window.setTimeout(this.minimize, 10000);
   },
 
   close: function(){
@@ -15,18 +16,20 @@ window.app.views.Banner = Backbone.View.extend({
     //TODO tell parent window to remove iframe
   },
 
-  minimize: function(){
-    this.$('.thanks').slideUp();
+  maximize: function(){
+    this.$('.thanks').slideDown();
+    this.is_maximized = true;
+    return this;
   },
 
-  expandWidget: function(){
-    $("#widget").empty().hide()
-      .append(app.views.share.el)
-      .append(app.views.solicit.el)
-      .append(app.views.donate.el)
-      .append(app.views.footer.el)
-      .slideDown();
-      //TODO: reparse FB/Twitter widgets
+  minimize: function(){
+    this.$('.thanks').slideUp();
+    this.is_maximized = false;
+    return this;
+  },
+
+  openWidget: function(){
+    app.views.banner_widget.open();
   },
 
   render: function(){
