@@ -1,0 +1,13 @@
+<div id="dashMain">
+  <h1>Dashboard</h1>
+  <%= link_to "New Campaign", new_campaign_path %>
+  <ul>
+    <% @campaigns.each do |campaign| %>
+      <li>
+      <%= campaign.inspect %>
+      </ br> <%= link_to "edit",(edit_campaign_path campaign.id) %>
+      </li>
+    <% end %>
+  </ul>
+  Shares: <%= @shares.count %>
+</div>

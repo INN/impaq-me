@@ -1,5 +1,7 @@
 ImpaqBackend::Application.routes.draw do
-  # resources :campaigns
+  resources :campaigns
+  resources :dashboard, only: [:index]
+
   resources :links
   resources :shares
 

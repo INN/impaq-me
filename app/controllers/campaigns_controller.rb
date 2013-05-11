@@ -1,15 +1,13 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-  before_action :find_by_domain, only: [:index]
 
   # GET /campaigns
   def index
-    render json: @campaigns
+    @campaigns = Campaign.all
   end
 
   # GET /campaigns/1
   def show
-    render json: @campaign
   end
 
   # GET /campaigns/new
@@ -26,7 +24,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
 
     if @campaign.save
-      redirect_to @campaign, notice: 'Campaign was successfully created.'
+      redirect_to :dashboard_index, notice: 'Campaign was successfully created.'
     else
       render action: 'new'
     end
@@ -34,8 +32,8 @@ class CampaignsController < ApplicationController
 
   # PATCH/PUT /campaigns/1
   def update
-    if @campaign.update(campaign_params)
-      redirect_to @campaign, notice: 'Campaign was successfully updated.'
+    if @campaign.update_attributes!(campaign_params)
+      redirect_to :dashboard_index, notice: 'Campaign was successfully updated.'
     else
       render action: 'edit'
     end
@@ -49,13 +47,6 @@ class CampaignsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def find_by_domain
-      if params[:domain]
-        @campaigns = Campaign.fetch_by_domain(params[:domain])
-      else
-        @campaigns = Campaign.all
-      end
-    end
 
     def set_campaign
       @campaign = Campaign.find(params[:id])
@@ -63,7 +54,13 @@ class CampaignsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def campaign_params
-      params.require(:campaign).permit(:foundation_name, :publisher_name, \
+      p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
                                        :domains, :value_per_share, :goal)
+      p[:domains] = p[:domains].split ","
+      p[:domains].each { |d| d.strip! }
+      p[:value_per_share] = p[:value_per_share].to_f
+      p[:goal] = p[:goal].to_f
+      puts p
+      p
     end
 end

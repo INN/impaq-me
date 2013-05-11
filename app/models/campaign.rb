@@ -16,4 +16,8 @@ class Campaign
   def self.goal_for(id: id)
       find(id).goal or raise NoGoal
   end
+
+  def domains_to_s
+    domains.join ', '
+  end
 end
