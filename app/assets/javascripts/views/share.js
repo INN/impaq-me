@@ -9,7 +9,7 @@ window.app.views.Share = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template(impaqme));
+    this.$el.html(this.template({model: this.model}));
     return this;
   }
 

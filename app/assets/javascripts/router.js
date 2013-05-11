@@ -58,6 +58,7 @@ jQuery(function($){
   window.app.router = new window.app.Router();
 
     app.models.widget = new app.models.Widget();
+    app.models.widget.set(impaqme);
   _.extend(window.app.views, {
     banner: new app.views.Banner({el: $("#banner")}),
     widget: new app.views.Widget({
