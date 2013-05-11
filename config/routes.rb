@@ -1,6 +1,10 @@
 ImpaqBackend::Application.routes.draw do
   resources :campaigns
   resources :dashboard, only: [:index]
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :links
   resources :shares

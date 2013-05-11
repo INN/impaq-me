@@ -90,6 +90,7 @@ GEM
     atomic (1.1.8)
     backbone-rails (0.9.10)
       rails (>= 3.0.0)
+    bcrypt-ruby (3.0.1)
     bson (1.8.5)
     bson_ext (1.8.5)
       bson (~> 1.8.5)
@@ -176,6 +177,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.7.0)
   arel!
   backbone-rails
+  bcrypt-ruby
   bson_ext
   coffee-rails!
   database_cleaner

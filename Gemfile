@@ -10,6 +10,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'url'
 gem 'backbone-rails'
 gem 'ejs'
+gem 'bcrypt-ruby'
 
 
 group :development, :test do
