@@ -14,7 +14,7 @@ window.app.views.WidgetHeader = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({model: this.model}));
+    this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
 

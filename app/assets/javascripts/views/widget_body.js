@@ -21,7 +21,7 @@ window.app.views.WidgetBody = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({model: this.model}));
+    this.$el.html(this.template(this.model.toJSON()));
     this.$("#thanks").hide();
     return this;
   }
