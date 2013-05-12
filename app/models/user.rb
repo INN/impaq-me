@@ -23,10 +23,6 @@ class User
     end
   end
 
-  def authenticate password_digest
-    true
-  end
-
   def save_with_remember_token
     self.email.downcase!
     self.remember_token = SecureRandom.urlsafe_base64

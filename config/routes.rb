@@ -1,4 +1,6 @@
 ImpaqBackend::Application.routes.draw do
+  resources :users
+
   resources :campaigns
   resources :dashboard, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]

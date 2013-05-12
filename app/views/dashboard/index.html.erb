@@ -1,6 +1,7 @@
 <div id="dashMain">
   <h1>Dashboard</h1>
   <%= link_to "New Campaign", new_campaign_path %>
+  <%= link_to "Edit Users", users_path %>
   <%= link_to "Sign Out", signout_path, method: "delete" %>
   <ul>
     <% @campaigns.each do |campaign| %>
