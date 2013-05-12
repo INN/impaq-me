@@ -175,6 +175,7 @@ p {
 
 
 .share-value,
+.click-value,
 .donation-value,
 #widget .thanks :first-child {
   color:#ED1C24;

@@ -4,9 +4,9 @@ window.app.views.Widget = Backbone.View.extend({
     _.bindAll(this);
 
     this.views = $.extend({}, {
-      header: new app.views.WidgetHeader({model: this.model}).render(),
-      share:  new app.views.Share({model: this.model}).render(),
-      body:   new app.views.WidgetBody({model: this.model}).render()
+      header: new app.views.WidgetHeader({model: this.model}),
+      share:  new app.views.Share({model: this.model}),
+      body:   new app.views.WidgetBody({model: this.model})
     });
 
     this.listenTo(this.model, {
@@ -25,10 +25,11 @@ window.app.views.Widget = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.empty()
-      .append(this.views.header.el)
-      .append(this.views.share.el)
-      .append(this.views.body.el);
+    this.assign({
+      "[data-subview='WidgetHeader']" : this.views.header,
+      "[data-subview='Share']"        : this.views.share,
+      "[data-subview='WidgetBody']"   : this.views.body
+    });
     return this;
   }
 });

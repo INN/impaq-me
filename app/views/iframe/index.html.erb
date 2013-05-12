@@ -1,60 +1,29 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
-<script type="text/javascript" src="//use.typekit.net/hoz0abb.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 <div id="fb-root"></div>
 <main>
   <section id="banner">
-    <div class="thanks">
-      <p>Thanks to a generous gift from the Ethics &amp; Excellence in Journalism Foundation,<br/>
-      when you or your friends <strong>share</strong> our stories we receive <strong>$1</strong></p>
-    </div>
-
-    <header>
-      <p class="iconography">
-        <i class="icon-facebook-sign" title="facebook"></i>
-        <i class="icon-twitter" title="twitter"></i>
-        <i class="icon-envelope-alt" title="email"></i>
-        =
-        <i class ="icon-heart" title="support"></i>
-      </p>
-      <h1>Donate By Sharing</h1>
-      <p class="progress">$300 Raised so far</p>
-    </header>
-
+    <div data-subview="BannerInfo"></div>
+    <div data-subview="BannerHeader"></div>
+    <%# TODO view for close button %>
     <button class="close"><i class="icon-remove-sign" title="close"></i></button>
   </section>
   <section id="widget">
-    <header>
-      <h1><strong>Share</strong> and the Ethics &amp; Excellence in Journalism Foundation will donate <strong>$1</strong></h1>
-    </header>
+    <div data-subview="WidgetHeader"></div>
 
     <div class="box">
-      <div class="unnamed">
-        <ul class="share_tools">
-          <li class="facebook"><div class="fb-like" data-href="http://location.host/facebook_shortlink" data-width="90" data-layout="button_count"></div></li>
-          <li class="twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-url="http://location.host/twitter_shortlink" data-count="none">Tweet</a></li>
-          <li class="email"><a href="http://location.host/twitter_shortlink" target="_blank">Email</a></li>
-        </ul>
-        <div class="progress_meter"><p>$300 Raised so far</p></div>
-      </div>
-
-      <div>
-        <p class="solicit">NPR is a 501(c)(3) non-profit. if you share this article, the Ethics &amp; Excellence in Journalism Foundation will donate <strong class="share-value">$1</strong> to them.</p>
-        <p class="thanks"><strong>Thanks! NPR just got $1 thanks to you.</strong><br/>
-        The best way to help is to get more people involved; tell your friends!</p>
-        <div class="follow_up_cta">
-          <p>If this is important to you, you can donate an additional <strong class="donation-value">$1</strong> to NPR</p>
-          <span><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></span>
-        </div>
-      </div>
+      <div data-subview="Share"></div>
+      <div data-subview="WidgetBody"></div>
     </div>
 
+    <%# TODO view for footer %>
     <footer><small><a href="#">about this funding</a></small><small>powered by <a href="#">impaq.me</a></small></footer>
 
   </section>
 </main>
 
 <script> window.impaqme = <%= j @campaign.to_json.html_safe %>; </script>
+<script src="//use.typekit.net/hoz0abb.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
 <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs"));</script>
 <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/en_US/all.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","facebook-jssdk"));</script>
