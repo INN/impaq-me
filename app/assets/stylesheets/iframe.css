@@ -1,20 +1,23 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-/* gutter is 35px */
-
 html,
 body {
   margin: 0;
   padding: 0;
-  font-size: 14px;
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
 }
 
-p {
+h1 {
   margin:0;
 }
+p {
+  margin-top:11px;
+  margin-bottom:11px;
+}
 
 
-#banner {
+#banner,
+#widget header,
+#widget footer {
   color: #FFFFFF;
   background-color: #ED1C24;
 }
@@ -24,103 +27,208 @@ p {
   background-color: #EFEFEF;
 }
 
-#widget p {
-  padding-top: .3em;
-  padding-bottom: .3em;
-}
 
-/* main > :first-child { */
-/*   margin-top: 0; */
-/* } */
-/* main > * { */
-/*   margin: 1em 17px; */
-/* } */
 
-#widget header {
-  text-align:center;
-  color: #FFFFFF;
-  background-color: #ED1C24;
-}
-#widget > div > div {
-  display:table;
-  width:100%;
-}
 
-#share, #meter {
-  display:table-cell;
+#banner {
+  text-align: center;
+  padding:4px 1em 17px;
+  /* padding-left: 1em; */
+  /* padding-right: 1em; */
 }
-#share {
-  font-size: 13px;
-  width: 250px;;
+#banner .thanks {
+  /* padding-top:4px; */
+  font-size:22px;
+  font-weight:normal;
+  letter-spacing:.1em;
 }
-#share > * {
-  vertical-align: middle;
-  line-height:1.5;
-  margin: 0 7px;
+#banner header .iconography,
+#banner header h1,
+#banner header .progress {
+  display: inline-block;
+  margin:0; /* left/right modified with media queries */
 }
-#share :first-child {
-  margin-left: 0;
-}
-#share .fb-like {
-  height:20px;
-}
-
-#meter p {
-  position: relative;
-  background: #BCBEC0;
-  color: #FFFFFF;
-  font-size: 10px;
-  padding-left: 1em;
-}
-#meter #progress {
+#banner .close {
   position: absolute;
   top: 0;
-  left: 0;
-  height: 100%;
-  background: #6D6E71;
-  z-index:5;
-}
-#meter #progress ~ span {
-  position:relative;
-  z-index:10;
+  right: 0;
 }
 
-#donate {
-  margin-left: 0;
-  padding-left: 17px;
-  background: #FAFAFA;
-  font-size: 12px;
+#banner header { font-size: 19px; letter-spacing: .2em; }
+#banner header h1 { font-size: 1em; font-weight: bold; text-transform: uppercase; }
+#banner header .iconography { font-size: 22px; word-spacing: .25em; white-space: nowrap; }
+#banner .close { border: 0; background: transparent; }
+
+@media only screen and (min-width : 450px) {
+  #banner header .iconography, #banner header h1, #banner header .progress { margin-left:1em; margin-right:1em; }
 }
+@media only screen and (min-width : 800px) {
+  #banner header .iconography, #banner header .progress { margin-left:0; margin-right:0; }
+  #banner header h1 { margin-left:2em; margin-right: 4em; }
+}
+
+
+
+#widget .box {
+  max-width: 700px;
+  padding:0 4.5%;
+  margin:2px auto 17px;
+}
+
+#widget header {
+  padding:.7em 1em .5em;
+  font-size:14px;
+  text-align:center;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+#widget header h1 {
+  font-size:1em;
+  font-weight:normal;
+}
+/* better to do this with a background image + left padding */
+#widget header h1::before {
+  content: '\f004';
+  font-family: 'FontAwesome';
+  margin-right: 1.25em;
+}
+
+
+.share_tools { text-align:center }
+@media only screen and (min-width : 550px) {
+  .unnamed        { display:table; width:100%; }
+  .share_tools    { display:table-cell; width:270px; text-align:left; }
+  .progress_meter { display:table-cell; }
+}
+
+
+.unnamed {
+  padding-top:7px;
+}
+.unnamed p {
+  margin-bottom:0;
+}
+
+.share_tools {
+  list-style:none;
+  padding:0;
+  font-size:15px;
+}
+.share_tools li {
+  display:inline-block;
+  line-height:1;
+  margin:0 10px;
+  vertical-align:middle;
+}
+.share_tools li:first-child {
+  margin-left: 0;
+}
+/* better to do this with a background image + left padding */
+.share_tools .email::before {
+  content: '\f0e0';
+  font-family: 'FontAwesome';
+  margin-right:4px;
+  font-size:18px;
+}
+.share_tools .email a {
+  color:inherit;
+  text-decoration:none;
+}
+
+
+.progress_meter p {
+  position:relative;
+  color: #FFFFFF;
+  background: #BCBEC0;
+  font-size: 14px;
+  letter-spacing:.1em;
+  padding: .1em .75em;
+  z-index:1;
+}
+.progress_meter p::before {
+  content: '';
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:100%;
+  background: #6D6E71;
+  z-index:-1;
+  /* TODO: -moz and -o prefixes */
+  animation-delay: 5s;
+  animation-duration: 3s;
+  animation-name: fillProgress;
+  -webkit-animation-delay: 5s;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-name: fillProgress;
+}
+@keyframes fillProgress { 0% { width: 0; } }
+@-webkit-keyframes fillProgress { 0% { width: 0; } }
+
+
+#widget .solicit,
+#widget .thanks {
+  font-size:17px;
+  font-weight:bold;
+}
+
+
 
 .share-value,
 .donation-value,
-#thanks em {
+#widget .thanks :first-child {
   color:#ED1C24;
-  font-style: normal;
+  font-weight: inherit;
 }
+
+
+
+.follow_up_cta {
+  display:table;
+  width:100%;
+  position:relative;
+  background: #FAFAFA;
+  padding: .1em 0;
+  font-size: 15px;
+  font-weight:normal;
+  letter-spacing:.1em;
+}
+.follow_up_cta::before {
+  content: '';
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:100%;
+  background:inherit;
+  width:9999px;
+}
+.follow_up_cta > * {
+  display:table-cell;
+  vertical-align:middle;
+}
+.follow_up_cta > *:last-child {
+  padding: 7px 0;
+  width:120px;
+  text-align:center;
+}
+
 
 
 footer {
-  color: #FFFFFF;
-  background-color: #ED1C24;
-  /*font-family: visitor regular*/
-
-  font-family: "Courier New", Monaco, monospace;
-  font-size: 10px;
-
   padding: .2em 1em;
+  font-family: "Courier New", Monaco, monospace;
+  font-size: 13px;
+  font-variant: small-caps;
+  letter-spacing:.1em;
 }
-footer small {
+footer a {
+  color: inherit;
+  text-decoration:underline;
+}
+footer > * {
   display:inline-block;
   width:50%;
 }
-footer small:last-child {
+footer > *:last-child {
   text-align:right;
-}
-
-
-@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
-  body {
-    background: #ccc;
-  }
 }

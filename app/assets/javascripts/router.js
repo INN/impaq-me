@@ -14,7 +14,8 @@ window.app.Router = Backbone.Router.extend({
     "banner/maximized" : "banner_maximized",
     "banner/minimized" : "banner_minimized",
 
-    "all" : "all"
+    "all" : "all",
+    "html" : "html"
   },
 
   widget_open: function(){
@@ -51,6 +52,8 @@ window.app.Router = Backbone.Router.extend({
   //     .append(app.views.widget_body.el);
   // }
 
+  html: function(){
+  }
 });
 
 
