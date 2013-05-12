@@ -52,6 +52,8 @@ p {
   position: absolute;
   top: 0;
   right: 0;
+  color:inherit;
+  font-size:inherit;
 }
 
 #banner header { font-size: 19px; letter-spacing: .2em; }
