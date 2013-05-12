@@ -1,5 +1,9 @@
-<p id="solicit"><%= publisher_name %> is a 501(c)(3) non-profit. if you share this article, the <%= foundation_name %> will donate <em class="share-value">$<%= value_per_share %></em> to them.</p>
-<p id="thanks"><em>Thanks! The <%= publisher_name %> just got $<%= value_per_share %> thanks to you.</em><br/>
-The best way to help is to get more people involved; tell your friends!</p>
-<p id="donate">If this is important to you, you can donate an additional <em class="donation-value">$2</em> to <%= publisher_name %> <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></p>
-<footer><small>about this funding</small><small>powered by impaq.me</small></footer>
+<div>
+  <p class="solicit"><%= publisher_name %> is a 501(c)(3) non-profit. if you share this article, <%= foundation_name %> will donate <strong class="share-value">$<%= value_per_share %></strong> to them.</p>
+  <p class="thanks"><strong>Thanks! <%= publisher_name %> just got <strong class="click-value"/>$<%= value_per_share %></strong> thanks to you.</strong><br/>
+  The best way to help is to get more people involved; tell your friends!</p>
+  <div class="follow_up_cta">
+    <p>If this is important to you, you can donate an additional <strong class="donation-value">$1</strong> to <%= publisher_name %></p>
+    <span><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></span>
+  </div>
+</div>

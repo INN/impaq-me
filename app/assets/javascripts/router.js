@@ -14,7 +14,8 @@ window.app.Router = Backbone.Router.extend({
     "banner/maximized" : "banner_maximized",
     "banner/minimized" : "banner_minimized",
 
-    "all" : "all"
+    "all" : "all",
+    "html" : "html"
   },
 
   widget_open: function(){
@@ -41,25 +42,20 @@ window.app.Router = Backbone.Router.extend({
     app.views.banner.render().minimize();
   },
 
-  // all: function(){
-  //   $("#banner").empty()
-  //     .append(app.views.banner_info.el)
-  //     .append(app.views.banner_header.el);
-  //   $("#widget").empty()
-  //     .append(app.views.widget_header.el)
-  //     .append(app.views.share.el)
-  //     .append(app.views.widget_body.el);
-  // }
-
+  html: function(){
+  }
 });
 
 
 jQuery(function($){
   window.app.router = new window.app.Router();
 
-    app.models.widget = new app.models.Widget(impaqme);
+  app.models.widget = new app.models.Widget(impaqme);
   _.extend(window.app.views, {
-    banner: new app.views.Banner({el: $("#banner")}),
+    banner: new app.views.Banner({
+      el: $("#banner"),
+      model: app.models.widget
+    }),
     widget: new app.views.Widget({
       el: $("#widget"),
       model: app.models.widget

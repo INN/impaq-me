@@ -6,6 +6,12 @@ window.app.views.Banner = Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this);
+
+    this.views = $.extend({}, {
+      header: new app.views.BannerHeader({model: this.model}),
+      info: new app.views.BannerInfo({model: this.model}),
+      close: new app.views.BannerClose({model: this.model})
+    });
   },
 
   maximize: function(){
@@ -21,14 +27,11 @@ window.app.views.Banner = Backbone.View.extend({
   render: function(){
     window.setTimeout(this.minimize, 10000);
 
-    this.views = $.extend({}, {
-      header: new app.views.BannerHeader().render(),
-      info: new app.views.BannerInfo().render()
+    this.assign({
+      "[data-subview='BannerHeader']" : this.views.header,
+      "[data-subview='BannerInfo']"   : this.views.info,
+      "[data-subview='BannerClose']"  : this.views.close
     });
-
-    this.$el.empty()
-      .append(this.views.info.el)
-      .append(this.views.header.el);
     return this;
   }
 

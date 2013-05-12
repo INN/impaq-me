@@ -1,13 +1,8 @@
-<div>
-  <div id="share">
-    <div class="fb-like" data-href="<%= location.protocol + "//" + location.host %>/<%= facebook_shortlink %>" data-width="90" data-layout="button_count"></div>
-    <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-url="<%= location.protocol + "//" + location.host %>/<%= twitter_shortlink %>" data-count="none">Tweet</a>
-    <a href="<%= location.protocol + "//" + location.host %>/<%= twitter_shortlink %>" target="_blank">Email</a>
-  </div>
-  <div id="meter">
-    <p>
-      <span id="progress" style="width:<%= percent %>%;"></span>
-      <span>$<%= total %> Donated by sharing this article so far</span>
-    </p>
-  </div>
+<div class="unnamed">
+  <ul class="share_tools">
+    <li class="facebook"><div class="fb-like" data-href="<%= location.protocol + "//" + location.host %>/<%= facebook_shortlink %>" data-width="90" data-layout="button_count"></div></li>
+    <li class="twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-url="<%= location.protocol + "//" + location.host %>/<%= twitter_shortlink %>" data-count="none">Tweet</a></li>
+    <li class="email"><a href="<%= location.protocol + "//" + location.host %>/<%= twitter_shortlink %>" target="_blank">Email</a></li>
+  </ul>
+  <div class="progress_meter"><p>$<%= total %> Raised so far</p></div>
 </div>
