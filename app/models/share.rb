@@ -3,8 +3,11 @@ class Share
 
   field :campaign_id
   field :channel
-  # field :ip
-  # TODO capture ip
+  field :ip
+
+  validates :campaign_id, presence: true
+  validates :channel, presence: true
+  validates :ip, presence: true
 
   belongs_to :campaign
 

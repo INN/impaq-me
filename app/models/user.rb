@@ -14,6 +14,8 @@ class User
   validates :password_confirmation, presence: true
   has_secure_password
 
+  before_save { self.email.downcase! }
+  before_create { self.remember_token = SecureRandom.urlsafe_base64 }
 
   def self.find_by_remember_token c_is_for_cookie
     begin
@@ -21,11 +23,5 @@ class User
     rescue Mongoid::Errors::DocumentNotFound
       NoUser
     end
-  end
-
-  def save_with_remember_token
-    self.email.downcase!
-    self.remember_token = SecureRandom.urlsafe_base64
-    save
   end
 end

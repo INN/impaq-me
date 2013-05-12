@@ -14,7 +14,6 @@ class SharesController < ApplicationController
 
   # GET /shares/new
   def new
-    @share = Share.new
   end
 
   # GET /shares/1/edit
@@ -23,39 +22,24 @@ class SharesController < ApplicationController
 
   # POST /shares
   def create
-    @share = Share.new(share_params)
-
-    if @share.save
-      redirect_to @share, notice: 'Share was successfully created.'
+    build_share
+    if @share.save!
+      render :json => @share
     else
       render action: 'new'
     end
   end
 
-  # PATCH/PUT /shares/1
-  def update
-    if @share.update(share_params)
-      redirect_to @share, notice: 'Share was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
-
-  # DELETE /shares/1
-  def destroy
-    @share.destroy
-    redirect_to shares_url, notice: 'Share was successfully destroyed.'
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_share
       @share = Share.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    def build_share
+      @share = Share.new(share_params.merge(ip: request.env.fetch("REMOTE_ADDR")))
+    end
+
     def share_params
-      params[:share].require(:campaign_id)
-      params[:share].permit(:campaign_id, :channel)
+      params.require(:share).permit(:campaign_id, :channel)
     end
 end
