@@ -7,9 +7,9 @@
     <% @campaigns.each do |campaign| %>
       <li>
       <%= campaign.inspect %>
-      </ br> <%= link_to "edit",(edit_campaign_path campaign.id) %>
+      <br> <strong>Shares:</strong> <%= Share.total_for_campaign campaign.id %>
+      <br> <%= link_to "edit",(edit_campaign_path campaign.id) %>
       </li>
     <% end %>
   </ul>
-  Shares: <%= @shares.count %>
 </div>

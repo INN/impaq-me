@@ -11,8 +11,7 @@ class Share
 
   belongs_to :campaign
 
-  def self.total_for(campaign_id: campaign_id)
-    where(campaign_id: campaign_id).count
+  def self.total_for_campaign(campaign_id)
+    where(campaign_id: campaign_id).distinct(:ip).count
   end
-
 end

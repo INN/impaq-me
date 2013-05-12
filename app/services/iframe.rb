@@ -2,7 +2,7 @@ class Iframe
   def self.bootstrap article_url
     domain = URL.new(article_url).domain
     campaign = Campaign.fetch_by_domain domain
-    campaign_meter = CampaignMeter.for_campaign campaign.id
+    campaign_meter = CampaignMeter.for campaign.id
     shortlink = Shortlink.for_campaign_and_url campaign.id, article_url
 
     {
