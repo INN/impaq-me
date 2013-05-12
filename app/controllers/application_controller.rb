@@ -18,15 +18,15 @@ class ApplicationController < ActionController::Base
     !(current_user == User::NoUser)
   end
 
-  def current_user=(user)
-    @current_user = user
-  end
-
+  private
   def current_user
     @current_user ||= User.find_by_remember_token cookies[:remember_token]
   end
 
-  private
+  def current_user=(user)
+    @current_user = user
+  end
+
   def check_user
     redirect_to :new_session unless signed_in?
   end
