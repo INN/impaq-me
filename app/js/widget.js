@@ -11,7 +11,6 @@
     }
   });
 
-
   var Widget = function(options){
     $.extend(this, options);
 
@@ -33,7 +32,17 @@
       return this.template(this.templateData());
     },
     resize: function(height){
-      $(this.iframe).height(height);
+      return $(this.iframe).height(height);
+    },
+    remove: function(){
+      return this.iframe.parentNode.removeChild(this.iframe);
+    },
+    respondToChild: function(data){
+      if(data.action === "close") {
+        this.remove();
+      } else {
+        this.resize(data.args.height);
+      }
     },
     wireUpCommunication: function(e){
       console.log("iframe loaded", e);
@@ -44,8 +53,7 @@
   $(window).on('message', function(e){
     console.log("message received", e);
     var data = $.parseJSON(e.originalEvent.data);
-
-    impaq.me.widgets[data.widget_id].resize(data.height);
+    impaq.me.widgets[data.widget_id].respondToChild(data);
   });
 
   $('.impaq-me-placeholder').each(function(id, placeholder){
