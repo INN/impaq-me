@@ -2,6 +2,7 @@ window.app.views.Banner = Backbone.View.extend({
   template: JST['banner'],
 
   events: {
+    click: "click"
   },
 
   initialize: function(options){
@@ -24,6 +25,10 @@ window.app.views.Banner = Backbone.View.extend({
     this.views.info.$el.slideUp();
     this.$el.removeClass('maximized').addClass('minimized');
     return this;
+  },
+
+  click: function(){
+    this.model.set('open', !this.model.get('open'));
   },
 
   render: function(){
