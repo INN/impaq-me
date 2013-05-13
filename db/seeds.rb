@@ -13,5 +13,5 @@ if User.count == 0
     password: "lookatme",
     password_confirmation:"lookatme"
   })
-  user.save_with_remember_token
+  user.save!
 end
