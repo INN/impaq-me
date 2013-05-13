@@ -28,11 +28,12 @@ window.app.views.Banner = Backbone.View.extend({
   },
 
   click: function(){
+    clearTimeout(this.minimizer);
     this.model.set('open', !this.model.get('open'));
   },
 
   render: function(){
-    window.setTimeout(this.minimize, 10000);
+    this.minimizer = window.setTimeout(this.minimize, 10000);
 
     this.$el.html(this.template(this.model.toJSON()));
     this.assign({
