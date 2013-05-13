@@ -9,9 +9,24 @@ window.app.views.Window = Backbone.View.extend({
   resizeParent: function(event){
     var data = {
       widget_id: this.publisher.widget_id,
-      height: $('body').height()
+      action: 'resize',
+      args: {
+        height: $('body').height()
+      }
     };
     console.log('resize event', event, data);
+    this.callParent(data);
+  },
+
+  closeParent: function(){
+    var data = {
+      widget_id: this.publisher.widget_id,
+      action: 'close'
+    };
+    this.callParent(data);
+  },
+
+  callParent: function(data){
     this.publisher.window.postMessage(JSON.stringify(data), this.publisher.hostname);
   },
 
@@ -27,5 +42,4 @@ window.app.views.Window = Backbone.View.extend({
 
     this.$el.resize();
   }
-
 });

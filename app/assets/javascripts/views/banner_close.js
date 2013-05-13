@@ -9,7 +9,7 @@ window.app.views.BannerClose = Backbone.View.extend({
 
   close: function(){
     console.log("nuclear");
-    //TODO tell parent window to remove iframe
+    app.views.window.closeParent();
   },
 
   render: function(){
