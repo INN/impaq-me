@@ -3,7 +3,13 @@
 <div id="fb-root"></div>
 <main></main>
 
-<script> window.impaqme = <%= j @campaign.to_json.html_safe %>; </script>
+<script>
+  window.impaqme =             <%= @impaqme.to_json.html_safe %>
+  window.impaqme.publisher =   <%= @publisher.to_json.html_safe %>
+  window.impaqme.campaign  =   <%= @campaign.to_json.html_safe %>
+  window.impaqme.shortlink =   <%= @shortlink.to_json.html_safe %>
+  window.impaqme.thermometer = <%= @thermometer.to_json.html_safe %>
+</script>
 <script src="//use.typekit.net/hoz0abb.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs"));</script>
