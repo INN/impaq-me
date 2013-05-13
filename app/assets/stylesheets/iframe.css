@@ -7,6 +7,7 @@ body {
   padding: 0;
   font-size: 17px;
   font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
+  letter-spacing: .1em;
 }
 
 /* layout */
@@ -60,7 +61,6 @@ p,
 #banner .thanks {
   font-size:22px;
   font-weight:normal;
-  letter-spacing:.1em;
 }
 #banner header .iconography,
 #banner header h1,
@@ -165,7 +165,6 @@ p,
   color: #FFFFFF;
   background: #BCBEC0;
   font-size: 14px;
-  letter-spacing:.1em;
   padding: .1em .75em;
   z-index:1;
 }
@@ -203,7 +202,6 @@ p,
   padding: .1em 0;
   font-size: 15px;
   font-weight:normal;
-  letter-spacing:.1em;
 }
 .follow_up_cta::before {
   content: '';
@@ -231,7 +229,6 @@ footer {
   font-family: "Courier New", Monaco, monospace;
   font-size: 13px;
   font-variant: small-caps;
-  letter-spacing:.1em;
 }
 footer a {
   color: inherit;
