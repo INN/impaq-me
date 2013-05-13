@@ -1,6 +1,7 @@
 window.app.Router = Backbone.Router.extend({
   initialize: function(options){
     window.app.views.window = new app.views.Window();
+    setInterval(app.views.window.resizeParent, 500);
   },
 
   routes: {

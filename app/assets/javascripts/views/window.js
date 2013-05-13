@@ -6,6 +6,10 @@ window.app.views.Window = Backbone.View.extend({
     message: 'wireUpIframeCommunication'
   },
 
+  initialize: function(options){
+    _.bindAll(this);
+  },
+
   resizeParent: function(event){
     var data = {
       action: 'resize',
