@@ -6,6 +6,14 @@ window.app.views.Share = Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this);
+
+    this.listenTo(this.model, {
+      'change:mode': this.changeMode
+    });
+  },
+
+  changeMode: function(model, mode, options){
+    this.$el.toggle(mode === "widget");
   },
 
   render: function(){

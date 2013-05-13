@@ -12,14 +12,9 @@ window.app.views.Widget = Backbone.View.extend({
     });
 
     this.listenTo(this.model, {
-      'change:mode':    this.changeMode,
       'change:tweeted': this.open,
       'change:liked':   this.open
     });
-  },
-
-  changeMode: function(model, mode, options){
-    this.views.header.$el.toggle(mode === "widget");
   },
 
   open: function(){
