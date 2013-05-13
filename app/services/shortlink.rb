@@ -19,9 +19,10 @@ class Shortlink
     }
   end
 
-  def self.follow(link)
+  def self.follow(link: link, remote_ip: remote_ip, referer: referer)
     link.clicks += 1
     link.save
+    link.create_click_through remote_ip, referer
     URL.new(link.long_url).tap do |destination_url|
       destination_url.params[:shared_via_impaq_me] = true
     end

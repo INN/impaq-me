@@ -1,27 +1,38 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show]
+  before_action :set_link, only: [:show, :follow]
 
-  # GET /links
   def index
     @links = Link.all
     render :json => @links
   end
 
-  # GET /links/1
   def show
     render :json => @link
   end
 
   def follow
-    @link = Link.find(params[:slug])
-    redirect_to Shortlink.follow(@link).to_s
+    redirect_to Shortlink.follow(shortlink_params).to_s
   end
 
   private
+  def shortlink_params
+    {
+      link: @link,
+      remote_ip: remote_ip,
+      referer: request.referer
+    }
+  end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_link
-    @link = Link.find(params[:id])
+    @link = Link.find(link_params)
+  end
+
+  def remote_ip
+    request.env.fetch("REMOTE_ADDR")
+  end
+
+  def link_params
+    params.require(:slug)
   end
 
 end

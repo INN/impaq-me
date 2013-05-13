@@ -8,6 +8,8 @@ class Campaign
   field :goal, type: Float
 
   has_many :shares
+  has_many :links
+  has_many :click_throughs
 
   def self.goal id
       find(id).goal or raise NoGoal
