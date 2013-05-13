@@ -9,6 +9,11 @@ body {
   font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
 }
 
+#banner,
+#widget {
+  overflow:auto;
+}
+
 h1 {
   margin:0;
 }
@@ -36,16 +41,8 @@ p,
 
 #banner {
   text-align: center;
-  padding-left:1em;
-  padding-right:1em;
+  padding:0 1em;
 }
-
-/* shame */
-#banner { padding-top:0; padding-bottom:0; }
-#banner.minimized { padding-top:1px; padding-bottom:1px; }
-#banner.maximized { padding-top:4px; padding-bottom:4px; }
-/* shameless */
-
 #banner .thanks {
   font-size:22px;
   font-weight:normal;
