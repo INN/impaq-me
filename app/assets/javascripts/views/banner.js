@@ -29,6 +29,7 @@ window.app.views.Banner = Backbone.View.extend({
   render: function(){
     window.setTimeout(this.minimize, 10000);
 
+    this.$el.html(this.template(this.model.toJSON()));
     this.assign({
       "[data-subview='BannerHeader']" : this.views.header,
       "[data-subview='BannerInfo']"   : this.views.info,

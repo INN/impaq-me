@@ -1,4 +1,5 @@
 window.app.views.Widget = Backbone.View.extend({
+  template: JST['widget'],
 
   initialize: function(options){
     _.bindAll(this);
@@ -26,6 +27,7 @@ window.app.views.Widget = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
     this.assign({
       "[data-subview='WidgetHeader']" : this.views.header,
       "[data-subview='Share']"        : this.views.share,
