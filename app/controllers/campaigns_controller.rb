@@ -58,7 +58,7 @@ class CampaignsController < ApplicationController
   def campaign_params
     p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
                                          :domains, :value_per_share, :goal,
-                                         :value_per_click, :about_uri)
+                                         :value_per_click, :about_uri, :name)
     p[:domains] = p[:domains].split ","
     p[:domains].each { |d| d.strip! }
     p[:value_per_share] = p[:value_per_share].to_f

@@ -6,6 +6,7 @@
   <ul>
     <% @campaigns.each do |campaign| %>
       <li>
+      <strong>name: </strong>            <%= campaign.name %>
       <strong>foundation_name: </strong> <%= campaign.foundation_name %>
       <strong>publisher_name: </strong>  <%= campaign.publisher_name %>
       <strong>domains: </strong>         <%= campaign.domains_to_s %>

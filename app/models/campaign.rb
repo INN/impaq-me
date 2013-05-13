@@ -1,6 +1,7 @@
 class Campaign
   class NoGoal < RuntimeError; end
   include Mongoid::Document
+  field :name, type: String
   field :foundation_name, type: String
   field :publisher_name, type: String
   field :domains, type: Array
@@ -12,6 +13,7 @@ class Campaign
   has_many :shares
   has_many :links
   has_many :click_throughs
+  has_many :publishers
 
   def self.goal id
       find(id).goal or raise NoGoal

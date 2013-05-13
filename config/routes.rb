@@ -1,4 +1,6 @@
 ImpaqBackend::Application.routes.draw do
+  resources :publishers
+
   resources :users
 
   resources :campaigns
