@@ -5,7 +5,8 @@
     me: {
       config: {
         route: '',
-        iframe_src: '//localhost:3000'
+        // iframe_src: '//localhost:3000'
+        iframe_src: '//impaq-backend.herokuapp.com'
       },
       widgets: []
     }
