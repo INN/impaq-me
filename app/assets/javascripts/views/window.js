@@ -17,7 +17,6 @@ window.app.views.Window = Backbone.View.extend({
         height: $('body').height()
       }
     };
-    console.log('resize event', event, data);
     this.callParent(data);
   },
 
@@ -29,6 +28,7 @@ window.app.views.Window = Backbone.View.extend({
   callParent: function(data){
     if(!this.publisher) return;
 
+    console.log('talk to parent', data);
     _.extend(data, {widget_id: this.publisher.widget_id});
     this.publisher.window.postMessage(JSON.stringify(data), this.publisher.hostname);
   },
