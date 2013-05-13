@@ -4,7 +4,7 @@ class Share
   field :campaign_id
   field :channel
   field :ip
-  field :long_url
+  field :referer
   field :timestamp, default: DateTime.now
 
   validates :campaign_id, presence: true
