@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Publisher ID</th>
       <th>Paypal link</th>
       <th>Limit</th>
       <th>Campaign</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @publishers.each do |publisher| %>
       <tr>
+        <td><%= publisher.id %></td>
         <td><%= publisher.paypal_link %></td>
         <td><%= publisher.limit %></td>
         <td><%= publisher.campaign.name if publisher.campaign %></td>
@@ -27,5 +29,5 @@
 </table>
 
 <br>
-
 <%= link_to 'New Publisher', new_publisher_path %>
+<%= link_to 'Dashboard', dashboard_index_path %>
