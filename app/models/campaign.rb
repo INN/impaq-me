@@ -14,6 +14,6 @@ class Campaign
   end
 
   def domains_to_s
-    domains.join ', '
+    domains.join ', ' if domains
   end
 end
