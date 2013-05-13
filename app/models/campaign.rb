@@ -3,8 +3,6 @@ class Campaign
   include Mongoid::Document
   field :name, type: String
   field :foundation_name, type: String
-  field :publisher_name, type: String
-  field :domains, type: Array
   field :value_per_share, type: Float, default: 1.0
   field :value_per_click, type: Float, default: 1.0
   field :goal, type: Float
