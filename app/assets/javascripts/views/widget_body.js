@@ -16,13 +16,13 @@ window.app.views.WidgetBody = Backbone.View.extend({
   },
 
   thanks: function(){
-    this.$("#solicit").fadeOut();
-    this.$("#thanks").fadeIn();
+    this.$(".solicit").fadeOut();
+    this.$(".thanks").fadeIn();
   },
 
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
-    this.$("#thanks").hide();
+    this.$(".thanks").hide();
     return this;
   }
 });

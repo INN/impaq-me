@@ -9,6 +9,7 @@ body {
   font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
 }
 
+/* layout */
 #banner,
 #widget {
   overflow:auto;
@@ -24,20 +25,33 @@ p,
 }
 
 
+/* colors */
 #banner,
 #widget header,
 #widget footer {
   color: #FFFFFF;
   background-color: #ED1C24;
 }
-
 #widget {
   color: #666666;
   background-color: #EFEFEF;
 }
+#widget .solicit,
+#widget .thanks {
+  font-size:17px;
+  font-weight:bold;
+}
+.share-value,
+.click-value,
+.donation-value,
+#widget .thanks :first-child {
+  color:#ED1C24;
+  font-weight: inherit;
+}
 
 
 
+/* Banner-time */
 
 #banner {
   text-align: center;
@@ -75,6 +89,8 @@ p,
   #banner header h1 { margin-left:2em; margin-right: 4em; }
 }
 
+
+/* Widget */
 
 
 #widget .box {
@@ -174,24 +190,11 @@ p,
 @-webkit-keyframes fillProgress { 0% { width: 0; } }
 
 
-#widget .solicit,
-#widget .thanks {
-  font-size:17px;
-  font-weight:bold;
-}
+/* Thanks message */
 
 
 
-.share-value,
-.click-value,
-.donation-value,
-#widget .thanks :first-child {
-  color:#ED1C24;
-  font-weight: inherit;
-}
-
-
-
+/* Followup CTA (donate, facebook/twitter, newsletter */
 .follow_up_cta {
   display:table;
   width:100%;
