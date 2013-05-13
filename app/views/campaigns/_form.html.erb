@@ -1,4 +1,4 @@
-<div id=dashMain>
+<div id="dashMain">
   <%= form_for(@campaign) do |f| %>
     <% if @campaign.errors.any? %>
     <div id="error_explanation">
@@ -21,17 +21,24 @@
     <%= f.text_field :publisher_name %>
   </div>
   <div class="field">
-      <%= f.label :domains %><br>
-      <%# default values, loop through %>
-      <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
-    </div>
+    <%= f.label :domains %><br>
+    <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
+  </div>
   <div class="field">
     <%= f.label :value_per_share %><br>
     <%= f.number_field :value_per_share %>
   </div>
   <div class="field">
+    <%= f.label :value_per_click %><br>
+    <%= f.number_field :value_per_click %>
+  </div>
+  <div class="field">
     <%= f.label :goal %><br>
     <%= f.number_field :goal %>
+  </div>
+  <div class="field">
+    <%= f.label :about_uri %><br>
+    <%= f.text_field :about_uri %>
   </div>
   <div class="actions">
     <%= f.submit %>

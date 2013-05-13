@@ -4,11 +4,12 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns
   def index
-    @campaigns = Campaign.all
+    redirect_to :dashboard_index
   end
 
   # GET /campaigns/1
   def show
+    redirect_to :dashboard_index
   end
 
   # GET /campaigns/new
@@ -47,21 +48,21 @@ class CampaignsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
 
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
+  def set_campaign
+    @campaign = Campaign.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def campaign_params
-      p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
-                                       :domains, :value_per_share, :goal)
-      p[:domains] = p[:domains].split ","
-      p[:domains].each { |d| d.strip! }
-      p[:value_per_share] = p[:value_per_share].to_f
-      p[:goal] = p[:goal].to_f
-      puts p
-      p
-    end
+  # Only allow a trusted parameter "white list" through.
+  def campaign_params
+    p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
+                                         :domains, :value_per_share, :goal,
+                                         :value_per_click, :about_uri)
+    p[:domains] = p[:domains].split ","
+    p[:domains].each { |d| d.strip! }
+    p[:value_per_share] = p[:value_per_share].to_f
+    p[:goal] = p[:goal].to_f
+    p
+  end
 end
