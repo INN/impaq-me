@@ -1,13 +1,11 @@
 <div id="dashMain">
   <h1>Dashboard</h1>
   <%= link_to "New Campaign", new_campaign_path %>
-  <%= link_to "Publishers", publishers_path %>
   <%= link_to "Edit Users", users_path %>
   <%= link_to "Sign Out", signout_path, method: "delete" %>
   <ul>
     <% @campaigns.each do |campaign| %>
       <li>
-      <strong>name: </strong>            <%= campaign.name %>
       <strong>foundation_name: </strong> <%= campaign.foundation_name %>
       <strong>publisher_name: </strong>  <%= campaign.publisher_name %>
       <strong>domains: </strong>         <%= campaign.domains_to_s %>

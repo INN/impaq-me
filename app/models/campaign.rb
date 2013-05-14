@@ -1,7 +1,6 @@
 class Campaign
   class NoGoal < RuntimeError; end
   include Mongoid::Document
-  field :name, type: String
   field :foundation_name, type: String
   field :publisher_name, type: String
   field :domains, type: Array
