@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 class Shortlink
   def self.for_campaign_and_url(campaign_id, long_url)
 
@@ -23,8 +25,8 @@ class Shortlink
     link.clicks += 1
     link.save
     link.create_click_through remote_ip, referer
-    URL.new(link.long_url).tap do |destination_url|
-      destination_url.params[:shared_via_impaq_me] = true
+    Addressable::URI.parse(link.long_url).tap do |url|
+      url.query_values = url.query_values.merge 'shared_via_impaq_me' => true
     end
   end
 end

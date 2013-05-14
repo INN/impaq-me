@@ -1,17 +1,20 @@
+require 'addressable/uri'
+
 class Iframe
   def self.bootstrap article_url
-    domain = URL.new(article_url).domain
-    campaign = Campaign.find_by domains: domain
+    article_url = Addressable::URI.heuristic_parse(article_url).normalize
+    campaign = Campaign.find_by domains: article_url.host
     campaign_meter = CampaignMeter.for campaign
-    shortlink = Shortlink.for_campaign_and_url campaign.id, article_url
+    shortlink = Shortlink.for_campaign_and_url campaign.id, article_url.to_s
 
     {
-      article_url: article_url,
-      domain: domain,
+      article_url: article_url.to_s,
+      domain: article_url.host,
       foundation_name: campaign.foundation_name,
       publisher_name: campaign.publisher_name,
       value_per_share: campaign.value_per_share.to_i,
       paypal: campaign.paypal,
     }.merge(campaign_meter).merge(shortlink)
   end
+
 end
