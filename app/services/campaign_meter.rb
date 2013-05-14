@@ -1,21 +1,25 @@
 class CampaignMeter
   def self.for campaign
-    shares = Share.total_for_campaign campaign.id
-    total = max((shares * campaign.value_per_share), campaign.goal)
-    percent = (total/campaign.goal * 100).round 2
+    percent = (total(campaign)/campaign.goal * 100).round 2
     {
       campaign_id: campaign.id,
       goal: campaign.goal.to_i,
-      total: total.to_i,
+      total: total(campaign).to_i,
       percent: percent
     }
   end
 
-  def self.max generated, goal
-    if generated <= goal
-      generated
-    else
-      goal
-    end
+  def self.total campaign
+    [share_total(campaign) + click_total(campaign), campaign.goal].min
+  end
+
+  def self.click_total campaign
+    clicks = ClickThrough.total_for_campaign campaign.id
+    click_total = clicks * campaign.value_per_share
+  end
+
+  def self.share_total campaign
+    shares = Share.total_for_campaign campaign.id
+    share_total = shares * campaign.value_per_share
   end
 end
