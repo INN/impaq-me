@@ -1,7 +1,9 @@
-(function($, _){
+/* using jQuery for extend(), replaceAll, find, on(event), proxy(bind), attr(), height(), parseJSON, prependTo */
+/* documented in case we can give zepto or ender a try (to shrink footprint). or maybe a custom build */
+
+(function($){
   window.impaq = $.extend({}, window.impaq, {
     $: $,
-    _: _,
     me: {
       config: {
         route: '',
@@ -17,7 +19,7 @@
 
     var html = this.compile();
     this.iframe = $(html).replaceAll(this.placeholder).find('iframe')[0];
-    $(this.iframe).on('load', _.bind(this.wireUpCommunication, this));
+    $(this.iframe).on('load', $.proxy(this.wireUpCommunication, this));
   };
 
   Widget.prototype = {
@@ -72,4 +74,4 @@
     }));
   }
 
-})(jQuery.noConflict(true), _);//.noConflict());
+})(jQuery.noConflict(true));
