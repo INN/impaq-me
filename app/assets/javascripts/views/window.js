@@ -34,7 +34,7 @@ window.app.views.Window = Backbone.View.extend({
   },
 
   wireUpIframeCommunication: function(event){
-    if(!event.originalEvent.origin.match(/localhost/)) return;
+    // if(!event.originalEvent.origin.match(/localhost/)) return;
     console.log("message from parent", event);
 
     this.publisher = {
