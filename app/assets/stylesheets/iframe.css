@@ -19,8 +19,7 @@ body {
 h1 {
   margin:0;
 }
-p,
-#banner header {
+p  {
   margin-top:11px;
   margin-bottom:11px;
 }
@@ -32,6 +31,7 @@ p,
 #widget footer {
   color: #FFFFFF;
   background-color: #ED1C24;
+  letter-spacing: .15em;
 }
 #widget {
   color: #666666;
@@ -57,11 +57,18 @@ p,
 #banner {
   text-align: center;
   padding:0 1em;
+  cursor: pointer;
 }
 #banner .thanks {
-  font-size:22px;
+  font-size:18px;
   font-weight:normal;
 }
+#banner .thanks .click-value {
+  color: inherit;
+  font-size: 17px;
+  font-weight:bold;
+}
+#banner header { margin-top: .42em; margin-bottom:.42em; }
 #banner header .iconography,
 #banner header h1,
 #banner header .progress {
@@ -76,9 +83,9 @@ p,
   font-size:inherit;
 }
 
-#banner header { font-size: 19px; letter-spacing: .2em; }
+#banner header { font-size: 17px; letter-spacing: .2em; }
 #banner header h1 { font-size: 1em; font-weight: bold; text-transform: uppercase; }
-#banner header .iconography { font-size: 22px; word-spacing: .25em; white-space: nowrap; }
+#banner header .iconography { word-spacing: .25em; white-space: nowrap; }
 #banner .close { border: 0; background: transparent; }
 
 @media only screen and (min-width : 450px) {
@@ -103,8 +110,8 @@ p,
   padding:.7em 1em .5em;
   font-size:14px;
   text-align:center;
-  letter-spacing:.2em;
   text-transform:uppercase;
+  cursor: pointer;
 }
 #widget header h1 {
   font-size:1em;
@@ -147,6 +154,9 @@ p,
 .share_tools .fb-like iframe {
   max-width: 48px;
 }
+.share_tools .twitter iframe {
+  max-width: 60px;
+}
 /* better to do this with a background image + left padding */
 .share_tools .email a::before {
   content: '\f0e0';
@@ -179,16 +189,7 @@ p,
   height:100%;
   background: #6D6E71;
   z-index:-1;
-  /* TODO: -moz and -o prefixes */
-  animation-delay: 5s;
-  animation-duration: 3s;
-  animation-name: fillProgress;
-  -webkit-animation-delay: 5s;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-name: fillProgress;
 }
-@keyframes fillProgress { 0% { width: 0; } }
-@-webkit-keyframes fillProgress { 0% { width: 0; } }
 
 @media only screen and (min-width : 550px) {
   .unnamed        { display:table; width:100%; }
@@ -232,10 +233,10 @@ p,
 
 
 footer {
-  padding: .2em 1em;
-  font-family: "Courier New", Monaco, monospace;
-  font-size: 13px;
-  font-variant: small-caps;
+  padding: .1em 1em .2em;
+  font-family: Monaco, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 footer a {
   color: inherit;
