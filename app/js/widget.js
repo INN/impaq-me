@@ -24,14 +24,20 @@
 
   Widget.prototype = {
     template: function(data){
-      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?article_url='+ encodeURIComponent(data.article_url) +'#'+ data.route +'" style="width:100%; border:0;"></iframe></div>';
+      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?article_url='+ data.article_url +'&article_title='+ data.article_title +'#'+ data.route +'" style="width:100%; border:0;"></iframe></div>';
     },
 
     templateData: function(){
-      return $.extend({}, impaq.me.config, this.config, { article_url: this.articleURL() });
+      return $.extend({}, impaq.me.config, this.config, {
+        article_url: encodeURIComponent(this.articleURL()),
+        article_title: encodeURIComponent(this.articleTitle())
+      });
     },
     articleURL: function(){
       return this.placeholder.data('url') || $('link[rel=canonical]').attr('href') || window.location;
+    },
+    articleTitle: function(){
+      return document.title;
     },
     compile: function(){
       return this.template(this.templateData());
