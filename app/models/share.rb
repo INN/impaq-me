@@ -20,7 +20,7 @@ class Share
   def self.to_csv
     CSV.generate do |csv|
       csv << fields_to_a
-      all.each do |share|
+      each do |share|
         csv << share.attributes.values_at(*fields_to_a)
       end
     end

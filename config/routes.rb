@@ -10,6 +10,7 @@ ImpaqBackend::Application.routes.draw do
 
   resources :links
   resources :shares
+  resources :click_throughs
 
   get ':slug' => 'links#follow'
 
