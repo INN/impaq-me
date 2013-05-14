@@ -1,13 +1,11 @@
 {
   "name": "impaq-me-widget",
-  "title": "An HTML/JS/CSS app",
+  "title": "widget to be injected into INN publisher sites",
   "version": "0.0.1",
   "private": true,
-  "author": {
-    "name": "John Doe",
-    "company": "ACME, Inc."
-  },
+  "author": "Jason Karns <jason@testdouble.com>",
+  "contributors" : "Zach Briggs <zach@testdouble.com>",
   "dependencies": {
-    "lineman": "~0.4.10"
+    "lineman": "~0.4.11"
   }
 }
