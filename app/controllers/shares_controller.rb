@@ -1,10 +1,14 @@
 class SharesController < ApplicationController
   before_action :set_share, only: [:show, :edit, :update, :destroy]
+  before_action :check_user
 
   # GET /shares
   def index
     @shares = Share.all
-    render :json => @shares
+    respond_to do |format|
+      format.json
+      format.csv { render text: @shares.to_csv }
+    end
   end
 
   # GET /shares/1
