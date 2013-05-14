@@ -118,14 +118,6 @@ p,
 }
 
 
-.share_tools { text-align:center }
-@media only screen and (min-width : 550px) {
-  .unnamed        { display:table; width:100%; }
-  .share_tools    { display:table-cell; width:270px; text-align:left; }
-  .progress_meter { display:table-cell; }
-}
-
-
 .unnamed {
   padding-top:7px;
 }
@@ -133,7 +125,11 @@ p,
   margin-bottom:0;
 }
 
+
+/* Share Tools */
+
 .share_tools {
+  text-align:center;
   list-style:none;
   padding:0;
   font-size:15px;
@@ -141,14 +137,18 @@ p,
 .share_tools li {
   display:inline-block;
   line-height:1;
-  margin:0 10px;
+  margin:0 8px;
   vertical-align:middle;
 }
 .share_tools li:first-child {
   margin-left: 0;
 }
+.share_tools .fb-like span,
+.share_tools .fb-like iframe {
+  max-width: 48px;
+}
 /* better to do this with a background image + left padding */
-.share_tools .email::before {
+.share_tools .email a::before {
   content: '\f0e0';
   font-family: 'FontAwesome';
   margin-right:4px;
@@ -159,6 +159,8 @@ p,
   text-decoration:none;
 }
 
+
+/* Progress Meter */
 
 .progress_meter p {
   position:relative;
@@ -188,6 +190,11 @@ p,
 @keyframes fillProgress { 0% { width: 0; } }
 @-webkit-keyframes fillProgress { 0% { width: 0; } }
 
+@media only screen and (min-width : 550px) {
+  .unnamed        { display:table; width:100%; }
+  .share_tools    { display:table-cell; width:250px; text-align:left; }
+  .progress_meter { display:table-cell; }
+}
 
 /* Thanks message */
 
@@ -241,3 +248,4 @@ footer > * {
 footer > *:last-child {
   text-align:right;
 }
+
