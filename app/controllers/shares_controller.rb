@@ -6,7 +6,7 @@ class SharesController < ApplicationController
   def index
     @shares = Share.all
     respond_to do |format|
-      format.json
+      format.json { render json: @shares }
       format.csv { render text: @shares.to_csv }
     end
   end
