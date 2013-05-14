@@ -7,6 +7,7 @@
   <strong>CSV</strong>
   <%= link_to "Raw Shares", shares_path(format: :csv) %>
   <%= link_to "Raw Clicks", click_throughs_path(format: :csv) %>
+  <%= link_to "Raw Campaigns", campaigns_path(format: :csv) %>
   <ul>
     <% @campaigns.each do |campaign| %>
       <li>

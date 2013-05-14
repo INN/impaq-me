@@ -4,7 +4,12 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns
   def index
-    redirect_to :dashboard_index
+    @campaigns = Campaign.all
+    respond_to do |format|
+      format.html { redirect_to :dashboard_index }
+      format.json { render json: @campaigns }
+      format.csv { render text: @campaigns.to_csv }
+    end
   end
 
   # GET /campaigns/1

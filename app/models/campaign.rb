@@ -18,6 +18,19 @@ class Campaign
       find(id).goal or raise NoGoal
   end
 
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << fields_to_a
+      each do |campaign|
+        csv << campaign.attributes.values_at(*fields_to_a)
+      end
+    end
+  end
+
+  def self.fields_to_a
+    self.fields.map { |field| field[0] }
+  end
+
   def domains_to_s
     domains.join ', ' if domains
   end
