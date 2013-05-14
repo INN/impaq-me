@@ -10,7 +10,8 @@ class Iframe
       domain: domain,
       foundation_name: campaign.foundation_name,
       publisher_name: campaign.publisher_name,
-      value_per_share: campaign.value_per_share.to_i
+      value_per_share: campaign.value_per_share.to_i,
+      paypal: campaign.paypal,
     }.merge(campaign_meter).merge(shortlink)
   end
 end

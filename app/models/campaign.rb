@@ -7,7 +7,7 @@ class Campaign
   field :value_per_share, type: Float, default: 1.0
   field :value_per_click, type: Float, default: 1.0
   field :goal, type: Float
-  field :about_uri, type: String
+  field :paypal, type: String
 
   has_many :shares
   has_many :links

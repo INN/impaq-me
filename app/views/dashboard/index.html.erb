@@ -17,7 +17,7 @@
       <strong>value_per_share: </strong> <%= campaign.value_per_share %>
       <strong>value_per_click: </strong> <%= campaign.value_per_click %>
       <strong>goal: </strong>            <%= campaign.goal %>
-      <strong>about_uri: </strong>       <%= campaign.about_uri %>
+      <strong>paypal: </strong>       <%= campaign.paypal %>
       <strong>campaign_id: </strong>     <%= campaign.id %>
       <br> <strong>Shares:</strong> <%= Share.total_for_campaign campaign.id %>
       <br><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong>
