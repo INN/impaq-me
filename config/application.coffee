@@ -6,25 +6,12 @@
   You can find the parent object in: node_modules/lineman/config/application.coffee
 ###
 
-module.exports = require('lineman').config.extend('application',
-
-  handlebars:
-    compile:
-      options:
-        namespace: "impaq.JST"
-  jst:
-    compile:
-      options:
-        namespace: "impaq.JST"
-  homepage:
-    dev:
-      context:
-        impaq_me_iframe: "http://localhost:3000"
-    dist:
-      context:
-        impaq_me_iframe: "//impaq-backend.herokuapp.com"
+# console.log(require('lineman').config.extend('application', {appTasks: null}));
+config = require('lineman').config.extend('application',
   server:
     web:
       port: 8002
-
 )
+config.appTasks.common.pop()
+config.appTasks.dist.pop()
+module.exports = config

@@ -23,7 +23,9 @@
   };
 
   Widget.prototype = {
-    template: impaq.JST['app/templates/widget.us'],
+    template: function(data){
+      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?article_url='+ encodeURIComponent(data.article_url) +'#'+ data.route +'" style="width:100%; border:0;"></iframe></div>';
+    },
 
     templateData: function(){
       return $.extend({}, impaq.me.config, this.config, { article_url: this.articleURL() });

@@ -1,3 +1,0 @@
-<div class="impaq-me-widget">
-  <iframe src="<%= iframe_src %>?article_url=<%= encodeURIComponent(article_url) %>#<%= route %>" style="width:100%; border:0;"></iframe>
-</div>
