@@ -9,6 +9,12 @@ class Shortlink
       channel: 'twitter'
     })
 
+    electronic_mail = Link.find_or_create_by({
+      campaign_id: campaign_id,
+      long_url: long_url,
+      channel: 'email'
+    })
+
     facebook = Link.find_or_create_by({
       campaign_id: campaign_id,
       long_url: long_url,
@@ -17,7 +23,8 @@ class Shortlink
 
     {
       twitter_shortlink: twitter.id,
-      facebook_shortlink: facebook.id
+      facebook_shortlink: facebook.id,
+      email_shortlink: electronic_mail.id,
     }
   end
 
