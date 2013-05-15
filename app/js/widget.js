@@ -57,13 +57,11 @@
     },
     minimizeChild: function(){
       console.log("scroll scroll");
-      // _this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: _this.id, action: "minimize"}), _this.iframe.src);
-      // Was going to wire up the minimize but unsure on final solution.
       $(window).unbind("scroll", this.minimizeChild);
+      this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id, action: "minimize"}), this.iframe.src);
     },
-    startScrollDetection: function(event){
-      // TODO start scroll detection on init
-      $(window).scroll(this.minimizeChild);
+    bindScroll: function(event){
+      $(window).scroll($.proxy(this.minimizeChild, this));
     },
     wireUpCommunication: function(e){
       console.log("iframe loaded", e);
@@ -85,11 +83,13 @@
   });
 
   if(window.location.search.match(/shared_via_impaq_me=/)) {
-    impaq.me.widgets.push(new Widget({
+    var widget = new Widget({
       id: impaq.me.widgets.length,
       placeholder: $('<div>').prependTo('body'),
       config: { route: "banner" }
-    }));
+    })
+    $(widget.iframe).on('load', $.proxy(widget.bindScroll, widget));
+    impaq.me.widgets.push(widget);
   }
 
 })(jQuery.noConflict(true));
