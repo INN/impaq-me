@@ -5,4 +5,5 @@
     <li class="email"><a href="mailto:?subject=<%= encodeURIComponent("Check this out: " + article_title) %>&amp;body=<%= encodeURIComponent(twitter_shortlink) %>" target="_blank">Email</a></li>
   </ul>
   <div class="progress_meter"><p>$<%= total %> Raised so far</p></div>
+  <style type="text/css">.progress_meter p::before { width:<%= percent %>%; }</style>
 </div>
