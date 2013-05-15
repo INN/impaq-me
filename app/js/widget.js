@@ -55,14 +55,24 @@
         this.resize(data.args.height);
       }
     },
+    minimizeChild: function(){
+        console.log("scroll scroll");
+        // _this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: _this.id, action: "minimize"}), _this.iframe.src);
+        // Was going to wire up the minimize but unsure on final solution.
+        $(window).unbind("scroll", this.minimizeChild);
+    },
+    startScrollDetection: function(event){
+      // TODO start scroll detection on init
+      $(window).scroll(this.minimizeChild);
+    },
     wireUpCommunication: function(e){
       console.log("iframe loaded", e);
-      this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id}), this.iframe.src);
+      this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id, action: "initialize"}), this.iframe.src);
     }
   };
 
   $(window).on('message', function(e){
-    console.log("message received", e);
+    // console.log("message received", e);
     var data = $.parseJSON(e.originalEvent.data);
     impaq.me.widgets[data.widget_id].respondToChild(data);
   });
