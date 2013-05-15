@@ -13,7 +13,8 @@ window.app.views.Widget = Backbone.View.extend({
 
     this.listenTo(this.model, {
       'change:tweeted': this.open,
-      'change:liked':   this.open
+      'change:liked':   this.open,
+      'change:emailed': this.open
     });
   },
 

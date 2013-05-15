@@ -7,6 +7,7 @@ window.app.views.WidgetBody = Backbone.View.extend({
     this.listenTo(this.model, {
       'change:tweeted': this.thanks,
       'change:liked':   this.thanks,
+      'change:emailed': this.thanks,
       'change:open':    this.openClose
     });
   },

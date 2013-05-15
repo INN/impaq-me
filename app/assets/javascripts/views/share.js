@@ -2,6 +2,7 @@ window.app.views.Share = Backbone.View.extend({
   template: JST['share'],
 
   events: {
+    "click .email" : "emailClick"
   },
 
   initialize: function(options){
@@ -21,6 +22,10 @@ window.app.views.Share = Backbone.View.extend({
     if(this.model.get('mode') !== "widget"){
       this.$el.slide(open_close);
     }
+  },
+
+  emailClick: function(event){
+    this.model.set('emailed', true).recordEmail();
   },
 
   render: function(){
