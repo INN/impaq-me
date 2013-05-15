@@ -1,0 +1,19 @@
+.share_tools .facebook {
+  margin-right:0;
+}
+.share_tools .facebook + * {
+  margin-left:-4px;
+}
+
+.share_tools .fb-like {
+  position:relative;
+}
+.share_tools .fb-like::after {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 24px;
+  top: 0;
+  right: 0;
+  background-color: #EFEFEF;
+}
