@@ -24,7 +24,14 @@ window.app.views.Share = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template(this.model.toJSON()));
+    var data = this.model.toJSON();
+    $.extend(data, {
+      facebook_shortlink: location.origin + '/' + data.facebook_shortlink,
+      twitter_shortlink:  location.origin + '/' + data.twitter_shortlink,
+      email_shortlink:    location.origin + '/' + data.email_shortlink
+    });
+
+    this.$el.html(this.template(data));
     return this;
   }
 
