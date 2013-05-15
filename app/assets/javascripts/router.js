@@ -14,7 +14,6 @@ window.app.Router = Backbone.Router.extend({
     "banner" : "banner_maximized",
     "banner/maximized" : "banner_maximized",
     "banner/minimized" : "banner_minimized"
-
   },
 
   widget_open: function(){
@@ -34,28 +33,26 @@ window.app.Router = Backbone.Router.extend({
   },
 
   banner_maximized: function(){
-    $('main').empty()
-      .append(app.views.banner.render().el)
-      .append(app.views.widget.render().el);
-    app.views.banner.maximize();
-    app.models.widget.set({
-      mode: 'banner',
-      open: false
-    });
+    createBanner().trigger('maximize')
   },
 
   banner_minimized: function(){
+    createBanner().trigger('minimize')
+  },
+
+  //private
+
+  createBanner: function(){
     $('main').empty()
       .append(app.views.banner.render().el)
       .append(app.views.widget.render().el);
-    app.views.banner.minimize();
     app.models.widget.set({
       mode: 'banner',
       open: false
     });
   }
-});
 
+});
 
 jQuery(function($){
   window.app.router = new window.app.Router();

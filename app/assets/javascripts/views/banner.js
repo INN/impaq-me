@@ -13,18 +13,17 @@ window.app.views.Banner = Backbone.View.extend({
       info: new app.views.BannerInfo({model: this.model}),
       close: new app.views.BannerClose({model: this.model})
     });
+
+    this.on('maximize', this.maximize);
+    this.on('minimize', this.minimize);
   },
 
   maximize: function(){
     this.views.info.$el.slideDown();
-    this.$el.removeClass('minimized').addClass('maximized');
-    return this;
   },
 
   minimize: function(){
     this.views.info.$el.slideUp();
-    this.$el.removeClass('maximized').addClass('minimized');
-    return this;
   },
 
   click: function(){

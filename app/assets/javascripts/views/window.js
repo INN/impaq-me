@@ -29,7 +29,7 @@ window.app.views.Window = Backbone.View.extend({
     if(!this.publisher) return;
 
     console.log('talk to parent', data);
-    _.extend(data, {widget_id: this.publisher.widget_id});
+    _(data).extend({widget_id: this.publisher.widget_id});
     this.publisher.window.postMessage(JSON.stringify(data), this.publisher.hostname);
   },
 

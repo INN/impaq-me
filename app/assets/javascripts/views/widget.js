@@ -4,12 +4,12 @@ window.app.views.Widget = Backbone.View.extend({
   initialize: function(options){
     _.bindAll(this);
 
-    this.views = $.extend({}, {
+    this.views = {
       header: new app.views.WidgetHeader({model: this.model}),
       share:  new app.views.Share({model: this.model}),
       body:   new app.views.WidgetBody({model: this.model}),
       footer: new app.views.WidgetFooter({model: this.model})
-    });
+    };
 
     this.listenTo(this.model, {
       'change:tweeted': this.open,
