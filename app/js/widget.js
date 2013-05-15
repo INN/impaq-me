@@ -56,10 +56,10 @@
       }
     },
     minimizeChild: function(){
-        console.log("scroll scroll");
-        // _this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: _this.id, action: "minimize"}), _this.iframe.src);
-        // Was going to wire up the minimize but unsure on final solution.
-        $(window).unbind("scroll", this.minimizeChild);
+      console.log("scroll scroll");
+      // _this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: _this.id, action: "minimize"}), _this.iframe.src);
+      // Was going to wire up the minimize but unsure on final solution.
+      $(window).unbind("scroll", this.minimizeChild);
     },
     startScrollDetection: function(event){
       // TODO start scroll detection on init
