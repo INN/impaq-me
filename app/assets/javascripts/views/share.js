@@ -8,6 +8,10 @@ window.app.views.Share = Backbone.View.extend({
   initialize: function(options){
     _.bindAll(this);
 
+    this.views = {
+      button: new app.views.WidgetButton({model: this.model})
+    };
+
     this.listenTo(this.model, {
       'change:mode': this.changeMode,
       'change:open': this.openClose
@@ -37,6 +41,10 @@ window.app.views.Share = Backbone.View.extend({
     });
 
     this.$el.html(this.template(data));
+
+    this.assign({
+      "[data-subview='WidgetButton']" : this.views.button
+    });
     return this;
   }
 

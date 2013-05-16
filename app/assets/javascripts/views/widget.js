@@ -4,15 +4,15 @@ window.app.views.Widget = Backbone.View.extend({
   initialize: function(options){
     _.bindAll(this);
 
-    this.views = $.extend({}, {
+    this.views = {
       header: new app.views.WidgetHeader({model: this.model}),
       share:  new app.views.Share({model: this.model}),
       body:   new app.views.WidgetBody({model: this.model}),
       footer: new app.views.WidgetFooter({model: this.model})
-    });
+    };
 
     this.listenTo(this.model, {
-      'change:open':    this.openChange,
+      'change:open':    this.openChanged,
       'change:tweeted': this.open,
       'change:liked':   this.open,
       'change:emailed': this.open
@@ -23,8 +23,9 @@ window.app.views.Widget = Backbone.View.extend({
     this.model.set('open', true);
   },
 
-  openChange: function(model, open_close, options){
-    this.$("#widget .unnamed").animate({ margin: (open_close ? '12px 0 -4px' : 0) });
+  openChanged: function(model, open, options){
+    this.$("#widget .unnamed").animate({ margin: (open ? '12px 0 -4px' : 0) });
+    this.$el.toggleClass('open', open);
   },
 
   render: function(){
