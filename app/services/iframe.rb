@@ -9,6 +9,7 @@ class Iframe
 
     {
       article_url: article_url.to_s,
+      article_domain: article_url.authority,
       article_title: article.title,
       domain: article_url.host,
       foundation_name: campaign.foundation_name,
