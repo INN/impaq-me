@@ -20,6 +20,9 @@
     var html = this.compile();
     this.iframe = $(html).replaceAll(this.placeholder).find('iframe')[0];
     $(this.iframe).on('load', $.proxy(this.wireUpCommunication, this));
+    if(this.config && this.config.route === "banner"){
+      $(this.iframe).on('load', $.proxy(this.bindScroll, this));
+    }
   };
 
   Widget.prototype = {
@@ -86,7 +89,6 @@
       placeholder: $('<div>').prependTo('body'),
       config: { route: "banner" }
     });
-    $(widget.iframe).on('load', $.proxy(widget.bindScroll, widget));
     impaq.me.widgets.push(widget);
   }
 
