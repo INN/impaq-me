@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails',     github: 'rails/rails'
-gem 'arel',      github: 'rails/arel'
+gem 'rails', '4.0.0.rc1'
 gem "active_model_serializers", "~> 0.7.0"
-gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'addressable'
@@ -12,6 +10,8 @@ gem 'backbone-rails'
 gem 'ejs'
 gem 'bcrypt-ruby'
 
+# mongoid 4 has not been released to rubygems quite yet
+gem 'mongoid', github: 'mongoid/mongoid'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -23,16 +23,16 @@ group :test do
   gem 'database_cleaner'
 end
 # Use edge version of sprockets-rails
-gem 'sprockets-rails', github: 'rails/sprockets-rails'
+gem 'sprockets-rails'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails', '4.0.0.rc1'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
