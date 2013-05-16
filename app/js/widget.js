@@ -87,7 +87,7 @@
       id: impaq.me.widgets.length,
       placeholder: $('<div>').prependTo('body'),
       config: { route: "banner" }
-    })
+    });
     $(widget.iframe).on('load', $.proxy(widget.bindScroll, widget));
     impaq.me.widgets.push(widget);
   }
