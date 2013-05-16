@@ -5,6 +5,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+body {
   font-size: 17px;
   font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
   letter-spacing: .1em;
@@ -20,12 +22,14 @@ h1 {
   margin:0;
 }
 p  {
-  margin-top:11px;
-  margin-bottom:11px;
+  margin:8px 0;
 }
 
 
-/* colors */
+/* shared fonts/colors */
+a {
+  color: inherit;
+}
 #banner,
 #widget header,
 #widget footer {
@@ -103,7 +107,7 @@ p  {
 #widget .box {
   max-width: 700px;
   padding:0 4.5%;
-  margin:2px auto 17px;
+  margin:0 auto;
 }
 
 #widget header {
@@ -123,15 +127,6 @@ p  {
   font-family: 'FontAwesome';
   margin-right: 1.25em;
 }
-
-
-.unnamed {
-  padding-top:7px;
-}
-.unnamed p {
-  margin-bottom:0;
-}
-
 
 /* Share Tools */
 
@@ -161,7 +156,6 @@ p  {
   font-size:18px;
 }
 .share_tools .email a {
-  color:inherit;
   text-decoration:none;
 }
 
@@ -191,6 +185,7 @@ p  {
   .share_tools    { display:table-cell; width:250px; text-align:left; }
   .progress_meter { display:table-cell; }
 }
+
 
 /* Thanks message */
 
@@ -226,16 +221,13 @@ p  {
 }
 
 
-
+/* Footer */
 footer {
+  margin-top: 17px;
   padding: .1em 1em .2em;
   font-family: Monaco, monospace;
   font-size: 10px;
   text-transform: uppercase;
-}
-footer a {
-  color: inherit;
-  text-decoration:underline;
 }
 footer > * {
   display:inline-block;
