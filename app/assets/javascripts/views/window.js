@@ -28,7 +28,6 @@ window.app.views.Window = Backbone.View.extend({
   callParent: function(data){
     if(!this.publisher) return;
 
-    // console.log('talk to parent', data);
     _.extend(data, {widget_id: this.publisher.widget_id});
     this.publisher.window.postMessage(JSON.stringify(data), this.publisher.hostname);
   },
@@ -39,9 +38,7 @@ window.app.views.Window = Backbone.View.extend({
     //TODO stop parsing this twice
     if(JSON.parse(event.originalEvent.data).action === "minimize"){
       app.models.widget.set('minimize', 'true')
-      console.log("min message from parent", event);
     } else {
-      console.log("init message from parent", event);
       this.wireUpIframeCommunication(event);
     }
   },

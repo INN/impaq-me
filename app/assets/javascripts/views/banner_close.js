@@ -8,7 +8,6 @@ window.app.views.BannerClose = Backbone.View.extend({
   },
 
   close: function(){
-    console.log("nuclear");
     app.views.window.closeParent();
   },
 
