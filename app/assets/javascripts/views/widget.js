@@ -12,6 +12,7 @@ window.app.views.Widget = Backbone.View.extend({
     });
 
     this.listenTo(this.model, {
+      'change:open':    this.openChange,
       'change:tweeted': this.open,
       'change:liked':   this.open,
       'change:emailed': this.open
@@ -20,6 +21,10 @@ window.app.views.Widget = Backbone.View.extend({
 
   open: function(){
     this.model.set('open', true);
+  },
+
+  openChange: function(model, open_close, options){
+    this.$("#widget .unnamed").animate({ margin: (open_close ? '12px 0 -4px' : 0) });
   },
 
   render: function(){
