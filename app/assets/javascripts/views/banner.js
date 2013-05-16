@@ -13,6 +13,10 @@ window.app.views.Banner = Backbone.View.extend({
       info: new app.views.BannerInfo({model: this.model}),
       close: new app.views.BannerClose({model: this.model})
     });
+
+    this.listenTo(this.model, {
+      'change:minimize': this.minimize,
+    });
   },
 
   maximize: function(){

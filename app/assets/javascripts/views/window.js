@@ -3,7 +3,7 @@ window.app.views.Window = Backbone.View.extend({
 
   events: {
     resize: 'resizeParent',
-    message: 'wireUpIframeCommunication'
+    message: 'iframeCommunication'
   },
 
   initialize: function(options){
@@ -28,14 +28,24 @@ window.app.views.Window = Backbone.View.extend({
   callParent: function(data){
     if(!this.publisher) return;
 
-    console.log('talk to parent', data);
+    // console.log('talk to parent', data);
     _.extend(data, {widget_id: this.publisher.widget_id});
     this.publisher.window.postMessage(JSON.stringify(data), this.publisher.hostname);
   },
 
+  iframeCommunication: function(event){
+    //TODO stop parsing this twice
+    if(JSON.parse(event.originalEvent.data).action === "minimize"){
+      app.models.widget.set('minimize', 'true')
+      console.log("min message from parent", event);
+    } else {
+      console.log("init message from parent", event);
+      this.wireUpIframeCommunication(event);
+    }
+  },
+
   wireUpIframeCommunication: function(event){
     // if(!event.originalEvent.origin.match(/localhost/)) return;
-    console.log("message from parent", event);
 
     this.publisher = {
       widget_id: JSON.parse(event.originalEvent.data).widget_id,
