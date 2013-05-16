@@ -8,7 +8,7 @@
       config: {
         route: '',
         // iframe_src: '//localhost:3000'
-        iframe_src: '//impaq-backend.herokuapp.com'
+        iframe_src: '//impaqme.herokuapp.com'
       },
       widgets: []
     }
@@ -56,7 +56,6 @@
       }
     },
     minimizeChild: function(){
-      console.log("scroll scroll");
       $(window).unbind("scroll", this.minimizeChild);
       this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id, action: "minimize"}), this.iframe.src);
     },
@@ -64,7 +63,6 @@
       $(window).scroll($.proxy(this.minimizeChild, this));
     },
     wireUpCommunication: function(e){
-      console.log("iframe loaded", e);
       this.iframe.contentWindow.postMessage(JSON.stringify({widget_id: this.id, action: "initialize"}), this.iframe.src);
     }
   };
