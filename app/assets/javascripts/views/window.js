@@ -34,6 +34,8 @@ window.app.views.Window = Backbone.View.extend({
   },
 
   iframeCommunication: function(event){
+    if(!event.originalEvent.origin.match(this.model.get('article_domain'))) return;
+
     //TODO stop parsing this twice
     if(JSON.parse(event.originalEvent.data).action === "minimize"){
       app.models.widget.set('minimize', 'true')
@@ -45,8 +47,6 @@ window.app.views.Window = Backbone.View.extend({
   },
 
   wireUpIframeCommunication: function(event){
-    // if(!event.originalEvent.origin.match(/localhost/)) return;
-
     this.publisher = {
       widget_id: JSON.parse(event.originalEvent.data).widget_id,
       window: event.originalEvent.source,

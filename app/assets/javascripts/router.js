@@ -1,8 +1,4 @@
 window.app.Router = Backbone.Router.extend({
-  initialize: function(options){
-    window.app.views.window = new app.views.Window();
-    setInterval(app.views.window.resizeParent, 500);
-  },
 
   routes: {
     "" : "widget_closed",
@@ -62,9 +58,11 @@ jQuery(function($){
 
   app.models.widget = new app.models.Widget(impaqme);
   _.extend(window.app.views, {
+    window: new app.views.Window({ model: app.models.widget }),
     banner: new app.views.Banner({ model: app.models.widget }),
     widget: new app.views.Widget({ model: app.models.widget })
   });
 
+  setInterval(app.views.window.resizeParent, 500);
   Backbone.history.start();
 });
