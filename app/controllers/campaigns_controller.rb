@@ -39,7 +39,7 @@ class CampaignsController < ApplicationController
 
   # PATCH/PUT /campaigns/1
   def update
-    if @campaign.update_attributes!(campaign_params)
+    if @campaign.update_attributes(campaign_params)
       redirect_to :dashboard_index, notice: 'Campaign was successfully updated.'
     else
       render action: 'edit'

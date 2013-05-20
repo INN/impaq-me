@@ -26,15 +26,15 @@
   </div>
   <div class="field">
     <%= f.label :value_per_share %><br>
-    <%= f.number_field :value_per_share %>
+    <%= f.number_field :value_per_share, :step => '.01' %>
   </div>
   <div class="field">
     <%= f.label :value_per_click %><br>
-    <%= f.number_field :value_per_click %>
+    <%= f.number_field :value_per_click, :step => '.01'%>
   </div>
   <div class="field">
     <%= f.label :goal %><br>
-    <%= f.number_field :goal %>
+    <%= f.number_field :goal, :step => '.01' %>
   </div>
   <div class="field">
     <%= f.label :paypal %><br>

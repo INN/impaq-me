@@ -8,15 +8,28 @@ class Iframe
     shortlink = Shortlink.for_campaign_and_url campaign.id, article_url.to_s
 
     {
+      campaign_id: campaign.id.to_s,
       article_url: article_url.to_s,
       article_domain: article_url.authority,
       article_title: article.title,
       domain: article_url.host,
       foundation_name: campaign.foundation_name,
       publisher_name: campaign.publisher_name,
-      value_per_share: campaign.value_per_share.to_i,
+      value_per_share: format_dollar(campaign.value_per_share),
+      value_per_click: format_dollar(campaign.value_per_click),
       paypal: campaign.paypal,
-    }.merge(campaign_meter).merge(shortlink)
+      goal: format_dollar(campaign_meter.goal),
+      total: format_dollar(campaign_meter.total),
+      percent: campaign_meter.percent,
+    }.merge(shortlink)
+  end
+
+  def self.format_dollar x
+    if x % 1 == 0
+      x.to_i
+    else
+      x.round 2
+    end
   end
 
 end
