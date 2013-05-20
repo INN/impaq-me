@@ -18,6 +18,7 @@ class Iframe
       value_per_share: format_dollar(campaign.value_per_share),
       value_per_click: format_dollar(campaign.value_per_click),
       paypal: campaign.paypal,
+      recommended_donation: format_dollar(campaign.recommended_donation),
       goal: format_dollar(campaign_meter.goal),
       total: format_dollar(campaign_meter.total),
       percent: campaign_meter.percent,

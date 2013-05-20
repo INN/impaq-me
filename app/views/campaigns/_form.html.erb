@@ -40,6 +40,10 @@
     <%= f.label :paypal %><br>
     <%= f.text_field :paypal %>
   </div>
+  <div class="field">
+    <%= f.label :recommended_donation %><br>
+    <%= f.number_field :recommended_donation, :step => '.01' %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

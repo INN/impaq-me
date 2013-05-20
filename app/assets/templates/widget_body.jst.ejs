@@ -3,7 +3,7 @@
   <p class="thanks"><strong>Thanks! <%= publisher_name %> just got <span class="click-value"/>$<%= value_per_share %></span> thanks to you.</strong><br/>
   The best way to help is to get more people involved. Tell your friends!</p>
   <div class="follow_up_cta">
-    <p>Show you care by donating an additional <strong class="donation-value">$1</strong> to <%= publisher_name %>.</p>
+    <p>Show you care by donating an additional <strong class="donation-value">$<%= recommended_donation %></strong> to <%= publisher_name %>.</p>
     <!-- <form action="https://sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank"> -->
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
       <input type="hidden" name="cmd" value="_donations">
@@ -13,7 +13,6 @@
       <input type="hidden" name="item_name" value="<%= publisher_name %>">
       <input type="hidden" name="on0" value="CampaignID">
       <input type="hidden" name="os0" value="<%= campaign_id %>">
-      <!-- <input type="hidden" name="amount" value="1.00"> -->
       <input type="hidden" name="currency_code" value="USD">
       <input type="hidden" name="no_note" value="0">
       <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHostedGuest">

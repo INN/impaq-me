@@ -8,6 +8,7 @@ class Campaign
   field :value_per_click, type: Float, default: 1.0
   field :goal, type: Float
   field :paypal, type: String
+  field :recommended_donation, type: Float, default: 1.0
 
   has_many :shares
   has_many :links
