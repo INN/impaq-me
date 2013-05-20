@@ -6,7 +6,6 @@ gem "active_model_serializers", "~> 0.7.0"
 gem 'bson_ext'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'addressable'
-gem 'backbone-rails'
 gem 'ejs'
 gem 'bcrypt-ruby'
 
