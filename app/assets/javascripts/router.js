@@ -1,4 +1,7 @@
 window.app.Router = Backbone.Router.extend({
+  initialize: function(){
+    this.on('route', _.bind(this._trackPageview, this));
+  },
 
   routes: {
     "" : "widget_closed",
@@ -48,6 +51,13 @@ window.app.Router = Backbone.Router.extend({
     app.models.widget.set({
       mode: 'banner',
       open: false
+    });
+  },
+
+  _trackPageview: function(route, params){
+    url = Backbone.history.getFragment();
+    ga('send', 'pageview', {
+      page: "/#" + url
     });
   }
 });
