@@ -23,16 +23,16 @@ class LinksController < ApplicationController
     }
   end
 
-  def set_link
-    @link = Link.find(link_params)
-  end
-
   def remote_ip
     request.env.fetch("REMOTE_ADDR")
   end
 
+  def set_link
+    @link = Link.find_by(link_params)
+  end
+
   def link_params
-    params.require(:slug)
+    { slug: params.require(:slug) }
   end
 
 end

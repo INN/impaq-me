@@ -22,9 +22,9 @@ class Shortlink
     })
 
     {
-      twitter_shortlink: twitter.id.to_s,
-      facebook_shortlink: facebook.id.to_s,
-      email_shortlink: electronic_mail.id.to_s,
+      twitter_shortlink: twitter.slug,
+      facebook_shortlink: facebook.slug,
+      email_shortlink: electronic_mail.slug,
     }
   end
 
