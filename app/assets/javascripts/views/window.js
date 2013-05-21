@@ -8,6 +8,10 @@ window.app.views.Window = Backbone.View.extend({
 
   initialize: function(options){
     _.bindAll(this);
+
+    this.listenTo(app.events, {
+      'change:height': this.resizeParent
+    });
   },
 
   resizeParent: _.debounce(function(){

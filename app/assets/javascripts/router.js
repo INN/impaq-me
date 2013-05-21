@@ -66,15 +66,13 @@ window.app.Router = Backbone.Router.extend({
 
 jQuery(function($){
   window.app.router = new window.app.Router();
+  window.app.models.widget = new app.models.Widget(impaqme);
 
-  app.models.widget = new app.models.Widget(impaqme);
-  _.extend(window.app.views, {
+  _(window.app.views).extend({
     window: new app.views.Window({ model: app.models.widget }),
     banner: new app.views.Banner({ model: app.models.widget }),
     widget: new app.views.Widget({ model: app.models.widget })
   });
-
-  app.events.on('change:height', app.views.window.resizeParent);
 
   Backbone.history.start();
 });
