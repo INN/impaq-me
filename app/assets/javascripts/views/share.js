@@ -24,7 +24,7 @@ window.app.views.Share = Backbone.View.extend({
 
   openClose: function(model, open_close, options){
     if(this.model.get('mode') !== "widget"){
-      this.$el.slide(open_close);
+      this.$el.toggle(open_close);
     }
   },
 

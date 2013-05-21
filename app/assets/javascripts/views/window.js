@@ -10,7 +10,7 @@ window.app.views.Window = Backbone.View.extend({
     _.bindAll(this);
   },
 
-  resizeParent: function(event){
+  resizeParent: _.debounce(function(){
     var data = {
       action: 'resize',
       args: {
@@ -18,7 +18,7 @@ window.app.views.Window = Backbone.View.extend({
       }
     };
     this.callParent(data);
-  },
+  }, 50),
 
   closeParent: function(){
     var data = { action: 'close' };
@@ -35,7 +35,6 @@ window.app.views.Window = Backbone.View.extend({
   iframeCommunication: function(event){
     if(!event.originalEvent.origin.match(this.model.get('article_domain'))) return;
 
-    //TODO stop parsing this twice
     if(JSON.parse(event.originalEvent.data).action === "minimize"){
       app.models.widget.set('minimize', 'true')
     } else {

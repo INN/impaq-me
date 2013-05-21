@@ -13,7 +13,7 @@ window.app.views.WidgetBody = Backbone.View.extend({
   },
 
   openClose: function(model, open_close, options){
-    this.$el.slide(open_close);
+    this.$el.toggle(open_close);
   },
 
   thanks: function(){

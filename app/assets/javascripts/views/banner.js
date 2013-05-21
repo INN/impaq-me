@@ -20,14 +20,12 @@ window.app.views.Banner = Backbone.View.extend({
   },
 
   maximize: function(){
-    this.views.info.$el.slideDown();
-    this.$el.removeClass('minimized').addClass('maximized');
+    this.views.info.$el.show();
     return this;
   },
 
   minimize: function(){
-    this.views.info.$el.slideUp();
-    this.$el.removeClass('maximized').addClass('minimized');
+    this.views.info.$el.hide();
     return this;
   },
 

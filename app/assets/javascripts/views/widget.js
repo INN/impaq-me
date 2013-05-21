@@ -24,8 +24,9 @@ window.app.views.Widget = Backbone.View.extend({
   },
 
   openChanged: function(model, open, options){
-    this.$("#widget .unnamed").animate({ margin: (open ? '12px 0 -4px' : 0) });
-    this.$el.toggleClass('open', open);
+    this.$("#widget .unnamed")
+      .animate({ margin: (open ? '12px 0 -4px' : 0) }).promise()
+      .then(_.bind(function(){ this.$el.toggleClass('open', open); }, this));
   },
 
   render: function(){
