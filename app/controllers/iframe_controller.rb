@@ -5,7 +5,7 @@ class IframeController < ApplicationController
   end
 
   def set_campaign
-    @campaign = Iframe.bootstrap(Article.new params[:article_url], params[:article_title])
+    @campaign = Iframe.bootstrap(Article.new bootstrap_params[:article_url], bootstrap_params[:article_title])
   end
 
   def bootstrap_params
