@@ -14,6 +14,7 @@ window.app.views.WidgetBody = Backbone.View.extend({
 
   openClose: function(model, open_close, options){
     this.$el.toggle(open_close);
+    app.events.trigger('change:height');
   },
 
   thanks: function(){

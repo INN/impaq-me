@@ -73,6 +73,7 @@ jQuery(function($){
     widget: new app.views.Widget({ model: app.models.widget })
   });
 
-  setInterval(app.views.window.resizeParent, 500);
+  app.events.on('change:height', app.views.window.resizeParent);
+
   Backbone.history.start();
 });

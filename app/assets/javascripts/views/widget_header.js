@@ -19,6 +19,7 @@ window.app.views.WidgetHeader = Backbone.View.extend({
 
   changeMode: function(model, mode, options){
     this.$el.toggle(mode === "widget");
+    app.events.trigger('change:height');
   },
 
   render: function(){

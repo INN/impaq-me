@@ -20,11 +20,13 @@ window.app.views.Share = Backbone.View.extend({
 
   changeMode: function(model, mode, options){
     this.$el.toggle(mode === "widget");
+    app.events.trigger('change:height');
   },
 
   openClose: function(model, open_close, options){
     if(this.model.get('mode') !== "widget"){
       this.$el.toggle(open_close);
+      app.events.trigger('change:height');
     }
   },
 

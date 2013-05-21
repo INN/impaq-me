@@ -22,5 +22,6 @@
 window.app = {
   models: {},
   views: {},
-  services: {}
+  services: {},
+  events: _({}).extend(Backbone.Events)
 };
