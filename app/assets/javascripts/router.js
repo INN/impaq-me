@@ -1,6 +1,7 @@
 window.app.Router = Backbone.Router.extend({
   initialize: function(){
-    this.on('route', _.bind(this._trackPageview, this));
+    _.bindAll(this);
+    this.on('route', this._trackPageview);
   },
 
   routes: {
