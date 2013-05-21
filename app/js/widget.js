@@ -46,7 +46,7 @@
       return this.template(this.templateData());
     },
     resize: function(height){
-      return $(this.iframe).height(height);
+      return $(this.iframe).animate({height: height});
     },
     remove: function(){
       return this.iframe.parentNode.removeChild(this.iframe);
