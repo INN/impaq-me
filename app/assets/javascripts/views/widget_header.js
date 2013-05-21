@@ -9,7 +9,7 @@ window.app.views.WidgetHeader = Backbone.View.extend({
     _.bindAll(this);
 
     this.listenTo(this.model, {
-      'change:mode': this.changeMode
+      'change:mode': this.modeChanged
     });
   },
 
@@ -17,9 +17,8 @@ window.app.views.WidgetHeader = Backbone.View.extend({
     this.model.set('open', !this.model.get('open'));
   },
 
-  changeMode: function(model, mode, options){
+  modeChanged: function(model, mode, options){
     this.$el.toggle(mode === "widget");
-    app.events.trigger('change:height');
   },
 
   render: function(){

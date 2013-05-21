@@ -8,13 +8,12 @@ window.app.views.WidgetBody = Backbone.View.extend({
       'change:tweeted': this.thanks,
       'change:liked':   this.thanks,
       'change:emailed': this.thanks,
-      'change:open':    this.openClose
+      'change:open':    this.openChanged
     });
   },
 
-  openClose: function(model, open_close, options){
+  openChanged: function(model, open_close, options){
     this.$el.toggle(open_close);
-    app.events.trigger('change:height');
   },
 
   thanks: function(){

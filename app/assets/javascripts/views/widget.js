@@ -12,21 +12,27 @@ window.app.views.Widget = Backbone.View.extend({
     };
 
     this.listenTo(this.model, {
+      'change:mode':    this.modeChanged,
       'change:open':    this.openChanged,
-      'change:tweeted': this.open,
-      'change:liked':   this.open,
-      'change:emailed': this.open
+      'change:tweeted': this.shared,
+      'change:liked':   this.shared,
+      'change:emailed': this.shared
     });
   },
 
-  open: function(){
-    this.model.set('open', true);
+  modeChanged: function(model, mode, options){
+    app.events.trigger('change:height');
   },
 
   openChanged: function(model, open, options){
     this.$("#widget .unnamed")
-      .animate({ margin: (open ? '12px 0 -4px' : 0) }).promise()
+      .css({ margin: (open ? '12px 0 -4px' : 0) }).promise()
       .then(function(){ app.events.trigger('change:height')});
+  },
+
+  shared: function(){
+    this.model.set('open', true);
+    app.events.trigger('change:height');
   },
 
   render: function(){

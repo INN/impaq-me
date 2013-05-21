@@ -5,13 +5,12 @@ window.app.views.WidgetFooter = Backbone.View.extend({
     _.bindAll(this);
 
     this.listenTo(this.model, {
-      'change:open':    this.openClose
+      'change:open': this.openChanged
     });
   },
 
-  openClose: function(model, open_close, options){
+  openChanged: function(model, open_close, options){
     this.$el.toggle(open_close);
-    app.events.trigger('change:height');
   },
 
   render: function(){
