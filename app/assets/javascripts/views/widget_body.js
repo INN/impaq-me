@@ -17,8 +17,8 @@ window.app.views.WidgetBody = Backbone.View.extend({
   },
 
   thanks: function(){
-    this.$(".solicit").fadeOut();
-    this.$(".thanks").fadeIn();
+    this.$(".solicit").fadeOut().promise()
+      .then($.proxy(function(){ this.$(".thanks").fadeIn(); }, this));
   },
 
   render: function(){
