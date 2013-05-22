@@ -10,7 +10,11 @@ class Link
   before_save :generate_slug
 
   def generate_slug
-    self.slug = id.to_s[0..9]
+    new_slug = SecureRandom.urlsafe_base64 7
+    slug_present?(new_slug) ? self.slug = new_slug : generate_slug
   end
 
+  def slug_present? new_slug
+    self.class.where(slug: new_slug).empty?
+  end
 end
