@@ -59,6 +59,7 @@ window.app.Router = Backbone.Router.extend({
 jQuery(function($){
   window.app.router = new window.app.Router();
   window.app.models.widget = new app.models.Widget(impaqme);
+  window.app.models.social = new app.models.Social(impaqme);// TODO trim down the bootstrap object
 
   _(window.app.views).extend({
     window: new app.views.Window({ model: app.models.widget }),
