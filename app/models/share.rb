@@ -1,18 +1,22 @@
 class Share
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :campaign_id
   field :channel
   field :ip
   field :referer
   field :value, default: 0
-  field :timestamp, default: DateTime.now
 
   validates :campaign_id, presence: true
   validates :channel, presence: true
   validates :ip, presence: true
 
   belongs_to :campaign
+
+  before_save :set_value
+
+  scope :past_shares, ->(share) { where(campaign_id: share.campaign.id).and(ip: share.ip).ne(id: share.id).order_by(created_at: :desc) }
 
   def self.total_for_campaign(campaign_id)
     where(campaign_id: campaign_id).map(&:value).sum
@@ -31,23 +35,16 @@ class Share
     self.fields.map { |field| field[0] }
   end
 
-  def set_value
-    value = Campaign.find(campaign_id).value_per_share if value_share?
-  end
-
   private
-  def value_share?
-    past_shares = Share.where(campaign_id: campaign_id).and(ip: ip)
-    if past_shares.count == 0
-      true
-    else
-      off_cooldown? past_shares
-    end
+
+  def set_value
+    self.value = campaign.value_per_share if monied_share?
   end
 
-  def off_cooldown? past_shares
-    last_shared_on = past_shares.map(&:timestamp).max
-    days_since_shared = (Time.now - last_shared_on) / 60
-    days_since_shared > Campaign.find(campaign_id).share_cooldown_days
+  def monied_share?
+    return true if Share.past_shares(self).empty?
+
+    days_since_shared = (Time.now - Share.past_shares(self).last.created_at) / 60
+    days_since_shared > campaign.share_cooldown_days
   end
 end

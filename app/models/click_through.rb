@@ -36,6 +36,7 @@ class ClickThrough
   end
 
   private
+
   def new_clicker?
     ClickThrough.where(ip: ip).and(link_id: link_id).ne(id: id).count == 0
   end
