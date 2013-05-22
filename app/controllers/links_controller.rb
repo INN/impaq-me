@@ -15,6 +15,7 @@ class LinksController < ApplicationController
   end
 
   private
+
   def shortlink_params
     {
       link: @link,

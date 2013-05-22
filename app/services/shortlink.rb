@@ -1,22 +1,22 @@
 require 'addressable/uri'
 
 class Shortlink
-  def self.for_campaign_and_url(campaign_id, long_url)
+  def self.for_campaign_and_url(campaign, long_url)
 
     twitter = Link.find_or_create_by({
-      campaign_id: campaign_id,
+      campaign: campaign,
       long_url: long_url,
       channel: 'twitter'
     })
 
     electronic_mail = Link.find_or_create_by({
-      campaign_id: campaign_id,
+      campaign: campaign,
       long_url: long_url,
       channel: 'email'
     })
 
     facebook = Link.find_or_create_by({
-      campaign_id: campaign_id,
+      campaign: campaign,
       long_url: long_url,
       channel: 'facebook'
     })
@@ -29,10 +29,14 @@ class Shortlink
   end
 
   def self.follow(link: link, remote_ip: remote_ip, referer: referer)
-    link.clicks += 1
-    link.save
-    link.create_click_through remote_ip, referer
     Addressable::URI.parse(link.long_url).tap do |url|
+      ClickThrough.create(
+        campaign: link.campaign,
+        article_url: url.to_s,
+        channel: link.channel,
+        ip: remote_ip,
+        referer: referer
+      )
       url.query_values = (url.query_values || {}).merge 'shared_via_impaq_me' => true
     end
   end

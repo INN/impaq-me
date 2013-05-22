@@ -36,19 +36,20 @@ class SharesController < ApplicationController
   end
 
   private
-    def set_share
-      @share = Share.find(params[:id])
-    end
 
-    def build_share
-      h = {
-        ip: request.env.fetch("REMOTE_ADDR"),
-        referer: request.referer
-      }
-      @share = Share.new(share_params.merge(h))
-    end
+  def set_share
+    @share = Share.find(params[:id])
+  end
 
-    def share_params
-      params.require(:share).permit(:campaign_id, :channel)
-    end
+  def build_share
+    h = {
+      ip: request.env.fetch("REMOTE_ADDR"),
+      referer: request.referer
+    }
+    @share = Share.new(share_params.merge(h))
+  end
+
+  def share_params
+    params.require(:share).permit(:campaign_id, :channel, :article_url)
+  end
 end

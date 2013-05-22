@@ -48,6 +48,6 @@ class ClickThrough
   end
 
   def monied_click?
-    ClickThrough.past_clicks.empty?
+    ClickThrough.past_clicks(self).empty?
   end
 end

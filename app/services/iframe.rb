@@ -5,7 +5,7 @@ class Iframe
     article_url = Addressable::URI.heuristic_parse(article.url).normalize
     campaign = Campaign.find_by domains: article_url.host
     campaign_meter = CampaignMeter.for campaign
-    shortlink = Shortlink.for_campaign_and_url campaign.id, article_url.to_s
+    shortlink = Shortlink.for_campaign_and_url campaign, article_url.to_s
 
     {
       campaign_id: campaign.id.to_s,
