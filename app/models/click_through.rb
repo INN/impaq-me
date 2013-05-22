@@ -2,19 +2,30 @@ class ClickThrough
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :ip
+  field :article_url
   field :channel
-  field :long_url
+  field :ip
   field :referer
-  field :value, type: Integer, default: 0
+  field :value, type: Float, default: 0
 
   belongs_to :campaign
-  belongs_to :link
 
   before_save :set_value
 
-  def self.total_for_campaign campaign_id
-    where(campaign_id: campaign_id).map(&:value).sum
+  def self.past_clicks click
+    where(article_url: click.article_url).
+      and(campaign: click.campaign).
+      and(ip: click.ip).
+      ne(id: click.id).
+      order_by(created_at: :asc)
+  end
+
+  def self.for_campaign campaign
+    where(campaign: campaign)
+  end
+
+  def self.total_for_campaign campaign
+    for_campaign(campaign).sum(:value)
   end
 
   def self.to_csv
@@ -30,14 +41,13 @@ class ClickThrough
     self.fields.map { |field| field[0] }
   end
 
-  def set_value
-    value_per_click = Campaign.find(campaign_id).value_per_click
-    self.value = value_per_click if new_clicker?
-  end
-
   private
 
-  def new_clicker?
-    ClickThrough.where(ip: ip).and(link_id: link_id).ne(id: id).count == 0
+  def set_value
+    self.value = campaign.value_per_click if monied_click?
+  end
+
+  def monied_click?
+    ClickThrough.past_clicks.empty?
   end
 end

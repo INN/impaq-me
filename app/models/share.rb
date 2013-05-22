@@ -2,24 +2,30 @@ class Share
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :campaign_id
+  field :article_url
   field :channel
   field :ip
   field :referer
   field :value, type: Float, default: 0
 
-  validates :campaign_id, presence: true
-  validates :channel, presence: true
-  validates :ip, presence: true
-
   belongs_to :campaign
 
   before_save :set_value
 
-  scope :past_shares, ->(share) { where(campaign_id: share.campaign.id).and(ip: share.ip).ne(id: share.id).order_by(created_at: :asc) }
+  def self.past_shares share
+    where(article_url: share.article_url).
+      and(campaign: share.campaign).
+      and(ip: share.ip).
+      ne(id: share.id).
+      order_by(created_at: :asc)
+  end
 
-  def self.total_for_campaign(campaign_id)
-    where(campaign_id: campaign_id).map(&:value).sum
+  def self.for_campaign campaign
+    where(campaign: campaign)
+  end
+
+  def self.total_for_campaign campaign
+    for_campaign(campaign).sum(:value)
   end
 
   def self.to_csv

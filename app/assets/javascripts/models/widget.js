@@ -1,14 +1,11 @@
 window.app.models.Widget = Backbone.Model.extend({
   recordTweet: function(){
-    app.services.Share.record('twitter', impaqme.campaign_id);
-    //TODO call sync()
+    app.services.Share.record('twitter');
   },
   recordLike: function(){
-    app.services.Share.record('facebook', impaqme.campaign_id);
-    //TODO call sync()
+    app.services.Share.record('facebook');
   },
   recordEmail: function(){
-    app.services.Share.record('email', impaqme.campaign_id);
-    //TODO call sync()
+    app.services.Share.record('email');
   }
 });

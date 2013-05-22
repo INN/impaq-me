@@ -1,8 +1,9 @@
 window.app.services.Share = {
-  record: function(channel, campaign_id) {
+  record: function(channel) {
     return $.post("/shares", {
       share: {
-        campaign_id: campaign_id,
+        campaign_id: app.models.widget.get('campaign_id'),
+        article_url: app.models.widget.get('article_url'),
         channel: channel
       }
     });
