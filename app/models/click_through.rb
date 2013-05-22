@@ -1,12 +1,12 @@
 class ClickThrough
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :ip
   field :channel
   field :long_url
   field :referer
   field :value, type: Integer, default: 0
-  field :timestamp, default: DateTime.now
 
   belongs_to :campaign
   belongs_to :link
