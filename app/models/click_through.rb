@@ -13,9 +13,8 @@ class ClickThrough
 
   before_save :set_value
 
-  #You are fine with this.
-  def self.total_for_campaign id
-    ClickThrough.collection.aggregate({"$match" => {"campaign_id" => id}},{ "$group" => { "_id" => {"ip" => "$ip", "link" => "$link_id"} } }).count()
+  def self.total_for_campaign campaign_id
+    where(campaign_id: campaign_id).map(&:value).sum
   end
 
   def self.to_csv
