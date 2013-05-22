@@ -9,13 +9,14 @@ class Campaign
   field :goal, type: Float
   field :paypal, type: String
   field :recommended_donation, type: Float, default: 1.0
+  field :share_cooldown_days, type: Integer, default: 30
 
   has_many :shares
   has_many :links
   has_many :click_throughs
 
   def self.goal id
-      find(id).goal or raise NoGoal
+    find(id).goal or raise NoGoal
   end
 
   def self.to_csv

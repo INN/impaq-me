@@ -5,6 +5,7 @@ class Share
   field :channel
   field :ip
   field :referer
+  field :value
   field :timestamp, default: DateTime.now
 
   validates :campaign_id, presence: true
@@ -28,5 +29,25 @@ class Share
 
   def self.fields_to_a
     self.fields.map { |field| field[0] }
+  end
+
+  def set_value
+    value = Campaign.find(campaign_id).value_per_share if value_share?
+  end
+
+  private
+  def value_share?
+    past_shares = Share.where(campaign_id: campaign_id).and(ip: ip)
+    if past_shares.count == 0
+      true
+    else
+      off_cooldown? past_shares
+    end
+  end
+
+  def off_cooldown? past_shares
+    last_shared_on = past_shares.map(&:timestamp).max
+    days_since_shared = (Time.now - last_shared_on) / 60
+    days_since_shared > Campaign.find(campaign_id).share_cooldown_days
   end
 end

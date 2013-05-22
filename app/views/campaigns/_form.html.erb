@@ -25,6 +25,10 @@
     <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
   </div>
   <div class="field">
+    <%= f.label :share_cooldown_days %><br>
+    <%= f.number_field :share_cooldown_days, :step => '1' %>
+  </div>
+  <div class="field">
     <%= f.label :value_per_share %><br>
     <%= f.number_field :value_per_share, :step => '.01' %>
   </div>

@@ -46,6 +46,7 @@ class SharesController < ApplicationController
         referer: request.referer
       }
       @share = Share.new(share_params.merge(h))
+      @share.set_value
     end
 
     def share_params
