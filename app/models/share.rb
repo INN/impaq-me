@@ -6,7 +6,7 @@ class Share
   field :channel
   field :ip
   field :referer
-  field :value, default: 0
+  field :value, type: Float, default: 0
 
   validates :campaign_id, presence: true
   validates :channel, presence: true
@@ -16,7 +16,7 @@ class Share
 
   before_save :set_value
 
-  scope :past_shares, ->(share) { where(campaign_id: share.campaign.id).and(ip: share.ip).ne(id: share.id).order_by(created_at: :desc) }
+  scope :past_shares, ->(share) { where(campaign_id: share.campaign.id).and(ip: share.ip).ne(id: share.id).order_by(created_at: :asc) }
 
   def self.total_for_campaign(campaign_id)
     where(campaign_id: campaign_id).map(&:value).sum
