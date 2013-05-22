@@ -14,10 +14,12 @@
       <strong>foundation_name: </strong> <%= campaign.foundation_name %>
       <strong>publisher_name: </strong>  <%= campaign.publisher_name %>
       <strong>domains: </strong>         <%= campaign.domains_to_s %>
+      <strong>share_cooldown: </strong>  <%= campaign.share_cooldown_days %>
       <strong>value_per_share: </strong> <%= campaign.value_per_share %>
       <strong>value_per_click: </strong> <%= campaign.value_per_click %>
       <strong>goal: </strong>            <%= campaign.goal %>
-      <strong>paypal: </strong>       <%= campaign.paypal %>
+      <strong>paypal: </strong>          <%= campaign.paypal %>
+      <strong>recommended_donation: </strong>  <%= campaign.recommended_donation %>
       <strong>campaign_id: </strong>     <%= campaign.id %>
       <br> <strong>Shares:</strong> <%= Share.total_for_campaign campaign.id %>
       <br><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong>
