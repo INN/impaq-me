@@ -18,7 +18,8 @@
     $.extend(this, options);
 
     var html = this.compile();
-    this.iframe = $(html).replaceAll(this.placeholder).find('iframe')[0];
+    this.$el = $(html).replaceAll(this.placeholder);
+    this.iframe = this.$el.find('iframe')[0];
     $(this.iframe).on('load', $.proxy(this.wireUpCommunication, this));
     if(this.config && this.config.route === "banner"){
       $(this.iframe).on('load', $.proxy(this.bindScroll, this));
@@ -49,7 +50,7 @@
       return $(this.iframe).animate({height: height});
     },
     remove: function(){
-      return this.iframe.parentNode.removeChild(this.iframe);
+      return this.$el.parentNode.removeChild(this.$el);
     },
     respondToChild: function(data){
       if(data.action === "close") {
