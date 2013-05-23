@@ -1,15 +1,28 @@
 window.app.Router = Backbone.Router.extend({
-  routes: {
-    "" : "widget_closed",
+  initialize: function(){
+    _.bindAll(this);
 
-    "widget" : "widget_closed",
-    "widget/closed" : "widget_closed",
-    "widget/open" : "widget_open",
+    // not using Backbone's real routing
+    // Backbone's fragment-based routing causing the host page to scroll:
+    // test case: http://jsfiddle.net/dTQEE/1/
+    this.routes = {
+      "widget"        : this.widget_closed,
+      "widget/closed" : this.widget_closed,
+      "widget/open"   : this.widget_open,
 
-    "banner" : "banner_maximized",
-    "banner/maximized" : "banner_maximized",
-    "banner/minimized" : "banner_minimized"
+      "banner"           : this.banner_maximized,
+      "banner/maximized" : this.banner_maximized,
+      "banner/minimized" : this.banner_minimized
+    };
 
+  },
+
+  start: function(){
+    if(location.search.match(/mode=widget/)){
+      this.routes.widget();
+    } else if(location.search.match(/mode=banner/)){
+      this.routes.banner();
+    }
   },
 
   widget_open: function(){
@@ -67,5 +80,5 @@ jQuery(function($){
     widget: new app.views.Widget({ model: app.models.widget })
   });
 
-  Backbone.history.start();
+  app.router.start();
 });
