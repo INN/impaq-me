@@ -2,7 +2,7 @@ window.app.views.Window = Backbone.View.extend({
   el: window,
 
   events: {
-    resize: 'resizeParent',
+    // resize: 'resizeParent',
     message: 'iframeCommunication'
   },
 
@@ -54,6 +54,6 @@ window.app.views.Window = Backbone.View.extend({
       hostname: event.originalEvent.origin
     };
 
-    this.$el.resize();
+    this.resizeParent();
   }
 });
