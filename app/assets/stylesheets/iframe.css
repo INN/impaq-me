@@ -139,14 +139,14 @@ a {
   right:-25px;
   height:22px;
   width:14px;
-  background:url('module_open.png') no-repeat center center;
+  background:url('../images/module_open.png') no-repeat center center;
   border:none;
   cursor:pointer;
 }
 #widget .opened .toggle {
   top: -1px;
   right: -27px;
-  background:url('module_close.png') no-repeat center center;
+  background:url('../images/module_close.png') no-repeat center center;
 }
 
 /* Share Tools */
