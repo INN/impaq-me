@@ -6,9 +6,9 @@
     $: $,
     me: {
       config: {
-        route: '',
-        // iframe_src: '//localhost:3000'
-        iframe_src: '//impaqme.herokuapp.com'
+        route: 'widget',
+        //iframe_src: '//localhost:3000/iframe'
+        iframe_src: '//impaqme.herokuapp.com/iframe'
       },
       widgets: []
     }
@@ -27,7 +27,7 @@
 
   Widget.prototype = {
     template: function(data){
-      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?article_url='+ data.article_url +'&article_title='+ data.article_title +'#'+ data.route +'" style="width:100%; border:0;"></iframe></div>';
+      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?mode='+ data.route +'&article_url='+ data.article_url +'&article_title='+ data.article_title +'" style="width:100%; border:0;"></iframe></div>';
     },
 
     templateData: function(){
