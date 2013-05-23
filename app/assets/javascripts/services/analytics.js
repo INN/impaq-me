@@ -1,12 +1,10 @@
 window.app.services.Analytics = {
 
   trackPageview: function(page){
-    debugger;
     ga('send', 'pageview', (page ? {page:page} : {}));
   },
 
   trackEvent: function(category, action, label, value, nonInteractive){
-    debugger;
     ga('send', {
       hitType: 'event',
       eventCategory: category,
