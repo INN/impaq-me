@@ -14,15 +14,11 @@ window.app.Router = Backbone.Router.extend({
       "banner/maximized" : this.banner_maximized,
       "banner/minimized" : this.banner_minimized
     };
-
   },
 
   start: function(){
-    if(location.search.match(/mode=widget/)){
-      this.routes.widget();
-    } else if(location.search.match(/mode=banner/)){
-      this.routes.banner();
-    }
+    var query = new URI().query(true);
+    this.routes[query.mode]();
   },
 
   widget_open: function(){
