@@ -21,7 +21,8 @@
       <strong>paypal: </strong>          <%= campaign.paypal %>
       <strong>recommended_donation: </strong>  <%= campaign.recommended_donation %>
       <strong>campaign_id: </strong>     <%= campaign.id %>
-      <br> <strong>Shares:</strong> <%= Share.total_for_campaign campaign %>
+      <br> <strong>Share: $</strong> <%=Share.total_for_campaign campaign %>
+      <strong>Click: $</strong> <%=ClickThrough.total_for_campaign campaign %>
       <br><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong>
       </li>
     <% end %>
