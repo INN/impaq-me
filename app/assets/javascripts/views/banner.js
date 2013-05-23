@@ -32,10 +32,16 @@ window.app.views.Banner = Backbone.View.extend({
   click: function(){
     clearTimeout(this.minimizer);
     this.model.set('open', !this.model.get('open'));
+    app.services.Analytics.trackEvent('widget', (this.model.get('open') ? 'open' : 'close'), 'banner');
+  },
+
+  timeout: function(){
+    this.minimize();
+    app.services.Analytics.trackEvent('banner', 'minimize', 'timeout', undefined, true);
   },
 
   render: function(){
-    this.minimizer = window.setTimeout(this.minimize, 10000);
+    this.minimizer = window.setTimeout(this.timeout, 10000);
 
     this.$el.html(this.template(this.model.toJSON()));
     this.assign({

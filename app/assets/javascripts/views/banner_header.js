@@ -2,7 +2,6 @@ window.app.views.BannerHeader = Backbone.View.extend({
   template: JST['banner_header'],
 
   events: {
-    // click: "openWidget" //TODO handle repeat clicks
   },
 
   initialize: function(options){

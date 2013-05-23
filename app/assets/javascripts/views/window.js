@@ -40,7 +40,8 @@ window.app.views.Window = Backbone.View.extend({
     if(!event.originalEvent.origin.match(this.model.get('article_domain'))) return;
 
     if(JSON.parse(event.originalEvent.data).action === "minimize"){
-      app.models.widget.set('minimize', 'true')
+      app.models.widget.set('minimize', 'true');
+      app.services.Analytics.trackEvent('banner', 'minimize', 'scroll', undefined, true);
     } else {
       this.wireUpIframeCommunication(event);
     }

@@ -9,6 +9,7 @@ window.app.views.BannerClose = Backbone.View.extend({
 
   close: function(){
     app.views.window.closeParent();
+    app.services.Analytics.trackEvent('banner', 'close', 'close_button', undefined, true);
   },
 
   render: function(){

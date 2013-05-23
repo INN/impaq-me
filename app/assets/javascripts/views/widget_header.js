@@ -15,6 +15,7 @@ window.app.views.WidgetHeader = Backbone.View.extend({
 
   click: function(){
     this.model.set('open', !this.model.get('open'));
+    app.services.Analytics.trackEvent('widget', (this.model.get('open') ? 'open' : 'close'), 'primary_button');
   },
 
   modeChanged: function(model, mode, options){

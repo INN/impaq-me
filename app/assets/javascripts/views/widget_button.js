@@ -13,6 +13,7 @@ window.app.views.WidgetButton = Backbone.View.extend({
 
   click: function(e){
     this.model.set('open', !this.model.get('open'));
+    app.services.Analytics.trackEvent('widget', (this.model.get('open') ? 'open' : 'close'), 'secondary_button');
   },
 
   openChanged: function(model, open, options){

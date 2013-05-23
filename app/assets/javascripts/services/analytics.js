@@ -1,10 +1,23 @@
 window.app.services.Analytics = {
+
   trackPageview: function(page){
     debugger;
     ga('send', 'pageview', (page ? {page:page} : {}));
   },
-  trackSocial: function(network, action, target){
+
+  trackEvent: function(category, action, label, value, nonInteractive){
     debugger;
+    ga('send', {
+      hitType: 'event',
+      eventCategory: category,
+      eventAction: action,
+      eventLabel: label,
+      eventValue: value,
+      nonInteraction: nonInteractive
+    });
+  },
+
+  trackSocial: function(network, action, target){
     ga('send', {
       hitType:       'social',
       socialNetwork: network,

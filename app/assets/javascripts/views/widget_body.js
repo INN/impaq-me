@@ -1,6 +1,10 @@
 window.app.views.WidgetBody = Backbone.View.extend({
   template: JST['widget_body'],
 
+  events: {
+    'submit form.paypal': 'paypalDonation'
+  },
+
   initialize: function(options){
     _.bindAll(this);
 
@@ -13,6 +17,10 @@ window.app.views.WidgetBody = Backbone.View.extend({
       'share:facebook': this.thanks,
       'share:email':    this.thanks
     });
+  },
+
+  paypalDonation: function(){
+    app.services.Analytics.trackEvent('followup_cta', 'click', 'paypal_donate');
   },
 
   openChanged: function(model, open_close, options){
