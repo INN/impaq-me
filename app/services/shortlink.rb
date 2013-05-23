@@ -28,14 +28,15 @@ class Shortlink
     }
   end
 
-  def self.follow(link: link, remote_ip: remote_ip, referer: referer)
+  def self.follow(link: link, remote_ip: remote_ip, referer: referer, user_agent: user_agent)
     Addressable::URI.parse(link.long_url).tap do |url|
       ClickThrough.create(
         campaign: link.campaign,
         article_url: url.to_s,
         channel: link.channel,
         ip: remote_ip,
-        referer: referer
+        referer: referer,
+        user_agent: user_agent
       )
       url.query_values = (url.query_values || {}).merge 'shared_via_impaq_me' => true
     end

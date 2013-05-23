@@ -6,6 +6,7 @@ class ClickThrough
   field :channel
   field :ip
   field :referer
+  field :user_agent
   field :value, type: Float, default: 0
 
   belongs_to :campaign

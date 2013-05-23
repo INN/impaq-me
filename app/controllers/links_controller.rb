@@ -20,7 +20,8 @@ class LinksController < ApplicationController
     {
       link: @link,
       remote_ip: remote_ip,
-      referer: request.referer
+      referer: request.referer,
+      user_agent: request.env['HTTP_USER_AGENT']
     }
   end
 
