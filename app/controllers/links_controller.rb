@@ -19,14 +19,14 @@ class LinksController < ApplicationController
   def shortlink_params
     {
       link: @link,
-      remote_ip: remote_ip,
+      remote_ip: request.ip,
       referer: request.referer,
-      user_agent: request.env['HTTP_USER_AGENT']
+      user_agent: request.user_agent
     }
   end
 
   def remote_ip
-    request.env.fetch("REMOTE_ADDR")
+    # request.env.fetch("HTTP_CLIENT_IP")
   end
 
   def set_link

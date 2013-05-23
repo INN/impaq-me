@@ -43,7 +43,7 @@ class SharesController < ApplicationController
 
   def build_share
     h = {
-      ip: request.env.fetch("REMOTE_ADDR"),
+      ip: request.ip,
       referer: request.referer
     }
     @share = Share.new(share_params.merge(h))
