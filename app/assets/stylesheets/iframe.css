@@ -129,7 +129,7 @@ a {
   margin-right: 1.25em;
 }
 
-.unnamed {
+[data-subview='Share'] {
   position:relative;
 }
 
