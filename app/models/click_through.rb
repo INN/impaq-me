@@ -8,6 +8,8 @@ class ClickThrough
   field :referer
   field :user_agent
   field :value, type: Float, default: 0
+  field :created_at
+  field :updated_at
 
   belongs_to :campaign
 
