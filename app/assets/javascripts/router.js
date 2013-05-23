@@ -1,9 +1,4 @@
 window.app.Router = Backbone.Router.extend({
-  initialize: function(){
-    _.bindAll(this);
-    this.on('route', this._trackPageview);
-  },
-
   routes: {
     "" : "widget_closed",
 
@@ -18,6 +13,7 @@ window.app.Router = Backbone.Router.extend({
   },
 
   widget_open: function(){
+    app.services.Analytics.trackPageview("/widget/open");
     $('main').empty().append(app.views.widget.render().el);
     app.models.widget.set({
       mode: 'widget',
@@ -26,6 +22,7 @@ window.app.Router = Backbone.Router.extend({
   },
 
   widget_closed: function(){
+    app.services.Analytics.trackPageview("/widget/closed");
     $('main').empty().append(app.views.widget.render().el);
     app.models.widget.set({
       mode: 'widget',
@@ -34,6 +31,7 @@ window.app.Router = Backbone.Router.extend({
   },
 
   banner_maximized: function(){
+    app.services.Analytics.trackPageview("/banner/maximized");
     $('main').empty()
       .append(app.views.banner.render().el)
       .append(app.views.widget.render().el);
@@ -45,6 +43,7 @@ window.app.Router = Backbone.Router.extend({
   },
 
   banner_minimized: function(){
+    app.services.Analytics.trackPageview("/banner/minimized");
     $('main').empty()
       .append(app.views.banner.render().el)
       .append(app.views.widget.render().el);
@@ -53,13 +52,6 @@ window.app.Router = Backbone.Router.extend({
       mode: 'banner',
       open: false
     });
-  },
-
-  _trackPageview: function(route, params){
-    url = Backbone.history.getFragment();
-    ga('send', 'pageview', {
-      page: "/#" + url
-    });
   }
 });
 
@@ -67,6 +59,7 @@ window.app.Router = Backbone.Router.extend({
 jQuery(function($){
   window.app.router = new window.app.Router();
   window.app.models.widget = new app.models.Widget(impaqme);
+  window.app.models.social = new app.models.Social(impaqme);// TODO trim down the bootstrap object
 
   _(window.app.views).extend({
     window: new app.views.Window({ model: app.models.widget }),

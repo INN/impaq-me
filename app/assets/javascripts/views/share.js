@@ -29,7 +29,7 @@ window.app.views.Share = Backbone.View.extend({
   },
 
   emailClick: function(event){
-    this.model.set('emailed', true).recordEmail();
+    app.events.trigger('share:email');
   },
 
   render: function(){

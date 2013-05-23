@@ -19,12 +19,12 @@ fb.ready(function(){
 
 twttr.ready(function(){
   twttr.events.bind('tweet', function(event){
-    app.models.widget.set('tweeted', true).recordTweet();
+    app.events.trigger('share:twitter');
   });
 });
 
 fb.ready(function(){
   FB.Event.subscribe('edge.create', function(response) {
-    app.models.widget.set('liked', true).recordLike();
+    app.events.trigger('share:facebook');
   });
 });

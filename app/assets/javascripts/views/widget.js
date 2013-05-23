@@ -13,10 +13,13 @@ window.app.views.Widget = Backbone.View.extend({
 
     this.listenTo(this.model, {
       'change:mode':    this.modeChanged,
-      'change:open':    this.openChanged,
-      'change:tweeted': this.shared,
-      'change:liked':   this.shared,
-      'change:emailed': this.shared
+      'change:open':    this.openChanged
+    });
+
+    this.listenTo(app.events, {
+      'share:twitter':  this.shared,
+      'share:facebook': this.shared,
+      'share:email':    this.shared
     });
   },
 
