@@ -12,11 +12,9 @@ body {
   letter-spacing: .1em;
 }
 
-/* layout */
-#banner,
-#widget {
-  overflow:auto;
-}
+/* uncollapse margins between banner and widget */
+#banner { overflow:auto; }
+#widget { border-top: 1px solid #EFEFEF; }
 
 h1 {
   margin:0;
