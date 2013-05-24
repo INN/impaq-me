@@ -13,5 +13,7 @@
 ###
 
 module.exports = require('lineman').config.extend('files',
-  # Override file patterns here
+  js:
+    concatenated: "../public/scripts/sdk.js"
+    minified: "../public/scripts/sdk.min.js"
 )

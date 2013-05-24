@@ -6,6 +6,6 @@
   "author": "Jason Karns <jason@testdouble.com>",
   "contributors" : "Zach Briggs <zach@testdouble.com>",
   "dependencies": {
-    "lineman": "~0.4.11"
+    "lineman": "~0.7.1"
   }
 }
