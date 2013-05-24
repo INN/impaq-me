@@ -12,6 +12,10 @@ ImpaqBackend::Application.routes.draw do
   resources :shares
   resources :click_throughs
 
+  root to: 'static_pages#index'
+
+  get 'about' => 'static_pages#about'
+  get 'funding'  => 'static_pages#funding'
   get 'iframe' => 'iframe#index'
   get 'l/:slug' => 'links#follow'
 
