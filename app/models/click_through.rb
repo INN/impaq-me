@@ -12,8 +12,9 @@ class ClickThrough
   field :updated_at
 
   belongs_to :campaign
-
   before_save :set_value
+
+  AGENT_BLACKLIST = /Twitterbot|facebookexternalhit/
 
   def self.past_clicks click
     where(article_url: click.article_url).
@@ -51,6 +52,10 @@ class ClickThrough
   end
 
   def monied_click?
-    ClickThrough.past_clicks(self).empty?
+    ClickThrough.past_clicks(self).empty? unless blacklisted_agent?
+  end
+
+  def blacklisted_agent?
+    user_agent =~ AGENT_BLACKLIST
   end
 end
