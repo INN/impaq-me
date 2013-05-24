@@ -18,7 +18,7 @@ window.app.views.Window = Backbone.View.extend({
     var data = {
       action: 'resize',
       args: {
-        height: $('body').height()
+        height: $('main')[0].scrollHeight
       }
     };
     this.callParent(data);
