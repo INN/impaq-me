@@ -21,12 +21,12 @@ window.app.views.Banner = Backbone.View.extend({
 
   maximize: function(){
     this.views.info.$el.show();
-    return this;
+    app.events.trigger('change:height');
   },
 
   minimize: function(){
     this.views.info.$el.hide();
-    return this;
+    app.events.trigger('change:height');
   },
 
   click: function(){
