@@ -122,7 +122,7 @@ a {
   font-weight:normal;
 }
 /* better to do this with a background image + left padding */
-#widget header h1::before {
+#widget header h1:before {
   content: '\f004';
   font-family: 'FontAwesome';
   margin-right: 1.25em;
@@ -169,7 +169,7 @@ a {
   max-width: 60px;
 }
 /* better to do this with a background image + left padding */
-.share_tools .email a::before {
+.share_tools .email a:before {
   content: '\f0e0';
   font-family: 'FontAwesome';
   margin-right:4px;
@@ -190,7 +190,7 @@ a {
   padding: .1em .75em;
   z-index:1;
 }
-.progress_meter p::before {
+.progress_meter p:before {
   content: '';
   position:absolute;
   top:0;
@@ -221,7 +221,7 @@ a {
   font-size: 15px;
   font-weight:normal;
 }
-.follow_up_cta::before {
+.follow_up_cta:before {
   content: '';
   position:absolute;
   top:0;
