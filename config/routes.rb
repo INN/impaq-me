@@ -13,7 +13,7 @@ ImpaqBackend::Application.routes.draw do
   resources :click_throughs
 
   get 'iframe' => 'iframe#index'
-  get ':slug' => 'links#follow'
+  get 'l/:slug' => 'links#follow'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

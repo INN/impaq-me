@@ -24,9 +24,9 @@ class Shortlink
     })
 
     {
-      twitter_shortlink: twitter.slug,
-      facebook_shortlink: facebook.slug,
-      email_shortlink: electronic_mail.slug,
+      twitter_shortlink: "l/#{twitter.slug}",
+      facebook_shortlink: "l/#{facebook.slug}",
+      email_shortlink: "l/#{electronic_mail.slug}",
     }
   end
 
