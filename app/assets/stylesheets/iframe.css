@@ -143,7 +143,7 @@ a {
   cursor:pointer;
 }
 #widget .opened .toggle {
-  top: -1px;
+  top: 0px;
   right: -27px;
   background:url('../images/module_close.png') no-repeat center center;
 }

@@ -14,11 +14,20 @@ window.app.views.Window = Backbone.View.extend({
     });
   },
 
+  fullHeight: function(){
+    var main = $('main').height();
+    var fb_iframe = $('.facebook iframe');
+    if(fb_iframe.length){
+      var fb = fb_iframe.height() + fb_iframe.offset().top;
+    }
+    return Math.max(main, fb || 0);
+  },
+
   resizeParent: _.debounce(function(){
     var data = {
       action: 'resize',
       args: {
-        height: $('main')[0].scrollHeight
+        height: this.fullHeight()
       }
     };
     this.callParent(data);
