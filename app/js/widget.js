@@ -28,7 +28,7 @@
 
   Widget.prototype = {
     template: function(data){
-      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?mode='+ data.route +'&article_url='+ data.article_url +'&article_title='+ data.article_title +'" style="width:100%; height:0; border:0; display:block;" scrolling="no"></iframe></div>';
+      return '<div class="impaq-me-widget"><iframe src="'+ data.iframe_src +'?mode='+ data.route +'&article_url='+ data.article_url +'&article_title='+ data.article_title +'" style="width:100%; height:0; border:0; display:block;" scrolling="no" frameborder="0"></iframe></div>';
     },
 
     templateData: function(){
