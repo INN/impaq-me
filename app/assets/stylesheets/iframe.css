@@ -58,7 +58,7 @@ a {
 
 #banner {
   text-align: center;
-  padding:0 1em;
+  padding:0 1.25em;
   cursor: pointer;
 }
 #banner .thanks {
@@ -79,11 +79,12 @@ a {
 }
 #banner .close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2px;
+  right: 4px;
   color:inherit;
   font-size:inherit;
   cursor: pointer;
+  padding:0;
 }
 
 #banner header { font-size: 17px; letter-spacing: .2em; }
