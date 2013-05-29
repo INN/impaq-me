@@ -25,12 +25,13 @@ window.app.views.Banner = Backbone.View.extend({
   },
 
   minimize: function(){
+    if(this.model.get('open')) return;
+
     this.views.info.$el.hide();
     app.events.trigger('change:height');
   },
 
   click: function(){
-    clearTimeout(this.minimizer);
     this.model.set('open', !this.model.get('open'));
     app.services.Analytics.trackEvent('widget', (this.model.get('open') ? 'open' : 'close'), 'banner');
   },
