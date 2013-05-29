@@ -260,7 +260,8 @@ footer {
 footer > * {
   display:inline-block;
   width:50%;
+  text-align: right;
 }
-footer > *:last-child {
-  text-align:right;
+footer > :first-child {
+  text-align: left;
 }
