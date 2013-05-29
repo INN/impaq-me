@@ -148,7 +148,7 @@ a {
   background:url('../images/module_close.png') no-repeat center center;
 }
 
-.unnamed {
+.cta {
   padding-top: 1px; /* uncollapse top margin so the toggle button is positioned correctly */
 }
 
@@ -209,7 +209,7 @@ a {
 }
 
 @media only screen and (min-width : 550px) {
-  .unnamed        { display:table; width:100%; }
+  .cta            { display:table; width:100%; }
   .share_tools    { display:table-cell; width:250px; text-align:left; }
   .progress_meter { display:table-cell; }
 }
