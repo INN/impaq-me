@@ -19,11 +19,11 @@ window.app.views.WidgetFooter = Backbone.View.extend({
   },
 
   aboutFundingClicked: function(){
-    app.services.Analytics.trackEvent('footer', 'click', 'about_funding', undefined, true);
+    app.services.Analytics.trackEvent('footer', 'click', 'about_funding');
   },
 
   aboutImpaqmeClicked: function(){
-    app.services.Analytics.trackEvent('footer', 'click', 'about_impaqme', undefined, true);
+    app.services.Analytics.trackEvent('footer', 'click', 'about_impaqme');
   },
 
   render: function(){
