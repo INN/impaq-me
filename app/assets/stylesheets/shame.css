@@ -5,11 +5,13 @@
   margin-left:-4px;
 }
 
+/* cover the FB like counter */
+/* doesn't work in IE8 because its z-index is broken */
 .share_tools .fb-like {
   position:relative;
 }
-.share_tools .fb-like::after {
-  content: '';
+.share_tools .fb-like::after { /* using double-colon since this is broken in IE8 anyhow */
+  content: ' ';
   position: absolute;
   height: 20px;
   width: 24px;

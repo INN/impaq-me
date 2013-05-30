@@ -232,7 +232,7 @@ a {
   font-weight:normal;
 }
 .follow_up_cta:before {
-  content: '';
+  content: ' ';
   position:absolute;
   top:0;
   bottom:0;
