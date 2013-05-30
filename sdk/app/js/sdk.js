@@ -8,7 +8,7 @@
       config: {
         route: 'widget',
         //iframe_src: '//localhost:3000/iframe'
-        iframe_src: '//impaqme.herokuapp.com/iframe'
+        iframe_src: '//www.impaq.me/iframe'
       },
       widgets: []
     }
