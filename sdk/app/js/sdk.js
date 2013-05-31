@@ -7,7 +7,7 @@
     me: {
       config: {
         route: 'widget',
-        //iframe_src: '//localhost:3000/iframe'
+        // iframe_src: '//localhost:3000/iframe'
         iframe_src: '//www.impaq.me/iframe'
       },
       widgets: []
@@ -50,7 +50,7 @@
       return $(this.iframe).animate({height: height});
     },
     remove: function(){
-      return this.$el.parentNode.removeChild(this.$el);
+      this.$el.remove();
     },
     respondToChild: function(data){
       if(data.action === "close") {
