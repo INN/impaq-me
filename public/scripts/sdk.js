@@ -9597,82 +9597,104 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 })( window );
 
 (function() {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
   (function($) {
-    var Widget, widget;
+    var Widget;
 
     window.impaq = $.extend({}, window.impaq, {
       $: $,
       me: {
+        widgets: [],
         config: {
           route: "widget",
-          iframe_src: "//www.impaq.me/iframe"
-        },
-        widgets: []
+          iframe_src: '//localhost:3000/iframe'
+        }
       }
     });
-    Widget = function(options) {
-      var html;
+    Widget = (function() {
+      function Widget(options) {
+        this.wireUpCommunication = __bind(this.wireUpCommunication, this);
+        this.bindScroll = __bind(this.bindScroll, this);
+        this.minimizeChild = __bind(this.minimizeChild, this);
+        var _ref;
 
-      $.extend(this, options);
-      html = this.compile();
-      this.$el = $(html).replaceAll(this.placeholder);
-      this.iframe = this.$el.find("iframe")[0];
-      $(this.iframe).on("load", $.proxy(this.wireUpCommunication, this));
-      if (this.config && this.config.route === "banner") {
-        return $(this.iframe).on("load", $.proxy(this.bindScroll, this));
+        $.extend(this, options);
+        this.$el = $(this.compile()).replaceAll(this.placeholder);
+        this.iframe = this.$el.find("iframe")[0];
+        $(this.iframe).on("load", this.wireUpCommunication);
+        if (((_ref = this.config) != null ? _ref.route : void 0) === "banner") {
+          $(this.iframe).on("load", this.bindScroll);
+        }
       }
-    };
-    Widget.prototype = {
-      template: function(data) {
-        return "<div class=\"impaq-me-widget\"><iframe src=\"" + data.iframe_src + "?mode=" + data.route + "&article_url=" + data.article_url + "&article_title=" + data.article_title + "\" style=\"width:100%; height:0; border:0; display:block;\" scrolling=\"no\" frameborder=\"0\"></iframe></div>";
-      },
-      templateData: function() {
+
+      Widget.prototype.template = function(data) {
+        return "<div class=\"impaq-me-widget\">\n  <iframe\n    src=\"" + data.iframe_src + "?mode=" + data.route + "&article_url=" + data.article_url + "&article_title=" + data.article_title + "\"\n    style=\"width:100%; height:0; border:0; display:block;\"\n    scrolling=\"no\"\n    frameborder=\"0\"></iframe>\n</div>";
+      };
+
+      Widget.prototype.templateData = function() {
         return $.extend({}, impaq.me.config, this.config, {
           article_url: encodeURIComponent(this.articleURL()),
           article_title: encodeURIComponent(this.articleTitle())
         });
-      },
-      articleURL: function() {
+      };
+
+      Widget.prototype.articleURL = function() {
         return this.placeholder.data("url") || $("link[rel=canonical]").attr("href") || window.location;
-      },
-      articleTitle: function() {
-        return document.title;
-      },
-      compile: function() {
+      };
+
+      Widget.prototype.articleTitle = function() {
+        return this.placeholder.data("title") || document.title;
+      };
+
+      Widget.prototype.publisherTwitter = function() {
+        return this.placeholder.data("via");
+      };
+
+      Widget.prototype.compile = function() {
         return this.template(this.templateData());
-      },
-      resize: function(height) {
+      };
+
+      Widget.prototype.resize = function(height) {
         return $(this.iframe).animate({
           height: height
         });
-      },
-      remove: function() {
+      };
+
+      Widget.prototype.remove = function() {
         return this.$el.remove();
-      },
-      respondToChild: function(data) {
+      };
+
+      Widget.prototype.respondToChild = function(data) {
         if (data.action === "close") {
           return this.remove();
         } else {
           return this.resize(data.args.height);
         }
-      },
-      minimizeChild: function() {
+      };
+
+      Widget.prototype.minimizeChild = function() {
         $(window).unbind("scroll", this.minimizeChild);
         return this.iframe.contentWindow.postMessage(JSON.stringify({
           widget_id: this.id,
           action: "minimize"
         }), this.iframe.src);
-      },
-      bindScroll: function(event) {
-        return $(window).scroll($.proxy(this.minimizeChild, this));
-      },
-      wireUpCommunication: function(e) {
+      };
+
+      Widget.prototype.bindScroll = function(event) {
+        return $(window).scroll(this.minimizeChild);
+      };
+
+      Widget.prototype.wireUpCommunication = function(e) {
         return this.iframe.contentWindow.postMessage(JSON.stringify({
           widget_id: this.id,
           action: "initialize"
         }), this.iframe.src);
-      }
-    };
+      };
+
+      return Widget;
+
+    })();
     $(window).on("message", function(e) {
       var data;
 
@@ -9685,15 +9707,14 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
         placeholder: $(placeholder)
       });
     });
-    if (window.location.search.match(/shared_via_impaq_me=/)) {
-      widget = new Widget({
+    if (window.location.search.match(/shared_via_impaq_me=/) != null) {
+      return impaq.me.widgets.push(new Widget({
         id: impaq.me.widgets.length,
         placeholder: $("<div>").prependTo("body"),
         config: {
           route: "banner"
         }
-      });
-      return impaq.me.widgets.push(widget);
+      }));
     }
   })(jQuery.noConflict(true));
 
