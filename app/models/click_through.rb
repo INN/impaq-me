@@ -1,3 +1,5 @@
+require 'yaml'
+
 class ClickThrough
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -14,7 +16,7 @@ class ClickThrough
   belongs_to :campaign
   before_save :set_value
 
-  AGENT_BLACKLIST = /Twitterbot|facebookexternalhit/
+  USER_AGENT_BLACKLIST = Regexp.union YAML.load_file Rails.root.join 'config/user_agent_blacklist.yml'
 
   def self.past_clicks click
     where(article_url: click.article_url).
@@ -56,6 +58,6 @@ class ClickThrough
   end
 
   def blacklisted_agent?
-    user_agent =~ AGENT_BLACKLIST
+    user_agent =~ USER_AGENT_BLACKLIST
   end
 end
