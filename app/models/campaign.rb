@@ -8,6 +8,7 @@ class Campaign
   field :value_per_click, type: Float, default: 1.0
   field :goal, type: Float
   field :paypal_email, type: String
+  field :twitter_username, type: String
   field :recommended_donation, type: Float, default: 1.0
   field :share_cooldown_days, type: Integer, default: 30
 

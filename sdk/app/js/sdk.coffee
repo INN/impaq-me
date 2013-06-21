@@ -40,9 +40,6 @@
     articleTitle: ->
       @placeholder.data("title") or document.title
 
-    publisherTwitter: ->
-      @placeholder.data("via")
-
     compile: ->
       @template(@templateData())
 

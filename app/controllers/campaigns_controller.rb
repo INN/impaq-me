@@ -61,10 +61,11 @@ class CampaignsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def campaign_params
-    p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
+    p = params.require(:campaign).permit(:foundation_name, :publisher_name,
                                          :domains, :value_per_share, :goal,
-                                         :value_per_click, :about_uri, :paypal_email,
-                                         :recommended_donation, :share_cooldown)
+                                         :value_per_click, :about_uri,
+                                         :recommended_donation, :share_cooldown,
+                                         :paypal_email, :twitter_username)
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }

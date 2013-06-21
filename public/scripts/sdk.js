@@ -9647,10 +9647,6 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
         return this.placeholder.data("title") || document.title;
       };
 
-      Widget.prototype.publisherTwitter = function() {
-        return this.placeholder.data("via");
-      };
-
       Widget.prototype.compile = function() {
         return this.template(this.templateData());
       };
