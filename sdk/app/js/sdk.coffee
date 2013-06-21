@@ -5,11 +5,15 @@
       widgets: []
       config:
         route: "widget"
-        iframe_src: '//localhost:3000/iframe'
-        # iframe_src: "//www.impaq.me/iframe"
+        iframe_host: '//localhost:3000'
+        # iframe_host: '//www.impaq.me'
   )
 
   class Widget
+    id: null          # provided by options to constructor
+    config: null      # provided by options to constructor
+    placeholder: null # provided by options to constructor
+
     constructor: (options) ->
       $.extend @, options
       @$el = $(@compile()).replaceAll(@placeholder)
@@ -21,7 +25,7 @@
       """
       <div class="impaq-me-widget">
         <iframe
-          src="#{data.iframe_src}?mode=#{data.route}&article_url=#{data.article_url}&article_title=#{data.article_title}"
+          src="#{data.iframe_host}/iframe?mode=#{data.route}&article_url=#{data.article_url}&article_title=#{data.article_title}"
           style="width:100%; height:0; border:0; display:block;"
           scrolling="no"
           frameborder="0"></iframe>
@@ -54,10 +58,10 @@
 
     minimizeChild: =>
       $(window).unbind "scroll", @minimizeChild
-      @iframe.contentWindow.postMessage JSON.stringify(
+      @iframe.contentWindow.postMessage(JSON.stringify(
         widget_id: @id
         action: "minimize"
-      ), @iframe.src
+      ), @iframe.src)
 
     bindScroll: (event) =>
       $(window).scroll @minimizeChild
@@ -69,6 +73,7 @@
       ), @iframe.src)
 
   $(window).on "message", (e) ->
+    return unless e?.originalEvent?.origin?.match(impaq.me.config.iframe_host)?
     data = $.parseJSON(e.originalEvent.data)
     impaq.me.widgets[data.widget_id].respondToChild data
 

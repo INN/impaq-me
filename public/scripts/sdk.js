@@ -9608,11 +9608,17 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
         widgets: [],
         config: {
           route: "widget",
-          iframe_src: '//localhost:3000/iframe'
+          iframe_host: '//localhost:3000'
         }
       }
     });
     Widget = (function() {
+      Widget.prototype.id = null;
+
+      Widget.prototype.config = null;
+
+      Widget.prototype.placeholder = null;
+
       function Widget(options) {
         this.wireUpCommunication = __bind(this.wireUpCommunication, this);
         this.bindScroll = __bind(this.bindScroll, this);
@@ -9629,7 +9635,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
       }
 
       Widget.prototype.template = function(data) {
-        return "<div class=\"impaq-me-widget\">\n  <iframe\n    src=\"" + data.iframe_src + "?mode=" + data.route + "&article_url=" + data.article_url + "&article_title=" + data.article_title + "\"\n    style=\"width:100%; height:0; border:0; display:block;\"\n    scrolling=\"no\"\n    frameborder=\"0\"></iframe>\n</div>";
+        return "<div class=\"impaq-me-widget\">\n  <iframe\n    src=\"" + data.iframe_host + "/iframe?mode=" + data.route + "&article_url=" + data.article_url + "&article_title=" + data.article_title + "\"\n    style=\"width:100%; height:0; border:0; display:block;\"\n    scrolling=\"no\"\n    frameborder=\"0\"></iframe>\n</div>";
       };
 
       Widget.prototype.templateData = function() {
@@ -9692,8 +9698,11 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
     })();
     $(window).on("message", function(e) {
-      var data;
+      var data, _ref, _ref1;
 
+      if ((e != null ? (_ref = e.originalEvent) != null ? (_ref1 = _ref.origin) != null ? _ref1.match(impaq.me.config.iframe_host) : void 0 : void 0 : void 0) == null) {
+        return;
+      }
       data = $.parseJSON(e.originalEvent.data);
       return impaq.me.widgets[data.widget_id].respondToChild(data);
     });
