@@ -4,8 +4,7 @@ class SharesController < ApplicationController
 
   # GET /shares
   def index
-    # @shares = Share.all
-    @shares = Share.where(campaign_id: "517acfcb21dc0229b9000001")
+    @shares = Share.all
     respond_to do |format|
       format.json { render json: @shares }
       format.csv { render text: @shares.to_csv }
