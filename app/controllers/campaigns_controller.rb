@@ -63,7 +63,7 @@ class CampaignsController < ApplicationController
   def campaign_params
     p = params.require(:campaign).permit(:foundation_name, :publisher_name, \
                                          :domains, :value_per_share, :goal,
-                                         :value_per_click, :about_uri, :paypal,
+                                         :value_per_click, :about_uri, :paypal_email,
                                          :recommended_donation, :share_cooldown)
     p.tap do |p|
       p[:domains] = p[:domains].split ","

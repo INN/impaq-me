@@ -11,18 +11,18 @@
   <ul>
     <% @campaigns.each do |campaign| %>
       <li>
-      <strong>foundation_name: </strong> <%= campaign.foundation_name %>
-      <strong>publisher_name: </strong>  <%= campaign.publisher_name %>
-      <strong>domains: </strong>         <%= campaign.domains_to_s %>
-      <strong>share_cooldown: </strong>  <%= campaign.share_cooldown_days %>
-      <strong>value_per_share: </strong> <%= campaign.value_per_share %>
-      <strong>value_per_click: </strong> <%= campaign.value_per_click %>
-      <strong>goal: </strong>            <%= campaign.goal %>
-      <strong>paypal: </strong>          <%= campaign.paypal %>
+      <strong>foundation_name: </strong>       <%= campaign.foundation_name %>
+      <strong>publisher_name: </strong>        <%= campaign.publisher_name %>
+      <strong>domains: </strong>               <%= campaign.domains_to_s %>
+      <strong>share_cooldown: </strong>        <%= campaign.share_cooldown_days %>
+      <strong>value_per_share: </strong>       <%= campaign.value_per_share %>
+      <strong>value_per_click: </strong>       <%= campaign.value_per_click %>
+      <strong>goal: </strong>                  <%= campaign.goal %>
+      <strong>paypal_email: </strong>          <%= campaign.paypal_email %>
       <strong>recommended_donation: </strong>  <%= campaign.recommended_donation %>
-      <strong>campaign_id: </strong>     <%= campaign.id %>
-      <br> <strong>Share: $</strong> <%=Share.total_for_campaign campaign %>
-      <strong>Click: $</strong> <%=ClickThrough.total_for_campaign campaign %>
+      <strong>campaign_id: </strong>           <%= campaign.id %>
+      <br> <strong>Share: $</strong>           <%= Share.total_for_campaign campaign %>
+      <strong>Click: $</strong>                <%= ClickThrough.total_for_campaign campaign %>
       <br><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong>
       </li>
     <% end %>

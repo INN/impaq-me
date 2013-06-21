@@ -8,7 +8,7 @@
     <form class="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
       <input type="hidden" name="cmd" value="_donations">
       <!-- <input type="hidden" name="business" value="impaqme@testdouble.com"> -->
-      <input type="hidden" name="business" value="donations@investigativenewsnetwork.org">
+      <input type="hidden" name="business" value="<%= paypal_email %>">
       <input type="hidden" name="lc" value="US">
       <input type="hidden" name="item_name" value="<%= publisher_name %>">
       <input type="hidden" name="on0" value="CampaignID">
