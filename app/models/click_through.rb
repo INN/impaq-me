@@ -1,8 +1,11 @@
 require 'yaml'
+require 'dumps_csv'
 
 class ClickThrough
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  include DumpsCSV
 
   field :article_url
   field :channel
@@ -32,19 +35,6 @@ class ClickThrough
 
   def self.total_for_campaign campaign
     for_campaign(campaign).sum(:value)
-  end
-
-  def self.to_csv
-    CSV.generate do |csv|
-      csv << fields_to_a
-      each do |click|
-        csv << click.attributes.values_at(*fields_to_a)
-      end
-    end
-  end
-
-  def self.fields_to_a
-    self.fields.map { |field| field[0] }
   end
 
   private
