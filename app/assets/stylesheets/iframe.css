@@ -152,6 +152,8 @@ a {
 
 .cta {
   padding-top: 1px; /* uncollapse top margin so the toggle button is positioned correctly */
+  -webkit-transition: margin .5s ease-in;
+  transition: margin .5s ease-in;
 }
 
 /* Share Tools */
