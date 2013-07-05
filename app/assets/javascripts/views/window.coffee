@@ -12,7 +12,7 @@ window.app.views.Window = Backbone.View.extend
       'change:height': @resizeParent
 
   fullHeight: ->
-    main = $('main').height()
+    main = $('body').height()
     fbIframe = $('.facebook iframe')
     if fbIframe.length
       fb = fbIframe.height() + fbIframe.offset().top
