@@ -9608,7 +9608,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
         widgets: [],
         config: {
           route: "widget",
-          iframe_host: '//localhost:3000'
+          iframe_host: '//www.impaq.me'
         }
       }
     });

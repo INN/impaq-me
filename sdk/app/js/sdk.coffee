@@ -5,8 +5,7 @@
       widgets: []
       config:
         route: "widget"
-        iframe_host: '//localhost:3000'
-        # iframe_host: '//www.impaq.me'
+        iframe_host: '//www.impaq.me'
   )
 
   class Widget
