@@ -1,17 +1,50 @@
-###
-  Exports an object that defines
-  all of the configuration needed by the projects'
-  depended-on grunt tasks.
+module.exports = require('lineman').config.extend 'application',
 
-  You can find the parent object in: node_modules/lineman/config/application.coffee
-###
+  loadNpmTasks: [ 'grunt-contrib-copy' ]
+  # appTasks:
+  #   common: [ 'coffee', 'jshint', 'concat:dev' ]
+  #   dev: [ 'watch' ]
+  #   dist: [ 'concat:dist', 'uglify:dist' ]
 
-# console.log(require('lineman').config.extend('application', {appTasks: null}));
-config = require('lineman').config.extend('application',
-  server:
-    web:
-      port: 8002
-)
-config.appTasks.common.pop()
-config.appTasks.dist.pop()
-module.exports = config
+  removeTasks:
+    common: ["less", "handlebars", "jst", "images:dev", "webfonts:dev", "pages:dev"]
+    dev: ["server"]
+    dist: ["cssmin", "images:dist", "webfonts:dist", "pages:dist"]
+
+  prependTasks:
+    dev: [ "copy:js" ]
+
+  appendTasks:
+    dist: [ "copy:dist" ]
+
+  meta:
+    banner: """
+            """
+
+  concat:
+    dev:
+      options: process: data: iframe_host: "//localhost:3000"
+      src: "<%= concat.js.src %>"
+      dest: "<%= files.js.concatenated %>"
+    dist:
+      options: process: data: iframe_host: "//www.impaq.me"
+      src: "<%= concat.js.src %>"
+      dest: "<%= files.js.concatenated %>"
+
+  uglify:
+    js:
+      src: "<%= files.js.concatenated %>"
+      dest: "<%= files.js.minified %>"
+
+  copy:
+    js:
+      src: "<%= files.js.concatenated %>"
+      dest: "<%= files.js.dist %>"
+    dist:
+      src: "<%= files.js.minified %>"
+      dest: "<%= files.js.dist %>"
+
+  watch:
+    copy:
+      files: "<%= files.js.dist %>"
+      tasks: [ "copy:js" ]
