@@ -45,6 +45,10 @@ module.exports = require('lineman').config.extend 'application',
       dest: "<%= files.js.dist %>"
 
   watch:
-    copy:
-      files: "<%= files.js.dist %>"
-      tasks: [ "copy:js" ]
+    js:
+      files: [ "<%= files.js.vendor %>", "<%= files.js.app %>" ]
+      tasks: [ "concat:js", "copy:js" ]
+
+    coffee:
+      files: "<%= files.coffee.app %>"
+      tasks: [ "coffee", "concat:js", "copy:js" ]
