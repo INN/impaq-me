@@ -1,9 +1,9 @@
 <div>
-  <p class="solicit"><%= publisher_name %> is a non-profit organization. if you share this article, <%= foundation_name %> will donate <strong class="share-value">$<%= value_per_share %></strong> to them.</p>
+  <p class="solicit"><strong>Share this article</strong> and <%= foundation_name %> will donate <strong class="share-value">$<%= value_per_share %></strong> to <%= publisher_name %>, a non-profit news organization.</p>
   <p class="thanks"><strong>Thanks! <%= publisher_name %> just got <span class="click-value"/>$<%= value_per_share %></span> thanks to you.</strong><br/>
   The best way to help is to get more people involved. Tell your friends!</p>
   <div class="follow_up_cta">
-    <p>Show you care by donating an additional <strong class="donation-value">$<%= recommended_donation %></strong> to <%= publisher_name %>.</p>
+    <p>Show you care about public service journalism by donating an additional <strong class="donation-value">$<%= recommended_donation %></strong> to <%= publisher_name %>.</p>
     <!-- <form action="https://sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank"> -->
     <form class="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
       <input type="hidden" name="cmd" value="_donations">
