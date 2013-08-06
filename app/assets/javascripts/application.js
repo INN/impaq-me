@@ -25,3 +25,5 @@ window.app = {
   services: {},
   events: _({}).extend(Backbone.Events)
 };
+
+window.campaign_over = true;
