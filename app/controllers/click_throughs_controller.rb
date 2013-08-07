@@ -8,4 +8,5 @@ class ClickThroughsController < ApplicationController
       format.csv { render text: @clicks.to_csv }
     end
   end
+
 end

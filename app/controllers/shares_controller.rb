@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   before_action :set_share, only: [:show, :edit, :update, :destroy]
-  before_action :check_user
+  before_action :check_user, except: :create
 
   # GET /shares
   def index

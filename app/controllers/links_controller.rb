@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :follow]
+  before_action :check_user, except: :follow
 
   def index
     @links = Link.all
