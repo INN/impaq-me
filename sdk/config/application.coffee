@@ -1,21 +1,11 @@
 module.exports = require('lineman').config.extend 'application',
 
   loadNpmTasks: [ 'grunt-contrib-copy' ]
-  # appTasks:
-  #   common: [ 'coffee', 'jshint', 'concat:dev' ]
-  #   dev: [ 'watch' ]
-  #   dist: [ 'concat:dist', 'uglify:dist' ]
 
-  removeTasks:
-    common: ["less", "handlebars", "jst", "concat", "images:dev", "webfonts:dev", "pages:dev"]
-    dev: ["server"]
-    dist: ["cssmin", "images:dist", "webfonts:dist", "pages:dist"]
-
-  prependTasks:
-    dev: [ "concat:dev", "copy:dev" ]
-
-  appendTasks:
-    dist: [ "concat:dist", "copy:dist" ]
+  appTasks:
+    common: [ 'coffee', 'jshint' ]
+    dev: [ 'concat:dev', 'copy:dev', 'watch' ]
+    dist: [ 'concat:dist', 'uglify', 'copy:dist' ]
 
   meta:
     banner: """

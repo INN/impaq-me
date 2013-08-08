@@ -6,10 +6,7 @@
   "author": "Jason Karns <jason@testdouble.com>",
   "contributors": "Zach Briggs <zach@testdouble.com>",
   "dependencies": {
-    "lineman": "~0.11.1"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
+    "lineman": "~0.11.6",
     "grunt-contrib-copy": "~0.4.1"
   }
 }
