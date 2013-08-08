@@ -74,6 +74,7 @@
   $(window).on "message", (e) ->
     return unless e?.originalEvent?.origin?.match(impaq.me.config.iframe_host)?
     data = $.parseJSON(e.originalEvent.data)
+    # TODO fix console JS errors when data is not our own message
     impaq.me.widgets[data.widget_id].respondToChild data
 
   $(".impaq-me-placeholder").each (id, placeholder) ->
