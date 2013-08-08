@@ -7,15 +7,15 @@ module.exports = require('lineman').config.extend 'application',
   #   dist: [ 'concat:dist', 'uglify:dist' ]
 
   removeTasks:
-    common: ["less", "handlebars", "jst", "images:dev", "webfonts:dev", "pages:dev"]
+    common: ["less", "handlebars", "jst", "concat", "images:dev", "webfonts:dev", "pages:dev"]
     dev: ["server"]
     dist: ["cssmin", "images:dist", "webfonts:dist", "pages:dist"]
 
   prependTasks:
-    dev: [ "copy:js" ]
+    dev: [ "concat:dev", "copy:dev" ]
 
   appendTasks:
-    dist: [ "copy:dist" ]
+    dist: [ "concat:dist", "copy:dist" ]
 
   meta:
     banner: """
@@ -37,7 +37,7 @@ module.exports = require('lineman').config.extend 'application',
       dest: "<%= files.js.minified %>"
 
   copy:
-    js:
+    dev:
       src: "<%= files.js.concatenated %>"
       dest: "<%= files.js.dist %>"
     dist:
@@ -47,8 +47,8 @@ module.exports = require('lineman').config.extend 'application',
   watch:
     js:
       files: [ "<%= files.js.vendor %>", "<%= files.js.app %>" ]
-      tasks: [ "concat:js", "copy:js" ]
+      tasks: [ "concat:dev", "copy:dev" ]
 
     coffee:
       files: "<%= files.coffee.app %>"
-      tasks: [ "coffee", "concat:js", "copy:js" ]
+      tasks: [ "coffee", "concat:dev", "copy:dev" ]
