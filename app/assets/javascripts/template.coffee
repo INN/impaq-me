@@ -13,7 +13,7 @@ window.app.Template = class Template
       @alternateTemplate
 
   isCampaignActive: ->
-    not window.campaign_over
+    window.impaqme.percent < 100
 
   hasAlternateTemplate: ->
     @alternateTemplate?
