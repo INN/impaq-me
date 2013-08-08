@@ -12,6 +12,7 @@
 //
 //= require vendor
 //= require_self
+//= require template
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./views

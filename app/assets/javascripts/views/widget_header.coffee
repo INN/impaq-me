@@ -1,5 +1,5 @@
 window.app.views.WidgetHeader = class WidgetHeader extends Backbone.View
-  template: JST["widget_header"]
+  template: new window.app.Template("widget_header")
 
   events:
     click: "click"
@@ -18,5 +18,5 @@ window.app.views.WidgetHeader = class WidgetHeader extends Backbone.View
     @$el.toggle(mode is "widget")
 
   render: ->
-    @$el.html @template(@model.toJSON())
+    @$el.html @template.fill(@model.toJSON())
     this
