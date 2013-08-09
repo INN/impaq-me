@@ -49,6 +49,7 @@ a {
 .share-value,
 .click-value,
 .donation-value,
+.total-raised,
 #widget .thanks :first-child {
   color:#ED1C24;
   font-weight: inherit;

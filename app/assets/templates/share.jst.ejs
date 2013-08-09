@@ -3,8 +3,8 @@
   <ul class="share_tools">
     <li class="facebook"><div class="fb-like" data-href="<%= facebook_shortlink %>" data-width="90" data-layout="button_count"></div></li>
     <li class="twitter"><a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="<%= article_title %>" data-url="<%= twitter_shortlink %>" data-via="<%= twitter_username %>" data-count="none">Tweet</a></li>
-    <li class="email"><a href="mailto:?subject=<%= encodeURIComponent("I thought you would like this article: " + article_title) %>&amp;body=<%= encodeURIComponent("I thought you would like this article:\r\n\r\n"+ article_title +" - "+ email_shortlink +" \r\n\r\nEach time this article is shared, "+ foundation_name +" donates $"+ value_per_share +" to "+ publisher_name +". So far, they have donated $"+ (total + value_per_click) +".\r\nLearn more at http://Impaq.me") %>" target="_blank">Email</a></li>
+    <li class="email"><a href="mailto:?subject=<%= encodeURIComponent("I thought you would like this article: " + article_title) %>&amp;body=<%= encodeURIComponent( new window.app.Template('partials/email_body').fill(obj) ) %>" target="_blank">Email</a></li>
   </ul>
-  <div class="progress_meter"><p>$<%= total %> Raised so far</p></div>
+  <div class="progress_meter"><%= new window.app.Template('partials/progress_meter').fill(obj) %></div>
   <style type="text/css">.progress_meter p:before { width:<%= percent %>%; }</style>
 </div>
