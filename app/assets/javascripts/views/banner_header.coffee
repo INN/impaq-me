@@ -1,6 +1,6 @@
 window.app.views.BannerHeader = class BannerHeader extends Backbone.View
-  template: JST["banner_header"]
+  template: new window.app.Template("banner_header")
 
   render: =>
-    @$el.html @template(@model.toJSON())
+    @$el.html @template.fill(@model.toJSON())
     this
