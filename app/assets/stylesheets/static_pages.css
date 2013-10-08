@@ -69,7 +69,8 @@
 #aboutMain .right {
   float: right;
   width: 35%;
-  padding: 20px 2% 40px;
+  padding: 0 2% 40px;
+  margin-top: 20px;
   background-color: #ededed;
 }
 #aboutMain .right p,
