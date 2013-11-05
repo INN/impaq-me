@@ -6,6 +6,8 @@ class Campaign
   include Mongoid::Document
   include DumpsCSV
 
+  DEFAULT_WIDGET_HEADER = '<strong>Share</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong>'
+
   field :foundation_name, type: String
   field :publisher_name, type: String
   field :domains, type: Array
@@ -16,6 +18,7 @@ class Campaign
   field :twitter_username, type: String
   field :recommended_donation, type: Float, default: 1.0
   field :share_cooldown_days, type: Integer, default: 30
+  field :widget_header, type: String
 
   has_many :shares
   has_many :links
