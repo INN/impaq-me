@@ -19,7 +19,5 @@ window.app.views.WidgetHeader = class WidgetHeader extends Backbone.View
 
   render: ->
     @$el.html @template.fill(@model.toJSON())
-    _.each @model.keys(), (attr) =>
-      @$el.html @$el.html()
-        .replace("{{#{attr}}}", @model.get(attr))
+    window.app.helpers.Replacer.replace @$el, @model
     this
