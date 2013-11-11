@@ -25,5 +25,6 @@ window.app.views.WidgetBody = class WidgetBody extends Backbone.View
 
   render: =>
     @$el.html @template(@model.toJSON())
+    window.app.helpers.Replacer.replace @$el, @model
     @$(".thanks").hide()
     this
