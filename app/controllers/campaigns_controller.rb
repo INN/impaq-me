@@ -66,7 +66,8 @@ class CampaignsController < ApplicationController
                                          :value_per_click, :about_uri,
                                          :recommended_donation, :share_cooldown_days,
                                          :paypal_email, :twitter_username,
-                                         :widget_header, :widget_solicit, :widget_follow_up_cta)
+                                         :widget_header, :widget_solicit,
+                                         :widget_follow_up_cta, :widget_thanks)
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }

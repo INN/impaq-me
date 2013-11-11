@@ -9,6 +9,7 @@ class Campaign
   DEFAULT_WIDGET_HEADER = '<strong>Share</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong>'
   DEFAULT_WIDGET_SOLICIT = '<strong>Share this article</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong> to {{publisher_name}}, a non-profit news organization.'
   DEFAULT_WIDGET_CTA = 'Show you care about public service journalism by donating an additional <strong>${{recommended_donation}}</strong> to {{publisher_name}}.'
+  DEFAULT_WIDGET_THANKS = '<strong>Thanks! {{publisher_name}} just got <span>${{value_per_share}}</span> thanks to you.</strong><br>The best way to help is to get more people involved. Tell your friends!'
 
   field :foundation_name, type: String
   field :publisher_name, type: String
@@ -23,6 +24,7 @@ class Campaign
   field :widget_header, type: String, default: DEFAULT_WIDGET_HEADER
   field :widget_solicit, type: String, default: DEFAULT_WIDGET_SOLICIT
   field :widget_follow_up_cta, type: String, default: DEFAULT_WIDGET_CTA
+  field :widget_thanks, type: String, default: DEFAULT_WIDGET_THANKS
 
   has_many :shares
   has_many :links
