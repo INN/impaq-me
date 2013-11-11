@@ -19,7 +19,7 @@ window.app.views.WidgetHeader = class WidgetHeader extends Backbone.View
 
   render: ->
     @$el.html @template.fill(@model.toJSON())
-    @$el.html @$el.html()
-      .replace(/{{foundation_name}}/, @model.get('foundation_name'))
-      .replace(/{{value_per_share}}/, @model.get('value_per_share'))
+    _.each @model.keys(), (attr) =>
+      @$el.html @$el.html()
+        .replace("{{#{attr}}}", @model.get(attr))
     this

@@ -64,7 +64,7 @@ class CampaignsController < ApplicationController
     p = params.require(:campaign).permit(:foundation_name, :publisher_name,
                                          :domains, :value_per_share, :goal,
                                          :value_per_click, :about_uri,
-                                         :recommended_donation, :share_cooldown,
+                                         :recommended_donation, :share_cooldown_days,
                                          :paypal_email, :twitter_username, :widget_header)
     p.tap do |p|
       p[:domains] = p[:domains].split ","

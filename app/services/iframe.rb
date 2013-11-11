@@ -15,6 +15,7 @@ class Iframe
       domain: article_url.host,
       foundation_name: campaign.foundation_name,
       publisher_name: campaign.publisher_name,
+      share_cooldown_days: campaign.share_cooldown_days,
       value_per_share: format_dollar(campaign.value_per_share),
       value_per_click: format_dollar(campaign.value_per_click),
       paypal_email: campaign.paypal_email,
