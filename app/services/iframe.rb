@@ -21,6 +21,7 @@ class Iframe
       paypal_email: campaign.paypal_email,
       twitter_username: campaign.twitter_username,
       widget_header: campaign.widget_header,
+      widget_solicit: campaign.widget_solicit,
       recommended_donation: format_dollar(campaign.recommended_donation),
       goal: format_dollar(campaign_meter.goal),
       total: format_dollar(campaign_meter.total),

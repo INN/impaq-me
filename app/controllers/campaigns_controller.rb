@@ -19,7 +19,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    @campaign = Campaign.new widget_header: Campaign::DEFAULT_WIDGET_HEADER
+    @campaign = Campaign.new
   end
 
   # GET /campaigns/1/edit
@@ -65,7 +65,8 @@ class CampaignsController < ApplicationController
                                          :domains, :value_per_share, :goal,
                                          :value_per_click, :about_uri,
                                          :recommended_donation, :share_cooldown_days,
-                                         :paypal_email, :twitter_username, :widget_header)
+                                         :paypal_email, :twitter_username,
+                                         :widget_header, :widget_solicit)
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }

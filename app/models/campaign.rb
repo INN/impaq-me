@@ -7,6 +7,7 @@ class Campaign
   include DumpsCSV
 
   DEFAULT_WIDGET_HEADER = '<strong>Share</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong>'
+  DEFAULT_WIDGET_SOLICIT = '<strong>Share this article</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong> to {{publisher_name}}, a non-profit news organization.'
 
   field :foundation_name, type: String
   field :publisher_name, type: String
@@ -18,7 +19,8 @@ class Campaign
   field :twitter_username, type: String
   field :recommended_donation, type: Float, default: 1.0
   field :share_cooldown_days, type: Integer, default: 30
-  field :widget_header, type: String
+  field :widget_header, type: String, default: DEFAULT_WIDGET_HEADER
+  field :widget_solicit, type: String, default: DEFAULT_WIDGET_SOLICIT
 
   has_many :shares
   has_many :links
