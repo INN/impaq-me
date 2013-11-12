@@ -8,7 +8,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :dashboard_index }
       format.json { render json: @campaigns }
-      format.csv { render text: @campaigns.to_csv }
+      format.csv { render text: @campaigns.to_csv(Campaign::FIELDS_TO_EXCLUDE_FROM_CSV) }
     end
   end
 

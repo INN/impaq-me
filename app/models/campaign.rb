@@ -26,6 +26,8 @@ class Campaign
   field :widget_follow_up_cta, type: String, default: DEFAULT_WIDGET_CTA
   field :widget_thanks, type: String, default: DEFAULT_WIDGET_THANKS
 
+  FIELDS_TO_EXCLUDE_FROM_CSV = ['widget_header', 'widget_solicit', 'widget_follow_up_cta', 'widget_thanks']
+
   has_many :shares
   has_many :links
   has_many :click_throughs
