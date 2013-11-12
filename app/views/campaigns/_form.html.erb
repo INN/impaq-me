@@ -16,17 +16,17 @@
       <div class="row">
         <div class="large-6 columns">
           <%= f.label :foundation_name %>
-          <%= f.text_field :foundation_name %>
+          <%= f.text_field :foundation_name, placeholder: 'The Foundation of Giving' %>
         </div>
         <div class="large-6 columns">
           <%= f.label :publisher_name %>
-          <%= f.text_field :publisher_name %>
+          <%= f.text_field :publisher_name, placeholder: 'The News Place' %>
         </div>
       </div>
       <div class="row">
         <div class="large-6 columns">
           <%= f.label :domains %>
-          <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
+          <%= f.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s %>
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
               <span class="prefix">$</span>
             </div>
             <div class="small-11 columns">
-              <%= f.number_field :goal, :step => 0.01 %>
+              <%= f.number_field :goal, placeholder: '5000', :step => 0.01 %>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
       <div class="row">
         <div class="large-6 columns">
           <%= f.label :paypal_email %>
-          <%= f.text_field :paypal_email %>
+          <%= f.text_field :paypal_email, placeholder: 'bob@example.com' %>
         </div>
         <div class="large-6 columns">
           <div class="row collapse">
@@ -100,7 +100,7 @@
               <span class="prefix">@</span>
             </div>
             <div class="small-11 columns">
-              <%= f.text_field :twitter_username %>
+              <%= f.text_field :twitter_username, placeholder: 'TheNewsPlace' %>
             </div>
           </div>
         </div>
@@ -134,11 +134,6 @@
                 <%= f.text_area :widget_thanks %>
               </div>
             </div>
-          </div>
-          </section>
-          <section>
-          <p class="title" data-section-title><a href="#">Banner</a></p>
-          <div class="content" data-section-content>
           </div>
           </section>
         </div>
