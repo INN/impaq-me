@@ -110,27 +110,41 @@
         </div>
       </div>
       <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :widget_header %>
-          <%= f.text_area :widget_header %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :widget_solicit %>
-          <%= f.text_area :widget_solicit %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :widget_follow_up_cta %>
-          <%= f.text_area :widget_follow_up_cta %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :widget_thanks %>
-          <%= f.text_area :widget_thanks %>
+        <div class="section-container tabs" data-section="tabs">
+          <section class="active">
+          <p class="title" data-section-title><a href="#">Widget</a></p>
+          <div class="content" data-section-content>
+            <div class="row">
+              <div class="large-12 columns">
+                <%= f.label :widget_header %>
+                <%= f.text_area :widget_header %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <%= f.label :widget_solicit %>
+                <%= f.text_area :widget_solicit %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <%= f.label :widget_follow_up_cta %>
+                <%= f.text_area :widget_follow_up_cta %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <%= f.label :widget_thanks %>
+                <%= f.text_area :widget_thanks %>
+              </div>
+            </div>
+          </div>
+          </section>
+          <section>
+          <p class="title" data-section-title><a href="#">Banner</a></p>
+          <div class="content" data-section-content>
+          </div>
+          </section>
         </div>
       </div>
       <div class="row columns">
