@@ -20,10 +20,12 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
+    render layout: 'foundation'
   end
 
   # GET /campaigns/1/edit
   def edit
+    render layout: 'foundation'
   end
 
   # POST /campaigns

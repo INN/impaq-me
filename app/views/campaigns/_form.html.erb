@@ -1,88 +1,156 @@
-<div id="dashMain">
-  <%= form_for(@campaign) do |f| %>
+<div class="columns">
+  <%= form_for @campaign, html: { class: 'custom large-8' } do |f| %>
     <% if @campaign.errors.any? %>
-    <div id="error_explanation">
-    <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+      <div id="error_explanation">
+        <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
 
-    <ul>
-      <% @campaign.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <ul>
+          <% @campaign.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-    </ul>
-  </div>
-<% end %>
 
-  <div class="field">
-    <%= f.label :foundation_name %><br>
-    <%= f.text_field :foundation_name %>
-  </div>
-  <div class="field">
-    <%= f.label :publisher_name %><br>
-    <%= f.text_field :publisher_name %>
-  </div>
-  <div class="field">
-    <%= f.label :domains %><br>
-    <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
-  </div>
-  <div class="field">
-    <%= f.label :share_cooldown_days %><br>
-    <%= f.number_field :share_cooldown_days, :step => 1 %>
-  </div>
-  <div class="field">
-    <%= f.label :value_per_share %><br>
-    <%= f.number_field :value_per_share, :step => 0.01 %>
-  </div>
-  <div class="field">
-    <%= f.label :value_per_click %><br>
-    <%= f.number_field :value_per_click, :step => 0.01 %>
-  </div>
-  <div class="field">
-    <%= f.label :goal %><br>
-    <%= f.number_field :goal, :step => 0.01 %>
-  </div>
-  <div class="field">
-    <%= f.label :paypal_email %><br>
-    <%= f.text_field :paypal_email %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter_username %><br>
-    <%= f.text_field :twitter_username %>
-  </div>
-  <div class="field">
-    <%= f.label :recommended_donation %><br>
-    <%= f.number_field :recommended_donation, :step => 0.01 %>
-  </div>
-  <div class="field">
-    <%= f.label :widget_header %><br>
-    <%= f.text_area :widget_header %>
-  </div>
-  <div class="field">
-    <%= f.label :widget_solicit %><br>
-    <%= f.text_area :widget_solicit %>
-  </div>
-  <div class="field">
-    <%= f.label :widget_follow_up_cta %><br>
-    <%= f.text_area :widget_follow_up_cta %>
-  </div>
-  <div class="field">
-    <%= f.label :widget_thanks %><br>
-    <%= f.text_area :widget_thanks %>
-  </div>
-  <div class="field">
-    <label>Keys</label>
-    <ul>
-      <li>{{foundation_name}}</li>
-      <li>{{publisher_name}}</li>
-      <li>{{share_cooldown_days}}</li>
-      <li>{{value_per_share}}</li>
-      <li>{{value_per_click}}</li>
-      <li>{{goal}}</li>
-      <li>{{twitter_username}}</li>
-      <li>{{recommended_donation}}</li>
-    </ul>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <fieldset>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :foundation_name %>
+          <%= f.text_field :foundation_name %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :publisher_name %>
+          <%= f.text_field :publisher_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :domains %>
+          <%= f.text_field :domains, { value: @campaign.domains_to_s } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :share_cooldown_days %>
+            <div class="small-10 columns">
+              <%= f.number_field :share_cooldown_days, :step => 1 %>
+            </div>
+            <div class="small-2 columns">
+              <span class="postfix">days</span>
+            </div>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :goal %>
+            <div class="small-1 columns">
+              <span class="prefix">$</span>
+            </div>
+            <div class="small-11 columns">
+              <%= f.number_field :goal, :step => 0.01 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :value_per_share %>
+            <div class="small-1 columns">
+              <span class="prefix">$</span>
+            </div>
+            <div class="small-11 columns">
+              <%= f.number_field :value_per_share, :step => 0.01 %>
+            </div>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :value_per_click %>
+            <div class="small-1 columns">
+              <span class="prefix">$</span>
+            </div>
+            <div class="small-11 columns">
+              <%= f.number_field :value_per_click, :step => 0.01 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :recommended_donation %>
+            <div class="small-1 columns">
+              <span class="prefix">$</span>
+            </div>
+            <div class="small-11 columns">
+              <%= f.number_field :recommended_donation, :step => 0.01 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :paypal_email %>
+          <%= f.text_field :paypal_email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="row collapse">
+            <%= f.label :twitter_username %>
+            <div class="small-1 columns">
+              <span class="prefix">@</span>
+            </div>
+            <div class="small-11 columns">
+              <%= f.text_field :twitter_username %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :widget_header %>
+          <%= f.text_area :widget_header %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :widget_solicit %>
+          <%= f.text_area :widget_solicit %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :widget_follow_up_cta %>
+          <%= f.text_area :widget_follow_up_cta %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :widget_thanks %>
+          <%= f.text_area :widget_thanks %>
+        </div>
+      </div>
+      <div class="row columns">
+        <span class="secondary label">{{foundation_name}}</span>
+        <span class="secondary label">{{publisher_name}}</span>
+        <span class="secondary label">{{share_cooldown_days}}</span>
+        <span class="secondary label">{{goal}}</span>
+        <span class="secondary label">{{value_per_share}}</span>
+        <span class="secondary label">{{value_per_click}}</span>
+        <span class="secondary label">{{recommended_donation}}</span>
+        <span class="secondary label">{{twitter_username}}</span>
+      </div>
+      <br /><br />
+      <br /><br />
+      <div class="row columns">
+        <%= f.submit 'Submit', class: 'button' %>
+        <div class="right">
+          <%= link_to 'Cancel', campaigns_path, class: 'button secondary' %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
 </div>

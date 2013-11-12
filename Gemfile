@@ -8,6 +8,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'addressable'
 gem 'ejs'
 gem 'bcrypt-ruby'
+gem 'zurb-foundation'
 
 # mongoid 4 has not been released to rubygems quite yet
 gem 'mongoid', github: 'mongoid/mongoid'
