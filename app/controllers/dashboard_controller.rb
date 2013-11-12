@@ -5,5 +5,6 @@ class DashboardController < ApplicationController
   def index
     @shares = Share.all
     @campaigns = Campaign.all
+    render layout: 'foundation'
   end
 end

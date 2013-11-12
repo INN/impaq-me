@@ -1,31 +1,40 @@
-<div id="dashMain">
-  <h1>Dashboard</h1>
-  <%= link_to "New Campaign", new_campaign_path %>
-  <%= link_to "Edit Users", users_path %>
-  <%= link_to "Sign Out", signout_path, method: "delete" %>
-  <br>
-  <strong>CSV</strong>
-  <%= link_to "Raw Shares", shares_path(format: :csv) %>
-  <%= link_to "Raw Clicks", click_throughs_path(format: :csv) %>
-  <%= link_to "Raw Campaigns", campaigns_path(format: :csv) %>
-  <ul>
-    <% @campaigns.each do |campaign| %>
-      <li>
-      <strong>foundation_name: </strong>       <%= campaign.foundation_name %>
-      <strong>publisher_name: </strong>        <%= campaign.publisher_name %>
-      <strong>domains: </strong>               <%= campaign.domains_to_s %>
-      <strong>share_cooldown_days: </strong>   <%= campaign.share_cooldown_days %>
-      <strong>value_per_share: </strong>       <%= campaign.value_per_share %>
-      <strong>value_per_click: </strong>       <%= campaign.value_per_click %>
-      <strong>goal: </strong>                  <%= campaign.goal %>
-      <strong>paypal_email: </strong>          <%= campaign.paypal_email %>
-      <strong>twitter_username: </strong>      <%= campaign.twitter_username %>
-      <strong>recommended_donation: </strong>  <%= campaign.recommended_donation %>
-      <strong>campaign_id: </strong>           <%= campaign.id %>
-      <br> <strong>Share: $</strong>           <%= Share.total_for_campaign campaign %>
-      <strong>Click: $</strong>                <%= ClickThrough.total_for_campaign campaign %>
-      <br><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong>
-      </li>
-    <% end %>
+<h1>Dashboard</h1>
+<div class="columns">
+  <ul class="inline-list">
+    <li><%= link_to "New Campaign", new_campaign_path %></li>
+    <li><%= link_to "Edit Users", users_path %></li>
+    <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
   </ul>
+  <ul class="inline-list">
+    <li><strong>CSV</strong></li>
+    <li><%= link_to "Raw Shares", shares_path(format: :csv) %></li>
+    <li><%= link_to "Raw Clicks", click_throughs_path(format: :csv) %></li>
+    <li><%= link_to "Raw Campaigns", campaigns_path(format: :csv) %></li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Foundation name</th>
+        <th>Publisher name</th>
+        <th>Share cooldown days</th>
+        <th>Goal</th>
+        <th>Share $</th>
+        <th>Click $</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @campaigns.each do |campaign| %>
+        <tr>
+          <td><%= campaign.foundation_name %></td>
+          <td><%= campaign.publisher_name %></td>
+          <td><%= campaign.share_cooldown_days %></td>
+          <td><%= campaign.goal %></td>
+          <td><%= Share.total_for_campaign campaign %></td>
+          <td><%= ClickThrough.total_for_campaign campaign %></td>
+          <td><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
