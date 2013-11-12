@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
+    render layout: 'foundation'
   end
 
   # GET /users/1
