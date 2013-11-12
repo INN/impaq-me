@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <div class="row collapse">
             <%= f.label :value_per_share %>
             <div class="small-1 columns">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <div class="row collapse">
             <%= f.label :value_per_click %>
             <div class="small-1 columns">
@@ -76,9 +76,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="large-6 columns">
+        <div class="large-4 columns">
           <div class="row collapse">
             <%= f.label :recommended_donation %>
             <div class="small-1 columns">
@@ -95,8 +93,6 @@
           <%= f.label :paypal_email %>
           <%= f.text_field :paypal_email %>
         </div>
-      </div>
-      <div class="row">
         <div class="large-6 columns">
           <div class="row collapse">
             <%= f.label :twitter_username %>
@@ -109,7 +105,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row columns">
         <div class="section-container tabs" data-section="tabs">
           <section class="active">
           <p class="title" data-section-title><a href="#">Widget</a></p>
@@ -147,18 +143,18 @@
           </section>
         </div>
       </div>
-      <div class="row columns">
-        <span class="secondary label">{{foundation_name}}</span>
-        <span class="secondary label">{{publisher_name}}</span>
-        <span class="secondary label">{{share_cooldown_days}}</span>
-        <span class="secondary label">{{goal}}</span>
-        <span class="secondary label">{{value_per_share}}</span>
-        <span class="secondary label">{{value_per_click}}</span>
-        <span class="secondary label">{{recommended_donation}}</span>
-        <span class="secondary label">{{twitter_username}}</span>
+      <div class="row columns panel">
+        <ul class="inline-list">
+          <li><strong>{{foundation_name}}</strong></li>
+          <li><strong>{{publisher_name}}</strong></li>
+          <li><strong>{{share_cooldown_days}}</strong></li>
+          <li><strong>{{goal}}</strong></li>
+          <li><strong>{{value_per_share}}</strong></li>
+          <li><strong>{{value_per_click}}</strong></li>
+          <li><strong>{{recommended_donation}}</strong></li>
+          <li><strong>{{twitter_username}}</strong></li>
+        </ul>
       </div>
-      <br /><br />
-      <br /><br />
       <div class="row columns">
         <%= f.submit 'Submit', class: 'button' %>
         <div class="right">
