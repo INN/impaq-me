@@ -15,5 +15,6 @@
 }
 
 .helper-text {
-  font-size: 12px;
+  font-size: smaller;
+  color: dimgray;
 }

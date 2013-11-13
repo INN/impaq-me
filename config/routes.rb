@@ -18,4 +18,5 @@ ImpaqBackend::Application.routes.draw do
   get 'funding'  => 'static_pages#funding'
   get 'iframe' => 'iframe#index'
   get 'l/:slug' => 'links#follow'
+  post '/paypal_callback', to: 'paypal#callback'
 end
