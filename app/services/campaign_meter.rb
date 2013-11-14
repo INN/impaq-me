@@ -15,7 +15,7 @@ class CampaignMeter
 
   def self.click_total campaign
     clicks = ClickThrough.total_for_campaign campaign
-    click_total = clicks * campaign.value_per_share
+    click_total = clicks * campaign.value_per_click
   end
 
   def self.share_total campaign
