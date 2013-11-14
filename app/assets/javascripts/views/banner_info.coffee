@@ -3,4 +3,5 @@ window.app.views.BannerInfo = class BannerInfo extends Backbone.View
 
   render: =>
     @$el.html @template.fill(@model.toJSON())
+    window.app.helpers.Replacer.replace @$el, @model
     this
