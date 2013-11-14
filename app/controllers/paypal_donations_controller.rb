@@ -1,7 +1,15 @@
-class PaypalController < ApplicationController
+class PaypalDonationsController < ApplicationController
   layout false
 
   protect_from_forgery except: :callback
+
+  def index
+    @paypal_donations = PaypalDonation.all
+    respond_to do |format|
+      format.json { render json: @paypal_donations }
+      format.csv { render text: @paypal_donations.to_csv }
+    end
+  end
 
   def callback
     PaypalDonation.create(with_campaign_id) if valid_handshake?

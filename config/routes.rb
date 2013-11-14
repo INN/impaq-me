@@ -11,6 +11,7 @@ ImpaqBackend::Application.routes.draw do
   resources :links
   resources :shares
   resources :click_throughs
+  resources :paypal_donations
 
   root to: 'static_pages#index'
 
@@ -18,5 +19,5 @@ ImpaqBackend::Application.routes.draw do
   get 'funding'  => 'static_pages#funding'
   get 'iframe' => 'iframe#index'
   get 'l/:slug' => 'links#follow'
-  post '/paypal_callback', to: 'paypal#callback'
+  post '/paypal_callback', to: 'paypal_donations#callback'
 end
