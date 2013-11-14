@@ -10,7 +10,7 @@ class CampaignMeter
   end
 
   def self.total campaign
-    [share_total(campaign) + click_total(campaign) + donation_total(campaign), campaign.goal].min
+    [share_total(campaign) + click_total(campaign), campaign.goal].min
   end
 
   def self.click_total campaign
@@ -21,10 +21,5 @@ class CampaignMeter
   def self.share_total campaign
     shares = Share.total_for_campaign campaign
     share_total = shares * campaign.value_per_share
-  end
-
-  def self.donation_total campaign
-    donations = PaypalDonation.total_for_campaign campaign
-    donations
   end
 end
