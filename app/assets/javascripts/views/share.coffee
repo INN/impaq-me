@@ -1,5 +1,5 @@
 window.app.views.Share = class Share extends Backbone.View
-  template: JST["share"]
+  template: new window.app.Template("share")
 
   events:
     "click .email": "emailClick"
@@ -26,6 +26,7 @@ window.app.views.Share = class Share extends Backbone.View
       twitter_shortlink: location.origin + "/" + data.twitter_shortlink
       email_shortlink: location.origin + "/" + data.email_shortlink
 
-    @$el.html @template(data)
+    @$el.html @template.fill(data)
+    window.app.helpers.Replacer.replace @$el, @model
     @assign "[data-subview='WidgetButton']": @views.button
     this

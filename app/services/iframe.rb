@@ -25,6 +25,7 @@ class Iframe
       widget_follow_up_cta: campaign.widget_follow_up_cta,
       widget_thanks: campaign.widget_thanks,
       banner_thanks: campaign.banner_thanks,
+      email_body: campaign.email_body,
       recommended_donation: format_dollar(campaign.recommended_donation),
       goal: format_dollar(campaign_meter.goal),
       total: format_dollar(campaign_meter.total),

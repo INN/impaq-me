@@ -11,6 +11,12 @@ class Campaign
   DEFAULT_WIDGET_CTA = 'Show you care about public service journalism by donating an additional <strong class="donation-value">${{recommended_donation}}</strong> to {{publisher_name}}.'
   DEFAULT_WIDGET_THANKS = '<strong>Thanks! {{publisher_name}} just got <span class="click-value">${{value_per_share}}</span> thanks to you.</strong><br>The best way to help is to get more people involved. Tell your friends!'
   DEFAULT_BANNER_THANKS = 'Thanks to a generous gift from {{foundation_name}},<br/>we receive <strong class="click-value">${{value_per_share}}</strong> when you or your friends <strong>share this story</strong>.'
+  DEFAULT_EMAIL_BODY = 'I thought you would like this article:
+
+{{article_title}} - {{email_shortlink}}
+
+Each time this article is shared, {{foundation_name}} donates ${{value_per_share}} to {{publisher_name}}. So far, they have donated ${{total}}.
+Learn more at http://impaq.me'
 
   field :foundation_name      , type: String
   field :publisher_name       , type: String
@@ -27,9 +33,10 @@ class Campaign
   field :widget_follow_up_cta , type: String  , default: DEFAULT_WIDGET_CTA
   field :widget_thanks        , type: String  , default: DEFAULT_WIDGET_THANKS
   field :banner_thanks        , type: String  , default: DEFAULT_BANNER_THANKS
+  field :email_body           , type: String  , default: DEFAULT_EMAIL_BODY
 
   FIELDS_TO_EXCLUDE_FROM_CSV = ['widget_header', 'widget_solicit', 'widget_follow_up_cta',
-                                'widget_thanks', 'banner_thanks']
+                                'widget_thanks', 'banner_thanks', 'email_body']
 
   has_many :shares
   has_many :links
