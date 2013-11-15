@@ -1,13 +1,14 @@
 require 'addressable/uri'
 
 class Iframe
-  def self.bootstrap article
+  def self.bootstrap article, user_address
     article_url = Addressable::URI.heuristic_parse(article.url).normalize
     campaign = Campaign.find_by domains: article_url.host
     campaign_meter = CampaignMeter.for campaign
     shortlink = Shortlink.for_campaign_and_url campaign, article_url.to_s
 
     {
+      user_address: user_address,
       campaign_id: campaign.id.to_s,
       article_url: article_url.to_s,
       article_domain: article_url.authority,

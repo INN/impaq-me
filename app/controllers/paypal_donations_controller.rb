@@ -23,7 +23,8 @@ class PaypalDonationsController < ApplicationController
 
   def with_custom_params
     paypal_params.merge(campaign_id: paypal_params['option_selection1'],
-                        article_url: paypal_params['option_selection2'])
+                        article_url: paypal_params['option_selection2'],
+                        user_address: paypal_params['option_selection3'])
   end
 
   def valid_handshake?

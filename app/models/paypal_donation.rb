@@ -31,6 +31,8 @@ class PaypalDonation
   field :option_selection1 # campaign_id
   field :option_name2
   field :option_selection2 # article_url
+  field :option_name3
+  field :option_selection3 # user_address
   field :payer_email
   field :payer_id
   field :payer_status
@@ -49,6 +51,7 @@ class PaypalDonation
   field :transaction_subject
   field :txn_id
   field :txn_type
+  field :user_address
   field :verify_sign
 
   # must be explicit about campaign_id as a field
