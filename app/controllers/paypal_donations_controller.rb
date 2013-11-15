@@ -12,7 +12,7 @@ class PaypalDonationsController < ApplicationController
   end
 
   def callback
-    PaypalDonation.create(with_campaign_id) if valid_handshake?
+    PaypalDonation.create(with_custom_params) if valid_handshake?
     render nothing: true, status: :ok
   end
 
@@ -21,8 +21,9 @@ class PaypalDonationsController < ApplicationController
     params.permit!
   end
 
-  def with_campaign_id
-    paypal_params.merge(campaign_id: paypal_params['option_selection1'])
+  def with_custom_params
+    paypal_params.merge(campaign_id: paypal_params['option_selection1'],
+                        article_url: paypal_params['option_selection2'])
   end
 
   def valid_handshake?

@@ -13,6 +13,7 @@ class PaypalDonation
   field :address_status
   field :address_street
   field :address_zip
+  field :article_url
   field :business
   field :charset
   field :controller
@@ -28,6 +29,8 @@ class PaypalDonation
   field :notify_version
   field :option_name1
   field :option_selection1 # campaign_id
+  field :option_name2
+  field :option_selection2 # article_url
   field :payer_email
   field :payer_id
   field :payer_status
