@@ -1,207 +1,209 @@
 <div class="columns">
-  <%= form_for @campaign, html: { class: 'custom large-8' } do |f| %>
-    <% if @campaign.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+  <%= form_for @campaign, html: { class: 'custom large-8' } do |campaign_form| %>
+    <%= campaign_form.fields_for :variants do |variant_form| %>
+      <% if @campaign.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
 
-        <ul>
-          <% @campaign.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <fieldset>
-      <div class="row">
-        <div class="large-6 columns">
-          <%= f.label :foundation_name %>
-          <%= f.text_field :foundation_name, placeholder: 'The Foundation of Giving' %>
-        </div>
-        <div class="large-6 columns">
-          <%= f.label :publisher_name %>
-          <%= f.text_field :publisher_name, placeholder: 'The News Place' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-6 columns">
-          <%= f.label :domains %>
-          <%= f.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <%= f.label :share_cooldown_days %>
-            <div class="small-10 columns">
-              <%= f.number_field :share_cooldown_days, :step => 1 %>
-            </div>
-            <div class="small-2 columns">
-              <span class="postfix">days</span>
-            </div>
-          </div>
-        </div>
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <%= f.label :goal %>
-            <div class="small-1 columns">
-              <span class="prefix">$</span>
-            </div>
-            <div class="small-11 columns">
-              <%= f.number_field :goal, placeholder: '5000', :step => 0.01 %>
-            </div>
-          </div>
-        </div>
-        <div class="large-4 columns">
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <%= f.label :value_per_share %>
-            <div class="small-1 columns">
-              <span class="prefix">$</span>
-            </div>
-            <div class="small-11 columns">
-              <%= f.number_field :value_per_share, :step => 0.01 %>
-            </div>
-          </div>
-        </div>
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <%= f.label :value_per_click %>
-            <div class="small-1 columns">
-              <span class="prefix">$</span>
-            </div>
-            <div class="small-11 columns">
-              <%= f.number_field :value_per_click, :step => 0.01 %>
-            </div>
-          </div>
-        </div>
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <%= f.label :recommended_donation %>
-            <div class="small-1 columns">
-              <span class="prefix">$</span>
-            </div>
-            <div class="small-11 columns">
-              <%= f.number_field :recommended_donation, :step => 0.01 %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-6 columns">
-          <%= f.label :paypal_email %>
-          <%= f.text_field :paypal_email, placeholder: 'bob@example.com' %>
-          <div class="alert-box secondary helper-text" data-alert>
-            <p>Be sure to enable <strong>Instant Payment Notification</strong> in your PayPal profile with this url:</p>
-            <%= content_tag :p, paypal_callback_url %>
-            <p>Profile > Selling Preferences > Instant Payment Notification preferences</p>
-            <a href="#" class="close">&times;</a>
-          </div>
-        </div>
-        <div class="large-6 columns">
-          <div class="row collapse">
-            <%= f.label :twitter_username %>
-            <div class="small-1 columns">
-              <span class="prefix">@</span>
-            </div>
-            <div class="small-11 columns">
-              <%= f.text_field :twitter_username, placeholder: 'TheNewsPlace' %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="columns">
-          <div class="section-container tabs" data-section="tabs">
-            <section class="active">
-            <p class="title" data-section-title><a href="#">Widget</a></p>
-            <div class="content" data-section-content>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :widget_header %>
-                  <%= f.text_area :widget_header %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :widget_solicit %>
-                  <%= f.text_area :widget_solicit %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :widget_follow_up_cta %>
-                  <%= f.text_area :widget_follow_up_cta %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :widget_thanks %>
-                  <%= f.text_area :widget_thanks %>
-                </div>
-              </div>
-            </div>
-            </section>
-            <section>
-            <p class="title" data-section-title><a href="#">Banner</a></p>
-            <div class="content" data-section-content>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :banner_thanks %>
-                  <%= f.text_area :banner_thanks %>
-                </div>
-              </div>
-            </div>
-            </section>
-            <section>
-            <p class="title" data-section-title><a href="#">Email</a></p>
-            <div class="content" data-section-content>
-              <div class="row">
-                <div class="large-12 columns">
-                  <%= f.label :email_body %>
-                  <%= f.text_area :email_body, style: 'height: 130px;' %>
-                </div>
-              </div>
-            </div>
-            </section>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="alert-box secondary helper-text" data-alert>
-          <ul class="inline-list">
-            <li><strong>{{foundation_name}}</strong></li>
-            <li><strong>{{publisher_name}}</strong></li>
-            <li><strong>{{share_cooldown_days}}</strong></li>
-            <li><strong>{{goal}}</strong></li>
-            <li><strong>{{value_per_share}}</strong></li>
-            <li><strong>{{value_per_click}}</strong></li>
-            <li><strong>{{recommended_donation}}</strong></li>
-            <li><strong>{{twitter_username}}</strong></li>
-            <li><strong>{{article_title}}</strong></li>
-            <li><strong>{{email_shortlink}}</strong></li>
-            <li><strong>{{total}}</strong></li>
+          <ul>
+            <% @campaign.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
           </ul>
         </div>
-      </div>
-      <div class="row">
-        <div class="columns">
-          <%= f.label :css_overrides %>
-          <%= f.text_area :css_overrides %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="columns">
-          <%= f.submit 'Submit', class: 'button' %>
-          <div class="right">
-            <%= link_to 'Cancel', campaigns_path, class: 'button secondary' %>
+      <% end %>
+
+      <fieldset>
+        <div class="row">
+          <div class="large-6 columns">
+            <%= campaign_form.label :foundation_name %>
+            <%= campaign_form.text_field :foundation_name, placeholder: 'The Foundation of Giving' %>
+          </div>
+          <div class="large-6 columns">
+            <%= campaign_form.label :publisher_name %>
+            <%= campaign_form.text_field :publisher_name, placeholder: 'The News Place' %>
           </div>
         </div>
-      </div>
-    </fieldset>
+        <div class="row">
+          <div class="large-6 columns">
+            <%= campaign_form.label :domains %>
+            <%= campaign_form.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <%= campaign_form.label :share_cooldown_days %>
+              <div class="small-10 columns">
+                <%= campaign_form.number_field :share_cooldown_days, :step => 1 %>
+              </div>
+              <div class="small-2 columns">
+                <span class="postfix">days</span>
+              </div>
+            </div>
+          </div>
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <%= campaign_form.label :goal %>
+              <div class="small-1 columns">
+                <span class="prefix">$</span>
+              </div>
+              <div class="small-11 columns">
+                <%= campaign_form.number_field :goal, placeholder: '5000', :step => 0.01 %>
+              </div>
+            </div>
+          </div>
+          <div class="large-4 columns">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <%= campaign_form.label :value_per_share %>
+              <div class="small-1 columns">
+                <span class="prefix">$</span>
+              </div>
+              <div class="small-11 columns">
+                <%= campaign_form.number_field :value_per_share, :step => 0.01 %>
+              </div>
+            </div>
+          </div>
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <%= campaign_form.label :value_per_click %>
+              <div class="small-1 columns">
+                <span class="prefix">$</span>
+              </div>
+              <div class="small-11 columns">
+                <%= campaign_form.number_field :value_per_click, :step => 0.01 %>
+              </div>
+            </div>
+          </div>
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <%= variant_form.label :recommended_donation %>
+              <div class="small-1 columns">
+                <span class="prefix">$</span>
+              </div>
+              <div class="small-11 columns">
+                <%= variant_form.number_field :recommended_donation, :step => 0.01 %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <%= campaign_form.label :paypal_email %>
+            <%= campaign_form.text_field :paypal_email, placeholder: 'bob@example.com' %>
+            <div class="alert-box secondary helper-text" data-alert>
+              <p>Be sure to enable <strong>Instant Payment Notification</strong> in your PayPal profile with this url:</p>
+              <%= content_tag :p, paypal_callback_url %>
+              <p>Profile > Selling Preferences > Instant Payment Notification preferences</p>
+              <a href="#" class="close">&times;</a>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="row collapse">
+              <%= campaign_form.label :twitter_username %>
+              <div class="small-1 columns">
+                <span class="prefix">@</span>
+              </div>
+              <div class="small-11 columns">
+                <%= campaign_form.text_field :twitter_username, placeholder: 'TheNewsPlace' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns">
+            <div class="section-container tabs" data-section="tabs">
+              <section class="active">
+              <p class="title" data-section-title><a href="#">Widget</a></p>
+              <div class="content" data-section-content>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :widget_header %>
+                    <%= variant_form.text_area :widget_header %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :widget_solicit %>
+                    <%= variant_form.text_area :widget_solicit %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :widget_follow_up_cta %>
+                    <%= variant_form.text_area :widget_follow_up_cta %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :widget_thanks %>
+                    <%= variant_form.text_area :widget_thanks %>
+                  </div>
+                </div>
+              </div>
+              </section>
+              <section>
+              <p class="title" data-section-title><a href="#">Banner</a></p>
+              <div class="content" data-section-content>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :banner_thanks %>
+                    <%= variant_form.text_area :banner_thanks %>
+                  </div>
+                </div>
+              </div>
+              </section>
+              <section>
+              <p class="title" data-section-title><a href="#">Email</a></p>
+              <div class="content" data-section-content>
+                <div class="row">
+                  <div class="large-12 columns">
+                    <%= variant_form.label :email_body %>
+                    <%= variant_form.text_area :email_body, style: 'height: 130px;' %>
+                  </div>
+                </div>
+              </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="alert-box secondary helper-text" data-alert>
+            <ul class="inline-list">
+              <li><strong>{{foundation_name}}</strong></li>
+              <li><strong>{{publisher_name}}</strong></li>
+              <li><strong>{{share_cooldown_days}}</strong></li>
+              <li><strong>{{goal}}</strong></li>
+              <li><strong>{{value_per_share}}</strong></li>
+              <li><strong>{{value_per_click}}</strong></li>
+              <li><strong>{{recommended_donation}}</strong></li>
+              <li><strong>{{twitter_username}}</strong></li>
+              <li><strong>{{article_title}}</strong></li>
+              <li><strong>{{email_shortlink}}</strong></li>
+              <li><strong>{{total}}</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns">
+            <%= variant_form.label :css_overrides %>
+            <%= variant_form.text_area :css_overrides %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns">
+            <%= campaign_form.submit 'Submit', class: 'button' %>
+            <div class="right">
+              <%= link_to 'Cancel', campaigns_path, class: 'button secondary' %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
   <% end %>
 </div>
 
