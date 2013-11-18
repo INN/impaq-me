@@ -34,6 +34,7 @@ Learn more at http://impaq.me'
   field :widget_thanks        , type: String  , default: DEFAULT_WIDGET_THANKS
   field :banner_thanks        , type: String  , default: DEFAULT_BANNER_THANKS
   field :email_body           , type: String  , default: DEFAULT_EMAIL_BODY
+  field :css_overrides        , type: String
 
   FIELDS_TO_EXCLUDE_FROM_CSV = ['widget_header', 'widget_solicit', 'widget_follow_up_cta',
                                 'widget_thanks', 'banner_thanks', 'email_body']

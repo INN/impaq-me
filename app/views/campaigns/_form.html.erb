@@ -113,82 +113,100 @@
           </div>
         </div>
       </div>
-      <div class="row columns">
-        <div class="section-container tabs" data-section="tabs">
-          <section class="active">
-          <p class="title" data-section-title><a href="#">Widget</a></p>
-          <div class="content" data-section-content>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :widget_header %>
-                <%= f.text_area :widget_header %>
+      <div class="row">
+        <div class="columns">
+          <div class="section-container tabs" data-section="tabs">
+            <section class="active">
+            <p class="title" data-section-title><a href="#">Widget</a></p>
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :widget_header %>
+                  <%= f.text_area :widget_header %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :widget_solicit %>
+                  <%= f.text_area :widget_solicit %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :widget_follow_up_cta %>
+                  <%= f.text_area :widget_follow_up_cta %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :widget_thanks %>
+                  <%= f.text_area :widget_thanks %>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :widget_solicit %>
-                <%= f.text_area :widget_solicit %>
+            </section>
+            <section>
+            <p class="title" data-section-title><a href="#">Banner</a></p>
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :banner_thanks %>
+                  <%= f.text_area :banner_thanks %>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :widget_follow_up_cta %>
-                <%= f.text_area :widget_follow_up_cta %>
+            </section>
+            <section>
+            <p class="title" data-section-title><a href="#">Email</a></p>
+            <div class="content" data-section-content>
+              <div class="row">
+                <div class="large-12 columns">
+                  <%= f.label :email_body %>
+                  <%= f.text_area :email_body, style: 'height: 130px;' %>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :widget_thanks %>
-                <%= f.text_area :widget_thanks %>
-              </div>
-            </div>
+            </section>
           </div>
-          </section>
-          <section>
-          <p class="title" data-section-title><a href="#">Banner</a></p>
-          <div class="content" data-section-content>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :banner_thanks %>
-                <%= f.text_area :banner_thanks %>
-              </div>
-            </div>
-          </div>
-          </section>
-          <section>
-          <p class="title" data-section-title><a href="#">Email</a></p>
-          <div class="content" data-section-content>
-            <div class="row">
-              <div class="large-12 columns">
-                <%= f.label :email_body %>
-                <%= f.text_area :email_body, style: 'height: 130px;' %>
-              </div>
-            </div>
-          </div>
-          </section>
         </div>
       </div>
-      <div class="row columns panel">
-        <ul class="inline-list">
-          <li><strong>{{foundation_name}}</strong></li>
-          <li><strong>{{publisher_name}}</strong></li>
-          <li><strong>{{share_cooldown_days}}</strong></li>
-          <li><strong>{{goal}}</strong></li>
-          <li><strong>{{value_per_share}}</strong></li>
-          <li><strong>{{value_per_click}}</strong></li>
-          <li><strong>{{recommended_donation}}</strong></li>
-          <li><strong>{{twitter_username}}</strong></li>
-          <li><strong>{{article_title}}</strong></li>
-          <li><strong>{{email_shortlink}}</strong></li>
-          <li><strong>{{total}}</strong></li>
-        </ul>
+      <div class="row">
+        <div class="alert-box secondary helper-text" data-alert>
+          <ul class="inline-list">
+            <li><strong>{{foundation_name}}</strong></li>
+            <li><strong>{{publisher_name}}</strong></li>
+            <li><strong>{{share_cooldown_days}}</strong></li>
+            <li><strong>{{goal}}</strong></li>
+            <li><strong>{{value_per_share}}</strong></li>
+            <li><strong>{{value_per_click}}</strong></li>
+            <li><strong>{{recommended_donation}}</strong></li>
+            <li><strong>{{twitter_username}}</strong></li>
+            <li><strong>{{article_title}}</strong></li>
+            <li><strong>{{email_shortlink}}</strong></li>
+            <li><strong>{{total}}</strong></li>
+          </ul>
+        </div>
       </div>
-      <div class="row columns">
-        <%= f.submit 'Submit', class: 'button' %>
-        <div class="right">
-          <%= link_to 'Cancel', campaigns_path, class: 'button secondary' %>
+      <div class="row">
+        <div class="columns">
+          <%= f.label :css_overrides %>
+          <%= f.text_area :css_overrides %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <%= f.submit 'Submit', class: 'button' %>
+          <div class="right">
+            <%= link_to 'Cancel', campaigns_path, class: 'button secondary' %>
+          </div>
         </div>
       </div>
     </fieldset>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('textarea').autosize({append: "\n"});
+  });
+</script>

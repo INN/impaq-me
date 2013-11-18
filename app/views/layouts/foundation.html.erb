@@ -4,13 +4,14 @@
   <title>Impaq.me</title>
   <%= stylesheet_link_tag "foundation", "dashboard" %>
   <%= javascript_include_tag "modernizr.foundation" %>
+  <%= javascript_include_tag "jquery", "jquery_ujs", "jquery.autosize.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
 
-<%= javascript_include_tag "jquery", "jquery_ujs", "foundation" %>
+<%= javascript_include_tag "foundation" %>
 <script>
   $(document).foundation();
 </script>
