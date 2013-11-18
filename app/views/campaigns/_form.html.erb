@@ -96,7 +96,7 @@
           <%= f.text_field :paypal_email, placeholder: 'bob@example.com' %>
           <div class="alert-box secondary helper-text" data-alert>
             <p>Be sure to enable <strong>Instant Payment Notification</strong> in your PayPal profile with this url:</p>
-            <p>http://www.impaq.me/paypal_callback</p>
+            <%= content_tag :p, paypal_callback_url %>
             <p>Profile > Selling Preferences > Instant Payment Notification preferences</p>
             <a href="#" class="close">&times;</a>
           </div>
