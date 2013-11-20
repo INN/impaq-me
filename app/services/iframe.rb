@@ -6,6 +6,7 @@ class Iframe
     campaign = Campaign.find_by domains: article_url.host
     campaign_meter = CampaignMeter.for campaign
     shortlink = Shortlink.for_campaign_and_url campaign, article_url.to_s
+    sample_variant = campaign.variants.sample
 
     {
       user_address: user_address,
@@ -21,14 +22,14 @@ class Iframe
       value_per_click: format_dollar(campaign.value_per_click),
       paypal_email: campaign.paypal_email,
       twitter_username: campaign.twitter_username,
-      widget_header: campaign.variants.first.widget_header,
-      widget_solicit: campaign.variants.first.widget_solicit,
-      widget_follow_up_cta: campaign.variants.first.widget_follow_up_cta,
-      widget_thanks: campaign.variants.first.widget_thanks,
-      banner_thanks: campaign.variants.first.banner_thanks,
-      email_body: campaign.variants.first.email_body,
-      css_overrides: campaign.variants.first.css_overrides,
-      recommended_donation: format_dollar(campaign.variants.first.recommended_donation),
+      widget_header: sample_variant.widget_header,
+      widget_solicit: sample_variant.widget_solicit,
+      widget_follow_up_cta: sample_variant.widget_follow_up_cta,
+      widget_thanks: sample_variant.widget_thanks,
+      banner_thanks: sample_variant.banner_thanks,
+      email_body: sample_variant.email_body,
+      css_overrides: sample_variant.css_overrides,
+      recommended_donation: format_dollar(sample_variant.recommended_donation),
       goal: format_dollar(campaign_meter.goal),
       total: format_dollar(campaign_meter.total),
       percent: campaign_meter.percent,
