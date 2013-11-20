@@ -66,12 +66,12 @@ class CampaignsController < ApplicationController
     p = params.require(:campaign).permit(:foundation_name, :publisher_name,
                                          :domains, :value_per_share, :goal,
                                          :value_per_click, :about_uri,
-                                         :recommended_donation, :share_cooldown_days,
-                                         :paypal_email, :twitter_username,
-                                         variants_attributes: [:id, :widget_header,
-                                           :widget_solicit, :widget_follow_up_cta,
-                                           :widget_thanks, :banner_thanks, :email_body,
-                                           :css_overrides])
+                                         :share_cooldown_days, :paypal_email,
+                                         :twitter_username,
+                                         variants_attributes: [:id, :recommended_donation,
+                                           :widget_header, :widget_solicit,
+                                           :widget_follow_up_cta, :widget_thanks,
+                                           :banner_thanks, :email_body, :css_overrides])
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }

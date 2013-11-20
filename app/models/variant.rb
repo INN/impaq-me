@@ -13,7 +13,7 @@ class Variant
 Each time this article is shared, {{foundation_name}} donates ${{value_per_share}} to {{publisher_name}}. So far, they have donated ${{total}}.
 Learn more at http://impaq.me'
 
-  field :recommended_donation , type: Float   , default: 1.0
+  field :recommended_donation , type: Float  , default: 1.0
   field :widget_header        , type: String , default: DEFAULT_WIDGET_HEADER
   field :widget_solicit       , type: String , default: DEFAULT_WIDGET_SOLICIT
   field :widget_follow_up_cta , type: String , default: DEFAULT_WIDGET_CTA

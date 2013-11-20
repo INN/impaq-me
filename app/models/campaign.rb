@@ -27,7 +27,7 @@ class Campaign
   has_many :variants
   accepts_nested_attributes_for :variants
 
-#   validates :variants, :length => { :minimum => 1 }
+  validates :variants, :length => { :minimum => 1 }
 
   def initialize
     super
