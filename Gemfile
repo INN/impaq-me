@@ -10,6 +10,7 @@ gem 'addressable'
 gem 'ejs'
 gem 'bcrypt-ruby'
 gem 'zurb-foundation'
+gem 'slim'
 
 # mongoid 4 has not been released to rubygems quite yet
 gem 'mongoid', github: 'mongoid/mongoid'

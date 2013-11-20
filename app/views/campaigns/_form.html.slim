@@ -1,0 +1,169 @@
+.columns
+  = form_for @campaign, html: { class: 'custom large-8' } do |campaign_form|
+    = campaign_form.fields_for :variants do |variant_form|
+      - if @campaign.errors.any?
+        #error_explanation
+          h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved"
+
+          ul
+            - @campaign.errors.full_messages.each do |msg|
+              li= msg
+
+      fieldset
+        .row
+          .large-6.columns
+            = campaign_form.label :foundation_name
+            = campaign_form.text_field :foundation_name, placeholder: 'The Foundation of Giving'
+          .large-6.columns
+            = campaign_form.label :publisher_name
+            = campaign_form.text_field :publisher_name, placeholder: 'The News Place'
+        .row
+          .large-6.columns
+            = campaign_form.label :domains
+            = campaign_form.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s
+        .row
+          .large-4.columns
+            .row.collapse
+              = campaign_form.label :share_cooldown_days
+              .small-10.columns
+                = campaign_form.number_field :share_cooldown_days, :step => 1
+              .small-2.columns
+                span.postfix days
+          .large-4.columns
+            .row.collapse
+              = campaign_form.label :goal
+              .small-1.columns
+                span.prefix $
+              .small-11.columns
+                = campaign_form.number_field :goal, placeholder: '5000', :step => 0.01
+          .large-4.columns
+        .row
+          .large-4.columns
+            .row.collapse
+              = campaign_form.label :value_per_share
+              .small-1.columns
+                span.prefix $
+              .small-11.columns
+                = campaign_form.number_field :value_per_share, :step => 0.01
+          .large-4.columns
+            .row.collapse
+              = campaign_form.label :value_per_click
+              .small-1.columns
+                span.prefix $
+              .small-11.columns
+                = campaign_form.number_field :value_per_click, :step => 0.01
+          .large-4.columns
+            .row.collapse
+              = variant_form.label :recommended_donation
+              .small-1.columns
+                span.prefix $
+              .small-11.columns
+                = variant_form.number_field :recommended_donation, :step => 0.01
+        .row
+          .large-6.columns
+            = campaign_form.label :paypal_email
+            = campaign_form.text_field :paypal_email, placeholder: 'bob@example.com'
+            .alert-box.secondary.helper-text(data-alert)
+              p
+                | Be sure to enable 
+                strong Instant Payment Notification
+                |  in your PayPal profile with this url:
+              = content_tag :p, paypal_callback_url
+              p Profile > Selling Preferences > Instant Payment Notification preferences
+              a.close href="#" &times;
+          .large-6.columns
+            .row.collapse
+              = campaign_form.label :twitter_username
+              .small-1.columns
+                span.prefix @
+              .small-11.columns
+                = campaign_form.text_field :twitter_username, placeholder: 'TheNewsPlace'
+        .row
+          .columns
+            .section-container.tabs(data-section="tabs")
+              section.active
+                p.title(data-section-title)
+                  a href="#" Widget
+                .content(data-section-content)
+                  .row
+                    .large-12.columns
+                      = variant_form.label :widget_header
+                      = variant_form.text_area :widget_header
+                  .row
+                    .large-12.columns
+                      = variant_form.label :widget_solicit
+                      = variant_form.text_area :widget_solicit
+                  .row
+                    .large-12.columns
+                      = variant_form.label :widget_follow_up_cta
+                      = variant_form.text_area :widget_follow_up_cta
+                  .row
+                    .large-12.columns
+                      = variant_form.label :widget_thanks
+                      = variant_form.text_area :widget_thanks
+              section
+                p.title(data-section-title)
+                  a href="#" Banner
+                .content(data-section-content)
+                  .row
+                    .large-12.columns
+                      = variant_form.label :banner_thanks
+                      = variant_form.text_area :banner_thanks
+              section
+                p.title(data-section-title)
+                  a href="#" Email
+                .content(data-section-content)
+                  .row
+                    .large-12.columns
+                      = variant_form.label :email_body
+                      = variant_form.text_area :email_body, style: 'height: 130px;'
+        .row
+          .alert-box.secondary.helper-text(data-alert)
+            ul.inline-list
+              li
+                strong
+                  | {{foundation_name}}
+              li
+                strong
+                  | {{publisher_name}}
+              li
+                strong
+                  | {{share_cooldown_days}}
+              li
+                strong
+                  | {{goal}}
+              li
+                strong
+                  | {{value_per_share}}
+              li
+                strong
+                  | {{value_per_click}}
+              li
+                strong
+                  | {{recommended_donation}}
+              li
+                strong
+                  | {{twitter_username}}
+              li
+                strong
+                  | {{article_title}}
+              li
+                strong
+                  | {{email_shortlink}}
+              li
+                strong
+                  | {{total}}
+        .row
+          .columns
+            = variant_form.label :css_overrides
+            = variant_form.text_area :css_overrides
+        .row
+          .columns
+            = campaign_form.submit 'Submit', class: 'button'
+            .right
+              = link_to 'Cancel', campaigns_path, class: 'button secondary'
+
+javascript:
+  $(document).ready(function() {
+    $('textarea').autosize({append: "\n"});
+  });
