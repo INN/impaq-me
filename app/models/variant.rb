@@ -2,6 +2,7 @@ class Variant
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  MAX_SHOWN_AMOUNT = 100
   DEFAULT_WIDGET_HEADER  = '<strong>Share</strong> and {{foundation_name}} will donate <strong>${{value_per_share}}</strong>'
   DEFAULT_WIDGET_SOLICIT = '<strong>Share this article</strong> and {{foundation_name}} will donate <strong class="share-value">${{value_per_share}}</strong> to {{publisher_name}}, a non-profit news organization.'
   DEFAULT_WIDGET_CTA     = 'Show you care about public service journalism by donating an additional <strong class="donation-value">${{recommended_donation}}</strong> to {{publisher_name}}.'

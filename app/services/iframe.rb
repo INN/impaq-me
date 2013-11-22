@@ -6,7 +6,7 @@ class Iframe
     campaign = Campaign.find_by domains: article_url.host
     campaign_meter = CampaignMeter.for campaign
     shortlink = Shortlink.for_campaign_and_url campaign, article_url.to_s
-    sample_variant = campaign.variants.sample
+    sample_variant = SampleVariant.choose_from campaign.variants
 
     {
       user_address: user_address,

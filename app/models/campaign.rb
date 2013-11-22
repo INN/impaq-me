@@ -45,7 +45,7 @@ class Campaign
   private
 
   def sum_of_shown_amounts_is_one_hundred
-    unless total_shown_amount == 100.0
+    unless total_shown_amount == Variant::MAX_SHOWN_AMOUNT
       errors.add(:shown_amount, 'sum of all variants must equal 100%')
     end
   end
