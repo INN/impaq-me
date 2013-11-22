@@ -12,7 +12,8 @@
   = form_for @campaign, html: { class: 'custom large-8' } do |campaign_form|
     .section-container.tabs(data-section="tabs")
       = campaign_form.fields_for :variants do |variant_form|
-        section class=(variant_form.index.zero? ? 'active' : '')
+        - original_variant = variant_form.index.zero?
+        section class=(original_variant ? 'active' : '')
           p.title(data-section-title)
             a href="#" Variant #{lettered variant_form.index}
           .content(data-section-content)
@@ -27,20 +28,20 @@
             .row
               .large-6.columns
                 = campaign_form.label :foundation_name
-                = campaign_form.text_field :foundation_name, placeholder: 'The Foundation of Giving', class: (variant_form.index.zero? ? '' : 'disabled')
+                = campaign_form.text_field :foundation_name, placeholder: 'The Foundation of Giving', class: (original_variant ? '' : 'disabled')
               .large-6.columns
                 = campaign_form.label :publisher_name
-                = campaign_form.text_field :publisher_name, placeholder: 'The News Place', class: (variant_form.index.zero? ? '' : 'disabled')
+                = campaign_form.text_field :publisher_name, placeholder: 'The News Place', class: (original_variant ? '' : 'disabled')
             .row
               .large-6.columns
                 = campaign_form.label :domains
-                = campaign_form.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s, class: (variant_form.index.zero? ? '' : 'disabled')
+                = campaign_form.text_field :domains, placeholder: 'newsplace.com, newsplace.org', value: @campaign.domains_to_s, class: (original_variant ? '' : 'disabled')
             .row
               .large-4.columns
                 .row.collapse
                   = campaign_form.label :share_cooldown_days
                   .small-10.columns
-                    = campaign_form.number_field :share_cooldown_days, :step => 1, class: (variant_form.index.zero? ? '' : 'disabled')
+                    = campaign_form.number_field :share_cooldown_days, :step => 1, class: (original_variant ? '' : 'disabled')
                   .small-2.columns
                     span.postfix days
               .large-4.columns
@@ -49,7 +50,7 @@
                   .small-1.columns
                     span.prefix $
                   .small-11.columns
-                    = campaign_form.number_field :goal, placeholder: '5000', :step => 0.01, class: (variant_form.index.zero? ? '' : 'disabled')
+                    = campaign_form.number_field :goal, placeholder: '5000', :step => 0.01, class: (original_variant ? '' : 'disabled')
               .large-4.columns
             .row
               .large-4.columns
@@ -58,14 +59,14 @@
                   .small-1.columns
                     span.prefix $
                   .small-11.columns
-                    = campaign_form.number_field :value_per_share, :step => 0.01, class: (variant_form.index.zero? ? '' : 'disabled')
+                    = campaign_form.number_field :value_per_share, :step => 0.01, class: (original_variant ? '' : 'disabled')
               .large-4.columns
                 .row.collapse
                   = campaign_form.label :value_per_click
                   .small-1.columns
                     span.prefix $
                   .small-11.columns
-                    = campaign_form.number_field :value_per_click, :step => 0.01, class: (variant_form.index.zero? ? '' : 'disabled')
+                    = campaign_form.number_field :value_per_click, :step => 0.01, class: (original_variant ? '' : 'disabled')
               .large-4.columns
                 .row.collapse
                   = variant_form.label :recommended_donation
@@ -76,7 +77,7 @@
             .row
               .large-6.columns
                 = campaign_form.label :paypal_email
-                = campaign_form.text_field :paypal_email, placeholder: 'bob@example.com', class: (variant_form.index.zero? ? '' : 'disabled')
+                = campaign_form.text_field :paypal_email, placeholder: 'bob@example.com', class: (original_variant ? '' : 'disabled')
                 .alert-box.secondary.helper-text(data-alert)
                   p
                     | Be sure to enable 
@@ -91,7 +92,7 @@
                   .small-1.columns
                     span.prefix @
                   .small-11.columns
-                    = campaign_form.text_field :twitter_username, placeholder: 'TheNewsPlace', class: (variant_form.index.zero? ? '' : 'disabled')
+                    = campaign_form.text_field :twitter_username, placeholder: 'TheNewsPlace', class: (original_variant ? '' : 'disabled')
             .row
               .columns
                 .section-container.tabs(data-section="tabs")
