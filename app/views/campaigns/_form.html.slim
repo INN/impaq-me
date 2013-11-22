@@ -1,21 +1,28 @@
 .columns
   a.button href=new_campaign_variant_path(@campaign) New Variant
 
+  - if @campaign.errors.any?
+    #error_explanation
+      h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved"
+      ul
+        - @campaign.errors.full_messages.each do |msg|
+          li= msg
+
   = form_for @campaign, html: { class: 'custom large-8' } do |campaign_form|
     .section-container.tabs(data-section="tabs")
       = campaign_form.fields_for :variants do |variant_form|
-        - if @campaign.errors.any?
-          #error_explanation
-            h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved"
-
-            ul
-              - @campaign.errors.full_messages.each do |msg|
-                li= msg
-
         section class=(variant_form.index.zero? ? 'active' : '')
           p.title(data-section-title)
             a href="#" Variant #{lettered variant_form.index}
           .content(data-section-content)
+            .row
+              .large-2.columns
+                .row.collapse
+                  = variant_form.label :shown_amount
+                  .small-10.columns
+                    = variant_form.number_field :shown_amount, :step => 1
+                  .small-2.columns
+                    span.postfix %
             .row
               .large-6.columns
                 = campaign_form.label :foundation_name

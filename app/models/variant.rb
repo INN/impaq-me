@@ -22,8 +22,23 @@ Learn more at http://impaq.me'
   field :banner_thanks        , type: String , default: DEFAULT_BANNER_THANKS
   field :email_body           , type: String , default: DEFAULT_EMAIL_BODY
   field :css_overrides        , type: String
+  field :shown_amount         , type: Float  , default: 100.0
 
   belongs_to :campaign
 
   default_scope asc(:created_at)
+
+  validate :sum_of_shown_amounts_is_one_hundred
+
+  def siblings
+    Variant.where(campaign: campaign).not.where(id: id)
+  end
+
+  private
+
+  def sum_of_shown_amounts_is_one_hundred
+    unless siblings.sum(:shown_amount) + self.shown_amount == 100.0
+      errors.add(:shown_amount, 'sum of all variants must equal 100%')
+    end
+  end
 end

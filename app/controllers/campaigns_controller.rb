@@ -44,7 +44,7 @@ class CampaignsController < ApplicationController
     if @campaign.update_attributes(campaign_params)
       redirect_to :dashboard_index, notice: 'Campaign was successfully updated.'
     else
-      render action: 'edit'
+      render action: 'edit', layout: 'foundation'
     end
   end
 
@@ -71,7 +71,8 @@ class CampaignsController < ApplicationController
                                          variants_attributes: [:id, :recommended_donation,
                                            :widget_header, :widget_solicit,
                                            :widget_follow_up_cta, :widget_thanks,
-                                           :banner_thanks, :email_body, :css_overrides])
+                                           :banner_thanks, :email_body, :css_overrides,
+                                           :shown_amount])
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }

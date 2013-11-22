@@ -17,17 +17,16 @@ class Campaign
   field :share_cooldown_days  , type: Integer , default: 30
 
   FIELDS_TO_EXCLUDE_FROM_CSV = ['widget_header', 'widget_solicit', 'widget_follow_up_cta',
-                                'widget_thanks', 'banner_thanks', 'email_body']
+                                'widget_thanks', 'banner_thanks', 'email_body', 'css_overrides']
 
   has_many :shares
   has_many :links
   has_many :click_throughs
   has_many :paypal_donations
-
   has_many :variants
   accepts_nested_attributes_for :variants
 
-  validates :variants, :length => { :minimum => 1 }
+  validates :variants, length: { minimum: 1 }
 
   def initialize
     super
