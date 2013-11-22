@@ -1,5 +1,6 @@
 .columns
-  a.button href=new_campaign_variant_path(@campaign) New Variant
+  - if @campaign.persisted?
+    a.button href=new_campaign_variant_path(@campaign) New Variant
 
   - if @campaign.errors.any?
     #error_explanation
