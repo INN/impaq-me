@@ -27,6 +27,7 @@ class Campaign
   accepts_nested_attributes_for :variants
 
   validates :variants, length: { minimum: 1 }
+  validate :sum_of_shown_amounts_is_one_hundred
 
   def initialize
     super
@@ -39,5 +40,17 @@ class Campaign
 
   def domains_to_s
     domains.join ', ' if domains
+  end
+
+  private
+
+  def sum_of_shown_amounts_is_one_hundred
+    unless total_shown_amount == 100.0
+      errors.add(:shown_amount, 'sum of all variants must equal 100%')
+    end
+  end
+
+  def total_shown_amount
+    variants.sum :shown_amount
   end
 end
