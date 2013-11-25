@@ -11,6 +11,7 @@ class Iframe
     {
       user_address: user_address,
       campaign_id: campaign.id.to_s,
+      variant_id: sample_variant.id.to_s,
       article_url: article_url.to_s,
       article_domain: article_url.authority,
       article_title: article.title,
