@@ -19,6 +19,14 @@
           .content(data-section-content)
             .right
               = link_to 'Delete Variant', campaign_variant_path(@campaign,@campaign.variants[variant_form.index]) , method: :delete, confirm: 'Are you sure you want to delete this variant?', class: (original_variant ? 'button alert disabled' : 'button alert')
+            p
+              span
+                strong campaign_id:
+                = " #{@campaign.id}"
+              br
+              span
+                strong variant_id:
+                = " #{@campaign.variants[variant_form.index].id}"
             .row
               .large-2.columns
                 .row.collapse
