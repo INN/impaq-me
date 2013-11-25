@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%= content_tag :style, @campaign[:css_overrides] %>
+<%= content_tag :style, @campaign[:css_overrides] if @campaign %>
 
 <%= yield %>
 
