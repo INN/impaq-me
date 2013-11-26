@@ -22,7 +22,7 @@ Learn more at http://impaq.me'
   field :widget_thanks        , type: String , default: DEFAULT_WIDGET_THANKS
   field :banner_thanks        , type: String , default: DEFAULT_BANNER_THANKS
   field :email_body           , type: String , default: DEFAULT_EMAIL_BODY
-  field :css_overrides        , type: String
+  field :css_overrides        , type: String , default: ''
   field :shown_amount         , type: Float  , default: 100.0
 
   belongs_to :campaign
