@@ -33,6 +33,7 @@ module ImpaqBackend
     config.action_dispatch.default_headers.clear
 
     config.assets.paths << "#{ Rails.root }/app/assets/templates"
+    config.assets.precompile += %w( dashboard.js dashboard.css )
 
     config.middleware.use Rack::Cors do
       allow do

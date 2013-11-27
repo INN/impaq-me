@@ -6,7 +6,9 @@
 #= require_tree ./helpers
 #= require_tree ./views
 #= require_tree ./services
-#= require_tree .
+#= require_tree ./ext
+#= require router
+#= require social_network_events
 
 # set up namespaces
 window.app =
