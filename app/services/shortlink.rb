@@ -39,7 +39,7 @@ class Shortlink
       referer: referer,
       user_agent: user_agent
     )
-    add_banner_toggle link.long_url
+    add_analytics_query_params link.long_url, link.campaign
   end
 
   private
@@ -50,10 +50,13 @@ class Shortlink
     end
   end
 
-  def self.add_banner_toggle long_url
+  def self.add_analytics_query_params long_url, campaign
     Addressable::URI.parse(long_url).tap do |url|
-      url.query_values = (url.query_values || {}).merge 'shared_via_impaq_me' => true
+      url.query_values = (url.query_values || {}).merge(shared_via_impaq_me: true,
+                                                        utm_source: 'impaqme',
+                                                        utm_medium: 'social',
+                                                        utm_campaign: campaign.id)
+
     end
   end
-
 end
