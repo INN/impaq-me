@@ -27,6 +27,6 @@ window.app.views.Share = class Share extends Backbone.View
       email_shortlink: location.origin + "/" + data.email_shortlink
 
     @$el.html @template.fill(data)
-    window.app.helpers.Replacer.replace @$el, @model
+    window.app.helpers.Replacer.replace @$el, @model, true
     @assign "[data-subview='WidgetButton']": @views.button
     this
