@@ -2,6 +2,7 @@ require 'dumps_csv'
 
 class PaypalDonation
   include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
   include DumpsCSV
 
   field :action
@@ -19,6 +20,7 @@ class PaypalDonation
   field :controller
   field :custom
   field :first_name
+  field :handling_amount
   field :ipn_track_id
   field :item_name
   field :item_number
@@ -43,9 +45,12 @@ class PaypalDonation
   field :payment_type
   field :protection_eligibility
   field :quantity              , type: Float, default: 0
+  field :receipt_id
   field :receiver_email
   field :receiver_id
+  field :resend
   field :residence_country
+  field :shipping
   field :tax                   , type: Float, default: 0
   field :test_ipn
   field :transaction_subject
