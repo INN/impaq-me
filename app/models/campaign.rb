@@ -16,6 +16,8 @@ class Campaign
   field :twitter_username     , type: String
   field :share_cooldown_days  , type: Integer , default: 30
 
+  index({ domains: 1 }, { unique: false, name: "domains_index" })
+
   FIELDS_TO_EXCLUDE_FROM_CSV = ['widget_header', 'widget_solicit', 'widget_follow_up_cta',
                                 'widget_thanks', 'banner_thanks', 'email_body', 'css_overrides']
 

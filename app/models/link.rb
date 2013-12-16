@@ -5,6 +5,8 @@ class Link
   field :channel
   field :slug
 
+  index({ slug: 1 }, { unique: true, name: "slug_index" })
+
   belongs_to :campaign
 
   before_save :generate_slug
