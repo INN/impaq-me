@@ -14,7 +14,7 @@ class Share
   field :created_at
   field :updated_at
 
-  belongs_to :campaign
+  belongs_to :campaign, index: true
 
   before_save :set_value
 

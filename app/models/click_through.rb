@@ -16,7 +16,7 @@ class ClickThrough
   field :created_at
   field :updated_at
 
-  belongs_to :campaign
+  belongs_to :campaign, index: true
   before_save :set_value
 
   USER_AGENT_BLACKLIST = Regexp.union YAML.load_file Rails.root.join 'config/user_agent_blacklist.yml'
