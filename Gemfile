@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '~> 4.0.0'
 gem "active_model_serializers", "~> 0.7.0"
 gem 'activemerchant'
 gem 'bson_ext'
