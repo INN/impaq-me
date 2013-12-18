@@ -31,7 +31,7 @@ group :test do
 end
 
 gem 'sprockets-rails'
-gem 'sass-rails', '4.0.0.rc1'
+gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
