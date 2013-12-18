@@ -24,6 +24,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'debugger'
+  gem 'foreman'
 end
 
 group :test do
