@@ -60,7 +60,7 @@ class PaypalDonation
   field :verify_sign
 
   # must be explicit about campaign_id as a field
-  field :campaign_id           , type: Moped::BSON::ObjectId
+  field :campaign_id           , type: BSON::ObjectId
   belongs_to :campaign
 
   def self.for_campaign campaign
