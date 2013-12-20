@@ -1,0 +1,10 @@
+_id
+campaign_id
+article_url
+channel
+ip
+referer
+user_agent
+value
+created_at
+updated_at

@@ -1,0 +1,9 @@
+_id
+campaign_id
+article_url
+channel
+ip
+referer
+value
+created_at
+updated_at
