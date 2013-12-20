@@ -15,7 +15,9 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 
 # mongoid 4 has not been released to rubygems quite yet
-gem 'mongoid', github: 'mongoid/mongoid', tag: 'v4.0.0.alpha1'
+gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
+# need LATEST moped
+gem 'moped', github: 'mongoid/moped', branch: 'master'
 
 group :development, :test do
   gem 'better_errors'
@@ -36,4 +38,4 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'puma', '2.0.1'
+gem 'unicorn'
