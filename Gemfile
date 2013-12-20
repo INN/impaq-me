@@ -15,7 +15,9 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 
 # mongoid 4 has not been released to rubygems quite yet
-gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
+# need LATEST moped
+gem 'moped', github: 'mongoid/moped', branch: 'master'
 
 group :development, :test do
   gem 'better_errors'
