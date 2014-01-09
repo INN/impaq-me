@@ -20,6 +20,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
+    @campaign.variants.build
+
     render layout: 'foundation'
   end
 

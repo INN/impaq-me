@@ -31,11 +31,6 @@ class Campaign
   validates :variants, length: { minimum: 1 }
   validate :sum_of_shown_amounts_is_one_hundred
 
-  def initialize
-    super
-    variants.build
-  end
-
   def self.goal id
     find(id).goal or raise NoGoal
   end
