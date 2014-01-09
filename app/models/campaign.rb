@@ -48,6 +48,6 @@ class Campaign
   end
 
   def total_shown_amount
-    variants.sum :shown_amount
+    variants.inject(0) { |sum, variant| sum + variant.shown_amount }
   end
 end
