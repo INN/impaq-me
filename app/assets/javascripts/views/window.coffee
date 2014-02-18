@@ -15,7 +15,8 @@ window.app.views.Window = Backbone.View.extend
     Math.max $('body').height(), @facebookPopupHeight()
 
   facebookPopupHeight: ->
-    do ( fbIframe = $('.facebook iframe') ) ->
+    # visibilityHidden custom filter b/c jQuery's :visible is dumb
+    do ( fbIframe = $('.facebook iframe:visible:not(:visibilityHidden)') ) ->
       fbIframe.height() + fbIframe.offset()?.top
 
   resizeParent: _.debounce(->
