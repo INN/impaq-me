@@ -83,3 +83,5 @@ Some example routes:
 * [Dashboard](http://localhost:3000/dashboard)
 * [Banner mode iframe](http://localhost:3000/iframe?mode=banner&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
 * [Widget mode iframe](http://localhost:3000/iframe?mode=widget&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
+
+The two above widgets were snagged from [this production article share](http://voiceofsandiego.org/2014/05/27/morning-report-the-lawyer-developers-love-to-hate/?shared_via_impaq_me=true&utm_campaign=52e91025373635000ffa0200&utm_medium=social&utm_source=impaqme)
