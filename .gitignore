@@ -16,3 +16,6 @@
 /tmp
 .env
 /db/dump
+
+.DS_Store
+/.ruby-version
