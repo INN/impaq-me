@@ -1,11 +1,10 @@
 (($) ->
-  window.impaq = $.extend({}, window.impaq,
+  window.impaq = $.extend {}, window.impaq,
     $: $
     me:
       widgets: []
       config:
         route: "widget"
-  )
   impaq.me.config["iframe_host"] = "//www.impaq.me" unless impaq.me.config["iframe_host"]?
 
   class Widget
@@ -81,16 +80,15 @@
     impaq.me.widgets[data.widget_id].respondToChild data
 
   $(".impaq-me-placeholder").each (id, placeholder) ->
-    impaq.me.widgets[id] = new Widget(
+    impaq.me.widgets[id] = new Widget
       id: id
       placeholder: $(placeholder)
-    )
+
 
   if window.location.search.match(/shared_via_impaq_me=/)?
-    impaq.me.widgets.push new Widget(
+    impaq.me.widgets.push new Widget
       id: impaq.me.widgets.length
       placeholder: $("<div>").prependTo("body")
       config:
         route: "banner"
-    )
 ) jQuery.noConflict(true)
