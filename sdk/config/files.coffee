@@ -1,5 +1,9 @@
-module.exports = require('lineman').config.extend 'files',
-  js:
-    concatenated: "generated/js/sdk.js"
-    minified: "generated/js/sdk.min.js"
-    dist: "../public/scripts/sdk.js"
+# Exports a function which returns an object that overrides the default &
+#    plugin file patterns (used widely through the app configuration)
+#
+#  To see the default definitions for Lineman's file paths and globs, see:
+#
+#    - https://github.com/linemanjs/lineman/blob/master/config/files.coffee
+#
+module.exports = (lineman) ->
+  {}

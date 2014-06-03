@@ -1,12 +1,17 @@
 {
-  "name": "impaq-me-widget",
-  "title": "widget to be injected into INN publisher sites",
-  "version": "0.0.1",
+  "name": "impaq-me-sdk",
+  "description": "The SDK for Impaq.Me",
+  "version": "0.0.2",
   "private": true,
-  "author": "Jason Karns <jason@testdouble.com>",
-  "contributors": "Zach Briggs <zach@testdouble.com>",
-  "dependencies": {
-    "lineman": "~0.11.6",
-    "grunt-contrib-copy": "~0.4.1"
+  "author": "InvestigativeNewsNetwork",
+  "devDependencies": {
+    "lineman": "^0.32.2",
+    "lineman-lib": "^0.2.0",
+    "lineman-rails": "0.0.2",
+    "underscore": "^1.6.0"
+  },
+  "scripts": {
+    "start": "lineman run",
+    "test": "lineman spec-ci"
   }
 }

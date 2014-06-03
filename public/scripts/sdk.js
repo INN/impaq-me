@@ -1,3 +1,7 @@
+/* impaq-me-sdk - 0.0.2
+ * The SDK for Impaq.Me
+ * 
+ */
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -9601,17 +9605,18 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
   (function($) {
     var Widget;
-
     window.impaq = $.extend({}, window.impaq, {
       $: $,
       me: {
         widgets: [],
         config: {
-          route: "widget",
-          iframe_host: "//localhost:3000"
+          route: "widget"
         }
       }
     });
+    if (impaq.me.config["iframe_host"] == null) {
+      impaq.me.config["iframe_host"] = "//www.impaq.me";
+    }
     Widget = (function() {
       Widget.prototype.id = null;
 
@@ -9624,7 +9629,6 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
         this.bindScroll = __bind(this.bindScroll, this);
         this.minimizeChild = __bind(this.minimizeChild, this);
         var _ref;
-
         $.extend(this, options);
         this.$el = $(this.compile()).replaceAll(this.placeholder);
         this.iframe = this.$el.find("iframe")[0];
@@ -9699,7 +9703,6 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
     })();
     $(window).on("message", function(e) {
       var data, err, _ref, _ref1;
-
       if ((e != null ? (_ref = e.originalEvent) != null ? (_ref1 = _ref.origin) != null ? _ref1.match(impaq.me.config.iframe_host) : void 0 : void 0 : void 0) == null) {
         return;
       }

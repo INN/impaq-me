@@ -1,44 +1,31 @@
-module.exports = require('lineman').config.extend 'application',
+# Exports a function which returns an object that overrides the default &
+#    plugin grunt configuration object.
+#
+#  You can familiarize yourself with Lineman's defaults by checking out:
+#
+#    - https://github.com/linemanjs/lineman/blob/master/config/application.coffee
+#    - https://github.com/linemanjs/lineman/blob/master/config/plugins
+#
+#  You can also ask Lineman's about config from the command line:
+#
+#    $ lineman config #=> to print the entire config
+#    $ lineman config concat_sourcemap.js #=> to see the JS config for the concat task.
+#
 
-  loadNpmTasks: [ 'grunt-contrib-copy' ]
+_ = require('underscore')
+module.exports = (lineman) ->
+  app = lineman.config.application
 
-  appTasks:
-    common: [ 'coffee', 'jshint' ]
-    dev: [ 'concat:dev', 'copy:dev', 'watch' ]
-    dist: [ 'concat:dist', 'uglify', 'copy:dist' ]
+  plugins:
+    lib:
+      includeVendorInDistribution: true
+      generateBowerJson: false
 
-  meta:
-    banner: """
-            """
-
-  concat:
-    dev:
-      options: process: data: iframe_host: "//localhost:3000"
-      src: "<%= concat.js.src %>"
-      dest: "<%= files.js.concatenated %>"
-    dist:
-      options: process: data: iframe_host: "//www.impaq.me"
-      src: "<%= concat.js.src %>"
-      dest: "<%= files.js.concatenated %>"
-
-  uglify:
-    js:
-      src: "<%= files.js.concatenated %>"
-      dest: "<%= files.js.minified %>"
-
-  copy:
-    dev:
-      src: "<%= files.js.concatenated %>"
-      dest: "<%= files.js.dist %>"
-    dist:
-      src: "<%= files.js.minified %>"
-      dest: "<%= files.js.dist %>"
+  removeTasks:
+    common: _(app.removeTasks.common).without("pages:dev")
+    dev: _(app.removeTasks.dev).without("server")
 
   watch:
-    js:
-      files: [ "<%= files.js.vendor %>", "<%= files.js.app %>" ]
-      tasks: [ "concat:dev", "copy:dev" ]
-
-    coffee:
-      files: "<%= files.coffee.app %>"
-      tasks: [ "coffee", "concat:dev", "copy:dev" ]
+    pages:
+      files: "<%= files.pages.source %>"
+      tasks: ["pages:dev"]

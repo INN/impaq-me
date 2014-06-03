@@ -5,8 +5,8 @@
       widgets: []
       config:
         route: "widget"
-        iframe_host: "<%= iframe_host %>"
   )
+  impaq.me.config["iframe_host"] = "//www.impaq.me" unless impaq.me.config["iframe_host"]?
 
   class Widget
     id: null          # provided by options to constructor
