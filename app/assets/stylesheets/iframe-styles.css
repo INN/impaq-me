@@ -1,0 +1,272 @@
+@import url('//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css');
+
+/* TODO: margin of #banner should go away */
+/* spacing when widget is closed needs to be changed */
+/* dynamically change the meter percentage */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 17px;
+  font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
+  letter-spacing: .1em;
+}
+
+/* uncollapse margins between banner and widget */
+#banner { overflow:auto; }
+#widget { border-top: 1px solid #EFEFEF; }
+
+h1 {
+  margin:0;
+}
+p, .share_tools  {
+  margin:8px 0;
+}
+
+
+/* shared fonts/colors */
+a {
+  color: inherit;
+}
+#banner,
+#widget header,
+#widget footer {
+  color: #FFFFFF;
+  background-color: #ED1C24;
+  letter-spacing: .15em;
+}
+#widget {
+  color: #666666;
+  background-color: #EFEFEF;
+}
+#widget .solicit,
+#widget .thanks {
+  font-size:17px;
+  font-weight:bold;
+}
+.share-value,
+.click-value,
+.donation-value,
+.total-raised,
+#widget .thanks :first-child {
+  color:#ED1C24;
+  font-weight: inherit;
+}
+
+
+
+/* Banner-time */
+
+#banner {
+  text-align: center;
+  padding:0 1.25em;
+  cursor: pointer;
+}
+#banner .thanks {
+  font-size:18px;
+  font-weight:normal;
+}
+#banner .thanks .click-value {
+  color: inherit;
+  font-size: 17px;
+  font-weight:bold;
+}
+#banner header { margin-top: .42em; margin-bottom:.42em; }
+#banner header .iconography,
+#banner header h1,
+#banner header .progress {
+  display: inline-block;
+  margin:0; /* left/right modified with media queries */
+}
+#banner .close {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  color:inherit;
+  font-size:inherit;
+  cursor: pointer;
+  padding:0;
+}
+
+#banner header { font-size: 17px; letter-spacing: .2em; }
+#banner header h1 { font-size: 1em; font-weight: bold; text-transform: uppercase; }
+#banner header .iconography { word-spacing: .25em; white-space: nowrap; }
+#banner .close { border: 0; background: transparent; }
+
+@media only screen and (min-width : 450px) {
+  #banner header .iconography, #banner header h1, #banner header .progress { margin-left:1em; margin-right:1em; }
+}
+@media only screen and (min-width : 800px) {
+  #banner header .iconography, #banner header .progress { margin-left:0; margin-right:0; }
+  #banner header h1 { margin-left:2em; margin-right: 4em; }
+}
+
+
+/* Widget */
+
+/* there is a bit of style in the Widget view in order to animate a style change. sorry */
+
+#widget .box {
+  max-width: 700px;
+  padding:0 4.5%;
+  margin:0 auto;
+}
+
+#widget header {
+  padding:.7em 1em .5em;
+  font-size:14px;
+  text-align:center;
+  text-transform:uppercase;
+  cursor: pointer;
+}
+#widget header h1 {
+  font-size:0.9em;
+  font-weight:normal;
+}
+/* better to do this with a background image + left padding */
+#widget header h1:before {
+  content: '\f004';
+  font-family: 'FontAwesome';
+  margin-right: 1.25em;
+}
+
+[data-subview='Share'] {
+  position:relative;
+}
+
+#widget .toggle {
+  position:absolute;
+  top:7px;
+  right:-4%;
+  height:22px;
+  width:14px;
+  background:url('../images/module_open.png') no-repeat center center;
+  border:none;
+  cursor:pointer;
+}
+#widget .opened .toggle {
+  top: -2px;
+  background:url('../images/module_close.png') no-repeat center center;
+}
+
+.cta {
+  padding-top: 1px; /* uncollapse top margin so the toggle button is positioned correctly */
+  -webkit-transition: margin .5s ease-in;
+  transition: margin .5s ease-in;
+}
+
+/* Share Tools */
+
+.share_tools {
+  text-align:center;
+  list-style:none;
+  padding:0;
+  font-size:15px;
+}
+.share_tools li {
+  display:inline-block;
+  line-height:1;
+  margin:0 8px;
+  vertical-align:middle;
+}
+.share_tools li:first-child {
+  margin-left: 0;
+}
+.share_tools .twitter iframe {
+  max-width: 60px;
+}
+/* better to do this with a background image + left padding */
+.share_tools .email a:before {
+  content: '\f0e0';
+  font-family: 'FontAwesome';
+  margin-right:4px;
+  font-size:18px;
+  vertical-align: text-top;
+}
+.share_tools .email a {
+  text-decoration:none;
+}
+
+
+/* Progress Meter */
+
+.progress_meter {
+  padding-bottom: 1px; /* uncollapse bottom margin */
+}
+.progress_meter p {
+  position:relative;
+  color: #FFFFFF;
+  background: #BCBEC0;
+  font-size: 14px;
+  padding: .1em .75em;
+  z-index:1;
+}
+.progress_meter p:before {
+  content: '';
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  background: #6D6E71;
+  z-index:-1;
+}
+
+@media only screen and (min-width : 550px) {
+  .cta            { display:table; width:100%; }
+  .share_tools    { display:table-cell; width:250px; text-align:left; }
+  .progress_meter { display:table-cell; }
+}
+
+
+/* Thanks message */
+
+
+
+/* Followup CTA (donate, facebook/twitter, newsletter */
+.follow_up_cta {
+  display:table;
+  width:100%;
+  position:relative;
+  background: #FAFAFA;
+  padding: .1em 0;
+  font-size: 15px;
+  font-weight:normal;
+}
+.follow_up_cta:before {
+  content: ' ';
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:100%;
+  background:inherit;
+  width:9999px;
+}
+.follow_up_cta > * {
+  display:table-cell;
+  vertical-align:middle;
+}
+.follow_up_cta > *:last-child {
+  padding: 7px 0;
+  width:120px;
+  text-align:center;
+}
+
+
+/* Footer */
+footer {
+  margin-top: 17px;
+  padding: .1em 1em .2em;
+  font-family: Monaco, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+footer > * {
+  display:inline-block;
+  width:50%;
+  text-align: right;
+}
+footer > :first-child {
+  text-align: left;
+}

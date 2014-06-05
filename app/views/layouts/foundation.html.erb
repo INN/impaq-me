@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Impaq.me</title>
-  <%= stylesheet_link_tag "dashboard" %>
-  <%= javascript_include_tag "dashboard" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Impaq.me</title>
+    <%= stylesheet_link_tag "dashboard" %>
+    <%= javascript_include_tag "dashboard" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <%= yield %>
 
-<script>
-  $(document).foundation();
-</script>
-</body>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>
