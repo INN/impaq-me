@@ -19,6 +19,8 @@ gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
 # need LATEST moped
 gem 'moped', github: 'mongoid/moped', branch: 'master'
 
+gem 'rails-lineman'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
