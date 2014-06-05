@@ -35,6 +35,10 @@ module ImpaqBackend
     config.assets.paths << "#{ Rails.root }/app/assets/templates"
     config.assets.precompile += %w( dashboard.js dashboard.css )
 
+    config.rails_lineman.lineman_project_location = {
+      "sdk" => "sdk"
+    }
+
     config.middleware.use Rack::Cors do
       allow do
         origins '*'

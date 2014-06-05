@@ -6,4 +6,6 @@
 #    - https://github.com/linemanjs/lineman/blob/master/config/files.coffee
 #
 module.exports = (lineman) ->
-  {}
+  js:
+    minified: "dist/js/impaq-me-sdk.min.js",
+    uncompressedDist: "dist/js/impaq-me-sdk.js"
