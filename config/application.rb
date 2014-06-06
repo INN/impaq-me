@@ -33,7 +33,7 @@ module ImpaqBackend
     config.action_dispatch.default_headers.clear
 
     config.assets.paths << "#{ Rails.root }/app/assets/templates"
-    config.assets.precompile += %w( dashboard.js dashboard.css )
+    config.assets.precompile += %w( dashboard.js dashboard.css iframe.js iframe.css )
 
     config.rails_lineman.lineman_project_location = {
       "sdk" => "sdk"
