@@ -1,5 +1,5 @@
 window.app.views.Widget = class Widget extends Backbone.View
-  template: JST["widget"]
+  template: JST["app/templates/widget.us"]
 
   initialize: (options) ->
     @views =

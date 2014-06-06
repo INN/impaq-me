@@ -1,5 +1,5 @@
 window.app.views.WidgetFooter = class WidgetFooter extends Backbone.View
-  template: JST["widget_footer"]
+  template: JST["app/templates/widget_footer.us"]
 
   events:
     "click .about-funding": "aboutFundingClicked"

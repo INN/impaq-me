@@ -64,7 +64,7 @@
       window.impaq = {
         me: {
           config: {
-            iframe_host: "//localhost:3000"
+            iframe_host: "//localhost:8000"
           }
         }
       };

@@ -36,7 +36,8 @@ module ImpaqBackend
     config.assets.precompile += %w( dashboard.js dashboard.css iframe.js iframe.css )
 
     config.rails_lineman.lineman_project_location = {
-      "sdk" => "sdk"
+      "sdk" => "sdk",
+      "iframe" => "iframe"
     }
 
     config.middleware.use Rack::Cors do

@@ -1,5 +1,5 @@
 window.app.views.Banner = class Banner extends Backbone.View
-  template: JST["banner"]
+  template: JST["app/templates/banner.us"]
 
   events:
     click: "click"

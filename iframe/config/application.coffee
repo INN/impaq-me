@@ -11,25 +11,8 @@
 #    $ lineman config #=> to print the entire config
 #    $ lineman config concat_sourcemap.js #=> to see the JS config for the concat task.
 #
-
-_ = require('underscore')
 module.exports = (lineman) ->
-  app = lineman.config.application
-
-  server:
-    web:
-      port: "8001"
 
   plugins:
-    lib:
-      includeVendorInDistribution: true
-      generateBowerJson: false
-
-  removeTasks:
-    common: _(app.removeTasks.common).without("pages:dev")
-    dev: _(app.removeTasks.dev).without("server")
-
-  watch:
-    pages:
-      files: "<%= files.pages.source %>"
-      tasks: ["pages:dev"]
+    rails:
+      namespace: "iframe"
