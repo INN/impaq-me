@@ -33,7 +33,6 @@ module ImpaqBackend
     config.action_dispatch.default_headers.clear
 
     config.assets.paths << "#{ Rails.root }/app/assets/templates"
-    config.assets.paths << "#{ Rails.root }/vendor/assets/fonts"
     config.assets.precompile += %w( dashboard.js dashboard.css )
 
     config.rails_lineman.lineman_project_location = {
