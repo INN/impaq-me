@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Impaq.me</title>
-  <%= stylesheet_link_tag    "application", media: "all"%>
-  <!--[if lt IE 9]>
-    <script src="/scripts/ie8-shims.js"></script>
-  <![endif]-->
-  <%= javascript_include_tag "application"%>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Impaq.me</title>
+    <%= stylesheet_link_tag "application", media: "all"%>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>

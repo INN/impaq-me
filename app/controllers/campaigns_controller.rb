@@ -1,4 +1,5 @@
 class CampaignsController < ApplicationController
+  layout 'foundation'
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
   before_action :check_user
 
@@ -21,13 +22,10 @@ class CampaignsController < ApplicationController
   def new
     @campaign = Campaign.new
     @campaign.variants.build
-
-    render layout: 'foundation'
   end
 
   # GET /campaigns/1/edit
   def edit
-    render layout: 'foundation'
   end
 
   # POST /campaigns
@@ -46,7 +44,7 @@ class CampaignsController < ApplicationController
     if @campaign.update_attributes(campaign_params)
       redirect_to :dashboard_index, notice: 'Campaign was successfully updated.'
     else
-      render action: 'edit', layout: 'foundation'
+      render action: 'edit'
     end
   end
 

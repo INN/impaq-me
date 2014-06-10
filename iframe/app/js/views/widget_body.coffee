@@ -1,5 +1,5 @@
 window.app.views.WidgetBody = class WidgetBody extends Backbone.View
-  template: JST["widget_body"]
+  template: JST["app/templates/widget_body.us"]
 
   events:
     "submit form.paypal": "paypalDonation"

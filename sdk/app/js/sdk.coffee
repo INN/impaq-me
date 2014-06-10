@@ -1,5 +1,6 @@
 (($) ->
-  window.impaq = $.extend {}, window.impaq,
+
+  window.impaq = $.extend true, {}, window.impaq,
     $: $
     me:
       widgets: []

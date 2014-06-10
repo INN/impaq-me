@@ -9,6 +9,13 @@
     <article>
       <h1>I'm a title!</h1>
       <section>
+        Stuff to do:
+        <ul>
+          <li><a href="?shared_via_impaq_me=true">Preview the "shared-by" banner</a></li>
+          <li><a href="?">Hide the "shared-by" banner</a></li>
+        </ul>
+      </section>
+      <section>
         WaPo Chartbeat blog commons-based peer production audience atomization overcome curation reporting tags, Bill Keller libel lawyer copyboy writing innovation gutter Neil Postman Gutenberg, newsroom cafe go viral vast wasteland 5% corruption column-inch The Printing Press as an Agent of Change.
         hackgate A.J. Liebling attracting young readers media diet dead trees advertising WikiLeaks YouTube A.J. Liebling, backpack journalist TBD information wants to be free Romenesko fourth estate information wants to be free digital circulation strategy iPhone app syndicated, iPhone app paidContent learnings Jay Rosen column-inch commons-based peer production content farm.
         </p>
@@ -64,7 +71,7 @@
       window.impaq = {
         me: {
           config: {
-            iframe_host: "//localhost:3000"
+            iframe_host: "//localhost:8000"
           }
         }
       };

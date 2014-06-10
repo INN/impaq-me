@@ -1,4 +1,5 @@
 class IframeController < ApplicationController
+  layout 'iframe'
   before_action :set_campaign, only: [:index]
 
   def index

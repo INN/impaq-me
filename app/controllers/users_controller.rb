@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
+  layout 'foundation'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user
 
   # GET /users
   def index
     @users = User.all
-    render layout: 'foundation'
   end
 
   # GET /users/1

@@ -1,7 +1,7 @@
 window.app.Template = class Template
   constructor: (templateName) ->
-    @template = JST[templateName]
-    @alternateTemplate = JST["#{templateName}-campaign_over"]
+    @template = JST["app/templates/#{templateName}.us"]
+    @alternateTemplate = JST["app/templates/#{templateName}-campaign_over.us"]
 
   fill: (data) ->
     @find()(data)

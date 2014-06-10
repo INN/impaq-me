@@ -45,6 +45,8 @@ Verify things work by running `bundle exec rails c`
 
 Install the [latest Node.js](http://nodejs.org)
 
+#### Build the SDK
+
 ```
 sudo npm i -g lineman
 cd sdk
@@ -53,7 +55,19 @@ npm install
 
 Run a `lineman clean build` to verify things are working.
 
+#### Build the iframe
+
+```
+sudo npm i -g lineman
+cd iframe
+npm install
+```
+
+Run a `lineman clean build` to verify things are working.
+
 ## Run the app
+
+
 
 ### Create an account
 
@@ -70,18 +84,33 @@ irb(main):001:0> User.create!(name: "foo", email: "foo@foo.com", password: "foo"
 irb(main):002:0>
 ```
 
-### Verify the app
-
-Get the backend up and running
+Get the Rails backend up and running
 
 ```
 $ bundle exec rails s
 ```
 
+In another shell, start the SDK project:
+
+```
+$ cd sdk
+$ lineman clean run
+```
+
+In a third shell, start the iframe project:
+
+```
+$ cd iframe
+$ lineman clean run
+```
+
+### Verify the app
+
 Some example routes:
 
 * [Dashboard](http://localhost:3000/dashboard)
-* [Banner mode iframe](http://localhost:3000/iframe?mode=banner&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
-* [Widget mode iframe](http://localhost:3000/iframe?mode=widget&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
+* [Sample widget page via SDK](http://localhost:8001/)
+* [Banner mode iframe](http://localhost:8000/iframe?mode=banner&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
+* [Widget mode iframe](http://localhost:8000/iframe?mode=widget&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
 
 The two above widgets were snagged from [this production article share](http://voiceofsandiego.org/2014/05/27/morning-report-the-lawyer-developers-love-to-hate/?shared_via_impaq_me=true&utm_campaign=52e91025373635000ffa0200&utm_medium=social&utm_source=impaqme)
