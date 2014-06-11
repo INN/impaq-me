@@ -13,7 +13,6 @@ gem 'slim'
 gem 'exceptiontrap'
 gem 'newrelic_rpm'
 gem 'rails_12factor'
-gem 'rack-zippy'
 
 # mongoid 4 has not been released to rubygems quite yet
 gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
