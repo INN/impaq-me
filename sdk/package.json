@@ -5,7 +5,7 @@
   "private": true,
   "author": "InvestigativeNewsNetwork",
   "devDependencies": {
-    "lineman": "^0.32.2",
+    "lineman": "^0.33.1",
     "lineman-lib": "^0.2.0",
     "lineman-rails": "0.0.2",
     "underscore": "^1.6.0"

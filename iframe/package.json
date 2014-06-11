@@ -1,11 +1,11 @@
 {
   "name": "iframe",
-  "description": "An HTML/JS/CSS app",
+  "description": "The iframe embedded by the Impaq.me SDK",
   "version": "0.0.1",
   "private": true,
-  "author": "John Doe",
+  "author": "InvestigativeNewsNetwork",
   "devDependencies": {
-    "lineman": "^0.32.2",
+    "lineman": "^0.33.1",
     "lineman-rails": "0.1.0"
   },
   "scripts": {

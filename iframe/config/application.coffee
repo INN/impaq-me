@@ -12,7 +12,17 @@
 #    $ lineman config concat_sourcemap.js #=> to see the JS config for the concat task.
 #
 module.exports = (lineman) ->
+  app = lineman.config.application
+
+  prependTasks:
+    common: addFetchIfBuilding(app)
 
   plugins:
     rails:
       namespace: "iframe"
+
+
+
+addFetchIfBuilding = (app) ->
+  return app.prependTasks.common unless process.env["LINEMAN_ENV"] == "production"
+  app.prependTasks.common.concat("fetch:facebook-connect-api-all:google-analytics:twitter-widgets-api")
