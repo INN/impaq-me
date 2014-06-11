@@ -22,6 +22,9 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    action_dispatch-gz_static (0.0.3)
+      actionpack (>= 3.1.0)
+      railties (>= 3.1.0)
     actionmailer (4.0.3)
       actionpack (= 4.0.3)
       mail (~> 2.5.4)
@@ -205,6 +208,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_dispatch-gz_static
   active_model_serializers (~> 0.7.0)
   activemerchant
   addressable
