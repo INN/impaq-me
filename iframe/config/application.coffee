@@ -25,4 +25,4 @@ module.exports = (lineman) ->
 
 addFetchIfBuilding = (app) ->
   return app.prependTasks.common unless process.env["LINEMAN_ENV"] == "production"
-  app.prependTasks.common.concat("fetch:facebook-connect-api-all:google-analytics:twitter-widgets-api")
+  app.prependTasks.common.concat("fetch:facebook-connect-api-all:twitter-widgets-api")
