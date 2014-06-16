@@ -14,17 +14,17 @@
     placeholder: null # provided by options to constructor
 
     constructor: (options) ->
-      $.extend @, options
+      $.extend(@, options)
       @$el = $(@compile()).replaceAll(@placeholder)
       @iframe = @$el.find("iframe")[0]
-      $(@iframe).on "load", @wireUpCommunication
-      $(@iframe).on "load", @bindScroll if @config?.route is "banner"
+      $(@iframe).on("load", @wireUpCommunication)
+      $(@iframe).on("load", @bindScroll) if @config?.route is "banner"
 
     template: (data) ->
       """
       <div class="impaq-me-widget">
         <iframe
-          src="#{data.iframe_host}/iframe?mode=#{data.route}&article_url=#{data.article_url}&article_title=#{data.article_title}"
+          src="#{data['iframe_host']}/iframe?mode=#{data['route']}&article_url=#{data['article_url']}&article_title=#{data['article_title']}"
           style="width:100%; height:0; border:0; display:block;"
           scrolling="no"
           frameborder="0"></iframe>
@@ -38,32 +38,32 @@
       )
 
     articleURL: ->
-      @placeholder.data("url") or $("link[rel=canonical]").attr("href") or window.location
+      @placeholder.data("url") || $("link[rel=canonical]").attr("href") || window.location
 
     articleTitle: ->
-      @placeholder.data("title") or document.title
+      @placeholder.data("title") || document.title
 
     compile: ->
       @template(@templateData())
 
     resize: (height) ->
-      $(@iframe).animate(height: height)
+      $(@iframe).animate({height})
 
     remove: ->
       @$el.remove()
 
     respondToChild: (data) ->
-      if data.action is "close" then @remove() else @resize(data.args.height)
+      if data.action == "close" then @remove() else @resize(data.args.height)
 
     minimizeChild: =>
-      $(window).unbind "scroll", @minimizeChild
+      $(window).unbind("scroll", @minimizeChild)
       @iframe.contentWindow.postMessage(JSON.stringify(
         widget_id: @id
         action: "minimize"
       ), @iframe.src)
 
     bindScroll: (event) =>
-      $(window).scroll @minimizeChild
+      $(window).scroll(@minimizeChild)
 
     wireUpCommunication: (e) =>
       @iframe.contentWindow.postMessage(JSON.stringify(
@@ -78,7 +78,7 @@
     catch err
       return
     return unless data.widget_id?
-    impaq.me.widgets[data.widget_id].respondToChild data
+    impaq.me.widgets[data.widget_id].respondToChild(data)
 
   $(".impaq-me-placeholder").each (id, placeholder) ->
     impaq.me.widgets[id] = new Widget
