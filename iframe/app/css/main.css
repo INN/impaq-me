@@ -125,8 +125,8 @@ a {
 }
 /* better to do this with a background image + left padding */
 #widget header h1:before {
-  content: '\e800';
-  font-family: 'fontello';
+  content: '\e801';
+  font-family: 'fontawesome';
   margin-right: 1.25em;
 }
 
@@ -177,8 +177,8 @@ a {
 }
 /* better to do this with a background image + left padding */
 .share_tools .email a:before {
-  content: '\e801';
-  font-family: 'fontello';
+  content: '\e800';
+  font-family: 'fontawesome';
   margin-right:4px;
   font-size:18px;
   vertical-align: text-top;

@@ -22,6 +22,8 @@ ImpaqBackend::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
+  config.static_cache_control = "public, max-age=1"
+
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

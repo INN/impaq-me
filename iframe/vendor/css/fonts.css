@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'fontello';
-  src: url('/iframe-assets/font/fontello.eot');
-  src: url('/iframe-assets/font/fontello.eot?78013658#iefix') format('embedded-opentype'),
-       url('/iframe-assets/font/fontello.woff?78013658') format('woff'),
-       url('/iframe-assets/font/fontello.ttf?78013658') format('truetype'),
-       url('/iframe-assets/font/fontello.svg?78013658#fontello') format('svg');
+  font-family: 'fontawesome';
+  src: url('/iframe-assets/font/fontawesome.eot');
+  src: url('/iframe-assets/font/fontawesome.eot?78013658#iefix') format('embedded-opentype'),
+       url('/iframe-assets/font/fontawesome.woff?78013658') format('woff'),
+       url('/iframe-assets/font/fontawesome.ttf?78013658') format('truetype'),
+       url('/iframe-assets/font/fontawesome.svg?78013658#fontawesome') format('svg');
   font-weight: normal;
   font-style: normal;
 }
