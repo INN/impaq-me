@@ -14,7 +14,7 @@ class PaypalDonationsController < ApplicationController
   def callback
     params.permit!
     if valid_handshake?
-      @paypal_donation = PaypalDonation.new(with_custom_params)
+      @paypal_donation = PaypalDonation.for_params(with_custom_params)
     end
     if @paypal_donation.save!
       render nothing: true, status: :ok

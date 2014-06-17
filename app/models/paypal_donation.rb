@@ -2,8 +2,11 @@ require 'dumps_csv'
 
 class PaypalDonation
   include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
   include DumpsCSV
+
+  def self.for_params(params)
+    self.new(params.select {|(k,v)| attribute_names.include?(k) })
+  end
 
   field :action
   field :address_city
