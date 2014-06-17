@@ -1,6 +1,6 @@
 class PaypalDonationsController < ApplicationController
   layout false
-
+  before_action :check_user, :only => [:index]
   protect_from_forgery except: :callback
 
   def index
