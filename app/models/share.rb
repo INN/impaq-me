@@ -1,43 +1,30 @@
-require 'dumps_csv'
+class Share < ActiveRecord::Base
+  belongs_to :campaign
 
-class Share
-  include Mongoid::Document
-  include Mongoid::Timestamps
+  before_create :set_value, :unless => -> { value.present? }
 
-  include DumpsCSV
-
-  field :article_url
-  field :channel
-  field :ip
-  field :referer
-  field :value, type: Float, default: 0
-  field :created_at
-  field :updated_at
-
-  belongs_to :campaign, index: true
-
-  before_save :set_value
-
-  def self.past_shares share
-    where(article_url: share.article_url).
-      and(campaign: share.campaign).
-      and(ip: share.ip).
-      ne(id: share.id).
-      order_by(created_at: :asc)
+  def self.past_shares(share)
+    where(
+      :article_url => share.article_url,
+      :campaign_id => share.campaign_id,
+      :ip => share.ip
+    ).where.not(
+      :id => share.id
+    ).order(:created_at)
   end
 
-  def self.for_campaign campaign
+  def self.for_campaign(campaign)
     where(campaign: campaign)
   end
 
-  def self.total_for_campaign campaign
+  def self.total_for_campaign(campaign)
     for_campaign(campaign).sum(:value)
   end
 
-  private
+private
 
   def set_value
-    self.value = campaign.value_per_share if monied_share?
+    self.value = monied_share? ? campaign.value_per_share : 0.0
   end
 
   def monied_share?

@@ -1,46 +1,35 @@
 require 'yaml'
-require 'dumps_csv'
 
-class ClickThrough
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class ClickThrough < ActiveRecord::Base
+  belongs_to :campaign
 
-  include DumpsCSV
+  before_create :set_value, :unless => -> { value.present? }
 
-  field :article_url
-  field :channel
-  field :ip
-  field :referer
-  field :user_agent
-  field :value, type: Float, default: 0
-  field :created_at
-  field :updated_at
+  USER_AGENT_BLACKLIST = Regexp.union(YAML.load_file(Rails.root.join('config/user_agent_blacklist.yml')))
 
-  belongs_to :campaign, index: true
-  before_save :set_value
-
-  USER_AGENT_BLACKLIST = Regexp.union YAML.load_file Rails.root.join 'config/user_agent_blacklist.yml'
-
-  def self.past_clicks click
-    where(article_url: click.article_url).
-      and(campaign: click.campaign).
-      and(ip: click.ip).
-      ne(id: click.id).
-      order_by(created_at: :asc)
+  # TODO - note that Share has the exact same scope.
+  def self.past_clicks(share)
+    where(
+      :article_url => share.article_url,
+      :campaign_id => share.campaign_id,
+      :ip => share.ip
+    ).where.not(
+      :id => share.id
+    ).order(:created_at)
   end
 
-  def self.for_campaign campaign
+  def self.for_campaign(campaign)
     where(campaign: campaign)
   end
 
-  def self.total_for_campaign campaign
+  def self.total_for_campaign(campaign)
     for_campaign(campaign).sum(:value)
   end
 
   private
 
   def set_value
-    self.value = campaign.value_per_click if monied_click?
+    self.value = monied_click? ? campaign.value_per_click : 0.0
   end
 
   def monied_click?
