@@ -3,10 +3,6 @@ class Campaign < ActiveRecord::Base
 
   validates_uniqueness_of :mongo_id
 
-  def self.mongo_has_manies
-    ["shares", "links", "click_throughs", "paypal_donations", "variants"]
-  end
-
   has_many :shares
   has_many :links
   has_many :click_throughs

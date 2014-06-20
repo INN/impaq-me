@@ -23,7 +23,7 @@ RSpec.configure do |config|
 
   # clean the database
   config.before(:suite) do
-    DatabaseCleaner[:mongoid].strategy = :truncation
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
   end
 

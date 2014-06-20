@@ -21,12 +21,9 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def find_user
-    begin
-      User.find_by email: session_params[:email]
-    rescue Mongoid::Errors::DocumentNotFound
-      nil
-    end
+    User.find_by(:email => session_params[:email])
   end
 
   def session_params

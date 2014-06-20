@@ -16,11 +16,6 @@ gem 'rails_12factor'
 gem 'action_dispatch-gz_static'
 gem 'pg'
 
-# mongoid 4 has not been released to rubygems quite yet
-gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
-# need LATEST moped
-gem 'moped', github: 'mongoid/moped', branch: 'master'
-
 gem 'rails-lineman'
 
 group :development, :test do
