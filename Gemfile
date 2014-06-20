@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '~> 4.0.3'
+gem 'rails', '~> 4.1.1'
 gem 'active_model_serializers', '~> 0.7.0'
 gem 'activemerchant'
 gem 'rack-cors', :require => 'rack/cors'
@@ -28,11 +28,14 @@ group :development, :test do
   gem 'foreman'
 end
 
+group :development do
+  gem 'spring'
+end
+
 group :test do
   gem 'database_cleaner'
 end
 
-gem 'sprockets-rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
