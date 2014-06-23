@@ -31,9 +31,7 @@ private
   end
 
   def monied_share?
-    return true if Share.past_dupes(self).empty?
-
-    days_since_shared = (Time.now - Share.past_dupes(self).last.created_at) / 60
-    days_since_shared > campaign.share_cooldown_days
+    return true unless last_share = Share.past_dupes(self).last
+    Time.zone.now - last_share.created_at > campaign.share_cooldown_days.days
   end
 end
