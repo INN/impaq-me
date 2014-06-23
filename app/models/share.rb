@@ -3,7 +3,7 @@ class Share < ActiveRecord::Base
 
   before_create :set_value, :unless => -> { value.present? }
 
-  def self.past_shares(share)
+  def self.past_dupes(share)
     where(
       :article_url => share.article_url,
       :campaign_id => share.campaign_id,
@@ -28,9 +28,9 @@ private
   end
 
   def monied_share?
-    return true if Share.past_shares(self).empty?
+    return true if Share.past_dupes(self).empty?
 
-    days_since_shared = (Time.now - Share.past_shares(self).last.created_at) / 60
+    days_since_shared = (Time.now - Share.past_dupes(self).last.created_at) / 60
     days_since_shared > campaign.share_cooldown_days
   end
 end

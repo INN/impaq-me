@@ -8,7 +8,7 @@ class ClickThrough < ActiveRecord::Base
   USER_AGENT_BLACKLIST = Regexp.union(YAML.load_file(Rails.root.join('config/user_agent_blacklist.yml')))
 
   # TODO - note that Share has the exact same scope.
-  def self.past_clicks(share)
+  def self.past_dupes(share)
     where(
       :article_url => share.article_url,
       :campaign_id => share.campaign_id,
@@ -33,7 +33,7 @@ class ClickThrough < ActiveRecord::Base
   end
 
   def monied_click?
-    ClickThrough.past_clicks(self).empty? unless blacklisted_agent?
+    ClickThrough.past_dupes(self).empty? unless blacklisted_agent?
   end
 
   def blacklisted_agent?
