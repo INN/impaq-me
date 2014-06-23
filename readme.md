@@ -1,5 +1,7 @@
 # Impaq.Me
 
+[![Build Status](https://magnum.travis-ci.com/testdouble/impaq-me.svg?token=zzFpGDKukxjbdxpbyHZY&branch=master)](https://magnum.travis-ci.com/testdouble/impaq-me)
+
 ## get up and running
 
 ### Install Postgres
