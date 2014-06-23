@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617182157) do
+ActiveRecord::Schema.define(version: 20140623214000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140617182157) do
     t.string   "mongo_id"
     t.string   "foundation_name"
     t.string   "publisher_name"
-    t.text     "domains",                           array: true
+    t.text     "domains",                             array: true
     t.float    "value_per_share",     default: 1.0
     t.float    "value_per_click",     default: 1.0
     t.float    "goal"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140617182157) do
     t.integer  "share_cooldown_days", default: 30
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "disabled",            default: false
   end
 
   add_index "campaigns", ["mongo_id"], name: "index_campaigns_on_mongo_id", unique: true, using: :btree

@@ -37,6 +37,11 @@
                   .small-2.columns
                     span.postfix %
             .row
+              .large-12.columns
+                - if original_variant
+                  = campaign_form.label :disabled, "Disable Campaign: "
+                  = campaign_form.check_box :disabled
+            .row
               .large-6.columns
                 = campaign_form.label :foundation_name
                 = campaign_form.text_field :foundation_name, placeholder: 'The Foundation of Giving', class: (original_variant ? '' : 'disabled')
@@ -91,7 +96,7 @@
                 = campaign_form.text_field :paypal_email, placeholder: 'bob@example.com', class: (original_variant ? '' : 'disabled')
                 .alert-box.secondary.helper-text(data-alert)
                   p
-                    | Be sure to enable 
+                    | Be sure to enable
                     strong Instant Payment Notification
                     |  in your PayPal profile with this url:
                   = content_tag :p, paypal_callback_url

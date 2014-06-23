@@ -63,7 +63,7 @@ class CampaignsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def campaign_params
-    p = params.require(:campaign).permit(:foundation_name, :publisher_name,
+    p = params.require(:campaign).permit(:disabled, :foundation_name, :publisher_name,
                                          :domains, :value_per_share, :goal,
                                          :value_per_click, :about_uri,
                                          :share_cooldown_days, :paypal_email,

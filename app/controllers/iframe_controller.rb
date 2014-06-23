@@ -1,12 +1,12 @@
 class IframeController < ApplicationController
   layout 'iframe'
-  before_action :set_campaign, only: [:index]
 
   def index
-  end
-
-  def set_campaign
-    @campaign = Iframe.bootstrap(Article.new(bootstrap_params[:article_url], bootstrap_params[:article_title]), request.ip)
+    if @campaign = Iframe.bootstrap(Article.new(bootstrap_params[:article_url], bootstrap_params[:article_title]), request.ip)
+      render :index
+    else
+      render :empty
+    end
   end
 
   def bootstrap_params
@@ -14,4 +14,4 @@ class IframeController < ApplicationController
   end
 end
 
-Article = Struct.new :url, :title
+Article = Struct.new(:url, :title)
