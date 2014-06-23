@@ -1,6 +1,8 @@
 require 'yaml'
+require 'dumps_csv'
 
 class ClickThrough < ActiveRecord::Base
+  include DumpsCsv
   belongs_to :campaign
 
   before_create :set_value, :unless => -> { value.present? }

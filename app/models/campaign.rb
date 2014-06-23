@@ -1,5 +1,8 @@
+require 'dumps_csv'
+
 class Campaign < ActiveRecord::Base
   class NoGoal < RuntimeError; end
+  include DumpsCsv
 
   validates_uniqueness_of :mongo_id
 

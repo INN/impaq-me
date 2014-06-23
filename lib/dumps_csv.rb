@@ -1,4 +1,4 @@
-module DumpsCSV
+module DumpsCsv
 
   def self.included(base)
     base.extend ClassMethods
@@ -7,18 +7,14 @@ module DumpsCSV
   module ClassMethods
     def to_csv(rejections=[])
       CSV.generate do |csv|
-        csv << headers = fields.keys.reject do |field|
-          rejections.include? field
+        csv << headers = self.attribute_names.reject do |attr_name|
+          rejections.include?(attr_name)
         end
-        each do |row|
+        self.all.each do |row|
           csv << row.csv_dump(headers)
         end
       end
     end
-  end
-
-  def csv_headers
-    attributes.keys
   end
 
   def csv_dump(headers)

@@ -1,4 +1,7 @@
+require 'dumps_csv'
+
 class PaypalDonation < ActiveRecord::Base
+  include DumpsCsv
   belongs_to :campaign
 
   def self.for_params(params)
