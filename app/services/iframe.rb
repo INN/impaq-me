@@ -1,12 +1,12 @@
 require 'addressable/uri'
 
 class Iframe
-  def self.bootstrap article, user_address
+  def self.bootstrap(article, user_address)
     article_url = Addressable::URI.heuristic_parse(article.url).normalize
     campaign = Campaign.find_by_domain(article_url.host)
-    campaign_meter = CampaignMeter.for_campaign campaign
-    shortlink = Shortlink.for_campaign_and_url campaign, article_url.to_s
-    sample_variant = SampleVariant.choose_from campaign.variants
+    campaign_meter = CampaignMeter.for_campaign(campaign)
+    shortlink = Shortlink.for_campaign_and_url(campaign, article_url.to_s)
+    sample_variant = SampleVariant.choose_from(campaign.variants)
 
     {
       user_address: user_address,
@@ -37,7 +37,7 @@ class Iframe
     }.merge(shortlink)
   end
 
-  def self.format_dollar x
+  def self.format_dollar(x)
     if x % 1 == 0
       x.to_i
     else
