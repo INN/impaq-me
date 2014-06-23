@@ -21,7 +21,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'rspec-rails'
   gem 'pry'
   gem 'debugger'
   gem 'foreman'
@@ -32,6 +31,9 @@ group :development do
 end
 
 group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rspec-given'
   gem 'database_cleaner'
 end
 
