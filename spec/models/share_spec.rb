@@ -35,7 +35,7 @@ describe Share do
         end
 
         context "past dupe was not over share_cooldown_days ago" do
-          # Given { past_share.update(:created_at => 3.hours.ago)}
+          Given { past_share.update(:created_at => 3.hours.ago)}
           Then { subject.value == 0.0 }
         end
       end
