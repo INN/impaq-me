@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= pkg.name %></title>
+    <link rel="canonical" href="http://www.npr.org/blogs/therecord/2014/06/20/323943849/darkness-comes-alive-the-paradox-of-lana-del-rey" />
 
     <link rel="stylesheet" type="text/css" href="<%= css %>" media="all" />
   </head>
