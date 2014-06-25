@@ -83,6 +83,7 @@ GEM
       thor (~> 0.19.1)
     given_core (3.5.4)
       sorcerer (>= 0.3.7)
+    heroku-rake (0.0.2)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.1.0)
@@ -218,6 +219,7 @@ DEPENDENCIES
   debugger
   ejs
   foreman
+  heroku-rake
   jquery-rails
   newrelic_rpm
   pg
