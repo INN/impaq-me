@@ -17,6 +17,7 @@ ImpaqBackend::Application.routes.draw do
 
   # These just redirect now:
   root to: 'static_pages#index'
+
   get 'about' => 'static_pages#about'
   get 'funding'  => 'static_pages#funding'
 

@@ -28,7 +28,6 @@ end
 
 group :development do
   gem 'spring'
-  gem 'heroku-rake'
 end
 
 group :test do
