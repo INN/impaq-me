@@ -110,3 +110,39 @@ Some example routes:
 * [Widget mode iframe](http://localhost:8000/iframe?mode=widget&article_url=http%3A%2F%2Fvoiceofsandiego.org%2F2014%2F05%2F27%2Fmorning-report-the-lawyer-developers-love-to-hate%2F&article_title=Morning%20Report%3A%20The%20Lawyer%20Developers%20Love%20to%20Hate%20%7C%20Voice%20of%20San%20Diego)
 
 The two above widgets were snagged from [this production article share](http://voiceofsandiego.org/2014/05/27/morning-report-the-lawyer-developers-love-to-hate/?shared_via_impaq_me=true&utm_campaign=52e91025373635000ffa0200&utm_medium=social&utm_source=impaqme)
+
+## Deploy the app
+
+There's a little included script for deploying to heroku:
+
+## Usage
+
+To deploy an app:
+
+```
+$ ./deploy remote-name app-name
+```
+
+To deploy an app with migrations:
+
+```
+$ ./deploy remote-name app-name true
+```
+
+To deploy an app with migrations and enable maintenance mode for the entire duration:
+
+```
+$ ./deploy remote-name app-name true true
+```
+
+To deploy an app with maintenance mode but no migrations:
+
+```
+$ ./deploy remote-name app-name "" true
+```
+
+For production, "remote-name" is probably `heroku` and "app-name" is `impaqme`
+
+For staging, "remote-name" is probably `staging` and "app-name" is `impaqme-712`
+
+You can check your remote names with `git remote -v`.
