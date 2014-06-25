@@ -3,6 +3,7 @@ window.app.views.Share = class Share extends Backbone.View
 
   events:
     "click .email": "emailClick"
+    "click .custom-fb-share-button": "facebookClick"
 
   initialize: (options) ->
     @views = button: new app.views.WidgetButton(model: @model)
@@ -14,10 +15,18 @@ window.app.views.Share = class Share extends Backbone.View
     @$el.toggle mode is "widget"
 
   openChanged: (model, open, options) =>
-    @$el.toggle open  if @model.get("mode") isnt "widget"
+    @$el.toggle(open) unless @model.get("mode") == "widget"
 
   emailClick: (event) =>
-    app.events.trigger "share:email"
+    app.events.trigger("share:email")
+
+  facebookClick: (event) =>
+    FB.ui
+      method: 'share'
+      href: $(event.target).data('href')
+      appId: @model.get('facebook_app_id')
+    , (response) ->
+      app.events.trigger('share:facebook')
 
   render: =>
     data = @model.toJSON()

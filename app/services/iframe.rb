@@ -35,6 +35,7 @@ class Iframe
       goal: format_dollar(campaign_meter.goal),
       total: format_dollar(campaign_meter.total),
       percent: campaign_meter.percent,
+      facebook_app_id: ENV['IMPAQ_ME_FACEBOOK_APP_ID']
     }.merge(shortlink)
   end
 

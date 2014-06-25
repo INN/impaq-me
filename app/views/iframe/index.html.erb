@@ -8,12 +8,12 @@
     <!--[if lt IE 9]>
       <script src="/scripts/ie8-shims.js" type="text/javascript"></script>
     <![endif]-->
+    <meta property="fb:app_id" content="<%= ENV['IMPAQ_ME_FACEBOOK_APP_ID'] %>" />
+    <meta property="og:title" content="Shared by Impaq.Me" />
   </head>
   <body>
     <div id="fb-root"></div>
-    <main>
-      <%= yield %>
-    </main>
+    <main></main>
 
     <%= javascript_include_tag "lineman/iframe/app" %>
     <script type="text/javascript">

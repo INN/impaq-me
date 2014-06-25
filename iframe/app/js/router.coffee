@@ -49,8 +49,8 @@ window.app.Router = class Router extends Backbone.Router
 
 jQuery ($) ->
   window.app.router = new window.app.Router()
-  window.app.models.widget = new app.models.Widget(impaqme)
-  window.app.models.social = new app.models.Social(impaqme) # TODO trim down the bootstrap object
+  window.app.models.widget = new app.models.Widget(window.impaqme)
+  window.app.models.social = new app.models.Social(window.impaqme)
   _(window.app.views).extend
     window: new app.views.Window(model: app.models.widget)
     banner: new app.views.Banner(model: app.models.widget)

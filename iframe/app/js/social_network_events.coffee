@@ -17,12 +17,21 @@ window.fbAsyncInit = ->
   _.invoke fb._e, "call"
 
 fb.ready ->
-  FB.init xfbml: true
+  FB.init(xfbml: true)
 
 twttr.ready ->
   twttr.events.bind "tweet", (event) ->
     app.events.trigger "share:twitter"
 
 fb.ready ->
-  FB.Event.subscribe "edge.create", (response) ->
-    app.events.trigger "share:facebook"
+  $('.some-fb-share-button').on 'click', (e) ->
+    $button = $(e.target)
+    FB.ui
+      method: 'share'
+      href: $button.data('href')
+      appId: "565743950200653"
+    , (response) ->
+      console.log "Result of facebook dialog", response
+      app.events.trigger "share:facebook"
+
+  # FB.Event.subscribe "edge.create", (response) ->
