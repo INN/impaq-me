@@ -1,0 +1,39 @@
+#!/bin/bash -e
+
+REMOTE=$1
+if ! [ -n "$REMOTE" ]; then
+  REMOTE="staging -f"
+fi
+
+APP_NAME=$2
+if ! [ -n "$APP_NAME" ]; then
+  APP_NAME="impaqme-712"
+fi
+
+MIGRATE=$3
+MAINTENANCE=$4
+BRANCH=`git symbolic-ref HEAD`
+
+if [ -n "$MAINTENANCE" ]; then
+  echo "heroku maintenance:on -a $APP_NAME"
+  heroku maintenance:on -a $APP_NAME
+fi
+
+if [ -n "$MIGRATE" ]; then
+  echo "heroku db:backup -a $APP_NAME"
+  heroku db:backup -a $APP_NAME
+fi
+
+echo "git push $REMOTE $BRANCH:master"
+git push $REMOTE $BRANCH:master
+
+if [ -n "$MIGRATE" ]; then
+  echo "heroku db:migrate -a $APP_NAME"
+  heroku db:migrate -a $APP_NAME
+  echo "heroku restart -a $APP_NAME"
+  heroku restart -a $APP_NAME
+fi
+if [ -n "$MAINTENANCE" ]; then
+  echo "heroku maintenance:off -a $APP_NAME"
+  heroku maintenance:off -a $APP_NAME
+fi
