@@ -15,10 +15,11 @@ ImpaqBackend::Application.routes.draw do
   resources :click_throughs
   resources :paypal_donations
 
+  # These just redirect now:
   root to: 'static_pages#index'
-
   get 'about' => 'static_pages#about'
   get 'funding'  => 'static_pages#funding'
+
   get 'iframe' => 'iframe#index'
   get 'l/:slug' => 'links#follow'
   post '/paypal_callback', to: 'paypal_donations#callback', as: 'paypal_callback'
