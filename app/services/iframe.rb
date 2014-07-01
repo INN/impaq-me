@@ -4,7 +4,7 @@ class Iframe
   def self.bootstrap(article, user_address)
     article_url = Addressable::URI.heuristic_parse(article.url).normalize
     campaign = Campaign.find_by_domain(article_url.host)
-    return if campaign.disabled?
+    return if campaign.nil? || campaign.disabled?
     campaign_meter = CampaignMeter.for_campaign(campaign)
     shortlink = Shortlink.for_campaign_and_url(campaign, article_url.to_s)
     sample_variant = SampleVariant.choose_from(campaign.variants)
