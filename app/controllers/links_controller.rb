@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :follow]
   before_action :check_user, except: :follow
+  layout 'links'
 
   def index
     @links = Link.all
@@ -12,7 +13,21 @@ class LinksController < ApplicationController
   end
 
   def follow
-    redirect_to Shortlink.follow(shortlink_params).to_s
+    @url = Shortlink.follow(shortlink_params).to_s
+    if params[:facebot] || request.user_agent.start_with?("facebookexternalhit")
+      url = URI.parse(@url)
+      req = Net::HTTP::Get.new(url.to_s)
+      res = Net::HTTP.start(url.host, url.port) {|http|
+        http.request(req)
+      }
+      @proxy_content = res.body.
+        gsub(/rel\=.?canonical.?/, 'rel="not-canonical"').
+        gsub(/property=.?og:url.?/, 'property="not:og:url"')
+
+      render :follow
+    else
+      redirect_to(@url)
+    end
   end
 
   private
