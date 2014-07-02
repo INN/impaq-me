@@ -11,31 +11,6 @@
     direction: ltr;
     letter-spacing: 0;
 
-    button,
-    input,
-    label,
-    select,
-    td,
-    textarea {
-        font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-        font-size: 11px;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: 13px;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
-    h1 { font-size: 14px }
-    h4,
-    h5,
-    h6 { font-size: 11px }
-    p { margin: 1em 0 }
     a {
         color: #3b5998;
         cursor: pointer;
@@ -46,99 +21,6 @@
     img { border: 0 }
     td,
     td.label { text-align: left }
-    dd { color: #000 }
-    dt { color: #777 }
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-    abbr { border-bottom: none }
-    hr {
-        background: #d9d9d9;
-        border-width: 0;
-        color: #d9d9d9;
-        height: 1px;
-    }
-    .clearfix:after {
-        clear: both;
-        content: ".";
-        display: block;
-        font-size: 0;
-        height: 0;
-        line-height: 0;
-        visibility: hidden;
-    }
-    .clearfix { zoom: 1 }
-    .datawrap { word-wrap: break-word }
-    .word_break { display: inline-block }
-    .ellipsis {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    .aero { opacity: .5 }
-    .column { float: left }
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-#facebook .hidden_elem { display: none !important }
-#facebook .invisible_elem { visibility: hidden }
-#facebook .accessible_elem {
-        clip: rect(1px 1px 1px 1px);
-        clip: rect(1px, 1px, 1px, 1px);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        width: 1px;
-    }
-    .direction_ltr { direction: ltr }
-    .direction_rtl { direction: rtl }
-    .text_align_ltr { text-align: left }
-    .text_align_rtl { text-align: right }
-    .pluginFontArial,
-    .pluginFontArial button,
-    .pluginFontArial input,
-    .pluginFontArial label,
-    .pluginFontArial select,
-    .pluginFontArial td,
-    .pluginFontArial textarea { font-family: "arial", sans-serif }
-    .pluginFontLucida,
-    .pluginFontLucida button,
-    .pluginFontLucida input,
-    .pluginFontLucida label,
-    .pluginFontLucida select,
-    .pluginFontLucida td,
-    .pluginFontLucida textarea { font-family: "lucida grande", sans-serif }
-    .pluginFontSegoe,
-    .pluginFontSegoe button,
-    .pluginFontSegoe input,
-    .pluginFontSegoe label,
-    .pluginFontSegoe select,
-    .pluginFontSegoe td,
-    .pluginFontSegoe textarea { font-family: "segoe ui", sans-serif }
-    .pluginFontTahoma,
-    .pluginFontTahoma button,
-    .pluginFontTahoma input,
-    .pluginFontTahoma label,
-    .pluginFontTahoma select,
-    .pluginFontTahoma td,
-    .pluginFontTahoma textarea { font-family: "tahoma", sans-serif }
-    .pluginFontTrebuchet,
-    .pluginFontTrebuchet button,
-    .pluginFontTrebuchet input,
-    .pluginFontTrebuchet label,
-    .pluginFontTrebuchet select,
-    .pluginFontTrebuchet td,
-    .pluginFontTrebuchet textarea { font-family: "trebuchet ms", sans-serif }
-    .pluginFontVerdana,
-    .pluginFontVerdana button,
-    .pluginFontVerdana input,
-    .pluginFontVerdana label,
-    .pluginFontVerdana select,
-    .pluginFontVerdana td,
-    .pluginFontVerdana textarea { font-family: "verdana", sans-serif }
     .pluginFontHelvetica,
     .pluginFontHelvetica button,
     .pluginFontHelvetica input,
@@ -151,22 +33,10 @@
         border-collapse: collapse;
         border-spacing: 0;
     }
-    ._5f0n {
-        table-layout: fixed;
-        width: 100%;
-    }
-    .uiGrid .vTop { vertical-align: top }
-    .uiGrid .vMid { vertical-align: middle }
-    .uiGrid .vBot { vertical-align: bottom }
-    .uiGrid .hLeft { text-align: left }
-    .uiGrid .hCent { text-align: center }
-    .uiGrid .hRght { text-align: right }
     ._51mx:first-child>._51m- { padding-top: 0 }
     ._51mx:last-child>._51m- { padding-bottom: 0 }
     ._51mz ._51mw { padding-right: 0 }
     ._51mz ._51m-:first-child { padding-left: 0 }
-    ._5f0n ._51mx { word-break: break-word }
-    .pluginButtonSpacer { padding-left: 4px }
     .pluginButton {
         background: #4c69ba;
         background: -webkit-gradient(linear, center top, center bottom, from(#4c69ba), to(#3b55a0));
@@ -213,6 +83,11 @@
         width: 7px;
     }
     .pluginButton .pluginButtonLabel {
+        /* We had to manually hack this bit: */
+        display: inline-block;
+        margin-left: -3px;
+        font-size: 11px;
+        /* end hack */
         padding: 0 5px 0 0;
         position: relative;
         vertical-align: top;
