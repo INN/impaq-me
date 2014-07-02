@@ -3,7 +3,7 @@
   <ul class="share_tools">
     <li class="facebook">
 
-    <div class="custom-fb-share-button">
+    <div class="custom-fb-share-button" data-href="<%= facebook_shortlink %>">
       <div class="_li">
         <div class="pluginSkinLight pluginFontHelvetica">
           <div>
@@ -46,4 +46,3 @@
   <div class="progress_meter"><%= new window.app.Template('partials/progress_meter').fill(obj) %></div>
   <style type="text/css">.progress_meter p:before { width:<%= percent %>%; }</style>
 </div>
-
