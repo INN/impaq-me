@@ -1,6 +1,9 @@
+@import "facebook";
+
 /* TODO: margin of #banner should go away */
 /* spacing when widget is closed needs to be changed */
 /* dynamically change the meter percentage */
+
 html,
 body {
   margin: 0;
@@ -276,4 +279,19 @@ footer > :first-child {
 }
 .share_tools .facebook + * {
   margin-left: -4px;
+}
+
+.custom-fb-share-button {
+  background: -webkit-linear-gradient(#4c69ba, #3b55a0);
+  border-radius: 2px;
+  border: none;
+  -webkit-border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  text-shadow: 0 -1px 0 #354c8c;
+  white-space: nowrap;
 }

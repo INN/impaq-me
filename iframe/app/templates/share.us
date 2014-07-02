@@ -2,7 +2,42 @@
   <div data-subview="WidgetButton"></div>
   <ul class="share_tools">
     <li class="facebook">
-      <a class="custom-fb-share-button" data-href="<%= facebook_shortlink %>" data-type="button">Facebook</a>
+
+    <div class="custom-fb-share-button">
+      <div class="_li">
+        <div class="pluginSkinLight pluginFontHelvetica">
+          <div>
+            <table class="uiGrid _51mz pluginShareButton" cellspacing="0" cellpadding="0" id="u_0_0">
+              <tbody>
+                <tr class="_51mx">
+                  <td class="_51m- _51mw">
+                    <a class="pluginShareButtonLink" href="/sharer.php?app_id=309437425817038&amp;sdk=joey&amp;u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;display=popup" target="_blank" id="u_0_1">
+                      <div class="pluginButton">
+                        <div>
+                          <div class="pluginButtonContainer">
+                            <div class="pluginButtonImage">
+                              <button type="submit">
+                                <i class="pluginButtonIcon img sp_plugin-button sx_plugin-button_favblue"></i>
+                              </button>
+                            </div>
+                            <span class="pluginButtonLabel">Share</span>
+                          </div>
+                        </div>
+                      </div>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </li>
+    <li>
+      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div>
     </li>
     <li class="twitter">
       <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="<%= article_title %>" data-url="<%= twitter_shortlink %>" data-via="<%= twitter_username %>" data-count="none" data-dnt="true">Tweet</a>
@@ -14,3 +49,4 @@
   <div class="progress_meter"><%= new window.app.Template('partials/progress_meter').fill(obj) %></div>
   <style type="text/css">.progress_meter p:before { width:<%= percent %>%; }</style>
 </div>
+
