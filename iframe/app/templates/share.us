@@ -3,7 +3,7 @@
   <ul class="share_tools">
     <li class="facebook">
 
-    <div class="custom-fb-share-button" data-href="<%= facebook_shortlink %>">
+    <div class="custom-fb-share-button">
       <div class="_li">
         <div class="pluginSkinLight pluginFontHelvetica">
           <div>

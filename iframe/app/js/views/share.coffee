@@ -23,7 +23,7 @@ window.app.views.Share = class Share extends Backbone.View
   facebookClick: (event) =>
     FB.ui
       method: 'share'
-      href: $(event.target).data('href')
+      href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
       appId: @model.get('facebook_app_id')
     , (response) ->
       app.events.trigger('share:facebook')
@@ -31,7 +31,6 @@ window.app.views.Share = class Share extends Backbone.View
   render: =>
     data = @model.toJSON()
     _(data).extend
-      facebook_shortlink: location.origin + "/" + data.facebook_shortlink
       twitter_shortlink: location.origin + "/" + data.twitter_shortlink
       email_shortlink: location.origin + "/" + data.email_shortlink
 
