@@ -11,7 +11,7 @@
               <tbody>
                 <tr class="_51mx">
                   <td class="_51m- _51mw">
-                    <a class="pluginShareButtonLink" href="/sharer.php?app_id=309437425817038&amp;sdk=joey&amp;u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;display=popup" target="_blank" id="u_0_1">
+                    <span class="pluginShareButtonLink" target="_blank" id="u_0_1">
                       <div class="pluginButton">
                         <div>
                           <div class="pluginButtonContainer">
@@ -24,7 +24,7 @@
                           </div>
                         </div>
                       </div>
-                      </a>
+                      </span>
                     </td>
                   </tr>
                 </tbody>
