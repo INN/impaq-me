@@ -39,6 +39,7 @@ window.app.views.Share = class Share extends Backbone.View
         , (response) ->
           console.log("FB.ui")
           console.log(arguments...)
+          return if !response? || response.error_code?
           app.events.trigger('share:facebook')
     , true
 
