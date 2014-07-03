@@ -26,6 +26,7 @@ window.app.views.Share = class Share extends Backbone.View
       href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
       appId: @model.get('facebook_app_id')
     , (response) ->
+      debugger
       app.events.trigger('share:facebook')
 
   render: =>
