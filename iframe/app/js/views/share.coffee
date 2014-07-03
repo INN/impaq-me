@@ -22,9 +22,14 @@ window.app.views.Share = class Share extends Backbone.View
 
   facebookClick: =>
     FB.getLoginStatus (login) =>
-      if login.status == "unknown"
+      console.log("loginStatus")
+      console.log(arguments...)
+      if login.status == "unknown" || login.status == "not_authorized"
         FB.login (loginAgain) =>
+          console.log("login callback")
+          console.log(arguments...)
           @facebookClick() if loginAgain.status != "unknown"
+        , {scope: 'public_profile,publish_actions', return_scopes: true}
       else
         FB.ui
           method: 'share'
@@ -32,7 +37,8 @@ window.app.views.Share = class Share extends Backbone.View
           href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
           appId: @model.get('facebook_app_id')
         , (response) ->
-          debugger
+          console.log("FB.ui")
+          console.log(arguments...)
           app.events.trigger('share:facebook')
 
   render: =>
