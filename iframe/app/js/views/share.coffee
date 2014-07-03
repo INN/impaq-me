@@ -40,6 +40,7 @@ window.app.views.Share = class Share extends Backbone.View
           console.log("FB.ui")
           console.log(arguments...)
           app.events.trigger('share:facebook')
+    , true
 
   render: =>
     data = @model.toJSON()
