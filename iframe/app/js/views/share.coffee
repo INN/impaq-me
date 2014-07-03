@@ -20,14 +20,19 @@ window.app.views.Share = class Share extends Backbone.View
   emailClick: (event) =>
     app.events.trigger("share:email")
 
-  facebookClick: (event) =>
-    FB.ui
-      method: 'share'
-      href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
-      appId: @model.get('facebook_app_id')
-    , (response) ->
-      debugger
-      app.events.trigger('share:facebook')
+  facebookClick: =>
+    FB.getLoginStatus (login) =>
+      if login.status == "unknown"
+        FB.login (loginAgain) =>
+          @facebookClick() if loginAgain.status != "unknown"
+      else
+        FB.ui
+          method: 'share'
+          href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
+          appId: @model.get('facebook_app_id')
+        , (response) ->
+          debugger
+          app.events.trigger('share:facebook')
 
   render: =>
     data = @model.toJSON()
