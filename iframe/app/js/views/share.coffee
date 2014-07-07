@@ -21,8 +21,12 @@ window.app.views.Share = class Share extends Backbone.View
     app.events.trigger("share:email")
 
   facebookClick: =>
+    console.log("loginStatus")
+    console.log(arguments...)
     if fb.loginStatus == "unknown" || fb.loginStatus == "not_authorized"
       FB.login (loginAgain) =>
+        console.log("login callback")
+        console.log(arguments...)
         @facebookShare() if loginAgain.status != "unknown"
       , {scope: 'public_profile,publish_actions', return_scopes: true}
     else
