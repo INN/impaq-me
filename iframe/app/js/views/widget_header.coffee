@@ -11,11 +11,11 @@ window.app.views.WidgetHeader = class WidgetHeader extends Backbone.View
   click: =>
     isOpen = !@model.get("open")
     @model.set("open", isOpen)
-    action = isOpen ? "open" : "close"
+    action = if isOpen then "open" else "close"
     app.services.Analytics.trackEvent("widget", action, "primary_button")
 
   modeChanged: (model, mode, options) =>
-    @$el.toggle(mode is "widget")
+    @$el.toggle(mode == "widget")
 
   render: ->
     @$el.html @template.fill(@model.toJSON())
