@@ -25,5 +25,7 @@ ImpaqBackend::Application.routes.draw do
   get 'l/:slug' => 'links#follow'
   post '/paypal_callback', to: 'paypal_donations#callback', as: 'paypal_callback'
 
+  get 'facebook_popup' => 'facebook#show'
+
   get '/scripts/sdk.js' => 'sdk_scripts#show'
 end

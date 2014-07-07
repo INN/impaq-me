@@ -21,31 +21,9 @@ window.app.views.Share = class Share extends Backbone.View
     app.events.trigger("share:email")
 
   facebookClick: =>
-    console?.log("loginStatus")
-    console?.log(arguments...)
-    if fb.loginStatus.status == "unknown" || fb.loginStatus.status == "not_authorized"
-      FB.login (loginAgain) =>
-        fb.loginStatus = loginAgain
-        console?.log("login callback")
-        console?.log(arguments...)
-        @facebookShare() if fb.loginStatus.status != "unknown"
-      , {scope: 'public_profile,publish_actions', return_scopes: true}
-    else
-      @facebookShare()
-
-
-  facebookShare: =>
-    FB.ui
-      method: 'share'
-      display: 'popup'
-      href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
-      appId: @model.get('facebook_app_id')
-    , (response) ->
-      console?.log("FB.ui")
-      console?.log(arguments...)
-      return if !response? || response.error_code?
-      app.events.trigger('share:facebook')
-
+    facebookWindow = window.open('/facebook_popup', null, 'width=200,height=200')
+    facebookWindow.impaqme = window.impaqme
+    facebookWindow.app = window.app
 
   render: =>
     data = @model.toJSON()
