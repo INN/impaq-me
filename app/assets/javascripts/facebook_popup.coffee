@@ -8,36 +8,36 @@ window.fb = (b =
 )
 
 window.fbAsyncInit = ->
-  appId = window.impaqme['facebook_app_id']
-  facebookShortlink = window.impaqme['facebook_shortlink']
+  app = window.opener.app
+  appId = window.opener.impaqme['facebook_app_id']
+  facebookShortlink = window.opener.impaqme['facebook_shortlink']
 
   FB.init(appId: appId, xfbml: true)
 
+  after = (action) ->
+    window.location.search.indexOf("post_#{action}") != -1
+
   FB.getLoginStatus (login) ->
-    console?.log("loginStatus")
-    console?.log(arguments...)
-    if login.status == "unknown" || login.status == "not_authorized"
+    if !after('login') && (login.status == "unknown" || login.status == "not_authorized")
+      debugger
       FB.ui
         method: 'login'
-        display: 'iframe'
+        display: 'page'
+        client_id: appId
+        state: 'lies'
+        redirect_uri: 'http://demo.testdouble.com/facebook_popup?post_login'
         appId: appId
-      , (loginAgain) =>
-        console?.log("login callback")
-        console?.log(arguments...)
-        facebookShare(appId, facebookShortlink) if fb.status != "unknown"
-      , {scope: 'public_profile,publish_actions', return_scopes: true}
-    else
-      facebookShare(appId, facebookShortlink)
-
-
-facebookShare = (appId, facebookShortlink) ->
-  FB.ui
-    method: 'share'
-    display: 'iframe'
-    href: "#{location.origin}/#{facebookShortlink}"
-    appId: appId
-  , (response) ->
-    console?.log("FB.ui")
-    console?.log(arguments...)
-    return if !response? || response.error_code?
-    app.events.trigger('share:facebook')
+        scope: 'public_profile,publish_actions'
+    else if after('login') && login.status != "unknown"
+      debugger
+      FB.ui
+        method: 'share'
+        display: 'page'
+        state: 'lies'
+        redirect_uri: 'http://demo.testdouble.com/facebook_popup?post_share'
+        href: "#{location.origin}/#{facebookShortlink}"
+        appId: appId
+    else if after('share')
+      debugger
+      app.events.trigger('share:facebook')
+      window.close()
