@@ -1,4 +1,4 @@
-window.app.views.Share = class Share extends Backbone.View
+ window.app.views.Share = class Share extends Backbone.View
   template: new window.app.Template("share")
 
   events:
@@ -35,9 +35,11 @@ window.app.views.Share = class Share extends Backbone.View
 
 
   facebookShare: =>
+    $('.box').addClass('facebook-tall')
+    app.events.trigger('change:height')
     FB.ui
       method: 'share'
-      display: 'popup'
+#      display: 'popup'
       href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
       appId: @model.get('facebook_app_id')
     , (response) ->
@@ -45,6 +47,8 @@ window.app.views.Share = class Share extends Backbone.View
       console?.log(arguments...)
       return if !response? || response.error_code?
       app.events.trigger('share:facebook')
+      $('.box').removeClass('facebook-tall')
+      app.events.trigger('change:height')
 
 
   render: =>
