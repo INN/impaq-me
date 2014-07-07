@@ -11,13 +11,20 @@ window.fb = (b =
     b._e.push f
 )
 
-# facebook doesn't have a multi-handler 'ready' event, so we built one
 window.fbAsyncInit = ->
   fb.ready = (f) -> f()
   _.invoke fb._e, "call"
 
 fb.ready ->
   FB.init(appId: window.impaqme.facebook_app_id, xfbml: true)
+  setInterval updateLoginStatus = ->
+    FB.getLoginStatus (login) ->
+      fb.loginStatus = login
+    , true
+  , 1000 * 5 * 60
+  updateLoginStatus()
+
+
 
 twttr.ready ->
   twttr.events.bind "tweet", (event) ->
