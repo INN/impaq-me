@@ -37,7 +37,7 @@ window.app.views.Share = class Share extends Backbone.View
   facebookShare: =>
     FB.ui
       method: 'share'
-#      display: 'popup'
+      display: 'popup'
       href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
       appId: @model.get('facebook_app_id')
     , (response) ->
