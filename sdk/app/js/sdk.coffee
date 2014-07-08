@@ -47,7 +47,9 @@
       @template(@templateData())
 
     resize: (height) ->
-      $(@iframe).animate({height})
+      @mostRecentResizeRequest = height
+      $(@iframe).animate {height}, =>
+        @resize(@mostRecentResizeRequest) if height != @mostRecentResizeRequest
 
     remove: ->
       @$el.remove()
