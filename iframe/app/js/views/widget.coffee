@@ -32,7 +32,7 @@ window.app.views.Widget = class Widget extends Backbone.View
       $fbIframe.css(minHeight: 350)
       $box.css(minHeight: $fbIframe.height() + 20)
       app.events.trigger('change:height')
-    , 100
+    , 400
     breathe()
     expandForThisBehavior ->
       clearInterval(breatheInterval)

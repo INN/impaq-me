@@ -6,8 +6,6 @@ window.app.views.Window = Backbone.View.extend
     message: 'iframeCommunication'
 
   initialize: (options) ->
-    _.bindAll(this) #<-- remove this later and replace with judicious =>'ing
-
     @listenTo app.events,
       'change:height': @resizeParent
 
@@ -20,12 +18,11 @@ window.app.views.Window = Backbone.View.extend
       (fbIframe.height() + fbIframe.offset()?.top) || 0
 
   resizeParent: _.throttle ->
-    return if @lastHeight == @fullHeight()
     @callParent
       action: 'resize'
       args:
-        height: @lastHeight = @fullHeight()
-  , 50
+        height: @fullHeight()
+  , 250
 
   closeParent: ->
     @callParent(action: 'close')
