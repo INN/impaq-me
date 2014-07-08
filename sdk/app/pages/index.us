@@ -71,7 +71,7 @@
       window.impaq = {
         me: {
           config: {
-            iframe_host: "//localhost:8000"
+            iframe_host: "//demo.testdouble.com"
           }
         }
       };
