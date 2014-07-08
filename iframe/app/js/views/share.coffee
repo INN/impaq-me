@@ -38,8 +38,6 @@
         href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
         appId: @model.get('facebook_app_id')
       , (response) ->
-        console?.log("FB.ui")
-        console?.log(response, response? && !response.error_code?)
         if response? && !response['error_code']?
           app.events.trigger('share:facebook')
         done()

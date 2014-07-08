@@ -12,18 +12,20 @@ window.app.views.Window = Backbone.View.extend
       'change:height': @resizeParent
 
   fullHeight: ->
-    Math.max $('body').height(), @facebookPopupHeight()
+    Math.max $('body').innerHeight(), @facebookPopupHeight()
 
   facebookPopupHeight: ->
     # visibilityHidden custom filter b/c jQuery's :visible is dumb
     do ( fbIframe = $('.facebook iframe:visible:not(:visibilityHidden)') ) ->
       (fbIframe.height() + fbIframe.offset()?.top) || 0
 
-  resizeParent: _.debounce(->
+  resizeParent: _.throttle ->
+    return if @lastHeight == @fullHeight()
     @callParent
       action: 'resize'
-      args: height: @fullHeight()
-  , 50)
+      args:
+        height: @lastHeight = @fullHeight()
+  , 50
 
   closeParent: ->
     @callParent(action: 'close')
