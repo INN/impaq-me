@@ -16,6 +16,7 @@ window.app.views.Widget = class Widget extends Backbone.View
       "share:twitter": @shared
       "share:facebook": @shared
       "share:email": @shared
+      "expandHeightDynamically": @expandHeightDynamically
 
   modeChanged: (model, mode, options) =>
     app.events.trigger "change:height"
@@ -23,6 +24,20 @@ window.app.views.Widget = class Widget extends Backbone.View
   openChanged: (model, open, options) =>
     @$("#widget .cta").css(margin: (if open then "12px 0 -4px" else 0)).promise().then ->
       app.events.trigger "change:height"
+
+  expandHeightDynamically: (expandForThisBehavior) =>
+    $box = @$('.box').addClass('facebook-tall')
+    breatheInterval = setInterval breathe = ->
+      $fbIframe = $('#fb-root iframe.FB_UI_Dialog')
+      $fbIframe.css(minHeight: 350)
+      $box.css(minHeight: $fbIframe.height() + 20)
+      app.events.trigger('change:height')
+    , 100
+    breathe()
+    expandForThisBehavior ->
+      clearInterval(breatheInterval)
+      $box.removeClass('facebook-tall').attr('style', '')
+      app.events.trigger('change:height')
 
   shared: =>
     @model.set "open", true

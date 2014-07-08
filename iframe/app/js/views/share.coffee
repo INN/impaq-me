@@ -21,8 +21,6 @@
     app.events.trigger("share:email")
 
   facebookClick: =>
-    console?.log("loginStatus")
-    console?.log(arguments...)
     if fb.loginStatus.status == "unknown" || fb.loginStatus.status == "not_authorized"
       FB.login (loginAgain) =>
         fb.loginStatus = loginAgain
@@ -33,23 +31,18 @@
     else
       @facebookShare()
 
-
   facebookShare: =>
-    $('.box').addClass('facebook-tall')
-    app.events.trigger('change:height')
-    FB.ui
-      method: 'share'
-#      display: 'popup'
-      href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
-      appId: @model.get('facebook_app_id')
-    , (response) ->
-      console?.log("FB.ui")
-      console?.log(arguments...)
-      return if !response? || response.error_code?
-      app.events.trigger('share:facebook')
-      $('.box').removeClass('facebook-tall')
-      app.events.trigger('change:height')
-
+    app.events.trigger "expandHeightDynamically", (done) =>
+      FB.ui
+        method: 'share'
+        href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
+        appId: @model.get('facebook_app_id')
+      , (response) ->
+        console?.log("FB.ui")
+        console?.log(response, response? && !response.error_code?)
+        if response? && !response['error_code']?
+          app.events.trigger('share:facebook')
+        done()
 
   render: =>
     data = @model.toJSON()
