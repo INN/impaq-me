@@ -35,7 +35,7 @@
     app.events.trigger "expandHeightDynamically", (done) =>
       FB.ui
         method: 'share'
-        href: "#{location.origin}/#{@model.get('facebook_shortlink')}"
+        href: "#{location.protocol}//#{location.host}/#{@model.get('facebook_shortlink')}"
         appId: @model.get('facebook_app_id')
       , (response) ->
         if response? && !response['error_code']?
@@ -45,8 +45,8 @@
   render: =>
     data = @model.toJSON()
     _(data).extend
-      twitter_shortlink: location.origin + "/" + data.twitter_shortlink
-      email_shortlink: location.origin + "/" + data.email_shortlink
+      twitter_shortlink: "#{location.protocol}//#{location.host}/#{data.twitter_shortlink}"
+      email_shortlink: "#{location.protocol}//#{location.host}/#{data.email_shortlink}"
 
     @$el.html @template.fill(data)
     window.app.helpers.Replacer.replace @$el, @model, true
