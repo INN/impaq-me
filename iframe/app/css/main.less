@@ -182,6 +182,17 @@ a {
 .share_tools .twitter iframe {
   max-width: 60px;
 }
+.share_tools .twitter {
+  margin-right: 4px;
+  padding-top: 3px;
+}
+.share_tools .facebook {
+  margin-right: 20px;
+}
+.share_tools .facebook + * {
+  margin-left: -4px;
+}
+
 /* better to do this with a background image + left padding */
 .share_tools .email a:before {
   content: '\e800';
@@ -258,7 +269,6 @@ a {
   text-align:center;
 }
 
-
 /* Footer */
 footer {
   margin-top: 17px;
@@ -274,15 +284,6 @@ footer > * {
 }
 footer > :first-child {
   text-align: left;
-}
-
-/** social hacks **/
-
-.share_tools .facebook {
-  margin-right: 30px;
-}
-.share_tools .facebook + * {
-  margin-left: -4px;
 }
 
 .custom-fb-share-button {
