@@ -50,8 +50,8 @@
       @mostRecentResizeRequest = height
       unless @animating
         $(@iframe).animate {height}, =>
-          @resize(@mostRecentResizeRequest) if height != @mostRecentResizeRequest
           @animating = false
+          @resize(@mostRecentResizeRequest) if height != @mostRecentResizeRequest
         @animating = true
 
     remove: ->

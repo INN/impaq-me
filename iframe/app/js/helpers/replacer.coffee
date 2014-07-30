@@ -3,7 +3,7 @@ window.app.helpers.Replacer =
     _.each model.keys(), (attr) ->
       if attr == 'email_shortlink'
         $el.html $el.html()
-          .replace(new RegExp("\%7B\%7Bemail_shortlink\%7D\%7D", 'g'), location.origin + '/' + model.get('email_shortlink'))
+          .replace(new RegExp("\%7B\%7Bemail_shortlink\%7D\%7D", 'g'), "#{location.protocol}//#{location.host}/#{model.get('email_shortlink')}")
       else
         if encodeURI
           $el.html $el.html()
