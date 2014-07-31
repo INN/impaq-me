@@ -4,7 +4,7 @@ class Campaign < ActiveRecord::Base
   class NoGoal < RuntimeError; end
   include DumpsCsv
 
-  validates_uniqueness_of :mongo_id
+  validates_uniqueness_of :mongo_id, :allow_nil => true
 
   has_many :shares
   has_many :links
