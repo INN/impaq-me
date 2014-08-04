@@ -22,8 +22,22 @@ class Campaign < ActiveRecord::Base
   validates :variants, length: { minimum: 1 }
   validate :sum_of_shown_amounts_is_one_hundred
 
-  def self.find_by_domain(domain_name)
-    where('? = ANY (domains)', domain_name).first
+  def self.find_active_campaign_by_domain(domain_name)
+    all
+      .merge(for_domain(domain_name))
+      .merge(active?)
+      .first
+  end
+
+  def self.active?
+    all
+      .where(:disabled => false)
+      .where('starts_at is null or starts_at > ?', Time.zone.now.beginning_of_day)
+      .where('ends_at is null or ends_at < ?', Time.zone.now.end_of_day)
+  end
+
+  def self.for_domain(domain_name)
+    where('? = ANY (domains)', domain_name)
   end
 
   def self.undelete!(id)

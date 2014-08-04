@@ -3,8 +3,8 @@ require 'addressable/uri'
 class Iframe
   def self.bootstrap(article, user_address)
     article_url = Addressable::URI.heuristic_parse(article.url).normalize
-    campaign = Campaign.find_by_domain(article_url.host)
-    return if campaign.nil? || campaign.disabled?
+    campaign = Campaign.find_active_campaign_by_domain(article_url.host)
+    return unless campaign.present?
     campaign_meter = CampaignMeter.for_campaign(campaign)
     shortlink = Shortlink.for_campaign_and_url(campaign, article_url.to_s)
     sample_variant = SampleVariant.choose_from(campaign.variants)
