@@ -32,8 +32,8 @@ class Campaign < ActiveRecord::Base
   def self.active?
     all
       .where(:disabled => false)
-      .where('starts_at is null or starts_at > ?', Time.zone.now.beginning_of_day)
-      .where('ends_at is null or ends_at < ?', Time.zone.now.end_of_day)
+      .where('starts_at is null or starts_at <= ?', ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').now.beginning_of_day.utc)
+      .where('ends_at is null or ends_at >= ?', ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').now.end_of_day.utc)
   end
 
   def self.for_domain(domain_name)

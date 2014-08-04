@@ -92,6 +92,14 @@
                   .small-11.columns
                     = variant_form.number_field :recommended_donation, :step => 0.01
             .row
+              .large-4.columns
+                = campaign_form.label :starts_at
+                = campaign_form.date_field :starts_at, :value => campaign_form.object.starts_at.try(:in_time_zone, 'Eastern Time (US & Canada)').to_date,  :placeholder => Date.today
+              .large-4.columns
+                = campaign_form.label :ends_at
+                = campaign_form.date_field :ends_at,  :value => campaign_form.object.ends_at.try(:in_time_zone, 'Eastern Time (US & Canada)').to_date, :placeholder => Date.today + 10.years
+
+            .row
               .large-6.columns
                 = campaign_form.label :paypal_email
                 = campaign_form.text_field :paypal_email, placeholder: 'bob@example.com', class: (original_variant ? '' : 'disabled')

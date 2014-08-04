@@ -66,6 +66,7 @@ class CampaignsController < ApplicationController
     p = params.require(:campaign).permit(:disabled, :foundation_name, :publisher_name,
                                          :domains, :value_per_share, :goal,
                                          :value_per_click, :about_uri,
+                                         :starts_at, :ends_at,
                                          :share_cooldown_days, :paypal_email,
                                          :twitter_username,
                                          variants_attributes: [:id, :recommended_donation,
@@ -76,6 +77,12 @@ class CampaignsController < ApplicationController
     p.tap do |p|
       p[:domains] = p[:domains].split ","
       p[:domains].each { |d| d.strip! }
+      [:starts_at, :ends_at].each do |time_field|
+        if p[time_field].present?
+          t = ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').parse(p[time_field])
+          p[time_field] = (time_field == :starts_at ? t.beginning_of_day : t.end_of_day).utc
+        end
+      end
     end
   end
 end
