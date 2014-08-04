@@ -23,7 +23,6 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry'
   gem 'debugger'
-  gem 'foreman'
 end
 
 group :development do
