@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623214000) do
+ActiveRecord::Schema.define(version: 20140804124644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "campaigns", force: true do |t|
     t.string   "mongo_id"
@@ -30,6 +31,9 @@ ActiveRecord::Schema.define(version: 20140623214000) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "disabled",            default: false
+    t.boolean  "deleted",             default: false
+    t.datetime "starts_at"
+    t.datetime "ends_at"
   end
 
   add_index "campaigns", ["mongo_id"], name: "index_campaigns_on_mongo_id", unique: true, using: :btree

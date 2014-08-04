@@ -3,6 +3,7 @@ require 'dumps_csv'
 class Campaign < ActiveRecord::Base
   class NoGoal < RuntimeError; end
   include DumpsCsv
+  default_scope ->{ where(:deleted => false) }
 
   validates_uniqueness_of :mongo_id, :allow_nil => true
 
@@ -23,6 +24,10 @@ class Campaign < ActiveRecord::Base
 
   def self.find_by_domain(domain_name)
     where('? = ANY (domains)', domain_name).first
+  end
+
+  def self.undelete!(id)
+    unscoped.find(id).update(:deleted => false)
   end
 
   def self.goal(id)

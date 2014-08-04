@@ -8,6 +8,15 @@
   </head>
   <body>
 
+    <% flash.each do |(type, messages)| %>
+      <% Array.wrap(messages).each do |message| %>
+        <div data-alert class="alert-box <%= type == 'error' ? 'alert' : 'success' %>">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+
+
     <%= yield %>
 
     <script>

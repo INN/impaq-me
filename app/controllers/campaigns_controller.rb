@@ -50,7 +50,7 @@ class CampaignsController < ApplicationController
 
   # DELETE /campaigns/1
   def destroy
-    @campaign.destroy
+    @campaign.update(:deleted => true)
     redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.'
   end
 

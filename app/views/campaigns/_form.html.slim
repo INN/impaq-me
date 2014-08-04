@@ -19,7 +19,8 @@
           .content(data-section-content)
             - if @campaign.persisted?
               .right
-                = link_to 'Delete Variant', campaign_variant_path(@campaign,@campaign.variants[variant_form.index]) , method: :delete, confirm: 'Are you sure you want to delete this variant?', class: (original_variant ? 'button alert disabled' : 'button alert')
+                = link_to 'Delete Variant', campaign_variant_path(@campaign,@campaign.variants[variant_form.index]) , method: :delete, "data-confirm" => 'Are you sure you want to delete this variant?', class: (original_variant ? 'button alert disabled' : 'button alert')
+                = link_to 'Delete Campaign', campaign_path(@campaign) , method: :delete, "data-confirm" => 'Are you sure you want to delete this campaign?', class: 'button alert'
             p
               span
                 strong campaign_id:
