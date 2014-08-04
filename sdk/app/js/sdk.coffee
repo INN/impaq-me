@@ -24,7 +24,7 @@
       """
       <div class="impaq-me-widget">
         <iframe
-          src="#{data['iframe_host']}/iframe?mode=#{data['route']}&article_url=#{data['article_url']}&article_title=#{data['article_title']}"
+          src="#{data['iframe_host']}/iframe?mode=#{data['route']}&article_url=#{data['article_url']}&article_title=#{data['article_title']}#{data['extra_iframe_query_params'] || ''}"
           style="width:100%; height:0; border:0; display:block;"
           scrolling="no"
           frameborder="0"></iframe>

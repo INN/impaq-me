@@ -13,6 +13,7 @@
         <ul>
           <li><a href="?shared_via_impaq_me=true">Preview the "shared-by" banner</a></li>
           <li><a href="?">Hide the "shared-by" banner</a></li>
+          <li>Campaign ID:<input type="text" size="3" name="campaignId"/></li>
         </ul>
       </section>
       <section>
@@ -71,11 +72,22 @@
       window.impaq = {
         me: {
           config: {
-            iframe_host: "//demo.testdouble.com"
+            iframe_host: "//localhost:8000",
+            extra_iframe_query_params: (localStorage['campaignId'] ? ("&campaign_id=" + localStorage['campaignId']) : "")
           }
         }
       };
     </script>
     <script type="text/javascript" src="<%= js %>"></script>
+    <script type="text/javascript">
+      impaq.$(function(){
+        var $campaignId = impaq.$('input[name=campaignId]');
+        $campaignId.val(localStorage['campaignId']);
+        $campaignId.on('change',function(){
+          localStorage['campaignId'] = parseInt($campaignId.val(), 10)
+          window.location.reload()
+        });
+      });
+    </script>
   </body>
 </html>
