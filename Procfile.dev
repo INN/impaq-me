@@ -1,0 +1,3 @@
+web-3000: bundle exec rails s
+iframe-8000: (cd iframe && lineman clean run)
+sdk-8001: (cd sdk && lineman clean run)
