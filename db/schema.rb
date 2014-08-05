@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140804124644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "campaigns", force: true do |t|
     t.string   "mongo_id"
