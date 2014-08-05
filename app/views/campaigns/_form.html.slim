@@ -94,10 +94,10 @@
             .row
               .large-4.columns
                 = campaign_form.label :starts_at
-                = campaign_form.date_field :starts_at, :value => campaign_form.object.starts_at.try(:in_time_zone, 'Eastern Time (US & Canada)').try(:to_date),  :placeholder => Date.today
+                = campaign_form.date_field :starts_at, :value => eastern_date(campaign_form.object.starts_at),  :placeholder => Date.today, class: (original_variant ? '' : 'disabled')
               .large-4.columns
                 = campaign_form.label :ends_at
-                = campaign_form.date_field :ends_at,  :value => campaign_form.object.ends_at.try(:in_time_zone, 'Eastern Time (US & Canada)').try(:to_date), :placeholder => Date.today + 10.years
+                = campaign_form.date_field :ends_at,  :value => eastern_date(campaign_form.object.ends_at), :placeholder => Date.today + 10.years, class: (original_variant ? '' : 'disabled')
 
             .row
               .large-6.columns
