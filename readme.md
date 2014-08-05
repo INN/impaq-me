@@ -2,7 +2,9 @@
 
 [![Build Status](https://magnum.travis-ci.com/testdouble/impaq-me.svg?token=zzFpGDKukxjbdxpbyHZY&branch=master)](https://magnum.travis-ci.com/testdouble/impaq-me)
 
-## get up and running
+This README discusses how to get up-and-running with the app in development.
+
+## Installing
 
 ### Install Postgres
 
@@ -43,9 +45,8 @@ Install the [latest Node.js](http://nodejs.org)
 sudo npm i -g lineman
 cd sdk
 npm install
+lineman clean build
 ```
-
-Run a `lineman clean build` to verify things are working.
 
 #### Build the iframe
 
@@ -53,51 +54,23 @@ Run a `lineman clean build` to verify things are working.
 sudo npm i -g lineman
 cd iframe
 npm install
+lineman clean build
 ```
 
-Run a `lineman clean build` to verify things are working.
+## Prepare the database
 
-## Run the app
-
-First, run the migrations:
+Create the development database, run our migrations, and then seed some development data.
 
 ```
-bundle exec rake db:create db:migrate
+bundle exec rake db:create db:migrate db:seed
 ```
 
-**TODO: add a seeds mechanism so things work out of the box**
+## Start the servers
 
-
-### Create an account
-
-Create a development account for yourself:
+Simply run this start script to launch Rails, Lineman SDK, and Lineman IFrame in a single process. Use Ctrl-C to shut down all three servers at once.
 
 ```
-$ bundle exec rails c
-Loading development environment (Rails 4.0.3)
-irb(main):001:0> User.create!(name: "foo", email: "foo@foo.com", password: "foo", password_confirmation: "foo")
-=> #<User id: 1, name: "foo", email: "foo@foo.com", password_digest: "$2a$10$CjQBUQyta8dR.YWfyQzX1uFmc9XzZ/BmMjGChfpil59cJvVK7RyDW", remember_token: "J0xDXxnf4LIe2lceiphx3Q">
-irb(main):002:0>
-```
-
-Get the Rails backend up and running
-
-```
-$ bundle exec rails s
-```
-
-In another shell, start the SDK project:
-
-```
-$ cd sdk
-$ lineman clean run
-```
-
-In a third shell, start the iframe project:
-
-```
-$ cd iframe
-$ lineman clean run
+$ ./script/start.dev
 ```
 
 ### Verify the app
