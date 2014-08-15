@@ -23,6 +23,7 @@
         <th>Click $</th>
         <th>Donation $</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +36,8 @@
           <td><%= Share.total_for_campaign campaign %></td>
           <td><%= ClickThrough.total_for_campaign campaign %></td>
           <td><%= PaypalDonation.total_for_campaign campaign %></td>
-          <td><strong><%= link_to "Edit",(edit_campaign_path campaign.id) %></strong></td>
+          <td><strong><%= link_to "Edit", edit_campaign_path(campaign) %></strong></td>
+          <td><strong><%= link_to "Performance", campaign_performance_path(campaign) %></strong></td>
         </tr>
       <% end %>
     </tbody>

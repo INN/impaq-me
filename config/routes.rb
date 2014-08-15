@@ -3,6 +3,7 @@ ImpaqBackend::Application.routes.draw do
 
   resources :campaigns do
     resources :variants
+    resource :performance
   end
   resources :dashboard, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]

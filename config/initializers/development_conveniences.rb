@@ -1,4 +1,8 @@
 if Rails.env.development?
+
+  #
+  # Allow the SDK to force the campaign it wants to its request domain
+  #
   require 'campaign'
   class Campaign < ActiveRecord::Base
     def self.assign_domain_to_campaign(domain, id)
@@ -22,4 +26,9 @@ if Rails.env.development?
       old_index
     end
   end
+
+  #
+  # Allow remote debugging
+  #
+  Debugger.start_remote
 end

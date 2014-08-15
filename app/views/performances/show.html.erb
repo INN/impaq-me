@@ -1,0 +1,37 @@
+<pre>
+Dollars raised: <%= @performance.dollars_raised %>
+Goal: <%= @performance.dollars_goal %>
+
+Share count: <%= @performance.share_count %>
+Click count: <%= @performance.click_count %>
+Clicks per share: <%= @performance.clicks_per_share %>
+
+Activity by channel:
+
+         | Shares      | Clicks        | Clicks per share
+Facebook | <%= @performance.share_count(:facebook) %> | <%= @performance.click_count(:facebook) %> | <%= @performance.clicks_per_share(:facebook) %>
+Twitter  | <%= @performance.share_count(:twitter) %>  | <%= @performance.click_count(:twitter) %>  | <%= @performance.clicks_per_share(:twitter) %>
+Email    | <%= @performance.share_count(:email) %>    | <%= @performance.click_count(:email) %>    | <%= @performance.clicks_per_share(:email) %>
+
+
+Pageviews: <%= @performance.pageview_count %>
+Shares count (again): <%= @performance.share_count %>
+Shares (% of views): <%= @performance.pageview_percent_shared %>
+Donation count: <%= @performance.donation_count %>
+Donations (% of views): <%= @performance.pageview_percent_donated %>
+Donations sum: <%= @performance.donation_sum %>
+Donations (average): <%= @performance.donation_average %>
+
+Most shared articles:
+
+| title | facebook | twitter | email |
+|       |          |         |       |
+
+Most clicked articles:
+
+| title | facebook | twitter | email |
+|       |          |         |       |
+
+
+
+</pre>
