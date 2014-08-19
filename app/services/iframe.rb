@@ -1,8 +1,8 @@
 require 'addressable/uri'
 
 class Iframe
-  def self.bootstrap(article, user_address)
-    article_url = Addressable::URI.heuristic_parse(article.url).normalize
+  def self.bootstrap(article_url, article_title, user_address)
+    article_url = Addressable::URI.heuristic_parse(article_url).normalize
     campaign = Campaign.find_active_campaign_by_domain(article_url.host)
     return unless campaign.present?
     campaign_meter = CampaignMeter.for_campaign(campaign)
@@ -15,7 +15,7 @@ class Iframe
       variant_id: sample_variant.id.to_s,
       article_url: article_url.to_s,
       article_domain: article_url.authority,
-      article_title: article.title,
+      article_title: article_title,
       domain: article_url.host,
       foundation_name: campaign.foundation_name,
       publisher_name: campaign.publisher_name,

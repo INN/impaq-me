@@ -1,5 +1,6 @@
 class Link < ActiveRecord::Base
   belongs_to :campaign
+  belongs_to :article
 
   before_create :generate_slug, unless: "slug"
 

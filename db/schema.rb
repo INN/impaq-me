@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804124644) do
+ActiveRecord::Schema.define(version: 20140818183556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
+
+  create_table "articles", force: true do |t|
+    t.integer  "campaign_id"
+    t.text     "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["campaign_id"], name: "index_articles_on_campaign_id", using: :btree
 
   create_table "campaigns", force: true do |t|
     t.string   "mongo_id"
@@ -48,8 +58,10 @@ ActiveRecord::Schema.define(version: 20140804124644) do
     t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
 
+  add_index "click_throughs", ["article_id"], name: "index_click_throughs_on_article_id", using: :btree
   add_index "click_throughs", ["campaign_id"], name: "index_click_throughs_on_campaign_id", using: :btree
   add_index "click_throughs", ["mongo_id"], name: "index_click_throughs_on_mongo_id", unique: true, using: :btree
 
@@ -61,8 +73,10 @@ ActiveRecord::Schema.define(version: 20140804124644) do
     t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
 
+  add_index "links", ["article_id"], name: "index_links_on_article_id", using: :btree
   add_index "links", ["campaign_id"], name: "index_links_on_campaign_id", using: :btree
   add_index "links", ["mongo_id"], name: "index_links_on_mongo_id", unique: true, using: :btree
 
@@ -140,8 +154,10 @@ ActiveRecord::Schema.define(version: 20140804124644) do
     t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
 
+  add_index "shares", ["article_id"], name: "index_shares_on_article_id", using: :btree
   add_index "shares", ["campaign_id"], name: "index_shares_on_campaign_id", using: :btree
   add_index "shares", ["mongo_id"], name: "index_shares_on_mongo_id", unique: true, using: :btree
 

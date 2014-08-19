@@ -3,6 +3,7 @@ require 'dumps_csv'
 class Share < ActiveRecord::Base
   include DumpsCsv
   belongs_to :campaign
+  belongs_to :article
 
   before_create :set_value, :unless => -> { value.present? }
 
