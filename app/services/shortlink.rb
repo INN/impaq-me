@@ -44,13 +44,16 @@ class Shortlink
 
   private
 
-  def self.remove_banner_toggle long_url
+  def self.remove_banner_toggle(long_url)
     Addressable::URI.parse(long_url).tap do |url|
-      url.query_values = (url.query_values || {}).except('shared_via_impaq_me')
+      unless url.query_values.nil?
+        url.query_values = url.query_values.except('shared_via_impaq_me')
+        url.query_values = nil if url.query_values.size == 0
+      end
     end
   end
 
-  def self.add_analytics_query_params long_url, campaign
+  def self.add_analytics_query_params(long_url, campaign)
     Addressable::URI.parse(long_url).tap do |url|
       url.query_values = (url.query_values || {}).merge(shared_via_impaq_me: true,
                                                         utm_source: 'impaqme',
