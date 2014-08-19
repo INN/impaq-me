@@ -2,32 +2,14 @@ require 'addressable/uri'
 
 class Shortlink
   def self.for_campaign_and_url(campaign, long_url)
-
     long_url = remove_banner_toggle(long_url).to_s
-
-    twitter = Link.find_or_create_by({
-      campaign: campaign,
-      long_url: long_url,
-      channel: 'twitter'
-    })
-
-    electronic_mail = Link.find_or_create_by({
-      campaign: campaign,
-      long_url: long_url,
-      channel: 'email'
-    })
-
-    facebook = Link.find_or_create_by({
-      campaign: campaign,
-      long_url: long_url,
-      channel: 'facebook'
-    })
-
-    {
-      twitter_shortlink: "l/#{twitter.slug}",
-      facebook_shortlink: "l/#{facebook.slug}",
-      email_shortlink: "l/#{electronic_mail.slug}",
-    }
+    Hash[['twitter', 'facebook', 'email'].map do |channel|
+      ["#{channel}_shortlink".to_sym, "l/#{Link.find_or_create_by({
+        campaign: campaign,
+        long_url: long_url,
+        channel: channel
+      }).slug}"]
+    end]
   end
 
   def self.follow(link: link, remote_ip: remote_ip, referer: referer, user_agent: user_agent)
