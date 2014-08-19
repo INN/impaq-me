@@ -1,47 +1,43 @@
 require 'addressable/uri'
+require 'cleans_urls'
 
 class Shortlink
   def self.for_campaign_and_url(campaign, long_url)
-    long_url = remove_banner_toggle(long_url).to_s
+    long_url = CleansUrls.new(long_url).to_s
     Hash[['twitter', 'facebook', 'email'].map do |channel|
       ["#{channel}_shortlink".to_sym, "l/#{Link.find_or_create_by({
-        campaign: campaign,
-        long_url: long_url,
-        channel: channel
+        :campaign => campaign,
+        :article => Article.find_or_create_by(:campaign => campaign, :url => long_url),
+        :long_url => long_url,
+        :channel => channel,
       }).slug}"]
     end]
   end
 
   def self.follow(link: link, remote_ip: remote_ip, referer: referer, user_agent: user_agent)
-    ClickThrough.create(
-      campaign: link.campaign,
-      article_url: link.long_url,
-      channel: link.channel,
-      ip: remote_ip,
-      referer: referer,
-      user_agent: user_agent
+    url = link.article.try(:url) || link.long_url
+    ClickThrough.create!(
+      :campaign => link.campaign,
+      :article => link.article,
+      :article_url => url,
+      :channel => link.channel,
+      :ip => remote_ip,
+      :referer => referer,
+      :user_agent => user_agent
     )
-    add_analytics_query_params link.long_url, link.campaign
+    url_with_google_analytics(url, link.campaign)
   end
 
-  private
+private
 
-  def self.remove_banner_toggle(long_url)
-    Addressable::URI.parse(long_url).tap do |url|
-      unless url.query_values.nil?
-        url.query_values = url.query_values.except('shared_via_impaq_me')
-        url.query_values = nil if url.query_values.size == 0
-      end
-    end
-  end
-
-  def self.add_analytics_query_params(long_url, campaign)
-    Addressable::URI.parse(long_url).tap do |url|
-      url.query_values = (url.query_values || {}).merge(shared_via_impaq_me: true,
-                                                        utm_source: 'impaqme',
-                                                        utm_medium: 'social',
-                                                        utm_campaign: campaign.id)
-
+  def self.url_with_google_analytics(url_string, campaign)
+    Addressable::URI.parse(url_string).tap do |url|
+      url.query_values = (url.query_values || {}).merge(
+        :shared_via_impaq_me => true,
+        :utm_source => 'impaqme',
+        :utm_medium => 'social',
+        :utm_campaign => campaign.id
+      )
     end
   end
 end

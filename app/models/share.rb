@@ -1,4 +1,5 @@
 require 'dumps_csv'
+require 'cleans_urls'
 
 class Share < ActiveRecord::Base
   include DumpsCsv
@@ -6,6 +7,14 @@ class Share < ActiveRecord::Base
   belongs_to :article
 
   before_create :set_value, :unless => -> { value.present? }
+
+  def self.create_from_params!(params)
+    url = CleansUrls.new(params[:article_url]).to_s
+    Share.create!(params.merge(
+      :article_url => url,
+      :article => Article.for(params[:campaign_id], url)
+    ))
+  end
 
   def self.past_dupes(share)
     where(

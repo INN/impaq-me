@@ -26,12 +26,7 @@ class SharesController < ApplicationController
 
   # POST /shares
   def create
-    build_share
-    if @share.save!
-      render :json => @share
-    else
-      render action: 'new'
-    end
+    render :json => Share.create_from_params!(create_share_params)
   end
 
   private
@@ -40,15 +35,10 @@ class SharesController < ApplicationController
     @share = Share.find(params[:id])
   end
 
-  def build_share
-    h = {
-      ip: request.ip,
-      referer: request.referer
-    }
-    @share = Share.new(share_params.merge(h))
-  end
-
-  def share_params
-    params.require(:share).permit(:campaign_id, :channel, :article_url)
+  def create_share_params
+    params.require(:share).permit(:campaign_id, :channel, :article_url).merge(
+      :ip => request.ip,
+      :referer => request.referer
+    )
   end
 end

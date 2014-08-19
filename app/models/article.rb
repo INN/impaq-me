@@ -1,3 +1,5 @@
+require 'cleans_urls'
+
 class Article < ActiveRecord::Base
   belongs_to :campaign
 
@@ -5,13 +7,15 @@ class Article < ActiveRecord::Base
   has_many :shares
   has_many :click_throughs
 
-  before_save :clean_url
+  before_save :massage_url_before_save
+
+  def self.for(campaign, url)
+    Article.find_by(:campaign => campaign, :url => CleansUrls.new(url).to_s)
+  end
 
 private
 
-  # Prevent URL patterns we don't want from being saved to the Article
-  # Eventually this will satisfy
-  def clean_url
-    self.url = self.url.gsub(/\?$/,'')
+  def massage_url_before_save
+    self.url = CleansUrls.new(self.url).to_s
   end
 end
