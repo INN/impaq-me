@@ -30,5 +30,9 @@ if Rails.env.development?
   #
   # Allow remote debugging
   #
-  Debugger.start_remote
+  begin
+    Debugger.start_remote
+  rescue Errno::EADDRINUSE
+    puts "Another process has already enabled remote debugging"
+  end
 end
