@@ -93,25 +93,25 @@ There's a little included script for deploying to heroku:
 To deploy an app:
 
 ```
-$ ./deploy remote-name app-name
+$ ./script/deploy remote-name app-name
 ```
 
 To deploy an app with migrations:
 
 ```
-$ ./deploy remote-name app-name true
+$ ./script/deploy remote-name app-name true
 ```
 
 To deploy an app with migrations and enable maintenance mode for the entire duration:
 
 ```
-$ ./deploy remote-name app-name true true
+$ ./script/deploy remote-name app-name true true
 ```
 
 To deploy an app with maintenance mode but no migrations:
 
 ```
-$ ./deploy remote-name app-name "" true
+$ ./script/deploy remote-name app-name "" true
 ```
 
 For production, "remote-name" is probably `heroku` and "app-name" is `impaqme`
