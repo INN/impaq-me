@@ -20,16 +20,16 @@ if [ -n "$MAINTENANCE" ]; then
 fi
 
 if [ -n "$MIGRATE" ]; then
-  echo "heroku db:backup -a $APP_NAME"
-  heroku db:backup -a $APP_NAME
+  echo "heroku pgbackups:capture -a $APP_NAME"
+  heroku pgbackups:capture -a $APP_NAME
 fi
 
 echo "git push $REMOTE $BRANCH:master"
 git push $REMOTE $BRANCH:master
 
 if [ -n "$MIGRATE" ]; then
-  echo "heroku db:migrate -a $APP_NAME"
-  heroku db:migrate -a $APP_NAME
+  echo "heroku run rake db:migrate -a $APP_NAME"
+  heroku run rake db:migrate -a $APP_NAME
   echo "heroku restart -a $APP_NAME"
   heroku restart -a $APP_NAME
 fi
