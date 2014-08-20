@@ -11,10 +11,6 @@ class CleansUrls
     @url.to_s
   end
 
-  def inspect
-    @url.to_s
-  end
-
   def as_uri
     @url
   end
