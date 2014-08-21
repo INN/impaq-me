@@ -46,6 +46,7 @@ end
 
 class DataMigrationToCanonicalArticles < ActiveRecord::Migration
   def up
+    execute("commit;")
     convert_stuff!
   end
 
