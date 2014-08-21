@@ -22,7 +22,7 @@ end
 
 def convert_stuff!
   puts "### Converting migration links"
-  MigrationLink.find_in_batches(:batch_size => batch_size = 5000).each_with_index do |batch, i|
+  MigrationLink.where(:article_id => nil).find_in_batches(:batch_size => batch_size = 5000).each_with_index do |batch, i|
     ActiveRecord::Base.transaction do
       batch.each do |link|
         url = link.long_url
