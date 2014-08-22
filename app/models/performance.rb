@@ -1,8 +1,9 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
+
 class Performance
   attr_reader :pageview_count, :pageview_percent_shared, :pageview_percent_donated,
-    :donation_count, :donation_sum, :donation_average,
-    :most_shared_articles,
-    :most_clicked_articles
+    :donation_count, :donation_sum, :donation_average
 
 
   def initialize(campaign)
@@ -23,16 +24,52 @@ class Performance
     @campaign.goal
   end
 
-
-  def share_count(channel = :all)
-    "TODO #{channel}"
+  def share_count(channel = nil)
+    for_channel(Share, channel).count
   end
 
-  def click_count(channel = :all)
-    "TODO #{channel}"
+  def click_count(channel = nil)
+    for_channel(ClickThrough, channel).count
   end
 
-  def clicks_per_share(channel = :all)
-    "TODO #{channel}"
+  def clicks_per_share(channel = nil)
+    (click_count(channel).to_d / share_count(channel).to_d).truncate(2)
+  end
+
+  ArticlePerformance = Struct.new(:url, :facebook, :twitter, :email, :total)
+  def most_shared_articles
+    most_x_articles(:shares)
+  end
+
+  def most_clicked_articles
+    most_x_articles(:click_throughs)
+  end
+
+private
+
+  def for_channel(cls, channel)
+    cls.where(
+      {:campaign => @campaign}.tap do |h|
+        h.merge!(:channel => channel) if channel.present?
+      end
+    )
+  end
+
+  def most_x_articles(relation)
+    Article.select("articles.*, count(#{relation}.id) as x_count").
+      joins(relation).
+      where(:campaign_id => 16).
+      group("articles.id").
+      order("x_count desc").
+    limit(10).map do |article|
+      x_by_channel = article.send(relation).group_by(&:channel)
+      ArticlePerformance.new(
+        article.url,
+        x_by_channel["facebook"].try(:size),
+        x_by_channel["twitter"].try(:size),
+        x_by_channel["email"].try(:size),
+        article.send(relation).size
+      )
+    end
   end
 end

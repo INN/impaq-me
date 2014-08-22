@@ -24,13 +24,18 @@ Donations (average): <%= @performance.donation_average %>
 
 Most shared articles:
 
-| title | facebook | twitter | email |
-|       |          |         |       |
+| title | facebook | twitter | email | total |
+<% @performance.most_shared_articles.each do |(a)| %>
+|<%= a.url %> | <%= a.facebook %> | <%= a.twitter %> | <%= a.email %> | <%= a.total %> |
+<% end %>
 
 Most clicked articles:
 
-| title | facebook | twitter | email |
-|       |          |         |       |
+| title | facebook | twitter | email | total |
+<% @performance.most_clicked_articles.each do |(a)| %>
+|<%= a.url %> | <%= a.facebook %> | <%= a.twitter %> | <%= a.email %> | <%= a.total %> |
+<% end %>
+
 
 
 
