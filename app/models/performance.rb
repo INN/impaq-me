@@ -1,18 +1,18 @@
 require 'bigdecimal'
 require 'bigdecimal/util'
+require 'wrappers/google/analytics';
 
 class Performance
-  attr_reader :pageview_count, :pageview_percent_shared, :pageview_percent_donated,
-    :donation_count, :donation_sum, :donation_average
-
+  attr_reader :pageview_count
 
   def initialize(campaign)
     @campaign = campaign
     @dollars_raised = 0
+    @pageview_count = Wrappers::Google::Analytics.new.pageviews_for_campaign(@campaign)
   end
 
   def dollars_raised
-    [dollars_hypothetically_raised, dollars_goal]
+    [dollars_hypothetically_raised, dollars_goal].min
   end
 
   def dollars_hypothetically_raised
@@ -22,6 +22,26 @@ class Performance
 
   def dollars_goal
     @campaign.goal
+  end
+
+  def donation_count
+    PaypalDonation.where(:campaign => @campaign).count
+  end
+
+  def donation_sum
+    donation_amounts.sum.to_d
+  end
+
+  def donation_average
+    arithmetic_mean(donation_amounts)
+  end
+
+  def pageview_percent_shared
+    ((share_count / pageview_count.to_d) * 100).truncate(6)
+  end
+
+  def pageview_percent_donated
+    ((donation_count / pageview_count.to_d) * 100).truncate(6)
   end
 
   def share_count(channel = nil)
@@ -46,6 +66,13 @@ class Performance
   end
 
 private
+  def donation_amounts
+    PaypalDonation.where(:campaign => @campaign).map(&:payment_gross)
+  end
+
+  def arithmetic_mean(array)
+    array.reduce(:+).try(:to_d).try(:/,array.size).truncate(2)
+  end
 
   def for_channel(cls, channel)
     cls.where(
@@ -72,4 +99,5 @@ private
       )
     end
   end
+
 end
