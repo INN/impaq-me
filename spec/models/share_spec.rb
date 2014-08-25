@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Share do
   Given(:campaign_value) { 23 }
   Given(:campaign_cooldown) { 4 }
-  Given(:campaign) { Campaign.create!(:value_per_share => campaign_value, :share_cooldown_days => campaign_cooldown, :variants => [Variant.new(:shown_amount => Variant::MAX_SHOWN_AMOUNT)]) }
+  Given(:campaign) { Campaign.create!(:goal => 5000, :value_per_share => campaign_value, :share_cooldown_days => campaign_cooldown, :variants => [Variant.new(:shown_amount => Variant::MAX_SHOWN_AMOUNT)]) }
 
   Given(:share_attrs) {{
     :article_url => "http://example.com",
