@@ -36,6 +36,7 @@ class ClickThrough < ActiveRecord::Base
   end
 
   def monied_click?
+    return false if campaign.met_goal?
     ClickThrough.past_dupes(self).empty? unless blacklisted_agent?
   end
 

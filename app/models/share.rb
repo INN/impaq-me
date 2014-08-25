@@ -41,6 +41,7 @@ private
   end
 
   def monied_share?
+    return false if campaign.met_goal?
     return true unless last_share = Share.past_dupes(self).last
     Time.zone.now - last_share.created_at > campaign.share_cooldown_days.days
   end
