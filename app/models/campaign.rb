@@ -48,6 +48,10 @@ class Campaign < ActiveRecord::Base
     domains.join(', ') if domains
   end
 
+  def met_goal?
+    (Share.total_for_campaign(self) + ClickThrough.total_for_campaign(self)) >= goal
+  end
+
   def last_monied_event_at
     [shares, click_throughs].map do |r|
       r.where('value > 0').order('created_at desc').first.try(:created_at)
