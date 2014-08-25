@@ -8,9 +8,9 @@ module Wrappers
       end
 
       # To play with this in a REPL
-      # require 'wrappers/google/analytics'; analytics = Wrappers::Google::Analytics.new; f = analytics.pageviews_for_campaign(Campaign.new(:id => 16))
+      # require 'wrappers/google/analytics'; analytics = Wrappers::Google::Analytics.new; f = analytics.pageviews_for_campaign(Campaign.new(:id => 16), Date.today)
       #   => 162928
-      def pageviews_for_campaign(campaign)
+      def pageviews_for_campaign(campaign, end_date)
         campaign_id = campaign.mongo_id? ? campaign.mongo_id : campaign.id
 
         pageviews_for_campaign_result(@client.execute(
@@ -18,7 +18,7 @@ module Wrappers
           :parameters => {
             'ids' => "ga:#{ENV['IMPAQME_GOOGLE_PROFILE']}",
             'start-date' => Date.new(2012,1,1).to_s,
-            'end-date' => Date.today.to_s,
+            'end-date' => end_date.to_s,
             'dimensions' => 'ga:dimension1',
             'metrics' => 'ga:pageviews',
             'filters' => "ga:dimension1==#{campaign_id}"
@@ -34,6 +34,7 @@ module Wrappers
       # So we want to grab the first (only) element in the array, then the
       # second element in the result
       def pageviews_for_campaign_result(result)
+        return 0 unless result.data.rows.present?
         result.data.rows.first[1].to_i
       end
 

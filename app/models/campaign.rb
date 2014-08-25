@@ -52,6 +52,12 @@ class Campaign < ActiveRecord::Base
     domains.join(', ') if domains
   end
 
+  def last_monied_event_at
+    [shares, click_throughs].map do |r|
+      r.where('value > 0').order('created_at desc').first.try(:created_at)
+    end.compact.max
+  end
+
 private
 
   def sum_of_shown_amounts_is_one_hundred

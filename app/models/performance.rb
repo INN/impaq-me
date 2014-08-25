@@ -8,7 +8,7 @@ class Performance
   def initialize(campaign)
     @campaign = campaign
     @dollars_raised = 0
-    @pageview_count = Wrappers::Google::Analytics.new.pageviews_for_campaign(@campaign)
+    @pageview_count = Wrappers::Google::Analytics.new.pageviews_for_campaign(@campaign, end_date)
   end
 
   def dollars_raised
@@ -66,6 +66,14 @@ class Performance
   end
 
 private
+  def end_date
+    [
+      @campaign.ends_at.try(:to_date),
+      (@campaign.last_monied_event_at if dollars_raised >= dollars_goal),
+      Date.tomorrow
+    ].compact.min
+  end
+
   def donation_amounts
     PaypalDonation.where(:campaign => @campaign).map(&:payment_gross)
   end
