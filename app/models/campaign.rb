@@ -5,6 +5,7 @@ class Campaign < ActiveRecord::Base
   default_scope ->{ where(:deleted => false) }
 
   validates_uniqueness_of :mongo_id, :allow_nil => true
+  validates_numericality_of :goal
 
   has_many :shares
   has_many :links
