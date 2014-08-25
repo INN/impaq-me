@@ -16,8 +16,7 @@ class Performance
   end
 
   def dollars_hypothetically_raised
-    share_count * @campaign.value_per_share +
-    click_count * @campaign.value_per_click
+    Share.total_for_campaign(@campaign) + ClickThrough.total_for_campaign(@campaign)
   end
 
   def dollars_goal
