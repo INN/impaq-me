@@ -1,7 +1,6 @@
 require 'dumps_csv'
 
 class Campaign < ActiveRecord::Base
-  class NoGoal < RuntimeError; end
   include DumpsCsv
   default_scope ->{ where(:deleted => false) }
 
@@ -42,10 +41,6 @@ class Campaign < ActiveRecord::Base
 
   def self.undelete!(id)
     unscoped.find(id).update(:deleted => false)
-  end
-
-  def self.goal(id)
-    find(id).goal or raise NoGoal
   end
 
   def domains_to_s
