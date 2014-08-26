@@ -44,11 +44,11 @@ class Performance
   end
 
   def share_count(channel = nil)
-    for_channel(Share, channel).count
+    Share.for_channel(channel).count
   end
 
   def click_count(channel = nil)
-    for_channel(ClickThrough, channel).count
+    ClickThrough.for_channel(channel).count
   end
 
   def clicks_per_share(channel = nil)
@@ -79,14 +79,6 @@ private
 
   def arithmetic_mean(array)
     array.reduce(:+).try(:to_d).try(:/,array.size).truncate(2)
-  end
-
-  def for_channel(cls, channel)
-    cls.where(
-      {:campaign => @campaign}.tap do |h|
-        h.merge!(:channel => channel) if channel.present?
-      end
-    )
   end
 
   def most_x_articles(relation)

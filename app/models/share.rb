@@ -3,10 +3,10 @@ require 'cleans_urls'
 
 class Share < ActiveRecord::Base
   include DumpsCsv
+  include Mixins::Valuable
+
   belongs_to :campaign
   belongs_to :article
-
-  before_create :set_value, :unless => -> { value.present? }
 
   def self.create_from_params!(params)
     url = CleansUrls.new(params[:article_url]).to_s
@@ -16,29 +16,17 @@ class Share < ActiveRecord::Base
     ))
   end
 
-  def self.past_dupes(share)
-    where(
-      :article_url => share.article_url,
-      :campaign_id => share.campaign_id,
-      :ip => share.ip
-    ).where.not(
-      :id => share.id
-    ).order(:created_at)
+  # Required by Mixins::Valuable
+  def value_per_item
+    campaign.value_per_share
   end
 
-  def self.total_for_campaign(campaign)
-    for_campaign(campaign).sum(:value)
-  end
-
-private
-
-  def set_value
-    self.value = monied_share? ? campaign.value_per_share : 0.0
-  end
-
-  def monied_share?
-    return false if campaign.met_goal?
-    return true unless last_share = Share.past_dupes(self).last
-    Time.zone.now - last_share.created_at > campaign.share_cooldown_days.days
+  # Required by Mixins::Valuable
+  def eligible_for_value?
+    if most_recent_past_duplicate_share = self.class.past_dupes(self).last
+      (Time.zone.now - most_recent_past_duplicate_share.created_at) > campaign.share_cooldown_days.days
+    else
+      true
+    end
   end
 end

@@ -11,6 +11,6 @@ class PaypalDonation < ActiveRecord::Base
   end
 
   def self.total_for_campaign(campaign)
-    for_campaign(campaign).sum(:mc_gross)
+    where(:campaign => campaign).sum(:mc_gross)
   end
 end

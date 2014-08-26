@@ -1,5 +1,5 @@
 class CampaignMeter
-  def self.for_campaign campaign
+  def self.for_campaign(campaign)
     percent = (total(campaign)/campaign.goal * 100).round 2
     OpenStruct.new(
       campaign_id: campaign.id,

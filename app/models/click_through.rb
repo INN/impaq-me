@@ -3,38 +3,25 @@ require 'dumps_csv'
 
 class ClickThrough < ActiveRecord::Base
   include DumpsCsv
+  include Mixins::Valuable
+
   belongs_to :campaign
   belongs_to :article
 
-  before_create :set_value, :unless => -> { value.present? }
-
   USER_AGENT_BLACKLIST = Regexp.union(YAML.load_file(Rails.root.join('config/user_agent_blacklist.yml')))
 
-  # TODO - note that Share has the exact same scope.
-  def self.past_dupes(share)
-    where(
-      :article_url => share.article_url,
-      :campaign_id => share.campaign_id,
-      :ip => share.ip
-    ).where.not(
-      :id => share.id
-    ).order(:created_at)
+  # Required by Mixins::Valuable
+  def value_per_item
+    campaign.value_per_click
   end
 
-  def self.total_for_campaign(campaign)
-    for_campaign(campaign).sum(:value)
+  # Required by Mixins::Valuable
+  def eligible_for_value?
+    return false if blacklisted_agent?
+    self.class.past_dupes(self).empty?
   end
 
-  private
-
-  def set_value
-    self.value = monied_click? ? campaign.value_per_click : 0.0
-  end
-
-  def monied_click?
-    return false if campaign.met_goal?
-    ClickThrough.past_dupes(self).empty? unless blacklisted_agent?
-  end
+private
 
   def blacklisted_agent?
     user_agent =~ USER_AGENT_BLACKLIST
