@@ -78,7 +78,8 @@ private
   end
 
   def arithmetic_mean(array)
-    array.reduce(:+).try(:to_d).try(:/,array.size).truncate(2)
+    return 0.to_d unless array.present?
+    (array.reduce(:+).to_d / array.size).truncate(2)
   end
 
   def most_x_articles(relation)
