@@ -21,10 +21,6 @@ class ClickThrough < ActiveRecord::Base
     ).order(:created_at)
   end
 
-  def self.for_campaign(campaign)
-    where(campaign: campaign)
-  end
-
   def self.total_for_campaign(campaign)
     for_campaign(campaign).sum(:value)
   end
