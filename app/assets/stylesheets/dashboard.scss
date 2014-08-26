@@ -1,0 +1,50 @@
+/*
+ *= require foundation
+ *= require pizza
+ *= require_self
+ */
+
+$impaqme-primary: #E9695C;
+$impaqme-secondary: #BCBCBD;
+
+#dashMain {
+  width: 800px;
+  margin: 10% auto;
+  box-sizing: border-box;
+}
+
+#dashMain input {
+  width: 400px;
+  height: 20px;
+}
+
+#dashMain textarea {
+  width: 400px;
+  height: 60px;
+}
+
+.helper-text {
+  font-size: smaller;
+}
+
+// Pizza pie chart config:
+ul.pie {
+  position: absolute;
+  background: rgba(255,255,255,.8);
+  border: 1px solid $impaqme-secondary;
+  border-radius: 8px;
+  padding: 3px;
+  bottom: 0;
+
+  li:nth-child(1) {
+    color: #4E69A0;
+  }
+
+  li:nth-child(2) {
+    color: #59ADEB;
+  }
+
+  li:nth-child(3) {
+    color: #D1493C;
+  }
+}

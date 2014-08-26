@@ -64,7 +64,6 @@ class Performance
     most_x_articles(:click_throughs)
   end
 
-private
   def end_date
     [
       @campaign.ends_at.try(:to_date),
@@ -72,6 +71,8 @@ private
       Date.tomorrow
     ].compact.min
   end
+
+private
 
   def donation_amounts
     PaypalDonation.where(:campaign => @campaign).map(&:payment_gross)

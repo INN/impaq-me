@@ -3,3 +3,7 @@
 #= require jquery_ujs
 #= require jquery.autosize.min
 #= require foundation
+#= require snap
+#= require pizza
+
+$ -> Pizza.init()

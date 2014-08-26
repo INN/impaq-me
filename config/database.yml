@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: impaqme_development
+  database: impaqme_development_heroku
   pool: 5
 
 test:
