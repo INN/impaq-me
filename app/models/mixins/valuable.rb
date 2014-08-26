@@ -32,7 +32,7 @@ module Mixins
         where(:campaign => campaign).sum(:value)
       end
 
-      def for_channel(channel)
+      def for_channel(campaign, channel)
         where({
           :campaign => campaign,
           :channel => channel
