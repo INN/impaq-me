@@ -44,11 +44,11 @@ class Performance
   end
 
   def share_count(channel = nil)
-    Share.for_channel(channel).count
+    Share.valuable.for_channel(channel).count
   end
 
   def click_count(channel = nil)
-    ClickThrough.for_channel(channel).count
+    ClickThrough.valuable.for_channel(channel).count
   end
 
   def clicks_per_share(channel = nil)

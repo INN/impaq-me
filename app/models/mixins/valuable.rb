@@ -24,6 +24,10 @@ module Mixins
 
     module ClassMethods
 
+      def valuable
+        where('value > 0')
+      end
+
       def total_for_campaign(campaign)
         where(:campaign => campaign).sum(:value)
       end
