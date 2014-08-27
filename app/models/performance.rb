@@ -56,12 +56,12 @@ class Performance
   end
 
   ArticlePerformance = Struct.new(:url, :facebook, :twitter, :email, :total)
-  def most_shared_articles
-    most_x_articles(:shares)
+  def most_shared_articles(limit = 10)
+    most_x_articles(:shares, limit)
   end
 
-  def most_clicked_articles
-    most_x_articles(:click_throughs)
+  def most_clicked_articles(limit = 10)
+    most_x_articles(:click_throughs, limit)
   end
 
   def end_date
@@ -83,13 +83,13 @@ private
     (array.reduce(:+).to_d / array.size).truncate(2)
   end
 
-  def most_x_articles(relation)
+  def most_x_articles(relation, limit)
     Article.select("articles.*, count(#{relation}.id) as x_count").
       joins(relation).
       where(:campaign => @campaign).
       group("articles.id").
       order("x_count desc").
-    limit(10).map do |article|
+    limit(limit).map do |article|
       x_by_channel = article.send(relation).group_by(&:channel)
       ArticlePerformance.new(
         article.url,

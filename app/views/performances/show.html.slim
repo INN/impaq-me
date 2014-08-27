@@ -65,7 +65,6 @@
           td= @performance.click_count(:email)
           td= @performance.clicks_per_share(:email)
 
-
   .row
     .top
       .big= number_with_delimiter(@performance.pageview_count)
@@ -104,6 +103,9 @@
             td= a.facebook
             td= a.twitter
             td= a.email
+    .download.rt.no-print
+      a href="#{shares_campaign_performance_path(@campaign)}"
+        | Download CSV
 
   .table-row
     h2 Most Clicked Articles
@@ -123,3 +125,6 @@
             td= a.facebook
             td= a.twitter
             td= a.email
+    .download.rt.no-print
+      a href="#{clicks_campaign_performance_path(@campaign)}"
+        | Download CSV

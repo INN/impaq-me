@@ -2,8 +2,30 @@ class PerformancesController < ApplicationController
   layout 'performance'
   before_action :check_user
 
-  def show
+  before_action ->{
     @campaign = Campaign.find(params[:campaign_id])
     @performance = Performance.new(@campaign)
+  }
+
+  def show
+  end
+
+  def shares
+    render :csv => articles_csv(:most_shared_articles)
+  end
+
+  def clicks
+    render :csv => articles_csv(:most_clicked_articles)
+  end
+
+private
+
+  def articles_csv(method)
+    CSV.generate do |csv|
+      csv << ["URL", "Facebook", "Twitter", "E-mail"]
+      @performance.send(method, nil).each do |a|
+        csv << [a.url, a.facebook, a.twitter, a.email]
+      end
+    end
   end
 end

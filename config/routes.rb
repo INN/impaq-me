@@ -3,7 +3,10 @@ ImpaqBackend::Application.routes.draw do
 
   resources :campaigns do
     resources :variants
-    resource :performance
+    resource :performance do
+      get 'shares', :to => 'performances#shares'
+      get 'clicks', :to => 'performances#clicks'
+    end
   end
   resources :dashboard, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]
