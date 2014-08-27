@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
-  layout 'foundation'
+  layout 'performance'
   before_action :check_user
 
   def show

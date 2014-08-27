@@ -1,3 +1,5 @@
+#= require vendor_performance
+
 $ ->
   return unless $('#performance_page').length
   Pizza.init document.body,

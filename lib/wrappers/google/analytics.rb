@@ -18,7 +18,7 @@ module Wrappers
           :parameters => {
             'ids' => "ga:#{ENV['IMPAQME_GOOGLE_PROFILE']}",
             'start-date' => Date.new(2012,1,1).to_s,
-            'end-date' => end_date.to_s,
+            'end-date' => end_date.to_date.to_s,
             'dimensions' => 'ga:dimension1',
             'metrics' => 'ga:pageviews',
             'filters' => "ga:dimension1==#{campaign_id}"

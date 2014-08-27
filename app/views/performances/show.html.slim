@@ -1,0 +1,125 @@
+#performance_page
+  .title
+    h1
+      = @campaign.publisher_name
+    h2
+      | Impaq.Me campaign activity through #{@performance.end_date.to_s(:long_date)}
+  .row
+    .rt
+      .huge= number_to_currency(@performance.dollars_raised, :precision => 0)
+      .medium Dollars Raised
+      .small of your #{number_to_currency(@performance.dollars_goal, :precision => 0)} goal
+    div
+      .pie
+        ul.legend[data-pie-id="share-count-chart"]
+          li data-value="#{@performance.share_count(:facebook)}"
+            | Facebook
+          li data-value="#{@performance.share_count(:twitter)}"
+            | Twitter
+          li data-value="#{@performance.share_count(:email)}"
+            | E-mail
+        #share-count-chart.graph
+      .center
+        .big= @performance.share_count
+        .medium  Shares
+    div
+      .pie
+        ul.legend[data-pie-id="click-count-chart"]
+          li data-value="#{@performance.click_count(:facebook)}"
+            | Facebook
+          li data-value="#{@performance.click_count(:twitter)}"
+            | Twitter
+          li data-value="#{@performance.click_count(:email)}"
+            | E-mail
+        #click-count-chart.graph
+      .center
+        .big= @performance.click_count
+        .medium  Clicks
+    div
+      .small That's
+      .big= @performance.clicks_per_share
+      .medium Clicks Per Share
+
+  .table-row
+    table
+      thead
+        tr
+          th
+          th Shares
+          th Clicks
+          th Clicks per Share
+      tbody
+        tr
+          td Facebook
+          td= @performance.share_count(:facebook)
+          td= @performance.click_count(:facebook)
+          td= @performance.clicks_per_share(:facebook)
+        tr
+          td Twitter
+          td= @performance.share_count(:twitter)
+          td= @performance.click_count(:twitter)
+          td= @performance.clicks_per_share(:twitter)
+        tr
+          td E-mail
+          td= @performance.share_count(:email)
+          td= @performance.click_count(:email)
+          td= @performance.clicks_per_share(:email)
+
+
+  .row
+    .top
+      .big= number_with_delimiter(@performance.pageview_count)
+      .medium pageviews
+    .top
+      .big= @performance.share_count
+      .medium shares
+      .small
+        | (#{number_to_percentage(@performance.pageview_percent_shared, :precision => 2)})
+    .top
+      .big= @performance.donation_count
+      .medium donations
+      .small
+        | (#{number_to_percentage(@performance.pageview_percent_donated, :precision => 2)})
+    .top
+      .big= number_to_currency(@performance.donation_sum, :precision => 0)
+      .medium total donations
+      .small
+        | (#{number_to_currency(@performance.donation_average, :precision => 0)} avg. donation)
+
+  .table-row
+    h2 Most Shared Articles
+    table
+      thead
+        tr
+          th
+          th Facebook
+          th Twitter
+          th Email
+      tbody
+        - @performance.most_shared_articles.each do |a|
+          tr
+            td.truncate
+              a href="#{a.url}" title="#{a.url}"
+                =path_for(a.url)
+            td= a.facebook
+            td= a.twitter
+            td= a.email
+
+  .table-row
+    h2 Most Clicked Articles
+    table
+      thead
+        tr
+          th
+          th Facebook
+          th Twitter
+          th Email
+      tbody
+        - @performance.most_clicked_articles.each do |a|
+          tr
+            td.truncate
+              a href="#{a.url}" title="#{a.url}"
+                =path_for(a.url)
+            td= a.facebook
+            td= a.twitter
+            td= a.email

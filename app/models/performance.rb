@@ -66,9 +66,9 @@ class Performance
 
   def end_date
     [
-      @campaign.ends_at.try(:to_date),
+      @campaign.ends_at,
       (@campaign.last_monied_event_at if dollars_raised >= dollars_goal),
-      Date.tomorrow
+      Time.zone.now + 1.day
     ].compact.min
   end
 

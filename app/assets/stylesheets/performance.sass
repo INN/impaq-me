@@ -1,28 +1,111 @@
+//= require vendor_performance
+
 $impaqme-primary: #E9695C
 $impaqme-secondary: #BCBCBD
 
-@import "foundation"
+=clearfix
+  *zoom: 1
+  &:before, &:after
+    content: " "
+    display: table
+  &:after
+    clear: both
 
-// Pizza pie chart config:
-.pie
-  @include clearfix
+#performance_page
+  width: 960px
+  margin: 0 auto
+  font-family: sans-serif
 
-  .graph
-    width: 91%
-    float: right
-    margin-top: -30px
+  .title
+    h1
+      margin: 0
+      padding: 0
 
-  .legend
-    padding: 0
-    position: absolute
+    h2
+      margin-top: 5px
+      padding: 0
+      font-size: 1.3em
+      font-weight: normal
 
-    li:nth-child(1)
-      color: #4E69A0
+  .row
+    margin-top: 20px
+
+    > *
+      padding: 20px
+      width: calc(25% - 40px)
+      display: inline-block
+
+  .rt
+    text-align: right
+    direction: rtl
+
+  .top
+    vertical-align: top
+
+  .center
+    text-align: center
+
+  .huge
+    font-size: 5em
+    font-weight: bold
+
+  .big
+    font-size: 2em
+    font-weight: bold
+
+  .medium
+    font-size: 1.4em
+
+  .small
+    margin-top: 4px
+    font-size: 1.1em
+
+  .pie
+    @include clearfix
+
+    .graph
+      width: 91%
+      height: 164px
+      float: right
+      margin-top: -15px
+
+    .legend
+      padding: 0
+      position: absolute
+
+      li:nth-child(1)
+        color: #4E69A0
 
 
-    li:nth-child(2)
-      color: #59ADEB
+      li:nth-child(2)
+        color: #59ADEB
 
 
-    li:nth-child(3)
-      color: #D1493C
+      li:nth-child(3)
+        color: #D1493C
+
+  .table-row
+    margin-top: 40px
+
+    table
+      border-spacing: 0
+      width: 100%
+      margin: 0 auto
+
+      th,td
+        text-align: left
+        padding: 6px
+
+        &.truncate
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          max-width: 400px
+
+      thead
+        tr
+          background-color: lighten($impaqme-primary, 8%)
+
+      tbody
+        tr:nth-child(even)
+          background-color: lighten($impaqme-secondary, 16%)
