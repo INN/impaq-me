@@ -86,6 +86,7 @@ private
   def most_x_articles(relation, limit)
     Article.select("articles.*, count(#{relation}.id) as x_count").
       joins(relation).
+      where("#{relation}.value > 0").
       where(:campaign => @campaign).
       group("articles.id").
       order("x_count desc").
