@@ -1,36 +1,43 @@
-<h1><%= @campaign.publisher_name %></h1>
-<h2>Impaq.me campaign activity through <%= @performance.end_date %></h2>
+<div id="performance_page">
+  <h1><%= @campaign.publisher_name %></h1>
+  <h2>Impaq.me campaign activity through <%= @performance.end_date %></h2>
 
-<div class="row">
-  <div class="small-3 columns">
-    <%= @performance.dollars_raised %>
-    Dollars raised
-    of your <%= @performance.dollars_goal %>
-  </div>
-  <div class="small-3 columns">
-    <ul class="pie" data-pie-id="share-count-chart">
-      <li data-value="<%= @performance.share_count(:facebook) %>">Facebook</li>
-      <li data-value="<%= @performance.share_count(:twitter) %>">Twitter</li>
-      <li data-value="<%= @performance.share_count(:email) %>">E-mail</li>
-    </ul>
-    <div id="share-count-chart"></div>
-    <%= @performance.share_count %>
-    Shares
-  </div>
-  <div class="small-3 columns">
-    <ul class="pie" data-pie-id="click-count-chart">
-      <li data-value="<%= @performance.click_count(:facebook) %>">Facebook</li>
-      <li data-value="<%= @performance.click_count(:twitter) %>">Twitter</li>
-      <li data-value="<%= @performance.click_count(:email) %>">E-mail</li>
-    </ul>
-    <div id="click-count-chart"></div>
-    <%= @performance.click_count %>
-    Clicks
-  </div>
-  <div class="small-3 columns">
-    That's
-    <%= @performance.clicks_per_share %>
-    Clicks Per Share
+  <div class="row">
+    <div class="small-3 columns">
+      <%= @performance.dollars_raised %>
+      Dollars Raised
+      of your <%= @performance.dollars_goal %> goal
+    </div>
+    <div class="small-3 columns">
+      <div class="pie">
+        <ul class="legend" data-pie-id="share-count-chart">
+          <li data-value="<%= @performance.share_count(:facebook) %>">Facebook</li>
+          <li data-value="<%= @performance.share_count(:twitter) %>">Twitter</li>
+          <li data-value="<%= @performance.share_count(:email) %>">E-mail</li>
+        </ul>
+        <div class="graph" id="share-count-chart"></div>
+      </div>
+      <div>
+        <%= @performance.share_count %> Shares
+      </div>
+    </div>
+    <div class="small-3 columns">
+      <div class="pie">
+        <ul class="legend" data-pie-id="click-count-chart">
+          <li data-value="<%= @performance.click_count(:facebook) %>">Facebook</li>
+          <li data-value="<%= @performance.click_count(:twitter) %>">Twitter</li>
+          <li data-value="<%= @performance.click_count(:email) %>">E-mail</li>
+        </ul>
+        <div class="graph" id="click-count-chart"></div>
+      </div>
+      <%= @performance.click_count %>
+      Clicks
+    </div>
+    <div class="small-3 columns">
+      That's
+      <%= @performance.clicks_per_share %>
+      Clicks Per Share
 
+    </div>
   </div>
 </div>
