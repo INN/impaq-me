@@ -11,11 +11,13 @@ class PerformancesController < ApplicationController
   end
 
   def shares
-    render :csv => articles_csv(:most_shared_articles)
+    render :csv => articles_csv(:most_shared_articles),
+      :filename => "#{@campaign.publisher_name.parameterize}-shares"
   end
 
   def clicks
-    render :csv => articles_csv(:most_clicked_articles)
+    render :csv => articles_csv(:most_clicked_articles),
+      :filename => "#{@campaign.publisher_name.parameterize}-clicks"
   end
 
 private
