@@ -109,3 +109,19 @@ $impaqme-secondary: #BCBCBD
       tbody
         tr:nth-child(even)
           background-color: lighten($impaqme-secondary, 16%)
+
+
+@media print
+  @page
+    margin: 6px 24px 6px 24px // make the margins so tight that user agents will not print headers/footers
+
+  body
+    -webkit-print-color-adjust: exact // print background colors in chrome
+    font-size: 12px // decrease size to fit more per page
+
+  a
+    text-decoration: none //print links as normal text
+    color: black
+
+  .page-break
+    page-break-after: always //anything with the class .page-break can break the page
