@@ -1,6 +1,8 @@
 # Impaq.Me
 
-[![Build Status](https://magnum.travis-ci.com/testdouble/impaq-me.svg?token=zzFpGDKukxjbdxpbyHZY&branch=master)](https://magnum.travis-ci.com/testdouble/impaq-me)
+Impaq.Me was a social fundraising tool that enabled funders to give money to nonprofits any time a user shares one of their stories and/or someone clicks back to the site via an impaq.me short url.
+
+**IMPORTANT: This project is no longer actively maintained**
 
 This README discusses how to get up-and-running with the app in development.
 
